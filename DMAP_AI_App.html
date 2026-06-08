@@ -1,0 +1,1211 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DMAP-AI Research Version App | ERA5 SPI Drought Analysis</title>
+
+    <meta name="description" content="SPI drought analysis using NASA POWER and ERA5-Land/CDS with charts, wavelets, severity metrics, and AI interpretation." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="AgriMetSoft LLC" />
+    <meta name="theme-color" content="#2563eb" />
+
+    <link rel="canonical" href="https://droughtanalysis.com/DMAP_AI_App" />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DMAP-AI Research Version App" />
+    <meta property="og:description" content="SPI drought analysis with charts, severity, wavelets, and AI interpretation." />
+    <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
+    <meta property="og:url" content="https://droughtanalysis.com/DMAP_AI_App" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6Z3VWV0W9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-W6Z3VWV0W9');
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "DMAP-AI Research Version",
+      "applicationCategory": "ScientificApplication",
+      "operatingSystem": "Web",
+      "url": "https://droughtanalysis.com/DMAP_AI_App"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@sgratzl/chartjs-chart-boxplot@4.4.5/build/index.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/dmap-ai-app.css?v=20260508" />
+    <link rel="stylesheet" href="/assets/dmap-global-nav.css?v=3" />
+
+    <script src="/auth0-spa-js.production.js?v=1"></script>
+	<style>
+.dmap-global-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.dmap-global-menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.dmap-global-brand {
+    display: flex;
+    align-items: center;
+}
+
+.dmap-app-account-controls {
+    display: inline-flex;
+    align-items: center;
+}
+</style>
+</head>
+<body class="text-slate-800">
+
+    <!-- AUTH SHELL (Sign in) -->
+    <div id="authShell" class="min-h-screen flex items-center justify-center px-4 relative">
+                
+        <div class="card max-w-md w-full p-6">
+            <h1 class="text-xl font-bold text-slate-900 mb-1">Sign in to DMAP-AI</h1>
+            <p class="text-sm muted mb-4">
+                Sign in with Google to create or access your DMAP-AI Research Version account.
+            </p>
+            <label class="text-sm block mb-2">
+                Email
+                <input id="authEmail" type="email" class="mt-1 w-full border border-slate-200 rounded-xl p-2" placeholder="you@example.com">
+            </label>
+            <label class="text-sm block mb-4">
+                Password
+                <input id="authPassword" type="password" class="mt-1 w-full border border-slate-200 rounded-xl p-2" placeholder="Not used with Google sign-in">
+            </label>
+            <button id="authSignInBtn"
+                    class="w-full py-2.5 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700">
+                Sign in / Create account
+            </button>
+            <p id="authError" class="text-sm text-rose-600 mt-3 hidden"></p>
+            <div class="feature-note"><strong>Research Version access:</strong> signed-in users can run <strong>SPI</strong> for <strong>Historical</strong>, <strong>NASA POWER or ERA5-Land/CDS</strong>, <strong>Yearly</strong>, point-based drought analysis. Additional drought indices, regional workflows, forecast-oriented modules, and AI interpretation are reserved for licensed versions.</div>
+            <div class="mt-4 rounded-2xl border border-blue-200 bg-blue-50 p-4">
+                <div class="text-sm font-semibold text-slate-900">New user? Watch the SPI video tutorial first</div>
+                <p class="mt-1 text-xs text-slate-600 leading-relaxed">
+                    Learn how to select a point, run SPI analysis, review tables and charts, request AI interpretation, export outputs, and save a project.
+                </p>
+                <a href="/spi_tutorial" class="mt-3 inline-flex rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">
+                    Watch SPI Tutorial
+                </a>
+            </div>
+            <p class="text-xs text-slate-500 mt-4">
+                Google sign-in is used for account access. User profiles, plan status, and saved runs are stored in the DMAP-AI account database.
+            </p>
+        </div>
+    </div>
+
+    <!-- APP SHELL (hidden until signed in) -->
+    <div id="appShell" class="hidden">
+        <!-- Header -->
+
+        <main class="w-full max-w-[1600px] mx-auto px-4 py-10">
+            <div class="grid grid-cols-12 gap-6 items-start">
+
+                <!-- LEFT: Dashboard sidebar -->
+                <aside id="dashboardAside" class="col-span-12 lg:col-span-4 sticky-aside">
+
+    <section id="dashboardCard" class="card p-5 flex flex-col">
+
+        <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold">My Dashboard</h3>
+
+            <button id="saveRunBtn"
+                    class="text-xs px-3 py-1 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">
+                Save current run
+            </button>
+        </div>
+
+        <p class="muted text-sm mt-1">
+            Saved SPI runs are stored in your DMAP-AI account. Select a run to reload it.
+        </p>
+
+        <div id="dashboardEmpty" class="text-sm text-slate-500 mt-3">
+            No saved runs yet. Run SPI and click “Save current run”.
+        </div>
+
+        <!-- Scrollable list -->
+        <div id="dashboardList"
+             class="mt-3 space-y-2 text-sm overflow-y-auto pr-1 max-h-96">
+        </div>
+
+        <!-- ✅ IMPORTANT: ACCOUNT MUST BE INSIDE DASHBOARD CONTEXT -->
+        <div id="dmapAccountControls"
+             class="dmap-app-account-controls mt-4"
+             style="display:none; align-items:center; justify-content:space-between; gap:10px;">
+
+            <span id="dmapSignedInEmail"
+                  style="font-size:13px; max-width:180px;
+                         overflow:hidden; text-overflow:ellipsis;
+                         white-space:nowrap;">
+                Signed in
+            </span>
+
+            <button id="dmapSignOutBtn"
+                    type="button"
+                    style="padding:4px 10px; border-radius:6px;">
+                Sign out
+            </button>
+
+        </div>
+
+    </section>
+
+    <section id="dashboardUpgradeCard" class="dashboard-upgrade-card mt-4">
+        <div class="development-badge">Developing</div>
+        <div class="text-sm font-semibold text-slate-900">
+            Paid Research features are under development
+        </div>
+        <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+            Advanced AI limits, additional drought indices, regional workflows, and licensed research options are being prepared. The current Research Free Version remains active for SPI analysis and limited daily AI interpretation.
+        </p>
+    </section>
+
+    <section id="dmapAiGuideCard" class="dmap-guide-card mt-4">
+        <div class="guide-badge">DMAP-AI Guide</div>
+        <div class="text-sm font-semibold text-slate-900">
+            Quick help for the Research Free Version
+        </div>
+        <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+            Common questions and short answers to help users run SPI analysis, read the charts, use AI interpretation, copy JSON, and export results.
+        </p>
+
+        <div class="mt-3 rounded-2xl border border-blue-200 bg-blue-50 p-3">
+            <div class="text-xs font-bold uppercase tracking-wide text-blue-700">
+                Video tutorial
+            </div>
+
+            <p class="mt-1 text-xs text-slate-700 leading-relaxed">
+                Watch the point-based S P I tutorial to see the complete workflow before running your own analysis.
+            </p>
+
+            <a href="/spi_tutorial" target="_blank" rel="noopener"
+               class="mt-2 inline-flex rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-blue-700">
+                Open SPI Tutorial
+            </a>
+        </div>
+
+
+                        <div class="mt-3">
+                            <details open>
+                                <summary>What can I do in the Research Free Version?</summary>
+                                <p>You can run point-based historical SPI analysis using NASA POWER or ERA5-Land/CDS, review tables and charts, save SPI runs, and request limited AI interpretation.</p>
+                            </details>
+
+                            <details>
+                                <summary>What does SPI mean?</summary>
+                                <p>SPI is the Standardized Precipitation Index. Negative values indicate drier-than-normal conditions, positive values indicate wetter-than-normal conditions, and values near zero are close to normal.</p>
+                            </details>
+
+                            <details>
+                                <summary>Which drought category is used in the AI explanation?</summary>
+                                <p>The AI receives only the active category method selected in the table, such as Classic SPI thresholds or USDM-style labels. It does not mix all category systems.</p>
+                            </details>
+
+                            <details>
+                                <summary>Why can I select only one chart for AI interpretation?</summary>
+                                <p>The free workflow is chart-specific. Selecting one chart keeps the explanation focused, reduces confusion, and helps manage the daily AI request limit.</p>
+                            </details>
+
+                            <details>
+                                <summary>What does drought severity mean?</summary>
+                                <p>Drought severity summarizes drought events below the selected SPI threshold. Magnitude is the accumulated drought deficit below that threshold, not wetness magnitude.</p>
+                            </details>
+
+                            <details>
+                                <summary>What does the wavelet chart show?</summary>
+                                <p>The wavelet scalogram shows how SPI variability changes over time and period. Strong power means stronger fluctuation at that time scale, but it does not prove causality or forecast future drought by itself.</p>
+                            </details>
+
+                            <details>
+                                <summary>Why do I have only 3 AI requests per day?</summary>
+                                <p>The Research Free Version allows limited daily AI interpretation while advanced AI limits and paid research features are being developed.</p>
+                            </details>
+
+                            <details>
+                                <summary>What does the Export tab do?</summary>
+                                <p>The Export tab lets you create one ZIP package containing selected tables, chart images, and the full current-run JSON. Tables are saved as CSV files, chart images are saved as PNG files, and the JSON is saved as a JSON file.</p>
+                            </details>
+
+                            <details>
+                                <summary>Which items can I include in the ZIP package?</summary>
+                                <p>You can select SPI tables, drought-event tables, precipitation aggregation tables, source precipitation data, SPI charts, anomaly charts, drought-severity charts, wavelet charts, copula diagnostics, and the full JSON context.</p>
+                            </details>
+
+                            <details>
+                                <summary>Why are some Wavelet or Copula exports missing?</summary>
+                                <p>Wavelet and Copula outputs are included only after those analyses have been generated in the app. Open the Wavelet tab to calculate the scalogram, global spectrum, and coherence. Click Compute Copula to calculate copula diagnostics. After each step is generated, those results are added to the full current-run JSON and become available for Copy JSON and Export.</p>
+                            </details>
+
+                            <details>
+                                <summary>When are Wavelet and Copula results added to JSON?</summary>
+                                <p>The full JSON is updated as the current run grows. After the SPI run, the JSON contains rainfall, aggregation, SPI, categories, and severity. After opening the Wavelet tab, wavelet blocks are added. After clicking Compute Copula, the copula block, including U/V pseudo-observations, is added.</p>
+                            </details>
+
+                            <details>
+                                <summary>How is source precipitation saved in the export?</summary>
+                                <p>Source precipitation is exported as a vertical CSV. The first rows contain metadata such as start date, end date, time step, units, and record count. After that, the file contains Date and Data columns.</p>
+                            </details>
+                        </div>
+                    </section>
+
+                </aside>
+
+                <!-- RIGHT: map + charts -->
+                <section id="mainPanel" class="col-span-12 lg:col-span-8 flex flex-col gap-6 main-right-offset">
+
+                    <div class="card p-6 cite-panel">
+                        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                            <div class="relative z-[1]">
+                                <div class="cite-chip">How to cite DMAP-AI</div>
+                                <h3 class="mt-3 text-lg font-semibold text-slate-900">Please cite the tool when you use it in a paper, report, or presentation.</h3>
+                                <p class="mt-2 text-sm text-slate-600 max-w-3xl">
+                                    This gives proper credit to the software and makes it easier for others to identify the exact tool you used.
+                                </p>
+                                <div id="citationText" class="cite-code mt-4">Kolsoumi Ayask, S. (2026). DMAP-AI: Drought Monitoring and Analysis Platform - AI (Version 1.0) [Software]. AgriMetSoft LLC. https://droughtanalysis.com/</div>
+                            </div>
+                            <div class="relative z-[1] flex flex-col items-start gap-2 lg:pt-9">
+                                <button id="copyCitationBtn" type="button" class="copy-citation-btn">
+                                    <span>Copy citation</span>
+                                </button>
+                                <p id="citationCopyHint" class="text-xs text-slate-500">APA-style software citation</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 1 DROUGHT INDEX SELECTION -->
+                    <div class="card p-6 section-card">
+                        <h3 class="section-title"><span class="section-badge">1</span><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3v5"/><path d="M12 16v5"/><path d="M5.64 5.64l3.54 3.54"/><path d="M14.82 14.82l3.54 3.54"/><path d="M3 12h5"/><path d="M16 12h5"/><path d="M5.64 18.36l3.54-3.54"/><path d="M14.82 9.18l3.54-3.54"/><circle cx="12" cy="12" r="3.5"/></svg></span><span>Drought Index Selection<span class="section-meta">In the free version, only SPI is active.</span></span></h3>
+
+                        <div class="compact-index-wrap">
+                            <div class="compact-plan-bar">
+                                <div>
+                                    <div class="compact-plan-title">Research Version access</div>
+                                    <div class="compact-plan-subtitle">The Research Version provides free access to SPI. Additional drought indices are listed to document planned licensed capabilities and to keep the workflow consistent as the platform expands.</div>
+                                </div>
+                                <span class="plan-chip free">Research Version: SPI only</span>
+                            </div>
+
+                            <div class="compact-index-card">
+                                    <label for="droughtIndexSelect" class="compact-index-label">Drought index</label>
+                                    <select id="droughtIndexSelect" class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                        <optgroup label="Meteorological drought">
+                                            <option value="spi" selected>SPI — Standardized Precipitation Index (Free / Available)</option>
+                                            <option value="di" disabled>DI — Deciles Index (Paid / Future activation)</option>
+                                            <option value="pn" disabled>PN — Percent of Normal (Paid / Future activation)</option>
+                                            <option value="czi" disabled>CZI — China-Z Index (Paid / Future activation)</option>
+                                            <option value="mczi" disabled>MCZI — Modified CZI (Paid / Future activation)</option>
+                                            <option value="edi" disabled>EDI — Effective Drought Index (Paid / Future activation)</option>
+                                            <option value="rai" disabled>RAI — Rainfall Anomaly Index (Paid / Future activation)</option>
+                                            <option value="zsi" disabled>ZSI — Z-Score Index (Paid / Future activation)</option>
+                                            <option value="pdsi" disabled>PDSI — Palmer Drought Severity Index (Paid / Future activation)</option>
+                                            <option value="phdi" disabled>PHDI — Palmer Hydrological Drought Index (Paid / Future activation)</option>
+                                            <option value="spei" disabled>SPEI — Standardized Precipitation Evapotranspiration Index (Paid / Future activation)</option>
+                                            <option value="rdi" disabled>RDI — Reconnaissance Drought Index (Paid / Future activation)</option>
+                                        </optgroup>
+                                        <optgroup label="Agricultural drought">
+                                            <option value="ari" disabled>ARI — Agricultural Rainfall Index (Paid / Future activation)</option>
+                                            <option value="smdi" disabled>SMDI — Soil Moisture Deficit Index (Paid / Future activation)</option>
+                                            <option value="etdi" disabled>ETDI — Evapotranspiration Deficit Index (Paid / Future activation)</option>
+                                        </optgroup>
+                                        <optgroup label="Hydrological drought">
+                                            <option value="swsi" disabled>SWSI — Surface Water Supply Index (Paid / Future activation)</option>
+                                            <option value="sdi" disabled>SDI — Streamflow Drought Index (Paid / Future activation)</option>
+                                        </optgroup>
+                                    </select>
+                                <div id="planRestrictionNote" class="feature-note"><strong>Research Version rule:</strong> only <strong>SPI</strong>, <strong>Historical</strong>, <strong>NASA POWER or ERA5-Land/CDS</strong>, <strong>Yearly</strong>, and <strong>Point</strong> analysis are active. Other drought indices, regional analysis, and forecast-oriented workflows are reserved for licensed versions. Free users have 3 AI interpretation requests per day.</div>
+
+                                    
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- 2 AOI -->
+                    <div class="card p-6 section-card section-aoi">
+                        <h3 class="section-title"><span class="section-badge">2</span><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>Area of Interest<span class="section-meta">Choose a point or a rectangular region on the map.</span></span></h3>
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <label class="pill">
+                                <input type="radio" name="aoi" value="point" checked> Point
+                            </label>
+                            <label class="pill">
+                                <input type="radio" name="aoi" value="box"> Rectangular region
+                            </label>
+                        </div>
+
+                        <!-- Map + controls side-by-side -->
+                        <div class="flex flex-col lg:flex-row gap-4">
+                            <div class="lg:flex-1 map-shell">
+                                <div id="map"></div>
+                                <p id="mapHint" class="muted mt-2">
+                                    Click the map to set <b>Lat/Lon</b> for a point.
+                                </p>
+                            </div>
+
+                            <!-- RIGHT: narrow control column -->
+                            <div class="w-full md:w-80 lg:w-96 space-y-4">
+                                <!-- Point inputs -->
+                                <div id="pointInputs" class="grid grid-cols-2 gap-3">
+                                    <label class="text-sm">
+                                        Latitude
+                                        <input id="lat" type="number" step="0.0001"
+                                               class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                    </label>
+                                    <label class="text-sm">
+                                        Longitude
+                                        <input id="lon" type="number" step="0.0001"
+                                               class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                    </label>
+                                </div>
+
+                                <!-- Box inputs -->
+                                <div id="boxInputs" class="hidden space-y-3">
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <label class="text-sm">
+                                            Start (SW) Latitude
+                                            <input id="startLat" type="number" step="0.0001"
+                                                   class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                        </label>
+                                        <label class="text-sm">
+                                            Start (SW) Longitude
+                                            <input id="startLon" type="number" step="0.0001"
+                                                   class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                        </label>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <label class="text-sm">
+                                            End (NE) Latitude
+                                            <input id="endLat" type="number" step="0.0001"
+                                                   class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                        </label>
+                                        <label class="text-sm">
+                                            End (NE) Longitude
+                                            <input id="endLon" type="number" step="0.0001"
+                                                   class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                        </label>
+                                    </div>
+                                    <p class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-xl text-sm">
+                                        Rectangle: first click = <b>Start (SW)</b>; second click = <b>End (NE)</b>. We auto-fill fields.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- 2 MODE/HORIZON -->
+                        <div class="card p-6 section-card section-mode">
+                            <h3 class="section-title"><span class="section-badge">3</span><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="8"/></svg></span><span>Mode<span class="section-meta">Run the active historical workflow; forecast-oriented workflows are reserved for licensed versions.</span></span></h3>
+                            <div class="flex flex-wrap gap-2">
+                                <label class="pill"><input type="radio" name="mode" value="historical" checked> Historical analysis</label>
+                                <label class="pill"><input type="radio" name="mode" value="prediction"> Prediction / Forecast (licensed)</label>
+                            </div>
+                            <div id="horizonCard" class="mt-4 hidden">
+                                <h4 class="font-medium text-slate-900 mb-2">2-1) Forecast horizon</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <label class="pill"><input type="radio" name="horizon" value="7"> 7 days</label>
+                                    <label class="pill"><input type="radio" name="horizon" value="30" checked> 30 days</label>
+                                    <label class="pill"><input type="radio" name="horizon" value="gcm"> Long-term (GCMs)</label>
+                                </div>
+                                <p class="mt-2 muted">
+                                    Long-term projection workflows are planned for licensed versions and are not active in the Research Version.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 3 SOURCES -->
+                        <div class="card p-6 section-card section-sources">
+                            <h3 class="section-title"><span class="section-badge">4</span><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><ellipse cx="12" cy="5" rx="6.5" ry="2.5"/><path d="M5.5 5v6c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5V5"/><path d="M5.5 11v6c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-6"/></svg></span><span>Data Sources<span class="section-meta">The Research Version uses NASA POWER by default for free point-based SPI. ERA5-Land/CDS is also enabled as an advanced option.</span></span></h3>
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <label class="text-sm">
+                                    Observation source
+                                    <select id="obsSrc" class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                        <option value="nasa_power" selected>NASA POWER (free, point-based)</option>
+                                        <option value="era5">ERA5-Land / CDS (advanced)</option>
+                                        <option value="gridmet" disabled>GridMET (licensed / future activation)</option>
+                                        <option value="prism" disabled>PRISM (licensed / future activation)</option>
+                                        <option value="gpm" disabled>GPM IMERG (licensed / future activation)</option>
+                                        <option value="user" disabled>User upload (CSV/station, licensed)</option>
+                                    </select>
+                                    <p id="obsSrcHelp" class="mt-2 text-xs text-slate-500 leading-relaxed">
+                                        NASA POWER is the default free source for point-based SPI. Use 1981 or later. ERA5-Land/CDS is enabled for longer historical records, but large first-time requests may take longer.
+                                    </p>
+                                </label>
+                                <label id="fcstSrcWrap" class="text-sm hidden">
+                                    Forecast source
+                                    <select id="fcstSrc" class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                        <option value="ecmwf">ECMWF (Open Data)</option>
+                                        <option value="gfs">NOAA GFS</option>
+                                        <option value="nbm">NOAA NBM</option>
+                                    </select>
+                                </label>
+                                <label id="gcmSrcWrap" class="text-sm hidden">
+                                    GCM — NASA POWER CMIP6 (downscaled)
+                                    <select id="gcmSrc" class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                        <option value="cmip6_ssp245">SSP245</option>
+                                        <option value="cmip6_ssp585">SSP585</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <label id="biasWrap" class="pill mt-3 hidden">
+                                <input type="checkbox" id="biasCorr"> Bias-correct GCM using the selected observation source
+                            </label>
+                            <p class="muted mt-2">NASA POWER is recommended for fast free testing. ERA5-Land/CDS is available for advanced historical runs when the server CDS setup is ready.</p>
+                        </div>
+
+                        <!-- 4 DATES & SCALE/WINDOW -->
+                        <div class="card p-6 section-card section-dates">
+                            <h3 class="section-title"><span class="section-badge">5</span><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M8 3.5v3M16 3.5v3M3.5 9.5h17"/></svg></span><span>Dates & Aggregation<span class="section-meta">Set the analysis window, baseline, and temporal scale.</span></span></h3>
+                            <div id="historicalDates" class="grid md:grid-cols-3 gap-3">
+                                <label class="text-sm">
+                                    Start date
+                                    <input id="startDate" type="date" value="2000-01-01" class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                </label>
+                                <label class="text-sm">
+                                    End date
+                                    <input id="endDate" type="date" value="2024-12-31" class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                </label>
+                                <label class="text-sm">
+                                    Baseline (years)
+                                    <input id="baseline" type="text" placeholder="1981-2010" class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                </label>
+                            </div>
+
+                            <div class="border-t border-slate-200 mt-4 pt-4 grid lg:grid-cols-3 gap-4">
+                                <div>
+                                    <h4 class="font-medium">Scale</h4>
+                                    <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="pill"><input type="radio" name="scale" value="monthly" checked> Monthly (calendar months)</label>
+                                        <label class="pill"><input type="radio" name="scale" value="yearly"> Yearly</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Window</h4>
+                                    <div id="monthlyWindow" class="mt-2 text-sm text-slate-700">
+                                        Fixed calendar months (e.g., Jan, Feb, …)
+                                    </div>
+                                    <div id="yearlyWindow" class="mt-2 hidden">
+                                        <div class="flex flex-col gap-2">
+                                            <label class="pill w-fit"><input type="radio" name="ywin" value="jan-dec" checked> Jan–Dec totals</label>
+                                            <label class="pill w-fit"><input type="radio" name="ywin" value="rolling"> Rolling N-day window</label>
+                                            <div id="rollingCfg" class="grid grid-cols-2 gap-2 ml-1 hidden">
+                                                <label class="text-sm">
+                                                    N-day
+                                                    <input id="rollingN" type="number" min="7" max="120" value="30" class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                                </label>
+                                                <label class="text-sm">
+                                                    Anchor (MM-DD)
+                                                    <input id="anchor" type="text" value="12-31" placeholder="MM-DD" class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Variables</h4>
+                                    <p class="muted text-sm">
+                                        SPI is active in the Research Version. Additional meteorological, agricultural, and hydrological drought indices are listed as planned licensed capabilities.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5 RUN -->
+                        <div class="card p-6 section-card section-run">
+                            <h3 class="section-title"><span class="section-badge">6</span><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><polygon points="9,7 18,12 9,17"/><path d="M5 6v12"/></svg></span><span>Run Analysis<span class="section-meta">Launch the selected drought analysis and refresh the outputs below.</span></span></h3>
+                            <div class="flex items-center gap-3">
+                                <button id="runBtn" class="px-5 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow hover:bg-blue-700">Run</button>
+                                <div id="runState" class="hidden items-center gap-2 text-slate-600">
+                                    <span class="spinner"></span><span>Running…</span>
+                                </div>
+                                <div id="runDone" class="hidden items-center gap-2 text-emerald-600">
+                                    <span>✓</span><span>Done</span>
+                                </div>
+                                <div id="runErr" class="hidden items-center gap-2 text-rose-600"></div>
+                                <span id="sumBadge" class="badge hidden"></span>
+                            </div>
+                        </div>
+
+                        <!-- 6 RESULTS with Tabs -->
+                        <div class="card p-6 section-card section-results">
+                            <h3 class="section-title"><span class="section-badge">7</span><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 19V9"/><path d="M12 19V5"/><path d="M19 19v-7"/></svg></span><span>Analysis Results<span class="section-meta">Review tables, charts, wavelets, AI interpretation, and diagnostics.</span></span></h3>
+                            <div class="flex flex-wrap items-center gap-2 mb-4">
+                                <button class="tab-btn active" data-tab="table"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16M10 5v14"/></svg></span>Table</button>
+                                <button class="tab-btn" data-tab="charts"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 19V9"/><path d="M12 19V5"/><path d="M19 19v-7"/></svg></span>Charts</button>
+                                <button class="tab-btn" data-tab="severity"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 12h4l2-4 4 8 2-4h4"/></svg></span>Severity</button>
+                                <button class="tab-btn" data-tab="wavelet"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 12c2.5 0 2.5-6 5-6s2.5 12 5 12 2.5-6 5-6 2.5 6 5 6"/></svg></span>Wavelet</button>
+                                <button class="tab-btn" data-tab="copula"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="8" cy="8" r="2"/><circle cx="16" cy="16" r="2"/><circle cx="16" cy="8" r="2"/><path d="M9.5 9.5l5 5"/></svg></span>Copula</button>
+                                <button class="tab-btn" data-tab="ai"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3Z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></svg></span>AI Interpretation</button>
+                                <button class="tab-btn" data-tab="json"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M9 4c-2 0-3 1-3 3v2c0 1-.5 1.5-1.5 2C5.5 11.5 6 12 6 13v2c0 2 1 3 3 3"/><path d="M15 4c2 0 3 1 3 3v2c0 1 .5 1.5 1.5 2-1 .5-1.5 1-1.5 2v2c0 2-1 3-3 3"/></svg></span>JSON</button>
+                                <button class="tab-btn" data-tab="export"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3v10"/><path d="M8 9l4 4 4-4"/><path d="M5 17v2h14v-2"/></svg></span>Export</button>
+                                <button class="tab-btn" data-tab="debug"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 4 12.7c-.8.6-1.5 1.6-1.7 2.3H9.7c-.2-.7-.9-1.7-1.7-2.3A7 7 0 0 1 12 2Z"/></svg></span>Debug</button>
+                                <button id="toggleJson"
+                                        class="w-full md:w-auto mt-2 md:mt-0 ml-0 md:ml-auto
+         text-xs sm:text-sm text-slate-600 hover:text-slate-900
+         text-left md:text-right">
+                                    Collapse/Expand JSON
+                                </button>
+                            </div>
+
+                            <!-- Table panel -->
+                            <div id="panel-table" class="tab-panel active">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="text-sm text-slate-600">
+                                        SPI table
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs text-slate-600">
+                                        <span>Category method:</span>
+                                        <select id="categoryMethodSelect" class="border border-slate-300 rounded px-2 py-1 bg-white">
+                                            <option value="classic">Classic SPI thresholds</option>
+                                            <option value="usdm">USDM-style SPI/SPEI ranges</option>
+                                            <option value="quantile">Percentile bands (statistical)</option>
+                                            <option value="kmeans">AI/ML – k-means clusters</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="overflow-auto">
+                                    <table class="min-w-full text-sm" id="resultTable">
+                                        <thead class="bg-slate-50 text-slate-600">
+                                            <tr>
+                                                <th class="px-3 py-2 text-left">End date</th>
+                                                <th class="px-3 py-2 text-left">Window sum (mm)</th>
+                                                <th class="px-3 py-2 text-left">SPI</th>
+                                                <th class="px-3 py-2 text-left">Category</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Charts panel -->
+                            <div id="panel-charts" class="tab-panel">
+                                <div class="chart-grid">
+                                    <div class="card p-4 chart-span-2">
+                                        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+                                            <h4 class="font-medium">SPI — line</h4>
+                                            <div class="flex flex-wrap items-center gap-2 text-xs text-slate-600">
+                                                <span class="text-slate-500">Bounds:</span>
+                                                <label class="flex items-center gap-1">
+                                                    Lower
+                                                    <input id="spiLowerBound" type="number" step="0.01" value="-2.00" class="w-24 border border-slate-200 rounded-xl p-1.5 text-xs">
+                                                </label>
+                                                <label class="flex items-center gap-1">
+                                                    Upper
+                                                    <input id="spiUpperBound" type="number" step="0.01" value="2.00" class="w-24 border border-slate-200 rounded-xl p-1.5 text-xs">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="chart-box"><canvas id="lineChart"></canvas></div>
+                                    </div>
+                                    <div class="card p-4">
+                                        <h4 class="font-medium mb-2">Precip anomaly (mm) — bars</h4>
+                                        <div class="chart-box"><canvas id="anomChart"></canvas></div>
+                                    </div>
+                                    <div class="card p-4">
+                                        <h4 class="font-medium mb-2 flex items-center gap-2">
+                                            SPI — boxplot <span id="boxplotWarn" class="text-xs text-amber-600 hidden">(plugin not available)</span>
+                                        </h4>
+                                        <div class="chart-box"><canvas id="boxChart"></canvas></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Severity panel -->
+                            <div id="panel-severity" class="tab-panel">
+                                <div class="space-y-4">
+                                    <div class="flex items-center gap-3">
+                                        <label class="text-sm flex items-center gap-2">
+                                            Drought threshold SPI ≤
+                                            <input id="severityThreshold" type="number" step="0.01" value="-0.99" class="w-24 border border-slate-200 rounded-xl p-1.5 text-sm">
+                                        </label>
+                                        <span class="text-xs text-slate-500">(Default: -0.99; lower than this is drought)</span>
+                                    </div>
+                                    <div class="card p-4">
+                                        <h4 class="font-medium mb-2">Drought severity — SPI line with shaded events</h4>
+                                        <div id="severityChartBox"><canvas id="severityChart"></canvas></div>
+                                    </div>
+                                    <div class="card p-4">
+                                        <h4 class="font-medium mb-2">Drought events</h4>
+                                        <div class="overflow-auto max-h-72">
+                                            <table class="min-w-full text-sm" id="eventsTable">
+                                                <thead class="bg-slate-50 text-slate-600">
+                                                    <tr>
+                                                        <th class="px-3 py-2 text-left">#</th>
+                                                        <th class="px-3 py-2 text-left">Start</th>
+                                                        <th class="px-3 py-2 text-left">End</th>
+                                                        <th class="px-3 py-2 text-left">Duration (steps)</th>
+                                                        <th class="px-3 py-2 text-left">Min SPI</th>
+                                                        <th class="px-3 py-2 text-left">Magnitude</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Wavelet panel -->
+                            <div id="panel-wavelet" class="tab-panel">
+                                <div class="space-y-4">
+                                    <div class="card p-4 mb-4">
+                                        <h4 class="font-semibold mb-1">Wavelet summary (auto-generated from numeric results)</h4>
+                                        <p id="waveletInterp" class="text-sm text-slate-700">
+                                            Wavelet text will appear here after running SPI.
+                                        </p>
+                                    </div>
+                                    <!-- Wavelet loading indicator -->
+                                    <div id="waveletLoading"
+                                         class="hidden mb-2 flex items-center gap-2 text-xs text-slate-600 bg-slate-100 border border-slate-200 rounded-lg px-3 py-2">
+                                        <span class="inline-block w-3 h-3 rounded-full border-2 border-slate-400 border-t-transparent animate-spin"></span>
+                                        <span id="waveletLoadingText">
+                                            Computing wavelet charts… this may take a few seconds.
+                                        </span>
+                                    </div>
+                                    <div class="card p-4 mb-4">
+                                        <h4 class="font-medium mb-1">Wavelet scalogram (power vs time &amp; period)</h4>
+                                        <p class="text-xs text-slate-500 mb-2">
+                                            The <strong>horizontal axis</strong> is the <strong>Time Index</strong>, and the <strong>vertical axis</strong> is the
+                                            <strong>Scale Index (Period)</strong> in SPI time steps.
+                                            The color intensity represents <strong>wavelet power</strong>: <strong>Blue</strong> indicates
+                                            <strong>low power/weak periodicity</strong>, and <strong>Yellow</strong> indicates
+                                            <strong>high power/strong periodicity</strong>.
+                                        </p>
+
+                                        <div class="relative">
+                                            <div class="flex">
+                                                <!-- Y-axis label -->
+                                                <div class="flex flex-col justify-center pr-3">
+                                                    <span class="text-xs text-slate-500 transform -rotate-90 origin-top-left">
+                                                        Period (steps)
+                                                    </span>
+                                                </div>
+
+                                                <!-- Heatmap canvas -->
+                                                <canvas id="waveletScalogram" class="w-full h-64"></canvas>
+                                            </div>
+
+                                            <!-- X-axis label -->
+                                            <div class="mt-2 text-xs text-slate-500 text-center">
+                                                Time (SPI index)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid lg:grid-cols-2 gap-4 mt-4">
+                                        <div class="card p-4">
+                                            <h4 class="font-medium mb-2">Global wavelet spectrum (SPI)</h4>
+                                            <div class="h-64">
+                                                <canvas id="waveletGlobalChart"></canvas>
+                                            </div>
+                                        </div>
+
+                                        <div class="card p-4">
+                                            <h4 class="font-medium mb-2">SPI–precipitation coherence vs period</h4>
+                                            <div class="h-64">
+                                                <canvas id="waveletCohChart"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Copula panel -->
+                            <div id="panel-copula" class="tab-panel">
+                                <div class="space-y-4">
+                                    <div class="card p-4 mb-4">
+                                        <h4 class="font-medium mb-2">Bivariate copula (dependence structure)</h4>
+                                        <div class="mb-3">
+                                            <label for="copulaPairSelect" class="block text-sm font-medium text-slate-700 mb-1">
+                                                Variable pairing
+                                            </label>
+                                            <select id="copulaPairSelect" class="mt-1 w-full border border-slate-200 rounded-xl p-2 text-sm">
+                                                <option value="precip_spi">Precipitation vs SPI (same step)</option>
+                                                <option value="spi_lag1">SPI vs SPI (lag 1; persistence)</option>
+                                            </select>
+                                        </div>
+                                        <button id="copulaRunBtn"
+                                                type="button"
+                                                onclick="console.log('[copula] button clicked'); runCopulaAnalysisAndDraw();"
+                                                class="mt-2 px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700">
+                                            Compute copula
+                                        </button>
+
+                                        <p class="mt-2 text-xs text-slate-500">
+                                            Copula is fitted using pseudo-observations U and V in the unit square. We use a Gaussian copula to summarize overall dependence and persistence-style diagnostics such as Gaussian rho, Kendall's τ, and drought continuation probability.
+                                        </p>
+                                    </div>
+                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                        <div class="card p-4">
+                                            <h5 class="text-sm font-semibold mb-2">U–V scatter (pseudo-observations)</h5>
+                                            <div class="h-64">
+                                                <canvas id="copulaScatterCanvas" class="w-full h-full"></canvas>
+                                            </div>
+                                        </div>
+                                        <div class="card p-4">
+                                            <h5 class="text-sm font-semibold mb-2">Summary</h5>
+                                            <pre id="copulaSummary" class="text-xs font-mono whitespace-pre-wrap text-slate-800 text-white">
+Click "Compute copula" after running SPI.
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- AI Interpretation panel -->
+                            <div id="panel-ai" class="tab-panel">
+                                <div class="space-y-4">
+                                    <div id="aiLockedNotice" class="upgrade-callout ai-quota-box">
+                                        <strong>Free AI interpretation:</strong>
+                                        <span id="aiQuotaRemaining">10</span> of <span id="aiQuotaLimit">10</span> requests remaining today.
+                                        <span class="block mt-1 text-xs text-slate-600">Upgrade for more AI requests and future licensed drought workflows.</span>
+                                    </div>
+                                    <div class="card p-4">
+                                        <h4 class="font-medium mb-2">Select a chart for AI interpretation</h4>
+                                        <label for="aiChartSelect" class="text-sm block mb-2">
+                                            Chart to interpret
+                                            <select id="aiChartSelect" class="mt-1 w-full border border-slate-200 rounded-xl p-2">
+                                                <option value="scalogram" selected>Wavelet scalogram (power vs time &amp; period)</option>
+                                                <option value="global">Global wavelet spectrum (SPI)</option>
+                                                <option value="coherence">SPI–precipitation coherence vs period</option>
+                                                <option value="severity">Drought severity — SPI line with shaded events</option>
+                                                <option value="spi_line">SPI time series (line chart)</option>
+                                                <option value="anom_bar">Precipitation anomaly (bar chart)</option>
+                                                <option value="copula" id="aiChartCopulaOptionSelect" disabled>Copula dependence diagnostics (run copula first)</option>
+                                            </select>
+                                        </label>
+
+                                        <p class="muted text-sm">
+                                            Select one chart for the Research Free Version AI explanation. The request includes the selected chart data,
+                                            active category method, location, time scale, time period, baseline, data source, and drought threshold.
+                                        </p>
+                                    </div>
+
+                                    <div class="card p-4">
+                                        <h4 class="font-medium mb-2">Request AI interpretation</h4>
+                                        <p class="muted text-sm mb-3">
+                                            The Research Version provides one chart-specific AI explanation using the selected chart, active category method, and current SPI run context.
+                                        </p>
+
+                                        <button id="analyzeButton"
+                                                type="button"
+                                                onclick="runSelectedInterpretation()"
+                                                class="w-full py-3 px-6 bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 transition duration-150 flex items-center justify-center disabled:opacity-50">
+                                            <span id="buttonText">Get AI Interpretation</span>
+                                            <div id="loadingIndicator"
+                                                 class="spinner ml-3 w-5 h-5 border-2 border-t-2 border-white border-opacity-70 rounded-full"
+                                                 style="display:none;">
+                                            </div>
+                                        </button>
+
+                                        <div id="resultOutput"
+                                             class="min-h-[150px] bg-gray-100 p-4 rounded-xl text-gray-700 result-box shadow-inner mt-3 text-sm">
+                                            Run an analysis first. Free accounts can request AI interpretation up to 3 times per day; licensed accounts can request more.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- JSON panel -->
+                            <div id="panel-json" class="tab-panel hidden">
+                                <div class="flex items-center justify-between mb-3 gap-3 flex-wrap">
+                                    <div>
+                                        <h3 class="text-sm font-semibold text-slate-800">
+                                            SPI / Wavelet JSON context
+                                        </h3>
+                                        <p class="text-xs text-slate-500 mt-1">
+                                            The full JSON can stay hidden to keep the page lighter. Large time series are stored as compact values_csv or columns_with_rows, and you can copy everything without showing it.
+                                        </p>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <button id="toggleJsonBtn" type="button"
+                                                onclick="toggleJsonView()"
+                                                class="px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-300 text-slate-700 hover:bg-slate-100">
+                                            Show JSON
+                                        </button>
+                                        <button id="copyJsonBtn" type="button"
+                                                onclick="copyJsonOutput()"
+                                                class="px-3 py-1.5 rounded-lg text-xs font-medium border border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100">
+                                            Copy JSON
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="jsonOutputWrap" class="hidden">
+                                    <pre id="jsonOutput"
+                                         class="text-xs leading-snug bg-slate-950 text-slate-100 p-3 rounded-lg border border-slate-800 overflow-auto max-h-[420px] whitespace-pre">JSON is hidden. Click “Show JSON” to render it here.</pre>
+                                </div>
+                            </div>
+
+                            <!-- Export panel -->
+                            <div id="panel-export" class="tab-panel">
+                                <div class="space-y-4">
+                                    <div class="card p-4">
+                                        <h3 class="text-sm font-semibold text-slate-800 mb-1">Export tables, charts, and JSON</h3>
+                                        <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                                            Select the tables, chart images, and JSON files to include in one ZIP package. Chart images are exported as PNG files and tables are exported as CSV files.
+                                        </p>
+
+                                        <div class="grid lg:grid-cols-2 gap-4 items-start">
+                                            <div>
+                                                <label class="text-sm font-medium text-slate-700 block mb-2">Items to include in ZIP</label>
+                                                <div class="relative" id="exportItemMultiSelectWrap">
+                                                    <button id="exportItemMultiSelectButton" type="button"
+                                                            onclick="toggleExportItemDropdown()"
+                                                            class="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm text-slate-700 hover:bg-slate-50">
+                                                        <span id="exportSelectedSummary">Selected export items</span>
+                                                        <span class="text-slate-400">▾</span>
+                                                    </button>
+
+                                                    <!-- Expandable checklist with checkboxes.
+                                                         It is intentionally inline, not absolute, so it is not clipped by the result card. -->
+                                                    <div id="exportItemMultiSelectDropdown"
+                                                         class="mt-2 w-full bg-white border border-slate-200 rounded-xl shadow-lg max-h-[65vh] overflow-y-auto overflow-x-hidden hidden">
+                                                        <div class="p-2 space-y-2 text-sm">
+                                                            <div class="px-2 pt-1 pb-0.5 text-xs font-bold uppercase tracking-wide text-slate-400">Tables / CSV</div>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="table_spi" checked>
+                                                                <span>SPI result table (CSV)</span>
+                                                            </label>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="table_events" checked>
+                                                                <span>Drought events table (CSV)</span>
+                                                            </label>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="table_aggregation">
+                                                                <span>Aggregated precipitation table (CSV)</span>
+                                                            </label>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="table_source_precip">
+                                                                <span>Source precipitation time series — vertical CSV</span>
+                                                            </label>
+
+                                                            <div class="px-2 pt-2 pb-0.5 text-xs font-bold uppercase tracking-wide text-slate-400">Charts / PNG</div>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="chart_spi_line" checked>
+                                                                <span>SPI time series (line chart)</span>
+                                                            </label>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="chart_anom_bar" checked>
+                                                                <span>Precipitation anomaly (bar chart)</span>
+                                                            </label>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="chart_boxplot">
+                                                                <span>SPI boxplot</span>
+                                                            </label>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="chart_severity" checked>
+                                                                <span>Drought severity — SPI line with shaded events</span>
+                                                            </label>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="chart_scalogram">
+                                                                <span>Wavelet scalogram (power vs time &amp; period)</span>
+                                                            </label>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="chart_global">
+                                                                <span>Global wavelet spectrum (SPI)</span>
+                                                            </label>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="chart_coherence">
+                                                                <span>SPI–precipitation coherence vs period</span>
+                                                            </label>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50" id="exportCopulaOption">
+                                                                <input type="checkbox" class="export-item-checkbox" value="chart_copula">
+                                                                <span>Copula dependence diagnostics</span>
+                                                            </label>
+
+                                                            <div class="px-2 pt-2 pb-0.5 text-xs font-bold uppercase tracking-wide text-slate-400">JSON</div>
+                                                            <label class="flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-50">
+                                                                <input type="checkbox" class="export-item-checkbox" value="json_full" checked>
+                                                                <span>Full current-run JSON</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-600 leading-relaxed">
+                                                <div class="font-semibold text-slate-800 mb-1">Export notes</div>
+                                                <p>The ZIP uses <strong>CSV</strong> for tables, <strong>PNG</strong> for charts, and <strong>JSON</strong> for the full context.</p>
+                                                <p class="mt-2">Source precipitation can be exported as a vertical CSV with metadata in the first rows, followed by Date and Data columns.</p>
+                                                <p class="mt-2">Wavelet and copula images are included only if those analyses have already been generated.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-4 flex flex-wrap items-center gap-3">
+                                            <button id="exportZipBtn" type="button"
+                                                    onclick="exportSelectedPackage()"
+                                                    class="px-4 py-2 rounded-xl bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 disabled:opacity-50">
+                                                Create ZIP package
+                                            </button>
+                                            <span id="exportStatus" class="text-xs text-slate-500">Run SPI first, then export.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Debug panel -->
+                            <div id="panel-debug" class="tab-panel">
+                                <div class="text-sm text-slate-700 mb-2">Front-end logs (also in DevTools console):</div>
+                                <pre id="log" class="h-72 overflow-auto"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+    </div> <!-- end appShell -->
+    <!-- Combined JS -->
+    <script src="/assets/dmap-ai-app.js?v=20260508"></script>
+    <script src="/assets/dmap-ai-ai-json-hotfix.js?v=20260524d"></script>
+
+        <script>
+        (function () {
+            "use strict";
+
+            function safeJsonParse(value) {
+                try {
+                    return JSON.parse(value);
+                } catch (err) {
+                    return null;
+                }
+            }
+
+            function findEmailInObject(obj, depth) {
+                if (!obj || depth > 5) return "";
+
+                if (typeof obj === "string") {
+                    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(obj.trim())) return obj.trim();
+                    return "";
+                }
+
+                if (Array.isArray(obj)) {
+                    for (var i = 0; i < obj.length; i += 1) {
+                        var foundInArray = findEmailInObject(obj[i], depth + 1);
+                        if (foundInArray) return foundInArray;
+                    }
+                    return "";
+                }
+
+                if (typeof obj === "object") {
+                    var preferredKeys = ["email", "user_email", "userEmail", "mail", "username", "name"];
+                    for (var k = 0; k < preferredKeys.length; k += 1) {
+                        var key = preferredKeys[k];
+                        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                            var foundPreferred = findEmailInObject(obj[key], depth + 1);
+                            if (foundPreferred) return foundPreferred;
+                        }
+                    }
+
+                    for (var prop in obj) {
+                        if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+                            var found = findEmailInObject(obj[prop], depth + 1);
+                            if (found) return found;
+                        }
+                    }
+                }
+
+                return "";
+            }
+
+            function decodeJwtPayload(token) {
+                try {
+                    if (!token || token.split(".").length < 2) return null;
+                    var payload = token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+                    while (payload.length % 4) payload += "=";
+                    return safeJsonParse(decodeURIComponent(Array.prototype.map.call(atob(payload), function (c) {
+                        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join("")));
+                } catch (err) {
+                    return null;
+                }
+            }
+
+            function findEmailInStorage(storage) {
+                if (!storage) return "";
+
+                for (var i = 0; i < storage.length; i += 1) {
+                    var key = storage.key(i) || "";
+                    var value = storage.getItem(key) || "";
+                    var lowerKey = key.toLowerCase();
+
+                    if (lowerKey.indexOf("email") !== -1 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) {
+                        return value.trim();
+                    }
+
+                    var parsed = safeJsonParse(value);
+                    var found = findEmailInObject(parsed, 0);
+                    if (found) return found;
+
+                    if (value.split(".").length >= 3) {
+                        var jwtPayload = decodeJwtPayload(value);
+                        found = findEmailInObject(jwtPayload, 0);
+                        if (found) return found;
+                    }
+                }
+
+                return "";
+            }
+
+            async function findSignedInEmail() {
+                var globalCandidates = [
+                    window.currentUser,
+                    window.dmapUser,
+                    window.dmapAiUser,
+                    window.authUser,
+                    window.user,
+                    window.profile
+                ];
+
+                for (var i = 0; i < globalCandidates.length; i += 1) {
+                    var foundGlobal = findEmailInObject(globalCandidates[i], 0);
+                    if (foundGlobal) return foundGlobal;
+                }
+
+                try {
+                    if (window.auth0Client && typeof window.auth0Client.getUser === "function") {
+                        var auth0User = await window.auth0Client.getUser();
+                        var foundAuth0 = findEmailInObject(auth0User, 0);
+                        if (foundAuth0) return foundAuth0;
+                    }
+                } catch (err) {}
+
+                var foundLocal = findEmailInStorage(window.localStorage);
+                if (foundLocal) return foundLocal;
+
+                var foundSession = findEmailInStorage(window.sessionStorage);
+                if (foundSession) return foundSession;
+
+                try {
+                    var response = await fetch("/api/auth/me", { credentials: "include" });
+                    if (response.ok) {
+                        var profileJson = await response.json();
+                        var foundApi = findEmailInObject(profileJson, 0);
+                        if (foundApi) return foundApi;
+                    }
+                } catch (err) {}
+
+                return "";
+            }
+
+            function clearBrowserAuthState() {
+                [window.localStorage, window.sessionStorage].forEach(function (storage) {
+                    if (!storage) return;
+                    var keysToRemove = [];
+                    for (var i = 0; i < storage.length; i += 1) {
+                        var key = storage.key(i) || "";
+                        var lowerKey = key.toLowerCase();
+                        if (
+                            lowerKey.indexOf("auth") !== -1 ||
+                            lowerKey.indexOf("token") !== -1 ||
+                            lowerKey.indexOf("user") !== -1 ||
+                            lowerKey.indexOf("profile") !== -1 ||
+                            lowerKey.indexOf("dmap") !== -1 ||
+                            lowerKey.indexOf("email") !== -1
+                        ) {
+                            keysToRemove.push(key);
+                        }
+                    }
+                    keysToRemove.forEach(function (key) { storage.removeItem(key); });
+                });
+            }
+
+            async function refreshAccountControls() {
+    var controls = document.getElementById("dmapAccountControls");
+    var emailEl = document.getElementById("dmapSignedInEmail");
+
+    if (!controls || !emailEl) return;
+
+    // FIX: correct dashboard element
+    var dashboard = document.getElementById("dashboardAside");
+
+    // Wait until app is visible
+    var appShell = document.getElementById("appShell");
+    if (!appShell || appShell.classList.contains("hidden")) {
+        controls.style.display = "none";
+        return;
+    }
+
+    // Show only if dashboard exists in DOM
+    if (!dashboard) {
+        controls.style.display = "none";
+        return;
+    }
+
+    controls.style.display = "flex";
+
+    var email = await findSignedInEmail();
+    emailEl.textContent = email || "Signed in";
+    emailEl.title = email || "Signed in";
+}
+
+            async function signOut() {
+                var returnTo = window.location.origin + "/DMAP_AI_App";
+
+                try {
+                    if (window.auth0Client && typeof window.auth0Client.logout === "function") {
+                        await window.auth0Client.logout({ logoutParams: { returnTo: returnTo } });
+                        return;
+                    }
+                } catch (err) {}
+
+                try {
+                    await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
+                } catch (err) {}
+
+                clearBrowserAuthState();
+                window.location.href = returnTo;
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var btn = document.getElementById("dmapSignOutBtn");
+                if (btn) btn.addEventListener("click", signOut);
+
+                refreshAccountControls();
+                window.setTimeout(refreshAccountControls, 500);
+                window.setTimeout(refreshAccountControls, 1500);
+                window.setTimeout(refreshAccountControls, 3000);
+            });
+        })();
+    </script>
+
+
+
+    <script src="dashboard_db.js?v=1"></script>
+<script src="/assets/global-nav.js"></script>
+</body>
+</html>

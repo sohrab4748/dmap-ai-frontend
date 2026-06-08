@@ -1,0 +1,6 @@
+# Clean method-comparison URLs: remove visible /index or /index.html.
+/method-comparison/index /method-comparison/ 301!
+/method-comparison/index.html /method-comparison/ 301!
+/method-comparison/:station/index /method-comparison/:station/ 301!
+/method-comparison/:station/index.html /method-comparison/:station/ 301!
+

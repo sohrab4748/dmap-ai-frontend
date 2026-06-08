@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>DMAP-AI | Drought Monitoring, Research, and Decision-Support Platform</title>
+  <meta name="description" content="DMAP-AI by AgriMetSoft is a drought monitoring, research, and decision-support platform. The free Research Version provides point-based SPI analysis with NASA POWER by default and ERA5-Land/CDS as an advanced option; licensed research workflows and Farmer Version tools will expand the platform." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="AgriMetSoft LLC" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="canonical" href="https://droughtanalysis.com/" />
+
+  <!-- Optimized DMAP-AI logo preload -->
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" media="(max-width: 640px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" imagesrcset="/assets/logo-dmap-ai-225.webp 1x, /assets/logo-dmap-ai-450.webp 2x" type="image/webp" media="(min-width: 641px)" fetchpriority="high" />
+<!-- Favicons / app icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DMAP-AI" />
+  <meta property="og:title" content="DMAP-AI | Drought Monitoring, Research, and Decision-Support Platform" />
+  <meta property="og:description" content="Explore DMAP-AI as a full drought-monitoring platform: free Research Version SPI analysis now, licensed research workflows next, and Farmer Version tools planned for crop-aware decision support." />
+  <meta property="og:url" content="https://droughtanalysis.com/" />
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
+  <meta property="og:image:secure_url" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="DMAP-AI drought monitoring and SPI analysis platform preview image" />
+
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DMAP-AI | Drought Monitoring, Research, and Decision-Support Platform" />
+  <meta name="twitter:description" content="DMAP-AI is a drought monitoring platform with free Research Version SPI analysis, planned licensed research workflows, and future Farmer Version decision-support tools." />
+  <meta name="twitter:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
+  <meta name="twitter:image:alt" content="DMAP-AI drought monitoring and SPI analysis platform preview image" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6Z3VWV0W9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-W6Z3VWV0W9");
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DMAP-AI",
+    "alternateName": "Drought Monitoring and Analysis Platform - AI",
+    "applicationCategory": "ScientificApplication",
+    "operatingSystem": "Web",
+    "url": "https://droughtanalysis.com/",
+    "image": "https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg",
+    "creator": {
+      "@type": "Organization",
+      "name": "AgriMetSoft LLC",
+      "url": "https://agrimetsoft.com/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "category": "Research Version"
+    },
+    "description": "DMAP-AI is a web-based drought monitoring, research, and decision-support platform. The free Research Version provides point-based SPI analysis using NASA POWER by default and ERA5-Land/CDS as an advanced option."
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --blue-soft: #eff6ff;
+      --cyan-soft: #f0f9ff;
+      --green-soft: #ecfdf5;
+      --green: #047857;
+      --amber-soft: #fffbeb;
+      --amber: #b45309;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      color: var(--slate-900);
+      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 48%, #eff6ff 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { margin: 0; padding-left: 0; list-style: none; }
+
+    .container {
+      width: min(100% - 2rem, 80rem);
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid var(--slate-200);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-block: .75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      min-width: 0;
+    }
+
+    .dmap-logo-img {
+      display: block;
+      width: auto;
+      height: 54px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: .875rem;
+      font-weight: 650;
+      color: var(--slate-700);
+    }
+
+    .nav-links a:hover { color: var(--blue-dark); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: .875rem;
+      padding: .75rem 1.25rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, .18);
+    }
+
+    .btn-primary:hover { background: var(--blue-dark); }
+
+    .btn-secondary {
+      background: white;
+      color: var(--slate-800);
+      border-color: var(--slate-200);
+    }
+
+    .btn-secondary:hover { background: var(--slate-50); }
+
+    .header-cta {
+      display: inline-flex;
+      padding: .55rem 1rem;
+      border-radius: .75rem;
+      background: var(--blue);
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, .15);
+    }
+
+    .header-cta:hover { background: var(--blue-dark); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 1fr);
+      align-items: center;
+      gap: 2.5rem;
+      padding-block: 3.5rem 3rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid #bfdbfe;
+      background: var(--blue-soft);
+      color: #1d4ed8;
+      padding: .25rem .75rem;
+      font-size: .875rem;
+      font-weight: 800;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      margin-top: 1.25rem;
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      font-weight: 850;
+      color: #020617;
+    }
+
+    .lead {
+      margin-top: 1.25rem;
+      max-width: 44rem;
+      color: var(--slate-600);
+      font-size: 1.125rem;
+      line-height: 1.78;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 1.75rem;
+    }
+
+    .small-note {
+      margin-top: 1rem;
+      color: var(--slate-500);
+      font-size: .875rem;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+      border-radius: 1rem;
+    }
+
+    .hero-card {
+      padding: 1.5rem;
+    }
+
+    .feature-panel {
+      border-radius: 1.5rem;
+      border: 1px solid var(--slate-200);
+      background: linear-gradient(135deg, #dbeafe 0%, #f0f9ff 48%, #ffffff 100%);
+      padding: 1.5rem;
+    }
+
+    .feature-panel h2 {
+      color: #020617;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .feature-box {
+      border-radius: 1rem;
+      border: 1px solid var(--slate-200);
+      background: rgba(255, 255, 255, .8);
+      padding: 1rem;
+    }
+
+    .feature-box strong {
+      display: block;
+      color: var(--slate-900);
+      font-size: .875rem;
+    }
+
+    .feature-box span {
+      display: block;
+      margin-top: .25rem;
+      color: var(--slate-600);
+    }
+
+    .section {
+      padding-block: 3rem;
+    }
+
+    .section-center {
+      max-width: 48rem;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .section h2 {
+      color: #020617;
+      font-size: clamp(1.8rem, 4vw, 2rem);
+      font-weight: 850;
+      line-height: 1.16;
+      letter-spacing: -0.025em;
+    }
+
+    .section-center p {
+      margin-top: .75rem;
+      color: var(--slate-600);
+    }
+
+    .version-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .version-card {
+      padding: 1.5rem;
+    }
+
+    .version-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .version-header h3 {
+      color: #020617;
+      font-size: 1.5rem;
+      font-weight: 850;
+      line-height: 1.2;
+    }
+
+    .pill {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: .25rem .75rem;
+      font-size: .875rem;
+      font-weight: 800;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+
+    .pill-green {
+      background: var(--green-soft);
+      color: var(--green);
+      border-color: #a7f3d0;
+    }
+
+    .pill-amber {
+      background: var(--amber-soft);
+      color: var(--amber);
+      border-color: #fde68a;
+    }
+
+    .version-card p {
+      margin-top: .75rem;
+      color: var(--slate-600);
+    }
+
+    .version-list {
+      display: grid;
+      gap: .75rem;
+      margin-top: 1.25rem;
+      color: var(--slate-700);
+    }
+
+    .version-card .btn {
+      margin-top: 1.5rem;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .workflow-card {
+      padding: 1.5rem;
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 1rem;
+      background: var(--blue);
+      color: white;
+      font-weight: 800;
+    }
+
+    .workflow-card h3 {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      color: var(--slate-900);
+      font-weight: 850;
+    }
+
+    .workflow-card p {
+      margin-top: .5rem;
+      color: var(--slate-600);
+    }
+
+    .learn-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 1fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .learn-card h2 {
+      font-size: 1.55rem;
+    }
+
+    .learn-card p {
+      margin-top: .75rem;
+      color: var(--slate-600);
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+    }
+
+    .link-card {
+      display: block;
+      border-radius: .875rem;
+      border: 1px solid var(--slate-200);
+      background: white;
+      padding: 1rem;
+    }
+
+    .link-card:hover { background: var(--slate-50); }
+
+    .link-card strong {
+      display: block;
+      font-weight: 850;
+      color: var(--slate-900);
+    }
+
+    .link-card span {
+      display: block;
+      margin-top: .25rem;
+      color: var(--slate-500);
+      font-size: .875rem;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--slate-200);
+      background: rgba(255, 255, 255, .72);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      padding-block: 1.5rem;
+      color: var(--slate-500);
+      font-size: .875rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .footer-links a:hover { color: var(--slate-700); }
+
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .hero-grid,
+      .version-grid,
+      .learn-card {
+        grid-template-columns: 1fr;
+      }
+      .workflow-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 1rem, 80rem); }
+      .dmap-logo-img { height: 42px; }
+      .header-cta { display: none; }
+      .hero-grid { padding-block: 2.25rem; gap: 1.5rem; }
+      .lead { font-size: 1rem; line-height: 1.65; }
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .feature-grid, .link-grid { grid-template-columns: 1fr; }
+      .hero-card, .version-card, .workflow-card, .learn-card { padding: 1.25rem; }
+      .version-header { align-items: flex-start; flex-direction: column; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+/* Optimized DMAP-AI logo display */
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex: 0 0 auto;
+}
+
+.brand-link:hover {
+  text-decoration: none;
+}
+
+.brand-link picture {
+  display: block;
+  line-height: 0;
+}
+
+.brand-logo {
+  display: block;
+  width: 225px;
+  max-width: 225px;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .brand-logo {
+    width: 160px;
+    max-width: 160px;
+    height: auto;
+  }
+}
+
+</style>
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+</head>
+
+<body>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Full platform with a free working Research Version</p>
+          <h1>DMAP-AI: drought monitoring, research, and decision support</h1>
+          <p class="lead">
+            DMAP-AI is the main drought-analysis platform from AgriMetSoft. The Research Version is the first working version, paid research workflows are the next development step, and the Farmer Version will expand the platform toward crop-aware drought-risk communication.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/DMAP_AI_App" class="btn btn-primary">Open Research Version</a>
+            <a href="#versions" class="btn btn-secondary">View platform structure</a>
+          </div>
+
+          <p class="small-note">
+            Start with free point-based SPI analysis now. Future platform versions will add broader drought indices, research workflows, regional analysis, and farmer-facing decision support.
+          </p>
+        </div>
+
+        <div class="card hero-card">
+          <div class="feature-panel">
+            <h2>Platform direction</h2>
+            <div class="feature-grid">
+              <div class="feature-box">
+                <strong>DMAP-AI platform</strong>
+                <span>Drought monitoring, analysis, and interpretation</span>
+              </div>
+              <div class="feature-box">
+                <strong>Research Version</strong>
+                <span>Free SPI analysis using NASA POWER by default</span>
+              </div>
+              <div class="feature-box">
+                <strong>Licensed / research</strong>
+                <span>Expanded indices, regions, and advanced workflows</span>
+              </div>
+              <div class="feature-box">
+                <strong>Farmer Version</strong>
+                <span>Crop-aware risk messages and field-level guidance</span>
+              </div>
+            </div>
+            <p class="small-note">
+              The first public workflow is free and practical. The platform will grow from research, training, and professional use to research and agricultural decision support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="versions" class="container section">
+      <div class="section-center">
+        <h2>DMAP-AI platform structure</h2>
+        <p>
+          DMAP-AI is organized as a growing platform. The Research Version is available first, paid research workflows are the next step, and the Farmer Version will extend the system toward practical agricultural decision support.
+        </p>
+      </div>
+
+      <div class="version-grid">
+        <article class="card version-card">
+          <div class="version-header">
+            <h3>Research Version</h3>
+            <span class="pill pill-green">Free and paid plans</span>
+          </div>
+          <p>
+            The Research Version is the main scientific workflow of DMAP-AI. It provides a focused workflow for learning, research, consulting, and point-based drought assessment.
+          </p>
+          <ul class="version-list">
+            <li>• SPI analysis for a selected point</li>
+            <li>• NASA POWER as the default free data source</li>
+            <li>• ERA5-Land/CDS as an advanced option</li>
+            <li>• Tables, charts, severity summaries, wavelet diagnostics, copula diagnostics, and saved runs</li>
+          </ul>
+          <a href="/DMAP_AI_App" class="btn btn-primary">Launch Research Version</a>
+        </article>
+
+        <article class="card version-card">
+          <div class="version-header">
+            <h3>Licensed / Research Workflows</h3>
+            <span class="pill pill-amber">Next version</span>
+          </div>
+          <p>
+            The next DMAP-AI development stage will support broader scientific and operational workflows for researchers, agencies, consultants, and advanced users.
+          </p>
+          <ul class="version-list">
+            <li>• Additional drought indices beyond SPI</li>
+            <li>• Regional and gridded analysis workflows</li>
+            <li>• More data sources and long-term comparison tools</li>
+            <li>• AI-assisted interpretation, reports, exports, and project management</li>
+          </ul>
+          <a href="https://agrimetsoft.com/contact" class="btn btn-secondary">Ask about research workflows</a>
+        </article>
+
+        <article id="farmer-version" class="card version-card">
+          <div class="version-header">
+            <h3>Farmer Version (FV)</h3>
+            <span class="pill pill-amber">Platform expansion</span>
+          </div>
+          <p>
+            FV will expand DMAP-AI into agricultural drought communication, with emphasis on crop stage, short-term risk, and practical explanations for decision-makers.
+          </p>
+          <ul class="version-list">
+            <li>• Crop-aware drought-risk summaries</li>
+            <li>• Corn and soybean growing-season context</li>
+            <li>• Short-term moisture-risk outlooks for the next 2–4 weeks</li>
+            <li>• Advisor-friendly explanations for producers and decision-makers</li>
+          </ul>
+          <a href="https://agrimetsoft.com/contact" class="btn btn-secondary">Contact us about FV pilots</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="workflow" class="container section">
+      <div class="section-center" style="margin-bottom: 2rem;">
+        <h2>How DMAP-AI works</h2>
+        <p>
+          The same basic workflow supports the current Research Version and the planned research and farmer-facing versions.
+        </p>
+      </div>
+      <div class="workflow-grid">
+        <div class="card workflow-card">
+          <div class="step-number">1</div>
+          <h3>Select a location</h3>
+          <p>
+            Choose a point in the current Research Version. Future workflows can extend the same structure to regional and field-level analysis.
+          </p>
+        </div>
+
+        <div class="card workflow-card">
+          <div class="step-number">2</div>
+          <h3>Choose data and method</h3>
+          <p>
+            Run SPI with NASA POWER by default or ERA5-Land/CDS as an advanced option. Licensed workflows will add more drought indices and data sources.
+          </p>
+        </div>
+
+        <div class="card workflow-card">
+          <div class="step-number">3</div>
+          <h3>Review and communicate results</h3>
+          <p>
+            Review tables, charts, severity metrics, wavelet and copula diagnostics, save runs, and prepare outputs for research or decision support.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="card learn-card">
+        <div>
+          <h2>Learn the methods and platform versions</h2>
+          <p>
+            The documentation pages explain drought-index concepts, SPI interpretation, NASA POWER and ERA5-Land/CDS data use, diagnostic outputs, and planned platform workflows. These pages help users and search engines understand the purpose and scope of DMAP-AI.
+          </p>
+        </div>
+        <div class="link-grid">
+          <a href="/spi_tutorial" class="link-card">
+            <strong>SPI Video Tutorial</strong>
+            <span>Watch the full workflow</span>
+          </a>
+          <a href="/tutorials" class="link-card">
+            <strong>Tutorials</strong>
+            <span>Step-by-step use cases</span>
+          </a>
+          <a href="/formulas" class="link-card">
+            <strong>Methods &amp; Formulas</strong>
+            <span>SPI and drought metrics</span>
+          </a>
+          <a href="/method-comparison/" class="link-card">
+            <strong>AI Interpretation Study Stations</strong>
+            <span>Chart-only vs structured AI interpretation</span>
+          </a>
+          <a href="https://agrimetsoft.com/about" class="link-card">
+            <strong>About AgriMetSoft</strong>
+            <span>Company background</span>
+          </a>
+          <a href="https://agrimetsoft.com/contact" class="link-card">
+            <strong>Contact</strong>
+            <span>Questions and support</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+<!-- footer navigation removed (handled globally) -->
+    </div>
+  </footer>
+<script src="/assets/global-nav.js"></script>
+</body>
+</html>

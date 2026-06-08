@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DMAP-AI Farmer Version</title>
+  <style>
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #1f2933;
+  background: #f7f9fb;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.page {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 44px 0 64px;
+}
+
+.hero { margin-bottom: 28px; }
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #2f7d32;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.05;
+}
+
+h2 { margin: 0 0 14px; font-size: 20px; }
+h3 { margin: 0; font-size: 19px; }
+h4 { margin: 18px 0 8px; font-size: 15px; }
+
+.sub, .hint, .coverage {
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.sub { margin: 0; max-width: 820px; }
+.hint { margin: -4px 0 18px; font-size: 14px; }
+.coverage { margin: 0 0 12px; font-size: 14px; }
+
+.card, .period-card {
+  background: #ffffff;
+  border: 1px solid #e5eaf0;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  padding: 24px;
+  margin: 18px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.grid.four {
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input, select {
+  width: 100%;
+  border: 1px solid #d7dee8;
+  border-radius: 10px;
+  padding: 11px 12px;
+  font: inherit;
+  font-weight: 500;
+  background: #fff;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.actions.compact { margin: 0; }
+
+button {
+  border: none;
+  border-radius: 999px;
+  background: #1f7a3d;
+  color: #fff;
+  font-weight: 800;
+  padding: 12px 18px;
+  cursor: pointer;
+}
+
+button.secondary { background: #334155; }
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.status {
+  border-radius: 14px;
+  padding: 16px 18px;
+  background: #eef2ff;
+  color: #334155;
+  font-weight: 700;
+  margin: 18px 0;
+}
+
+.status.success { background: #e8f5e9; color: #1b5e20; }
+.status.error { background: #ffebee; color: #b71c1c; }
+
+.result-card { border-left: 5px solid #2f7d32; }
+
+.summary-grid, .mini-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.summary-grid { grid-template-columns: repeat(4, minmax(160px, 1fr)); }
+.mini-grid { grid-template-columns: repeat(3, minmax(150px, 1fr)); }
+
+.summary-grid > div, .mini-grid > div {
+  border: 1px solid #e5eaf0;
+  border-radius: 14px;
+  padding: 14px;
+  background: #fbfdff;
+}
+
+.label, .mini-grid span {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.periods {
+  display: grid;
+  gap: 18px;
+}
+
+.period-card {
+  border-left: 5px solid #cbd5e1;
+}
+
+.period-card.watch { border-left-color: #3b82f6; }
+.period-card.moderate { border-left-color: #eab308; }
+.period-card.high { border-left-color: #f97316; }
+.period-card.severe { border-left-color: #dc2626; }
+
+.period-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.condition {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 6px 11px;
+  background: #e2e8f0;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.condition.watch { background: #dbeafe; color: #1e40af; }
+.condition.moderate { background: #fef3c7; color: #92400e; }
+.condition.high { background: #ffedd5; color: #9a3412; }
+.condition.severe { background: #fee2e2; color: #991b1b; }
+
+.stage-line { color: #334155; }
+ul { margin: 0; padding-left: 20px; }
+
+
+.source-confidence {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.source-confidence > div {
+  border: 1px solid #dbe4ee;
+  border-radius: 14px;
+  padding: 14px;
+  background: #f8fafc;
+}
+
+.source-confidence p {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+
+.tips-box {
+  border: 1px solid #dbe4ee;
+  border-radius: 14px;
+  background: #fbfdff;
+  padding: 14px;
+}
+
+.tips-box ul {
+  display: grid;
+  gap: 12px;
+}
+
+.tips-box li p {
+  margin: 6px 0 0;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.tip-meta {
+  display: block;
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+.compact-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin: 12px 0 6px;
+  padding: 12px 14px;
+  border: 1px solid #dbe4ee;
+  border-radius: 14px;
+  background: #f8fafc;
+  color: #334155;
+}
+
+.compact-meta span {
+  line-height: 1.35;
+}
+
+
+.fertilizer-box {
+  border: 1px solid #d6d3d1;
+  border-left: 5px solid #78716c;
+  border-radius: 14px;
+  background: #fafaf9;
+  padding: 14px;
+  margin: 10px 0 16px;
+}
+
+.fertilizer-box p {
+  margin: 6px 0;
+  color: #334155;
+  line-height: 1.45;
+}
+
+
+.weed-box {
+  border: 1px solid #bbf7d0;
+  border-left: 5px solid #16a34a;
+  border-radius: 14px;
+  background: #f0fdf4;
+  padding: 14px;
+  margin: 10px 0 16px;
+}
+
+.weed-box p {
+  margin: 6px 0;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.status-box {
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 1rem 0;
+  font-family: monospace;
+  font-size: 0.85rem;
+  min-height: 60px;
+}
+.log-line { padding: 2px 0; }
+.log-ok   { color: #4ade80; }
+.log-err  { color: #f87171; }
+.log-info { color: #9ca3af; }
+.log-done { color: #ffffff; font-weight: bold; }
+
+.eddi-warning-banner {
+  background: #fef3c7;
+  color: #92400e;
+  border-left: 4px solid #f59e0b;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .grid, .grid.four, .summary-grid, .mini-grid, .source-confidence {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">DMAP-AI Farmer Version</p>
+      <h1>4-week farm EDDI + weather outlook</h1>
+      <p class="sub">
+        Enter a farm location and crop-stage timeline. The backend retrieves 4-week forecast EDDI and near-term weather variables, then creates a farmer-facing report.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Crop and current stage</h2>
+      <div class="grid">
+        <label>
+          Crop
+          <select id="crop">
+            <option value="corn">corn</option>
+            <option value="soybean" disabled>soybean (coming soon — corn only for now)</option>
+          </select>
+        </label>
+        <label>
+          Current stage
+          <select id="stage"></select>
+        </label>
+        <label>
+          Water management
+          <select id="waterSystem">
+            <option value="rainfed" selected>Rainfed</option>
+            <option value="irrigated">Irrigated</option>
+          </select>
+        </label>
+      </div>
+      <p id="irrigatedNote" class="hint" style="display:none;">
+        Irrigated rules use draft thresholds and advice pending scientific review.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Stage timeline for the next 4 weeks</h2>
+      <p class="hint">
+        Do not assume the crop stays in the same stage for all four weeks. Edit these fields if you expect development to move faster or slower.
+      </p>
+      <div class="grid four">
+        <label>
+          Week 1 stage
+          <select id="stageWk1"></select>
+        </label>
+        <label>
+          Week 2 stage
+          <select id="stageWk2"></select>
+        </label>
+        <label>
+          Week 3 stage
+          <select id="stageWk3"></select>
+        </label>
+        <label>
+          Week 4 stage
+          <select id="stageWk4"></select>
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Farm location</h2>
+      <p class="hint">Prototype mode uses point sampling at the farm latitude/longitude.</p>
+      <div class="grid">
+        <label>
+          Farm name
+          <input id="farmName" value="Test Farm near Ames, Iowa" />
+        </label>
+        <label>
+          Latitude
+          <input id="lat" type="number" step="0.000001" value="42.03" />
+        </label>
+        <label>
+          Longitude
+          <input id="lon" type="number" step="0.000001" value="-93.63" />
+        </label>
+        <label>
+          Buffer meters
+          <input id="bufferM" type="number" min="0" step="100" value="1000" />
+        </label>
+      </div>
+      <div class="actions compact">
+        <button id="geoBtn" type="button" class="secondary">Use browser location</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Forecast period</h2>
+      <div class="grid">
+        <label>
+          Time mode
+          <select id="timeMode">
+            <option value="full_28_day" selected>next 4 weeks</option>
+            <option value="week">single week</option>
+            <option value="multi_week">multi-week</option>
+            <option value="worst_period">compare weeks 1-4</option>
+            <option value="day">specific day</option>
+          </select>
+        </label>
+        <label>
+          Week start
+          <input id="weekStart" type="number" min="1" max="4" value="1" />
+        </label>
+        <label>
+          Week end
+          <input id="weekEnd" type="number" min="1" max="4" value="4" />
+        </label>
+        <label>
+          Day
+          <input id="dayStart" type="number" min="1" max="28" value="1" />
+        </label>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button id="healthBtn" type="button" class="secondary">Check API health</button>
+      <button id="reportBtn" type="button">Generate 4-week farm report</button>
+    </section>
+
+    <section id="statusBox" class="status-box" style="display:none">
+      <div id="statusLog"></div>
+    </section>
+
+    <section id="report" class="report"></section>
+  </main>
+  <script>
+// Same-origin: nginx proxies /fv-api/ to the FV FastAPI backend on the droplet.
+// Override at deploy time if you ever move the API to a subdomain.
+const API_BASE_URL = "/fv-api";
+
+const STAGES = {
+  corn: [
+    ["emergence", "Emergence / stand establishment"],
+    ["vegetative", "Vegetative"],
+    ["rapid_growth", "Rapid growth"],
+    ["pollination", "Pollination / tasseling-silking"],
+    ["grain_fill", "Grain fill"],
+    ["maturity", "Maturity / late season"]
+  ],
+  soybean: [
+    ["planting_emergence", "Planting / emergence"],
+    ["vegetative", "Vegetative"],
+    ["flowering", "Flowering"],
+    ["pod_set_pod_fill", "Pod set / pod fill"],
+    ["seed_fill", "Seed fill"],
+    ["maturity_late", "Maturity / late season"]
+  ]
+};
+
+const DEFAULT_TIMELINES = {
+  corn: {
+    emergence: ["emergence", "vegetative", "vegetative", "rapid_growth"],
+    vegetative: ["vegetative", "rapid_growth", "pollination", "grain_fill"],
+    rapid_growth: ["rapid_growth", "pollination", "grain_fill", "grain_fill"],
+    pollination: ["pollination", "grain_fill", "grain_fill", "grain_fill"],
+    grain_fill: ["grain_fill", "grain_fill", "maturity", "maturity"],
+    maturity: ["maturity", "maturity", "maturity", "maturity"]
+  },
+  soybean: {}
+};
+
+function el(id) { return document.getElementById(id); }
+function value(id) { return el(id).value; }
+
+function numberValue(id) {
+  const n = Number(value(id));
+  if (!Number.isFinite(n)) throw new Error(`${id} must be a number`);
+  return n;
+}
+
+const StatusLog = {
+  show()  { el("statusBox").style.display = "block"; },
+  clear() { el("statusLog").innerHTML = ""; this.show(); },
+  append(text, cls) {
+    const d = document.createElement("div");
+    d.className = `log-line ${cls}`;
+    d.textContent = text;
+    el("statusLog").appendChild(d);
+    el("statusLog").lastChild.scrollIntoView({ behavior: "smooth" });
+  },
+  ok(text)   { this.append(text, "log-ok"); },
+  err(text)  { this.append(text, "log-err"); },
+  info(text) { this.append(text, "log-info"); },
+  done(text) { this.append(text, "log-done"); }
+};
+
+function setBusy(isBusy) {
+  el("healthBtn").disabled = isBusy;
+  el("reportBtn").disabled = isBusy;
+  el("geoBtn").disabled = isBusy;
+}
+
+function escapeHtml(v) {
+  return String(v ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function fmtNumber(v, digits = 2) {
+  if (v === null || v === undefined || Number.isNaN(Number(v))) return "not available";
+  return Number(v).toFixed(digits);
+}
+
+function optionsForCrop(crop) {
+  return STAGES[crop] || [];
+}
+
+function fillStageSelect(selectId, crop, selectedValue = null) {
+  const select = el(selectId);
+  select.innerHTML = "";
+  for (const [stageValue, label] of optionsForCrop(crop)) {
+    const opt = document.createElement("option");
+    opt.value = stageValue;
+    opt.textContent = label;
+    if (selectedValue && selectedValue === stageValue) opt.selected = true;
+    select.appendChild(opt);
+  }
+}
+
+function updateCurrentStages() {
+  const crop = value("crop");
+  const defaultStage = crop === "corn" ? "pollination" : "flowering";
+  fillStageSelect("stage", crop, defaultStage);
+  updateTimelineDefaults();
+}
+
+function updateTimelineDefaults() {
+  const crop = value("crop");
+  const currentStage = value("stage");
+  const timeline = (DEFAULT_TIMELINES[crop] && DEFAULT_TIMELINES[crop][currentStage]) || [currentStage, currentStage, currentStage, currentStage];
+
+  fillStageSelect("stageWk1", crop, timeline[0]);
+  fillStageSelect("stageWk2", crop, timeline[1]);
+  fillStageSelect("stageWk3", crop, timeline[2]);
+  fillStageSelect("stageWk4", crop, timeline[3]);
+}
+
+function getAnalysisRequest() {
+  const mode = value("timeMode");
+  const request = {
+    time_mode: mode,
+    user_text: "Farmer Version 4-week live frontend request"
+  };
+
+  if (mode === "day") {
+    request.day_start = numberValue("dayStart");
+    request.day_end = numberValue("dayStart");
+  }
+
+  if (mode === "week" || mode === "multi_week") {
+    request.week_start = numberValue("weekStart");
+    request.week_end = numberValue("weekEnd");
+  }
+
+  if (mode === "full_28_day" || mode === "worst_period") {
+    request.week_start = 1;
+    request.week_end = 4;
+  }
+
+  return request;
+}
+
+function getFarm() {
+  const lat = numberValue("lat");
+  const lon = numberValue("lon");
+
+  if (lat < -90 || lat > 90) throw new Error("Latitude must be between -90 and 90.");
+  if (lon < -180 || lon > 180) throw new Error("Longitude must be between -180 and 180.");
+
+  return {
+    name: value("farmName") || "Unnamed farm",
+    lat,
+    lon,
+    buffer_m: numberValue("bufferM")
+  };
+}
+
+function buildPayload() {
+  return {
+    crop: value("crop"),
+    stage: value("stage"),
+    water_system: value("waterSystem"),
+    stage_timeline: {
+      wk1: value("stageWk1"),
+      wk2: value("stageWk2"),
+      wk3: value("stageWk3"),
+      wk4: value("stageWk4")
+    },
+    farm: getFarm(),
+    analysis_request: getAnalysisRequest(),
+    include_forecast_ensembles: true,
+    include_noaa_monitoring: true,
+    include_open_meteo_weather: true
+  };
+}
+
+async function apiFetch(path, options = {}) {
+  const res = await fetch(`${API_BASE_URL}${path}`, options);
+  const text = await res.text();
+  let data;
+  try { data = JSON.parse(text); } catch { data = { detail: text }; }
+
+  if (!res.ok) {
+    const detail = typeof data.detail === "string" ? data.detail : JSON.stringify(data.detail || data);
+    throw new Error(detail);
+  }
+
+  return data;
+}
+
+async function postJson(path, payload) {
+  return apiFetch(path, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+}
+
+function conditionBadge(condition) {
+  const safe = escapeHtml(condition || "none");
+  return `<span class="condition ${safe}">${safe}</span>`;
+}
+
+function renderReport(data) {
+  const report = el("report");
+  const periods = data.period_reports || [];
+  const warnings = data.warnings || [];
+  const waterSystem = data.water_system || "rainfed";
+  const irrigatedDevNote = data.irrigated_dev_note || null;
+
+  const periodCards = periods.map(row => {
+    const weather = row.weather || {};
+    const weatherUS = row.weather_us || {};
+    const eddi = row.eddi || {};
+    const allRules = row.variable_rules || row.weather_flags || [];
+    const activeRules = allRules.filter(f =>
+      f.available !== false &&
+      !["normal", "none", "not_available"].includes(String(f.condition_class || "").toLowerCase())
+    );
+    const unavailableWeatherCount = allRules.filter(f =>
+      f.variable !== "eddi" && String(f.condition_class || "").toLowerCase() === "not_available"
+    ).length;
+
+    const flagHtml = activeRules.length
+      ? `<ul>${activeRules.map(f => `
+          <li>
+            <strong>${escapeHtml(f.variable_label || f.variable)}:</strong>
+            ${escapeHtml(f.condition_class)} — ${escapeHtml(f.message)}
+            <span class="tip-meta">Rule: ${escapeHtml(f.numeric_rule || "not available")} · Value: ${fmtNumber(f.value)} ${escapeHtml(f.unit || "")}${f.requires_ag_advisor ? " · Consult ag advisor" : ""}</span>
+          </li>
+        `).join("")}</ul>${unavailableWeatherCount ? `<p class="hint">Some weather-variable rules are not shown because those data are not available for this week.</p>` : ""}`
+      : `<p class="hint">No active variable warnings for this period.${unavailableWeatherCount ? " Some weather-variable data are not available." : ""}</p>`;
+
+    const stageAdvice = row.stage_advice || {};
+    const stageTips = stageAdvice.tips || [];
+    const stageTipsHtml = stageTips.length
+      ? `<ul>${stageTips.map(t => `
+          <li>
+            <strong>${escapeHtml(t.title)}</strong>
+            ${t.requires_advisor ? `<span class="tip-meta">Consult ag advisor</span>` : ""}
+            <p>${escapeHtml(t.message)}</p>
+          </li>
+        `).join("")}</ul>`
+      : `<p class="hint">No stage-specific tips are available for this crop/stage.</p>`;
+
+    const fertilizationAdvice = row.fertilization_advice || {};
+    const fertilizationHtml = fertilizationAdvice.available
+      ? `<div class="fertilizer-box">
+          <p><strong>${escapeHtml(fertilizationAdvice.main_goal || "Nutrient review")}</strong></p>
+          <p>${escapeHtml(fertilizationAdvice.message || "")}</p>
+          ${fertilizationAdvice.requires_ag_advisor ? `<p class="tip-meta">Consult ag advisor before changing nutrient plans.</p>` : ""}
+        </div>`
+      : `<p class="hint">No nutrient advice is available for this stage.</p>`;
+
+    const weedControlAdvice = row.weed_control_advice || {};
+    const weedControlHtml = weedControlAdvice.available
+      ? `<div class="weed-box">
+          <p><strong>${escapeHtml(weedControlAdvice.main_goal || "Weed-control review")}</strong></p>
+          <p>${escapeHtml(weedControlAdvice.message || "")}</p>
+          ${weedControlAdvice.requires_ag_advisor ? `<p class="tip-meta">Check the label and consult an ag advisor before treatment under crop stress.</p>` : ""}
+        </div>`
+      : `<p class="hint">No weed-control advice is available for this stage.</p>`;
+
+    const confidence = row.confidence || {};
+    const sources = row.data_sources || {};
+    const eddiSource = sources.eddi || {};
+    const weatherSource = sources.weather || {};
+    const overallConfidence = confidence.overall || {};
+    const coverageDays = weatherSource.coverage_days ?? weather.coverage_days ?? 0;
+    const coverageExpected = weatherSource.coverage_expected_days ?? weather.coverage_expected_days ?? 7;
+    const eddiAvailable = eddiSource.available !== false;
+    const eddiLabel = eddiAvailable ? (eddiSource.provider || "THREDDS") : "EDDI unavailable";
+    const sourceLine = weatherSource.name && weatherSource.name !== "not available for this period"
+      ? `${eddiLabel}; Weather: ${weatherSource.name} (${coverageDays}/${coverageExpected} days)`
+      : `${eddiLabel}; Weather variables not available`;
+
+    return `
+      <article class="period-card ${escapeHtml(row.final_condition_class)}">
+        <div class="period-head">
+          <h3>${escapeHtml(row.label)}</h3>
+          ${conditionBadge(row.final_condition_class)}
+        </div>
+        <p class="stage-line"><strong>Stage used:</strong> ${escapeHtml(row.stage_frontend)}</p>
+
+        <div class="compact-meta">
+          <span><strong>Confidence:</strong> ${escapeHtml(overallConfidence.level || "not available")}</span>
+          <span><strong>Sources:</strong> ${escapeHtml(sourceLine)}</span>
+        </div>
+        <p class="hint">${escapeHtml(overallConfidence.reason || "")}</p>
+
+        <div class="mini-grid">
+          <div><span>EDDI mean</span><strong>${fmtNumber(eddi.mean)}</strong></div>
+          <div><span>EDDI p25-p75</span><strong>${fmtNumber(eddi.p25)} to ${fmtNumber(eddi.p75)}</strong></div>
+          <div><span>EDDI risk</span><strong>${escapeHtml(eddi.overall_risk || "not available")}</strong></div>
+          <div><span>Members</span><strong>${escapeHtml(eddi.n_members ?? "not available")}</strong></div>
+        </div>
+
+        <h4>Weather variables</h4>
+        <p class="coverage">${escapeHtml(weather.coverage_note || "")}</p>
+        <div class="mini-grid">
+          <div><span>Tmax max</span><strong>${fmtNumber(weatherUS.tmax_max_f, 1)} °F</strong></div>
+          <div><span>Tmin mean</span><strong>${fmtNumber(weatherUS.tmin_mean_f, 1)} °F</strong></div>
+          <div><span>Rain total</span><strong>${fmtNumber(weatherUS.precip_total_in, 2)} in</strong></div>
+          <div><span>Wind mean</span><strong>${fmtNumber(weatherUS.wind_speed_mean_mph, 1)} mph</strong></div>
+          <div><span>ETo total</span><strong>${fmtNumber(weatherUS.eto_total_in, 2)} in</strong></div>
+          <div><span>Coverage</span><strong>${escapeHtml(weather.coverage_days ?? 0)} / ${escapeHtml(weather.coverage_expected_days ?? 7)} days</strong></div>
+        </div>
+
+        <h4>Variable rule messages</h4>
+        ${flagHtml}
+
+        <h4>Farmer message</h4>
+        <p>${escapeHtml(row.farmer_message)}</p>
+
+        <h4>Fertilization / nutrient note</h4>
+        ${fertilizationHtml}
+
+        <h4>Weed-control note</h4>
+        ${weedControlHtml}
+
+        <h4>Stage-specific ${escapeHtml(waterSystem)} corn tips</h4>
+        <p class="coverage"><strong>Main goal:</strong> ${escapeHtml(stageAdvice.main_goal || "not available")}</p>
+        <div class="tips-box">${stageTipsHtml}</div>
+        <p class="hint">${escapeHtml(stageAdvice.safety_note || "")}</p>
+      </article>
+    `;
+  }).join("");
+
+  const timeline = data.stage_timeline_frontend || {};
+  const warningsHtml = warnings.length
+    ? `<ul>${warnings.map(w => `<li>${escapeHtml(w)}</li>`).join("")}</ul>`
+    : `<p>No warnings.</p>`;
+
+  report.innerHTML = `
+    <section class="card result-card">
+      <h2>Farm report</h2>
+      <div class="summary-grid">
+        <div><span class="label">Farm</span><strong>${escapeHtml(data.farm?.name || "Unnamed farm")}</strong></div>
+        <div><span class="label">Location</span><strong>${fmtNumber(data.farm?.lat, 4)}, ${fmtNumber(data.farm?.lon, 4)}</strong></div>
+        <div><span class="label">Crop</span><strong>${escapeHtml(data.crop)}</strong></div>
+        <div><span class="label">Water management</span><strong>${escapeHtml(waterSystem)}</strong></div>
+        <div><span class="label">Final condition</span><strong>${escapeHtml(data.final_condition_class)}</strong></div>
+      </div>
+      ${irrigatedDevNote ? `<p class="hint irrigated-note">${escapeHtml(irrigatedDevNote)}</p>` : ""}
+    </section>
+
+    <section class="card result-card">
+      <h2>Stage timeline used</h2>
+      <div class="summary-grid">
+        <div><span class="label">Week 1</span><strong>${escapeHtml(timeline.wk1)}</strong></div>
+        <div><span class="label">Week 2</span><strong>${escapeHtml(timeline.wk2)}</strong></div>
+        <div><span class="label">Week 3</span><strong>${escapeHtml(timeline.wk3)}</strong></div>
+        <div><span class="label">Week 4</span><strong>${escapeHtml(timeline.wk4)}</strong></div>
+      </div>
+    </section>
+
+    <section class="card result-card">
+      <h2>Current EDDI context</h2>
+      <div class="summary-grid">
+        <div><span class="label">NOAA 4-week EDDI</span><strong>${fmtNumber(data.current_context?.noaa_monitoring_eddi_04wk)}</strong></div>
+        <div><span class="label">NOAA 1-month EDDI</span><strong>${fmtNumber(data.current_context?.noaa_monitoring_eddi_01mn)}</strong></div>
+        <div><span class="label">Dry direction</span><strong>${escapeHtml(data.current_context?.dry_direction)}</strong></div>
+        <div><span class="label">Dry threshold</span><strong>${fmtNumber(data.current_context?.dry_threshold)}</strong></div>
+      </div>
+    </section>
+
+    <section class="periods">${periodCards}</section>
+
+    <section class="card result-card">
+      <h2>Warnings / notes</h2>
+      ${warningsHtml}
+      <p class="hint">${escapeHtml(data.technical_note || "")}</p>
+    </section>
+  `;
+}
+
+el("crop").addEventListener("change", updateCurrentStages);
+el("stage").addEventListener("change", updateTimelineDefaults);
+el("waterSystem").addEventListener("change", () => {
+  el("irrigatedNote").style.display = value("waterSystem") === "irrigated" ? "" : "none";
+});
+
+el("healthBtn").addEventListener("click", async () => {
+  try {
+    setBusy(true);
+    StatusLog.info("Checking API health...");
+    const data = await apiFetch("/health");
+    StatusLog.ok(`API is working. Backend mode: ${data.backend_mode || data.status}`);
+  } catch (err) {
+    StatusLog.err(`API health failed: ${err.message}`);
+  } finally {
+    setBusy(false);
+  }
+});
+
+el("reportBtn").addEventListener("click", async () => {
+  try {
+    setBusy(true);
+    el("report").innerHTML = "";
+    StatusLog.clear();
+    StatusLog.info("▸ Connecting to backend...");
+
+    const payload = buildPayload();
+    const res = await fetch(`${API_BASE_URL}/farmer/live-evaluate/stream`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) throw new Error(`Backend error: ${res.status}`);
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let reportData = null;
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop(); // keep incomplete line
+      for (const line of lines) {
+        if (!line.startsWith("data: ")) continue;
+        const evt = JSON.parse(line.slice(6));
+        if (evt.event === "thredds") {
+          if (evt.status === "ok") {
+            StatusLog.ok(`▸ THREDDS EDDI ${evt.period}... ✓ ${evt.members} members`);
+          } else {
+            StatusLog.err(`▸ THREDDS EDDI ${evt.period}... ✗ unavailable`);
+          }
+        } else if (evt.event === "weather") {
+          if (evt.status === "ok") {
+            StatusLog.ok(`▸ Open-Meteo weather... ✓ ${evt.days} days`);
+          } else {
+            StatusLog.err(`▸ Open-Meteo weather... ✗ unavailable`);
+          }
+        } else if (evt.event === "rules") {
+          StatusLog.info("▸ Running rule engine... ✓");
+        } else if (evt.event === "done") {
+          reportData = evt.report;
+        } else if (evt.event === "error") {
+          throw new Error(evt.error || "Backend reported an error");
+        }
+      }
+    }
+
+    if (!reportData) throw new Error("No report data received");
+    renderReport(reportData);
+
+    // Amber banner only if EVERY week lacks EDDI (data is nested at w.eddi.mean).
+    const weeks = reportData.period_reports ?? [];
+    const allEddiMissing = weeks.length > 0 && weeks.every(
+      w => (w.eddi == null || w.eddi.mean == null)
+    );
+    if (allEddiMissing) {
+      el("report").insertAdjacentHTML("afterbegin", `
+        <div class="eddi-warning-banner">
+          ⚠ EDDI forecast unavailable — this report is weather-only and has reduced confidence.
+        </div>`);
+    }
+
+    const condition = reportData.final_condition_class ?? "unknown";
+    StatusLog.done(`▸ Report complete — condition: ${condition}`);
+
+  } catch (err) {
+    StatusLog.err(`▸ Failed: ${err.message}`);
+  } finally {
+    setBusy(false);
+  }
+});
+
+el("geoBtn").addEventListener("click", () => {
+  if (!navigator.geolocation) {
+    StatusLog.err("Browser geolocation is not available.");
+    return;
+  }
+
+  StatusLog.info("Requesting browser location...");
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      el("lat").value = pos.coords.latitude.toFixed(6);
+      el("lon").value = pos.coords.longitude.toFixed(6);
+      StatusLog.ok("Browser location inserted. Confirm this is the farm location before generating the report.");
+    },
+    (err) => StatusLog.err(`Browser location failed: ${err.message}`),
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+});
+
+updateCurrentStages();
+
+</script>
+</body>
+</html>

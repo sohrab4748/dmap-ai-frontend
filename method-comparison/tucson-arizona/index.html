@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DMAP-AI Station 2: Tucson, Arizona AI Interpretation Comparison</title>
+  <meta name="description" content="A DMAP-AI Station 2 research page comparing chart-only and structured-request ChatGPT interpretation for SPI drought severity and wavelet variability in Tucson, Arizona from 1981 to 2025.">
+  <meta name="keywords" content="DMAP-AI, drought analysis, SPI, wavelet scalogram, drought severity, Tucson, Arizona, ChatGPT interpretation, AgriMetSoft">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="canonical" href="https://droughtanalysis.com/method-comparison/tucson-arizona/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/method-comparison/comparison-style.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="DMAP-AI Station 2: Tucson, Arizona AI Interpretation Comparison">
+  <meta property="og:description" content="A DMAP-AI Station 2 research page comparing chart-only and structured-request ChatGPT interpretation for SPI drought severity and wavelet variability in Tucson, Arizona from 1981 to 2025.">
+  <meta property="og:url" content="https://droughtanalysis.com/method-comparison/tucson-arizona/">
+  <meta property="og:image" content="https://droughtanalysis.com/method-comparison/tucson-arizona/images/severity.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "DMAP-AI Station 2: Tucson, Arizona AI Interpretation Comparison", "description": "A DMAP-AI Station 2 research page comparing chart-only and structured-request ChatGPT interpretation for SPI drought severity and wavelet variability in Tucson, Arizona from 1981 to 2025.", "author": {"@type": "Organization", "name": "AgriMetSoft LLC"}, "publisher": {"@type": "Organization", "name": "AgriMetSoft LLC"}, "about": ["DMAP-AI", "Standardized Precipitation Index", "drought severity", "wavelet scalogram", "LLM interpretation"], "datePublished": "2026-05-29", "dateModified": "2026-05-29", "mainEntityOfPage": "https://droughtanalysis.com/method-comparison/tucson-arizona/", "image": "https://droughtanalysis.com/method-comparison/tucson-arizona/images/severity.png"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "DMAP-AI", "item": "https://droughtanalysis.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Interpretation Comparison", "item": "https://droughtanalysis.com/method-comparison/"}, {"@type": "ListItem", "position": 3, "name": "Tucson, Arizona", "item": "https://droughtanalysis.com/method-comparison/tucson-arizona/"}]}</script>
+  <style>
+:root{--bg:#f4f8fb;--panel:#fff;--text:#0f172a;--muted:#475569;--soft:#e2e8f0;--brand:#1d4ed8;--brand2:#0891b2;--green:#047857;--amber:#b45309;--shadow:0 18px 45px rgba(15,23,42,.08);--radius:20px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at top left,rgba(14,165,233,.16),transparent 32rem),linear-gradient(180deg,#eef7ff 0%,var(--bg) 38%,#fff 100%);line-height:1.65}a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}.site-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(148,163,184,.28)}.nav-wrap{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand-link{display:inline-flex;align-items:center;text-decoration:none;flex:0 0 auto}.brand-link picture{display:block;line-height:0}.brand-logo{display:block;width:225px;max-width:225px;height:auto}.main-nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-end}.main-nav a{font-size:.92rem;color:#334155;padding:7px 10px;border-radius:999px}.main-nav a:hover{background:#eff6ff;text-decoration:none;color:#1d4ed8}.main-nav .launch{background:#1d4ed8;color:#fff;box-shadow:0 8px 18px rgba(29,78,216,.2)}.main-nav .launch:hover{background:#1e40af;color:#fff}.container{max-width:1180px;margin:0 auto;padding:0 20px}.hero{padding:56px 0 34px}.hero-card{background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(239,246,255,.86));border:1px solid rgba(191,219,254,.9);border-radius:28px;padding:34px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;right:-100px;top:-120px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(8,145,178,.18),transparent 70%)}.eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;padding:6px 12px;border-radius:999px;background:#ecfeff;color:#155e75;border:1px solid #a5f3fc;font-weight:800;font-size:.86rem;letter-spacing:.01em}h1{margin:0 0 12px;max-width:930px;font-size:clamp(2rem,4.5vw,3.55rem);line-height:1.08;letter-spacing:-.04em}.subtitle{max-width:860px;margin:0;color:var(--muted);font-size:1.14rem}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:999px;font-weight:750;border:1px solid transparent}.btn-primary{background:var(--brand);color:#fff;box-shadow:0 12px 24px rgba(29,78,216,.22)}.btn-primary:hover{background:#1e40af;color:#fff;text-decoration:none}.btn-secondary{background:#fff;color:#1d4ed8;border-color:#bfdbfe}.btn-secondary:hover{background:#eff6ff;text-decoration:none}.metric-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px;position:relative;z-index:1}.metric{background:rgba(255,255,255,.84);border:1px solid #dbeafe;border-radius:18px;padding:14px}.metric span{display:block;color:#64748b;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800}.metric strong{display:block;margin-top:4px;font-size:1.02rem}.layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:26px;align-items:start;padding-bottom:60px}main.article{min-width:0}.toc-card{position:sticky;top:84px;background:rgba(255,255,255,.92);border:1px solid #e2e8f0;border-radius:var(--radius);box-shadow:0 14px 35px rgba(15,23,42,.06);padding:18px}.toc-card h2{font-size:.95rem;margin:0 0 10px;text-transform:uppercase;letter-spacing:.09em;color:#334155}.toc-card ol{list-style:none;padding:0;margin:0;display:grid;gap:6px}.toc-card a{display:block;color:#475569;font-size:.92rem;padding:6px 8px;border-radius:10px}.toc-card a:hover{background:#eff6ff;color:#1d4ed8;text-decoration:none}.toc-level-3{padding-left:10px;border-left:2px solid #e2e8f0}.article-section{background:var(--panel);border:1px solid #e2e8f0;border-radius:var(--radius);box-shadow:0 14px 35px rgba(15,23,42,.055);padding:28px;margin-bottom:24px}.article-section h2{margin:0 0 18px;font-size:clamp(1.45rem,2.5vw,2.05rem);line-height:1.22;letter-spacing:-.02em}.article-section h3{margin:24px 0 10px;font-size:1.22rem;color:#0f172a}.article-section p{margin:0 0 15px;color:#334155}.note{border-left:4px solid var(--brand2);background:#f0f9ff;border-radius:14px;padding:14px 16px;margin:16px 0;color:#334155}.table-wrap{overflow-x:auto;margin:18px 0;border:1px solid #e2e8f0;border-radius:16px;background:#fff}table{border-collapse:collapse;width:100%;min-width:620px}th,td{padding:11px 12px;border-bottom:1px solid #e2e8f0;text-align:left;vertical-align:top}th{background:#f8fafc;color:#0f172a;font-size:.86rem;text-transform:uppercase;letter-spacing:.05em}tr:last-child td{border-bottom:0}tbody tr:nth-child(even) td{background:#fbfdff}.figure{margin:22px 0;border:1px solid #dbeafe;border-radius:18px;background:#f8fbff;padding:14px}.figure img{display:block;width:100%;height:auto;border-radius:12px;background:#fff}.figure figcaption{margin-top:10px;color:#475569;font-size:.94rem}.back-top{display:inline-flex;margin-top:6px;font-weight:700}.site-footer{border-top:1px solid #e2e8f0;background:rgba(255,255,255,.72)}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding-block:1.5rem;color:#64748b;font-size:.875rem}.footer-links{display:flex;flex-wrap:wrap;gap:1rem}@media(max-width:1024px){.main-nav{display:none}.layout{grid-template-columns:1fr}.toc-card{position:static;order:-1}.metric-row{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:640px){.nav-wrap,.container{padding-left:12px;padding-right:12px}.brand-logo{width:160px;max-width:160px}.hero{padding-top:28px}.hero-card{padding:22px;border-radius:22px}.metric-row{grid-template-columns:1fr}.article-section{padding:20px}.footer-inner{flex-direction:column;text-align:center}table{min-width:560px}}@media print{.site-header,.toc-card,.comparison-stations-section,.hero-actions,.site-footer{display:none}.layout{display:block}.article-section{box-shadow:none;break-inside:avoid}}
+</style>
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+</head>
+<body id="top">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <p class="eyebrow">DMAP-AI method comparison - Station 2</p>
+        <h1>DMAP-AI Station 2: Tucson, Arizona AI Interpretation Comparison</h1>
+        <p class="subtitle">Chart-only ChatGPT interpretation compared with DMAP-AI structured-request interpretation for drought severity and wavelet variability.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/method-comparison/">View all comparison stations</a>
+          <a class="btn btn-secondary" href="/DMAP_AI_App">Launch DMAP-AI Research Version</a>
+        </div>
+        <div class="metric-row" aria-label="Station summary">
+          <div class="metric"><span>Location</span><strong>Tucson-area analysis point, Arizona</strong></div>
+          <div class="metric"><span>Coordinates</span><strong>32.2226, -110.9747</strong></div>
+          <div class="metric"><span>Data source</span><strong>NASA POWER</strong></div>
+          <div class="metric"><span>Period</span><strong>1981-2025</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="comparison-stations-section" aria-labelledby="comparison-stations-title">
+    <div class="comparison-stations-card">
+      <div class="comparison-stations-head">
+        <div>
+          <h2 id="comparison-stations-title">Comparison stations</h2>
+          <p>Use this shared station list to move between the method-comparison pages. The list is managed from <code>/method-comparison/stations.json</code>.</p>
+        </div>
+        <span class="station-count-pill">Shared list</span>
+      </div>
+      <div data-stations-nav data-current-slug="tucson-arizona">
+        <div class="station-grid">
+          <a class="station-card is-active" href="/method-comparison/tucson-arizona/"><strong>Station 2. Tucson, Arizona</strong><span>Coordinates: 32.2226, -110.9747</span><span>Period: 1981-2025</span><span>Chart-only vs structured-request interpretation.</span><span class="station-status">Current page</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container layout">
+    <main class="article" aria-label="Station comparison article">
+      <section class="article-section" id="1-station-metadata-and-experimental-setup"><h2>1. Station metadata and experimental setup</h2>
+<div class="table-wrap"><table>
+<tr><th>Item</th><th>Value</th></tr>
+<tr><td>Location label used in DMAP-AI</td><td>Selected point (32.2226, -110.9747)</td></tr>
+<tr><td>Coordinates</td><td>32.2226, -110.9747</td></tr>
+<tr><td>Analysis period</td><td>1981-01-01 to 2025-12-31</td></tr>
+<tr><td>Drought index and scale</td><td>SPI, yearly calendar-year aggregation</td></tr>
+<tr><td>Data source</td><td>NASA POWER, point-based yearly total precipitation</td></tr>
+<tr><td>Category method</td><td>Classic SPI thresholds</td></tr>
+<tr><td>Drought-event threshold</td><td>SPI &lt;= -0.99</td></tr>
+<tr><td>Purpose of this document</td><td>Compare ChatGPT chart-only interpretation with ChatGPT interpretation using the DMAP-AI structured AI request.</td></tr>
+</table></div>
+<p><em>The built-in Gemini responses exported by DMAP-AI are retained as audit evidence, but the interpretations below are written as ChatGPT interpretations for the research comparison.</em></p>
+<a class="back-top" href="#top">Back to top</a></section>
+<section class="article-section" id="2-drought-severity-interpretation"><h2>2. Drought severity interpretation</h2>
+<p>Selected chart: drought severity - SPI line with shaded events.</p>
+<figure class="figure"><picture><source srcset="images/severity.webp" type="image/webp"><img src="images/severity.png" alt="Tucson, Arizona severity chart" loading="lazy" decoding="async"></picture><figcaption>Figure 1. Drought severity chart exported from DMAP-AI for the Tucson-area point.</figcaption></figure>
+<h3 id="2-1-method-a-chatgpt-chart-only-interpretation">2.1 Method A - ChatGPT chart-only interpretation</h3>
+<p>From the chart alone, the SPI series shows several isolated years below the drought threshold line near SPI = -1. The most visually severe drought occurs around 2020, where the SPI drops well below -2. A second strong dry year is visible around 2002, and another major dry year appears around 2023. Smaller threshold crossings are visible around 2009 and 2017.</p>
+<p>The chart-only interpretation suggests episodic drought behavior rather than a long continuous drought period. Most threshold crossings appear as single-year events, and the chart does not show a clear multi-year sequence of SPI values below the drought threshold.</p>
+<p>The chart-only method is useful for identifying visually obvious drought years, but it is less reliable for exact SPI values, drought magnitudes, and formal event counting. It can identify the main pattern, but the exact severity class and magnitude require structured numeric context.</p>
+<h3 id="2-2-method-b-chatgpt-interpretation-using-dmap-ai-structured-severity-request">2.2 Method B - ChatGPT interpretation using DMAP-AI structured severity request</h3>
+<div class="table-wrap"><table>
+<tr><th>Event</th><th>Start</th><th>End</th><th>Duration</th><th>Min SPI</th><th>Magnitude</th><th>Severity class</th></tr>
+<tr><td>1</td><td>2002</td><td>2002</td><td>1</td><td>-1.830</td><td>0.840</td><td>severe</td></tr>
+<tr><td>2</td><td>2009</td><td>2009</td><td>1</td><td>-1.119</td><td>0.129</td><td>moderate</td></tr>
+<tr><td>3</td><td>2017</td><td>2017</td><td>1</td><td>-1.028</td><td>0.038</td><td>moderate</td></tr>
+<tr><td>4</td><td>2020</td><td>2020</td><td>1</td><td>-2.614</td><td>1.624</td><td>extreme</td></tr>
+<tr><td>5</td><td>2023</td><td>2023</td><td>1</td><td>-1.686</td><td>0.696</td><td>severe</td></tr>
+</table></div>
+<p>The structured DMAP-AI request identifies 5 drought events using the threshold SPI &lt;= -0.99. All detected events last one yearly time step, so the Tucson-area SPI record shows single-year drought episodes rather than sustained multi-year drought persistence at the yearly scale.</p>
+<p>The most severe event occurs in 2020, with minimum SPI = -2.614 and magnitude = 1.624. Under the classic SPI categories, this is an extreme drought event. The 2002 event is severe, with SPI = -1.830 and magnitude = 0.840, while the 2023 event is also severe, with SPI = -1.686 and magnitude = 0.696.</p>
+<p>The 2009 and 2017 events are moderate droughts, with SPI values just below the event threshold. Because all events are one-year events, drought severity is driven more by event intensity than by duration for this location. The structured request also clarifies that magnitude is the accumulated deficit below the selected threshold, not total dryness or wetness magnitude.</p>
+<h3 id="2-3-severity-method-comparison">2.3 Severity method comparison</h3>
+<div class="table-wrap"><table>
+<tr><th>Criterion</th><th>Chart-only ChatGPT</th><th>Structured-request ChatGPT</th><th>DMAP-AI contribution</th></tr>
+<tr><td>Most severe event</td><td>Identifies 2020 visually as the lowest SPI year.</td><td>Confirms 2020 as extreme drought with SPI = -2.614 and magnitude = 1.624.</td><td>Structured request gives exact severity and magnitude.</td></tr>
+<tr><td>Event count</td><td>Can visually detect several threshold crossings, but count may be approximate.</td><td>Identifies exactly 5 events: 2002, 2009, 2017, 2020, and 2023.</td><td>Structured request improves reproducibility.</td></tr>
+<tr><td>Persistence</td><td>Suggests events are isolated, but duration is inferred visually.</td><td>Confirms every event lasted one yearly step.</td><td>Structured request separates intensity from persistence.</td></tr>
+<tr><td>Risk of error</td><td>May miss marginal events close to the threshold or overstate dry periods near the threshold.</td><td>Uses exact SPI threshold and event table.</td><td>DMAP-AI reduces ambiguous visual judgment.</td></tr>
+</table></div>
+<a class="back-top" href="#top">Back to top</a></section>
+<section class="article-section" id="3-periodicity-wavelet-variability-interpretation"><h2>3. Periodicity / wavelet variability interpretation</h2>
+<p>Selected chart: wavelet scalogram (power vs time and period).</p>
+<figure class="figure"><picture><source srcset="images/scalogram.webp" type="image/webp"><img src="images/scalogram.png" alt="Tucson, Arizona scalogram chart" loading="lazy" decoding="async"></picture><figcaption>Figure 2. Wavelet scalogram exported from DMAP-AI for the Tucson-area point. The current ZIP contains a scalogram request, not a global wavelet spectrum request.</figcaption></figure>
+<h3 id="3-1-method-a-chatgpt-chart-only-interpretation">3.1 Method A - ChatGPT chart-only interpretation</h3>
+<p>From the scalogram image alone, the plot shows broad zones of stronger and weaker wavelet power across time and period. However, the chart does not provide numerical period labels or year labels on the axes, so exact dominant periods cannot be reliably extracted from the image alone.</p>
+<p>A chart-only interpretation can say that there are intermittent high-power patches at different time scales, suggesting that drought/precipitation variability is not uniform through time. However, without numeric period values, it would be risky to state a precise recurrence interval or call the pattern a fixed drought cycle.</p>
+<p>The main chart-only limitation is that the scalogram supports qualitative time-frequency interpretation, but not precise dominant-period identification unless the reader has the underlying period axis and wavelet summary.</p>
+<h3 id="3-2-method-b-chatgpt-interpretation-using-dmap-ai-structured-wavelet-request">3.2 Method B - ChatGPT interpretation using DMAP-AI structured wavelet request</h3>
+<div class="table-wrap"><table>
+<tr><th>Period (years)</th><th>Power</th><th>Coherence</th><th>Reliability</th><th>Flags</th><th>Caution</th></tr>
+<tr><td>9.22</td><td>1.226</td><td>0.987</td><td>0.974</td><td>None</td><td>No extra caution.</td></tr>
+<tr><td>8.30</td><td>1.209</td><td>0.986</td><td>0.959</td><td>None</td><td>No extra caution.</td></tr>
+<tr><td>10.13</td><td>1.103</td><td>0.987</td><td>0.876</td><td>None</td><td>No extra caution.</td></tr>
+<tr><td>7.39</td><td>1.020</td><td>0.983</td><td>0.803</td><td>None</td><td>No extra caution.</td></tr>
+<tr><td>11.04</td><td>0.931</td><td>0.986</td><td>0.738</td><td>None</td><td>No extra caution.</td></tr>
+<tr><td>22.00</td><td>0.890</td><td>0.987</td><td>0.708</td><td>long_period_low_support</td><td>Interpret cautiously.</td></tr>
+<tr><td>1.00</td><td>0.837</td><td>0.979</td><td>0.653</td><td>None</td><td>No extra caution.</td></tr>
+<tr><td>21.09</td><td>0.791</td><td>0.985</td><td>0.625</td><td>long_period_low_support</td><td>Interpret cautiously.</td></tr>
+</table></div>
+<p>The structured wavelet request identifies the highest-power and best reliable peak at approximately 9.22 yearly time steps, with power = 1.226, coherence = 0.987, and reliability = 0.974. This indicates a prominent near-decadal variability band in the yearly SPI series.</p>
+<p>The nearby high-ranked periods around 7.39, 8.30, 10.13, and 11.04 years suggest that the signal should be interpreted as a broader 7-11 year variability band rather than as one exact recurrence interval.</p>
+<p>The structured request also flags longer periods near 21-22 years as long-period/low-support features that should be interpreted cautiously. This is important because long periods occupy a substantial fraction of the 45-year record and can be unstable at record boundaries.</p>
+<p>The correct interpretation is therefore not that drought will recur every 9.2 years. A safer statement is that the historical SPI record contains a strong near-decadal wavelet power band, which is a diagnostic variability signal rather than a deterministic drought forecast.</p>
+<h3 id="3-3-periodicity-method-comparison">3.3 Periodicity method comparison</h3>
+<div class="table-wrap"><table>
+<tr><th>Criterion</th><th>Chart-only ChatGPT</th><th>Structured-request ChatGPT</th><th>DMAP-AI contribution</th></tr>
+<tr><td>Dominant period</td><td>Cannot reliably determine a precise period from the scalogram image alone.</td><td>Identifies a highest-power and best reliable peak near 9.22 years.</td><td>Structured request provides numeric evidence.</td></tr>
+<tr><td>Interpretation of cycle</td><td>May be tempted to describe visible bands as recurring cycles.</td><td>Frames the 7-11 year signal as a variability band, not a deterministic cycle.</td><td>DMAP-AI reduces overclaiming.</td></tr>
+<tr><td>Uncertainty</td><td>Limited ability to identify which bands require caution.</td><td>Flags 21-22 year bands as long-period/low-support features.</td><td>Structured request improves uncertainty handling.</td></tr>
+<tr><td>Reproducibility</td><td>Depends on subjective visual reading.</td><td>Uses period, power, coherence, reliability, and caution flags.</td><td>Structured request is more reproducible and auditable.</td></tr>
+</table></div>
+<a class="back-top" href="#top">Back to top</a></section>
+<section class="article-section" id="4-research-use-conclusion-for-station-location-2"><h2>4. Research-use conclusion for Station/Location 2</h2>
+<p>For the Tucson-area point, DMAP-AI improves ChatGPT interpretation in both severity and wavelet variability tasks. In the severity task, the chart-only method correctly identifies the most obvious extreme drought year, but the structured request provides exact event counts, durations, SPI minima, magnitudes, and severity classes. This makes the result more reproducible and helps distinguish intensity from persistence.</p>
+<p>The wavelet task shows a stronger benefit from the structured request. The scalogram alone is visually useful but does not support exact period extraction. The structured request identifies a strong near-decadal variability band centered around 9.22 years and provides reliability and caution information. This prevents the LLM from converting a wavelet feature into an unsupported drought-cycle or forecast claim.</p>
+<p>This station therefore supports the paper hypothesis that DMAP-AI structured chart-specific AI requests are most valuable when the interpretation requires numeric context, event definitions, uncertainty handling, and scientific restraint.</p>
+<a class="back-top" href="#top">Back to top</a></section>
+<section class="article-section" id="appendix-exported-ai-audit-files-used"><h2>Appendix. Exported AI audit files used</h2>
+<div class="table-wrap"><table>
+<tr><th>Item</th><th>File in uploaded ZIP</th></tr>
+<tr><td>Severity structured request</td><td>severity/ai/severity/ai_structured_request.json</td></tr>
+<tr><td>Severity backend audit / prompt</td><td>severity/ai/severity/ai_backend_audit_prompt.json</td></tr>
+<tr><td>Severity model response</td><td>severity/ai/severity/ai_model_response.json</td></tr>
+<tr><td>Wavelet structured request</td><td>scalogram/ai/scalogram/ai_structured_request.json</td></tr>
+<tr><td>Wavelet backend audit / prompt</td><td>scalogram/ai/scalogram/ai_backend_audit_prompt.json</td></tr>
+<tr><td>Wavelet model response</td><td>scalogram/ai/scalogram/ai_model_response.json</td></tr>
+</table></div>
+<p class="note"><em>Recommendation for the final 40-location paper: export the Global wavelet spectrum AI request as the primary dominant-periodicity evidence. The scalogram can be retained as supporting time-frequency evidence.</em></p>
+<a class="back-top" href="#top">Back to top</a></section>
+    </main>
+    <aside class="toc-card" aria-label="Contents">
+      <h2>Contents</h2>
+      <ol><li><a href="#1-station-metadata-and-experimental-setup">1. Station metadata and experimental setup</a></li><li><a href="#2-drought-severity-interpretation">2. Drought severity interpretation</a></li><li class="toc-level-3"><a href="#2-1-method-a-chatgpt-chart-only-interpretation">2.1 Method A - ChatGPT chart-only interpretation</a></li><li class="toc-level-3"><a href="#2-2-method-b-chatgpt-interpretation-using-dmap-ai-structured-severity-request">2.2 Method B - ChatGPT interpretation using DMAP-AI structured severity request</a></li><li class="toc-level-3"><a href="#2-3-severity-method-comparison">2.3 Severity method comparison</a></li><li><a href="#3-periodicity-wavelet-variability-interpretation">3. Periodicity / wavelet variability interpretation</a></li><li class="toc-level-3"><a href="#3-1-method-a-chatgpt-chart-only-interpretation">3.1 Method A - ChatGPT chart-only interpretation</a></li><li class="toc-level-3"><a href="#3-2-method-b-chatgpt-interpretation-using-dmap-ai-structured-wavelet-request">3.2 Method B - ChatGPT interpretation using DMAP-AI structured wavelet request</a></li><li class="toc-level-3"><a href="#3-3-periodicity-method-comparison">3.3 Periodicity method comparison</a></li><li><a href="#4-research-use-conclusion-for-station-location-2">4. Research-use conclusion for Station/Location 2</a></li><li><a href="#appendix-exported-ai-audit-files-used">Appendix. Exported AI audit files used</a></li></ol>
+    </aside>
+  </div>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+      
+    </div>
+  </footer>
+  <script src="/method-comparison/comparison-nav.js" defer></script>
+<script src="/assets/global-nav.js"></script>
+</body>
+</html>

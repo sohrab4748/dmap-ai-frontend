@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Backend API endpoints are for the web application, not search indexing.
+Disallow: /api/
+
+Sitemap: https://droughtanalysis.com/sitemap.xml

@@ -1,0 +1,146 @@
+/* Shared styles for DMAP-AI method-comparison pages */
+.comparison-stations-section {
+  margin: 0 auto 26px;
+  padding: 0 20px;
+  max-width: 1180px;
+}
+.comparison-stations-card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #dbeafe;
+  border-radius: 20px;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.055);
+  padding: 22px;
+}
+.comparison-stations-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.comparison-stations-head h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.comparison-stations-head p {
+  margin: 6px 0 0;
+  color: #475569;
+}
+.station-count-pill {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 7px 11px;
+  font-size: .85rem;
+  font-weight: 800;
+}
+.station-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.station-search {
+  width: min(100%, 380px);
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: #0f172a;
+  background: #ffffff;
+  font: inherit;
+}
+.station-search:focus {
+  outline: 3px solid rgba(37, 99, 235, .18);
+  border-color: #2563eb;
+}
+.station-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  gap: 12px;
+}
+.station-card {
+  display: block;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 14px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, background-color .14s ease;
+}
+a.station-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, .08);
+  border-color: #93c5fd;
+  background: #f8fbff;
+  text-decoration: none;
+}
+.station-card.is-active {
+  border-color: #2563eb;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, .10);
+}
+.station-card.is-disabled {
+  opacity: .72;
+  background: #f8fafc;
+}
+.station-card strong {
+  display: block;
+  color: #0f172a;
+  font-size: 1rem;
+}
+.station-card span {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+  font-size: .88rem;
+  line-height: 1.35;
+}
+.station-status {
+  display: inline-flex !important;
+  width: fit-content;
+  margin-top: 10px !important;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: .76rem !important;
+  font-weight: 850;
+  color: #047857 !important;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+.station-card.is-disabled .station-status {
+  color: #b45309 !important;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+.station-empty {
+  display: none;
+  color: #64748b;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 12px;
+}
+.station-empty.is-visible { display: block; }
+.station-maintenance-note {
+  margin-top: 14px;
+  color: #64748b;
+  font-size: .9rem;
+}
+@media (max-width: 700px) {
+  .comparison-stations-section { padding: 0 12px; }
+  .comparison-stations-card { padding: 18px; }
+  .comparison-stations-head, .station-toolbar { flex-direction: column; align-items: stretch; }
+  .station-search { width: 100%; }
+}
+@media print {
+  .comparison-stations-section { display: none; }
+}

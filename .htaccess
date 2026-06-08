@@ -1,0 +1,18 @@
+# DMAP-AI clean URL rules for Apache hosting
+# Place this file in the website root.
+
+DirectoryIndex index.html
+RewriteEngine On
+
+# If a browser requests /index or /index.html, send it to the clean folder URL.
+# THE_REQUEST prevents loops from internal rewrites.
+RewriteCond %{THE_REQUEST} \s/+method-comparison/index(?:\.html)?[\s?] [NC]
+RewriteRule ^method-comparison/index(?:\.html)?$ /method-comparison/ [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+method-comparison/(.+)/index(?:\.html)?[\s?] [NC]
+RewriteRule ^method-comparison/(.+)/index(?:\.html)?$ /method-comparison/$1/ [R=301,L]
+
+# Serve the landing page and station folders internally without changing the browser URL.
+RewriteRule ^method-comparison/?$ method-comparison/index.html [L]
+RewriteCond %{DOCUMENT_ROOT}/method-comparison/$1/index.html -f
+RewriteRule ^method-comparison/([^/.]+)/?$ method-comparison/$1/index.html [L]

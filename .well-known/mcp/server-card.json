@@ -1,0 +1,89 @@
+{
+  "serverInfo": {
+    "name": "DMAP-AI MCP Server",
+    "version": "1.0.3"
+  },
+  "authentication": {
+    "required": false
+  },
+  "tools": [
+    {
+      "name": "debug_ping",
+      "description": "Confirms the DMAP-AI MCP server is live and returns the current tool version and available free tools.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "run_spi_table",
+      "description": "Returns a Standardized Precipitation Index table for a selected location, time period, SPI scale, and climate data source.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "latitude": { "type": "number" },
+          "longitude": { "type": "number" },
+          "start_date": { "type": "string" },
+          "end_date": { "type": "string" },
+          "baseline_start": { "type": "integer" },
+          "baseline_end": { "type": "integer" },
+          "spi_scale": { "type": "integer" },
+          "data_source": { "type": "string" },
+          "step": { "type": "string" }
+        },
+        "required": ["latitude", "longitude"]
+      }
+    },
+    {
+      "name": "run_drought_severity_events",
+      "description": "Detects drought severity events using SPI and returns event start, end, duration, minimum SPI, and magnitude.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "latitude": { "type": "number" },
+          "longitude": { "type": "number" },
+          "start_date": { "type": "string" },
+          "end_date": { "type": "string" },
+          "spi_scale": { "type": "integer" },
+          "data_source": { "type": "string" },
+          "severity_threshold": { "type": "string" }
+        },
+        "required": ["latitude", "longitude"]
+      }
+    },
+    {
+      "name": "run_wavelet_scalogram",
+      "description": "Runs wavelet scalogram analysis for SPI and returns compact time-period power diagnostics.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "latitude": { "type": "number" },
+          "longitude": { "type": "number" },
+          "start_date": { "type": "string" },
+          "end_date": { "type": "string" },
+          "spi_scale": { "type": "integer" },
+          "data_source": { "type": "string" }
+        },
+        "required": ["latitude", "longitude"]
+      }
+    },
+    {
+      "name": "run_drought_periodicity_analysis",
+      "description": "Computes global wavelet spectrum and identifies dominant drought periodicity for a selected location.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "latitude": { "type": "number" },
+          "longitude": { "type": "number" },
+          "start_date": { "type": "string" },
+          "end_date": { "type": "string" },
+          "spi_scale": { "type": "integer" },
+          "data_source": { "type": "string" }
+        },
+        "required": ["latitude", "longitude"]
+      }
+    }
+  ],
+  "resources": [],
+  "prompts": []
+}

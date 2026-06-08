@@ -1,0 +1,50 @@
+[
+  {
+    "station_number": 1,
+    "name": "Phoenix, Arizona",
+    "slug": "phoenix-arizona",
+    "url": "/method-comparison/phoenix-arizona/",
+    "coordinates": "33.4484, -112.0740",
+    "period": "1981-2025",
+    "index": "SPI, yearly calendar-year aggregation",
+    "data_source": "NASA POWER",
+    "status": "Available",
+    "summary": "Chart-only vs DMAP-AI structured-request interpretation for drought severity and wavelet variability."
+  },
+  {
+    "station_number": 2,
+    "name": "Tucson, Arizona",
+    "slug": "tucson-arizona",
+    "url": "/method-comparison/tucson-arizona/",
+    "coordinates": "32.2226, -110.9747",
+    "period": "1981-2025",
+    "index": "SPI, yearly calendar-year aggregation",
+    "data_source": "NASA POWER",
+    "status": "Available",
+    "summary": "Chart-only vs DMAP-AI structured-request interpretation for drought severity and wavelet variability."
+  },
+  {
+    "station_number": 3,
+    "name": "Yuma, Arizona",
+    "slug": "yuma-arizona",
+    "url": "/method-comparison/yuma-arizona/",
+    "coordinates": "32.6927, -114.6277",
+    "period": "1981-2025",
+    "index": "SPI, yearly calendar-year aggregation",
+    "data_source": "NASA POWER",
+    "status": "Available",
+    "summary": "Chart-only vs DMAP-AI structured-request interpretation for drought severity and wavelet variability."
+  },
+  {
+    "station_number": 4,
+    "name": "Flagstaff, Arizona",
+    "slug": "flagstaff-arizona",
+    "url": "/method-comparison/flagstaff-arizona/",
+    "coordinates": "35.1983, -111.6513",
+    "period": "1981-2025",
+    "index": "SPI, yearly / SPI-12 calendar-year interpretation",
+    "data_source": "NASA POWER",
+    "status": "Available",
+    "summary": "Chart-only vs DMAP-AI structured-request interpretation for drought severity and wavelet variability."
+  }
+]

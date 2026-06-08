@@ -1,0 +1,195 @@
+DMAP-AI Research Free Version — AI Interpretation Request/Answer Titles
+=======================================================================
+
+General rule
+------------
+The free Research Version sends ONE selected chart per AI request. The user must choose one chart only.
+
+Every AI request sends these top-level request titles/sections:
+1. mode
+2. selected_chart_id
+3. selected_chart_label
+4. general_context
+5. category_context
+6. chart_context
+7. output_contract
+
+Always-sent general_context fields
+----------------------------------
+- platform
+- version
+- analysis_type
+- drought_index
+- drought_index_label
+- location
+- time_scale
+- time_period
+- baseline
+- data_source
+- units
+- drought_threshold
+
+Always-sent category_context fields
+-----------------------------------
+Only the ACTIVE category method is sent to AI. We do NOT send all category systems.
+
+- selected_method
+- selected_method_label
+- note
+- threshold_reference
+- severity_threshold_for_events
+- row_category_source
+
+Category methods:
+- classic: Classic SPI thresholds
+- usdm: USDM-style SPI/SPEI ranges
+- quantile: Percentile bands (statistical)
+- kmeans: AI/ML – k-means clusters
+
+The SPI table rows sent to AI include the category label produced by the active selected method.
+
+Extra fields added depending on the selected chart
+--------------------------------------------------
+
+1) SPI time series (line chart)
+Sent chart_context fields:
+- focus_chart
+- project
+- dataset
+- spi_config
+- category_context
+- run
+- spi_yearly_table
+- spi_line_series
+- spi_line_bounds
+
+Expected Gemini output titles:
+1. Overview of SPI conditions
+2. Main dry and wet periods
+3. Drought-category interpretation
+4. Data and method notes
+
+2) Precipitation anomaly (bar chart)
+Sent chart_context fields:
+- focus_chart
+- project
+- dataset
+- spi_config
+- category_context
+- run
+- spi_anomaly_series
+- spi_line_series
+
+Expected Gemini output titles:
+1. Overview of precipitation anomalies
+2. Years with strong dry or wet departures
+3. Link between precipitation and SPI behavior
+4. Data and method notes
+
+3) Drought severity — SPI line with shaded events
+Sent chart_context fields:
+- focus_chart
+- project
+- dataset
+- spi_config
+- category_context
+- run
+- spi_line_series
+- spi_line_bounds
+- spi_drought_events
+
+Expected Gemini output titles:
+1. Overview of drought severity
+2. Drought events and duration
+3. Magnitude and minimum SPI interpretation
+4. Threshold and method notes
+
+4) Wavelet scalogram (power vs time & period)
+Sent chart_context fields:
+- focus_chart
+- project
+- dataset
+- spi_config
+- category_context
+- run
+- wavelet_scalogram
+- wavelet_summary
+- wavelet_reliability
+
+Expected Gemini output titles:
+1. Overview of the scalogram
+2. Strong fluctuation periods
+3. Timing of drought variability
+4. Reliability and method notes
+
+5) Global wavelet spectrum (SPI)
+Sent chart_context fields:
+- focus_chart
+- project
+- dataset
+- spi_config
+- category_context
+- run
+- global_wavelet_spectrum
+- wavelet_summary
+- wavelet_reliability
+
+Expected Gemini output titles:
+1. Overview of dominant periods
+2. Main spectral peaks
+3. Possible drought-cycle interpretation
+4. Reliability and method notes
+
+6) SPI–precipitation coherence vs period
+Sent chart_context fields:
+- focus_chart
+- project
+- dataset
+- spi_config
+- category_context
+- run
+- wavelet_coherence
+- wavelet_summary
+- wavelet_reliability
+
+Expected Gemini output titles:
+1. Overview of coherence
+2. Periods with stronger SPI-precipitation linkage
+3. Periods with weak linkage or uncertainty
+4. Reliability and method notes
+
+7) Copula dependence diagnostics
+Sent chart_context fields:
+- focus_chart
+- project
+- dataset
+- spi_config
+- category_context
+- run
+- copula
+
+Expected Gemini output titles:
+1. Overview of dependence structure
+2. Drought persistence probability
+3. New drought probability and event length
+4. Method notes and caution
+
+Recommended prompt strategy used now
+------------------------------------
+The frontend sends a clean structured JSON request to the backend.
+The backend builds the Gemini prompt using:
+- a fixed system instruction for DMAP-AI drought/climate interpretation
+- the selected chart label
+- chart-specific output titles
+- general_context
+- category_context
+- chart_context
+- chart-specific interpretation limits
+
+This is better than the older frontend prompt because:
+- the Gemini API key stays hidden in the backend
+- only one selected chart is interpreted in the free version
+- output headings change by chart type
+- the active drought-category method is explicit
+- category systems are not mixed
+- debug JSON is not printed to the browser console

@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DMAP-AI Station 1 Result: ChatGPT AI Interpretation Comparison | Phoenix, Arizona</title>
+  <meta name="description" content="A DMAP-AI Station 1 research page comparing chart-only and structured-request ChatGPT interpretation for SPI drought severity and wavelet variability in Phoenix, Arizona from 1981 to 2025.">
+  <meta name="keywords" content="DMAP-AI, drought analysis, SPI, wavelet scalogram, drought severity, Phoenix Arizona, ChatGPT interpretation, AgriMetSoft">
+  <meta name="robots" content="index, follow">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/method-comparison/comparison-style.css">
+  <link rel="canonical" href="https://droughtanalysis.com/method-comparison/phoenix-arizona/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DMAP-AI Station 1 Result: ChatGPT AI Interpretation Comparison">
+  <meta property="og:description" content="Comparison of chart-only and structured-request ChatGPT interpretation for DMAP-AI drought outputs at Phoenix, Arizona.">
+  <meta property="og:url" content="https://droughtanalysis.com/method-comparison/phoenix-arizona/">
+  <meta property="og:image" content="https://droughtanalysis.com/method-comparison/phoenix-arizona/images/severity.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "DMAP-AI Station 1 Result: ChatGPT AI Interpretation Comparison",
+    "description": "A DMAP-AI Station 1 research page comparing chart-only and structured-request ChatGPT interpretation for SPI drought severity and wavelet variability in Phoenix, Arizona from 1981 to 2025.",
+    "author": {"@type": "Organization", "name": "AgriMetSoft LLC"},
+    "publisher": {"@type": "Organization", "name": "AgriMetSoft LLC"},
+    "about": ["DMAP-AI", "Standardized Precipitation Index", "drought severity", "wavelet scalogram"],
+    "datePublished": "2026-05-29",
+    "dateModified": "2026-05-29"
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #f4f8fb;
+      --panel: #ffffff;
+      --panel-2: #f8fafc;
+      --text: #0f172a;
+      --muted: #475569;
+      --soft: #e2e8f0;
+      --line: #dbeafe;
+      --brand: #1d4ed8;
+      --brand-2: #0891b2;
+      --brand-3: #0f766e;
+      --accent: #f97316;
+      --danger: #dc2626;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(14, 165, 233, 0.16), transparent 32rem),
+        linear-gradient(180deg, #eef7ff 0%, var(--bg) 35%, #ffffff 100%);
+      line-height: 1.65;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+    }
+    .nav-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: #0f172a; }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+    .brand-link:hover { text-decoration: none; }
+    .brand-link picture { display: block; line-height: 0; }
+    .brand-logo {
+      display: block;
+      width: 225px;
+      max-width: 225px;
+      height: auto;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.24);
+    }
+    .main-nav { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: flex-end; }
+    .main-nav a {
+      font-size: 0.92rem;
+      color: #334155;
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+    .main-nav a:hover { background: #eff6ff; text-decoration: none; color: #1d4ed8; }
+    .main-nav .launch { background: #1d4ed8; color: #fff; box-shadow: 0 8px 18px rgba(29, 78, 216, 0.2); }
+    .main-nav .launch:hover { background: #1e40af; color: #fff; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+    .hero { padding: 56px 0 34px; }
+    .hero-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(239,246,255,0.86));
+      border: 1px solid rgba(191, 219, 254, 0.9);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -100px;
+      top: -120px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(8, 145, 178, 0.18), transparent 70%);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #155e75;
+      border: 1px solid #a5f3fc;
+      font-weight: 700;
+      font-size: 0.86rem;
+      letter-spacing: 0.01em;
+    }
+    h1 {
+      margin: 0 0 12px;
+      max-width: 900px;
+      font-size: clamp(2rem, 4.5vw, 3.7rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+    .subtitle { max-width: 820px; margin: 0; color: var(--muted); font-size: 1.14rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-weight: 750;
+      border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 12px 24px rgba(29,78,216,.22); }
+    .btn-primary:hover { background: #1e40af; color: #fff; text-decoration: none; }
+    .btn-secondary { background: #fff; color: #1d4ed8; border-color: #bfdbfe; }
+    .btn-secondary:hover { background: #eff6ff; text-decoration: none; }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .metric {
+      background: rgba(255,255,255,.82);
+      border: 1px solid #dbeafe;
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .metric span { display: block; color: #64748b; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+    .metric strong { display: block; margin-top: 4px; font-size: 1.02rem; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 26px; align-items: start; padding-bottom: 60px; }
+    main.article { min-width: 0; }
+    .toc-card {
+      position: sticky;
+      top: 84px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      box-shadow: 0 14px 35px rgba(15,23,42,0.06);
+      padding: 18px;
+    }
+    .toc-card h2 { font-size: .95rem; margin: 0 0 10px; text-transform: uppercase; letter-spacing: .09em; color: #334155; }
+    .toc-card ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+    .toc-card a { display: block; color: #475569; font-size: .92rem; padding: 6px 8px; border-radius: 10px; }
+    .toc-card a:hover { background: #eff6ff; color: #1d4ed8; text-decoration: none; }
+    .toc-level-3 { padding-left: 10px; border-left: 2px solid #e2e8f0; }
+    .article-section {
+      background: var(--panel);
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      box-shadow: 0 14px 35px rgba(15,23,42,0.055);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .article-section h2 {
+      margin: 0 0 18px;
+      font-size: clamp(1.45rem, 2.5vw, 2.05rem);
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+    }
+    .article-section h2::after {
+      content: "";
+      display: block;
+      width: 64px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      border-radius: 999px;
+      margin-top: 12px;
+    }
+    .article-section h3 {
+      margin: 28px 0 10px;
+      padding-top: 4px;
+      font-size: 1.18rem;
+      color: #0f172a;
+    }
+    p { margin: 0 0 16px; color: #334155; }
+    .lead-note {
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border-left: 5px solid var(--brand-2);
+      color: #334155;
+    }
+    .caption {
+      font-size: 0.93rem;
+      color: #475569;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-top: -6px;
+    }
+    .figure-card {
+      margin: 18px 0 14px;
+      padding: 12px;
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.07);
+    }
+    .figure-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .table-scroll { overflow-x: auto; margin: 18px 0 22px; border-radius: 16px; border: 1px solid #dbeafe; background: #fff; }
+    table { width: 100%; border-collapse: collapse; min-width: 620px; font-size: .94rem; }
+    th {
+      text-align: left;
+      background: linear-gradient(180deg, #eff6ff, #e0f2fe);
+      color: #0f172a;
+      border-bottom: 1px solid #bfdbfe;
+      padding: 12px 13px;
+      font-weight: 800;
+      vertical-align: top;
+    }
+    td {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 11px 13px;
+      vertical-align: top;
+      color: #334155;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+    tr:last-child td { border-bottom: 0; }
+    .meta-table { min-width: 500px; }
+    .meta-table td:first-child { font-weight: 760; color: #0f172a; width: 32%; }
+    .tag { font-weight: 800; white-space: nowrap; }
+    .tag-moderate { color: #b45309; }
+    .tag-severe { color: #c2410c; }
+    .tag-extreme { color: #b91c1c; }
+    .tag-none { color: #047857; }
+    .tag-long-period-low-support { color: #7c2d12; }
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      background: #ffffff;
+      color: #64748b;
+      padding: 28px 0;
+      font-size: .95rem;
+    }
+    .footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 12px; }
+    @media (max-width: 950px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-card { position: static; order: -1; }
+      .metric-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 680px) {
+      .brand-logo { width: 165px; max-width: 165px; }
+      .nav-wrap { align-items: flex-start; flex-direction: column; }
+      .main-nav { justify-content: flex-start; }
+      .hero-card { padding: 24px; border-radius: 22px; }
+      .article-section { padding: 22px; }
+      .metric-row { grid-template-columns: 1fr; }
+      table { font-size: .9rem; }
+    }
+    @media print {
+      .site-header, .toc-card, .hero-actions, .footer { display: none; }
+      body { background: #fff; }
+      .layout { display: block; }
+      .article-section, .hero-card { box-shadow: none; border-color: #cbd5e1; }
+    }
+  </style>
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+</head>
+<body id="top">
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="eyebrow">Research note - Station 1</div>
+        <h1>DMAP-AI Station 1 Result: ChatGPT AI Interpretation Comparison</h1>
+        <p class="subtitle">Phoenix, Arizona analysis point (33.4484, -112.0740), 1981-2025</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/DMAP_AI_App">Open DMAP-AI Research Version</a>
+          <a class="btn btn-secondary" href="#executive-summary">Read the comparison</a>
+        </div>
+        <div class="metric-row" aria-label="Key metadata">
+          <div class="metric"><span>Location</span><strong>Phoenix, Arizona</strong></div>
+          <div class="metric"><span>Period</span><strong>1981-2025</strong></div>
+          <div class="metric"><span>Index</span><strong>SPI - yearly</strong></div>
+          <div class="metric"><span>Methods</span><strong>Chart-only vs structured request</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="comparison-stations" class="comparison-stations-section" aria-labelledby="comparison-stations-title">
+    <div class="comparison-stations-card">
+      <div class="comparison-stations-head">
+        <div>
+          <h2 id="comparison-stations-title">Comparison stations</h2>
+          <p>Use this shared station list to move between city/station comparison pages. New stations are controlled from one central file: <code>/method-comparison/stations.json</code>.</p>
+        </div>
+        <a class="station-count-pill" href="/method-comparison/">All comparisons</a>
+      </div>
+      <div data-stations-nav data-current-slug="phoenix-arizona">
+        <div class="station-grid">
+          <a class="station-card is-active" href="/method-comparison/phoenix-arizona/">
+            <strong>Station 1. Phoenix, Arizona</strong>
+            <span>Coordinates: 33.4484, -112.0740</span>
+            <span>Period: 1981-2025</span>
+            <span>Chart-only vs structured-request interpretation.</span>
+            <span class="station-status">Current page</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container layout">
+    <main class="article">
+      <section id="executive-summary" class="article-section"><h2>Executive summary</h2>
+<p>This first-station draft evaluates two ChatGPT interpretation methods for DMAP-AI outputs. Method A uses the chart image only. Method B uses the DMAP-AI structured chart-specific AI request, including selected chart context, dataset context, category rules, numeric diagnostic values, and output-section constraints. The evaluation is separated into drought severity and drought periodicity/variability.</p>
+<div class="table-scroll"><table class="meta-table"><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>Analysis point</td><td>Phoenix, Arizona (metadata label: Selected point (33.4484, -112.0740))</td></tr><tr><td>Coordinates</td><td>33.4484, -112.0740</td></tr><tr><td>Data source</td><td>NASA POWER (free, point-based) / NASA POWER</td></tr><tr><td>Drought index and scale</td><td>SPI, yearly calendar-year aggregation</td></tr><tr><td>Analysis period and baseline</td><td>1981-2025; baseline: 1981-01-01 to 2025-12-31</td></tr><tr><td>Category method</td><td>Classic SPI thresholds</td></tr><tr><td>Drought-event threshold</td><td>SPI &lt;= -0.99</td></tr></tbody></table></div>
+<p class="lead-note">Methodological note. The uploaded periodicity ZIP contains the wavelet scalogram chart and a structured scalogram AI request. The full JSON also contains the global wavelet spectrum values used to identify the dominant period. For the final paper workflow, the global wavelet spectrum chart should also be exported so chart-only periodicity and structured-request periodicity are matched to the same chart type.</p>
+</section>
+<section id="part-a-drought-severity-interpretation" class="article-section"><h2>Part A. Drought severity interpretation</h2>
+<h3 id="a1-selected-chart">A1. Selected chart</h3>
+<figure class="figure-card"><picture><source srcset="images/severity.webp" type="image/webp"><img src="images/severity.png" alt="DMAP-AI drought severity chart for Phoenix, Arizona" loading="lazy" width="1200" height="650"></picture></figure>
+<p class="caption">Figure 1. DMAP-AI drought severity chart for the Phoenix analysis point. The red dashed line shows the SPI drought-event threshold of -0.99; shaded areas indicate detected drought events.</p>
+<h3 id="a2-method-a---chatgpt-chart-only-interpretation">A2. Method A - ChatGPT chart-only interpretation</h3>
+<p>From the chart alone, the Phoenix SPI series shows several short drought episodes where the blue SPI line falls below the red threshold. The most visually severe drought occurs around 2002, where SPI drops far below -2.0. Other clear below-threshold drought years are visible around 1996, 1999, 2006, 2009, 2011-2012, and 2020. The shaded region around 2011-2012 suggests the only visibly multi-year drought event. Overall, the chart suggests episodic drought behavior rather than a long continuous drought period.</p>
+<p>The chart-only interpretation is useful for identifying the most obvious drought features, especially the extreme 2002 event and the apparent short duration of most drought episodes. However, without the event table or structured context, the exact number of drought events, event magnitudes, minimum SPI values, and the distinction between the worst event and the longest event remain uncertain.</p>
+<h3 id="a3-method-b---chatgpt-interpretation-using-the-dmap-ai-structured-severity-reque">A3. Method B - ChatGPT interpretation using the DMAP-AI structured severity request</h3>
+<p>Using the structured DMAP-AI severity request, the interpretation becomes quantitative. DMAP-AI defines drought events using the threshold SPI &lt;= -0.99 under the Classic SPI threshold scheme. The run identifies 8 drought events and 9 drought years during 1981-2025. The SPI series ranges from -2.431 to 2.442, with mean SPI near zero (-0.0004), which is consistent with standardized SPI behavior over the selected baseline.</p>
+<div class="table-scroll"><table class="data-table"><thead><tr><th>Event</th><th>Period</th><th>Duration (years)</th><th>Min SPI</th><th>Magnitude</th><th>Class</th></tr></thead><tbody><tr><td>1</td><td>1989</td><td>1</td><td>-1.032</td><td>0.042</td><td class="tag tag-moderate">moderate</td></tr><tr><td>2</td><td>1996</td><td>1</td><td>-1.326</td><td>0.336</td><td class="tag tag-moderate">moderate</td></tr><tr><td>3</td><td>1999</td><td>1</td><td>-1.117</td><td>0.127</td><td class="tag tag-moderate">moderate</td></tr><tr><td>4</td><td>2002</td><td>1</td><td>-2.431</td><td>1.441</td><td class="tag tag-extreme">extreme</td></tr><tr><td>5</td><td>2006</td><td>1</td><td>-1.123</td><td>0.133</td><td class="tag tag-moderate">moderate</td></tr><tr><td>6</td><td>2009</td><td>1</td><td>-1.503</td><td>0.513</td><td class="tag tag-severe">severe</td></tr><tr><td>7</td><td>2011-2012</td><td>2</td><td>-1.102</td><td>0.210</td><td class="tag tag-moderate">moderate</td></tr><tr><td>8</td><td>2020</td><td>1</td><td>-1.743</td><td>0.753</td><td class="tag tag-severe">severe</td></tr></tbody></table></div>
+<p>The most severe drought event is Event 4 in 2002, with minimum SPI = -2.431 and magnitude = 1.441. Under Classic SPI thresholds, this is an extreme drought event. The longest event is Event 7 from 2011 to 2012, lasting 2 yearly steps, but its minimum SPI (-1.102) places it in the moderate drought range. Thus, severity and persistence are not the same in this case: the worst event is a single-year extreme drought, while the longest event is a two-year moderate drought.</p>
+<h3 id="a4-severity-method-comparison">A4. Severity method comparison</h3>
+<div class="table-scroll"><table class="data-table"><thead><tr><th>Evaluation item</th><th>Method A: chart only</th><th>Method B: structured request</th><th>Interpretive gain</th></tr></thead><tbody><tr><td>Most severe drought</td><td>Identifies 2002 visually as the deepest negative SPI event.</td><td>Quantifies 2002 as Event 4, minimum SPI = -2.431, magnitude = 1.441, extreme drought.</td><td>Metadata confirms the visual conclusion and adds exact values.</td></tr><tr><td>Number of events</td><td>Can see multiple threshold crossings, but exact event count is uncertain.</td><td>Identifies 8 events and 9 drought years.</td><td>Structured request improves completeness and reproducibility.</td></tr><tr><td>Persistence</td><td>Shows most events appear short and 2011-2012 appears multi-year.</td><td>Identifies Event 7 as the longest event, lasting 2 yearly steps.</td><td>Structured request distinguishes duration from severity.</td></tr><tr><td>Threshold/method</td><td>Threshold line is visible, but category rules are not fully explicit.</td><td>Provides SPI &lt;= -0.99, Classic SPI category thresholds, and event-magnitude definition.</td><td>Structured request reduces ambiguity.</td></tr><tr><td>Hallucination risk</td><td>May overgeneralize from the extreme 2002 dip or miss small one-year events.</td><td>Constrains interpretation to event table, threshold, and active category method.</td><td>DMAP-AI reduces unsupported claims and improves discipline.</td></tr></tbody></table></div>
+</section>
+<section id="part-b-periodicity-and-wavelet-variability-interpretation" class="article-section"><h2>Part B. Periodicity and wavelet-variability interpretation</h2>
+<h3 id="b1-selected-chart">B1. Selected chart</h3>
+<figure class="figure-card"><picture><source srcset="images/scalogram.webp" type="image/webp"><img src="images/scalogram.png" alt="DMAP-AI wavelet scalogram for Phoenix, Arizona" loading="lazy" width="1200" height="650"></picture></figure>
+<p class="caption">Figure 2. DMAP-AI wavelet scalogram for the Phoenix analysis point. The chart shows wavelet power across time index and period/scale index.</p>
+<h3 id="b2-method-a---chatgpt-chart-only-interpretation">B2. Method A - ChatGPT chart-only interpretation</h3>
+<p>From the scalogram image alone, the chart shows several localized areas of stronger wavelet power across different time and period indices. The image indicates that SPI variability is not uniform through time; some bands appear stronger in the earlier, middle, and later parts of the record. However, the chart-only view does not provide numeric period labels, global-power rankings, reliability scores, or a formal significance test. Therefore, it is not possible to determine a defensible dominant periodicity from the image alone.</p>
+<p>A chart-only interpretation could easily overstate the meaning of visible color patches by calling them drought cycles. A safer chart-only conclusion is that the scalogram suggests time-localized variability at multiple scales, but the chart alone is insufficient to identify an exact dominant period or to claim a stable recurring drought cycle.</p>
+<h3 id="b3-method-b---chatgpt-interpretation-using-the-dmap-ai-structured-scalogram-requ">B3. Method B - ChatGPT interpretation using the DMAP-AI structured scalogram request</h3>
+<p>The structured DMAP-AI scalogram request supplies the numeric wavelet diagnostics that are not readable from the chart alone. The strongest and most reliable wavelet band is centered at approximately 9.22 yearly steps, with global power 1.393, coherence 0.988, and reliability 0.976. The top-ranked periods cluster near the 8-12 year range, which supports interpretation as a near-decadal variability band rather than an isolated single-period artifact.</p>
+<div class="table-scroll"><table class="data-table"><thead><tr><th>Period (years)</th><th>Power</th><th>Coherence</th><th>Reliability</th><th>Flags</th><th>Caution</th></tr></thead><tbody><tr><td>9.22</td><td>1.393</td><td>0.988</td><td>0.976</td><td class="tag tag-none">none</td><td>No extra caution.</td></tr><tr><td>10.13</td><td>1.373</td><td>0.989</td><td>0.964</td><td class="tag tag-none">none</td><td>No extra caution.</td></tr><tr><td>8.30</td><td>1.333</td><td>0.988</td><td>0.934</td><td class="tag tag-none">none</td><td>No extra caution.</td></tr><tr><td>11.04</td><td>1.308</td><td>0.990</td><td>0.921</td><td class="tag tag-none">none</td><td>No extra caution.</td></tr><tr><td>11.96</td><td>1.218</td><td>0.992</td><td>0.861</td><td class="tag tag-long-period-low-support">long_period_low_support</td><td>Interpret cautiously.</td></tr></tbody></table></div>
+<p>This result should be described as a historical variability signal, not as a deterministic drought cycle. The structured request indicates strong internal wavelet support for a near-decadal band, but no formal statistical significance test is provided. In addition, SPI-precipitation coherence should not be interpreted as independent physical validation, because SPI is derived from precipitation. The appropriate interpretation is that the Phoenix SPI series contains a prominent near-decadal variability band, not that drought will recur at a fixed 9.2-year interval.</p>
+<h3 id="b4-periodicity-method-comparison">B4. Periodicity method comparison</h3>
+<div class="table-scroll"><table class="data-table"><thead><tr><th>Evaluation item</th><th>Method A: chart only</th><th>Method B: structured request</th><th>Interpretive gain</th></tr></thead><tbody><tr><td>Dominant period</td><td>Cannot identify a numeric dominant period from the scalogram image alone.</td><td>Identifies a strongest/reliable band at 9.22 yearly steps.</td><td>Structured request supplies the numeric diagnostic evidence.</td></tr><tr><td>Variability pattern</td><td>Shows localized power patches and nonuniform time-scale variability.</td><td>Connects the scalogram to global power, coherence, and reliability-ranked periods.</td><td>Structured request connects visual patterns to quantitative diagnostics.</td></tr><tr><td>Cycle claim risk</td><td>High risk of saying that Phoenix has a recurring drought cycle based on visible patches.</td><td>Frames the result as a variability band and avoids deterministic recurrence claims.</td><td>DMAP-AI reduces overinterpretation.</td></tr><tr><td>Uncertainty</td><td>Chart alone does not show significance, reliability, or caution flags.</td><td>Provides coherence, reliability, support ratio, flags, and method notes.</td><td>Structured request improves scientific caution.</td></tr><tr><td>Best final-paper chart</td><td>Scalogram is useful for time-localized variability, but not ideal for dominant-period chart-only testing.</td><td>Structured request includes global spectrum values, but the global spectrum image should be exported for matched comparison.</td><td>Final workflow should include the global spectrum chart for periodicity.</td></tr></tbody></table></div>
+</section>
+<section id="station-1-research-conclusion" class="article-section"><h2>Station 1 research conclusion</h2>
+<p>For the Phoenix analysis point, the severity case demonstrates that chart-only interpretation can identify the obvious extreme drought year, but DMAP-AI structured context is needed to quantify event count, duration, minimum SPI, drought magnitude, and the difference between severity and persistence. The periodicity case demonstrates a stronger role for structured context: the scalogram image alone cannot support an exact dominant-period claim, while the DMAP-AI structured request identifies a near-decadal variability band and constrains the interpretation to avoid unsupported deterministic-cycle language.</p>
+<p>Overall, Station 1 supports the study hypothesis: DMAP-AI structured chart-specific requests improve the precision, reproducibility, and scientific caution of ChatGPT drought interpretation compared with chart-only interpretation. The improvement is modest but useful for simple severity charts, and stronger for wavelet-based periodicity interpretation.</p>
+</section>
+<section id="appendix-structured-request-files-used-for-station-1" class="article-section"><h2>Appendix. Structured-request files used for Station 1</h2>
+<div class="table-scroll"><table class="data-table"><thead><tr><th>Item</th><th>ZIP path</th><th>Role</th></tr></thead><tbody><tr><td>Severity request</td><td>severity/ai/severity/ai_structured_request.json</td><td>Drought severity — SPI line with shaded events</td></tr><tr><td>Severity backend audit/prompt</td><td>severity/ai/severity/ai_backend_audit_prompt.json</td><td>Contains output contract, system instruction, prompt text, normalized request, and model metadata.</td></tr><tr><td>Periodicity/scalogram request</td><td>severity/ai/scalogram/ai_structured_request.json</td><td>Wavelet scalogram (power vs time &amp; period)</td></tr><tr><td>Periodicity/scalogram backend audit/prompt</td><td>severity/ai/scalogram/ai_backend_audit_prompt.json</td><td>Contains output contract, system instruction, prompt text, normalized request, and model metadata.</td></tr></tbody></table></div>
+<p>Note: The exported Gemini model-response files were present in the ZIP, but the interpretations in this document are written as ChatGPT interpretations using the chart-only view or the DMAP-AI structured request, according to the two-method study design.</p>
+</section>
+    </main>
+    <aside class="toc-card" aria-label="Page contents">
+      <h2>Contents</h2>
+      <ol>
+        <li class="toc-level-2"><a href="#comparison-stations">Comparison stations</a></li>
+        <li class="toc-level-2"><a href="#executive-summary">Executive summary</a></li>
+<li class="toc-level-2"><a href="#part-a-drought-severity-interpretation">Part A. Drought severity interpretation</a></li>
+<li class="toc-level-3"><a href="#a1-selected-chart">A1. Selected chart</a></li>
+<li class="toc-level-3"><a href="#a2-method-a---chatgpt-chart-only-interpretation">A2. Method A - ChatGPT chart-only interpretation</a></li>
+<li class="toc-level-3"><a href="#a3-method-b---chatgpt-interpretation-using-the-dmap-ai-structured-severity-reque">A3. Method B - ChatGPT interpretation using the DMAP-AI structured severity request</a></li>
+<li class="toc-level-3"><a href="#a4-severity-method-comparison">A4. Severity method comparison</a></li>
+<li class="toc-level-2"><a href="#part-b-periodicity-and-wavelet-variability-interpretation">Part B. Periodicity and wavelet-variability interpretation</a></li>
+<li class="toc-level-3"><a href="#b1-selected-chart">B1. Selected chart</a></li>
+<li class="toc-level-3"><a href="#b2-method-a---chatgpt-chart-only-interpretation">B2. Method A - ChatGPT chart-only interpretation</a></li>
+<li class="toc-level-3"><a href="#b3-method-b---chatgpt-interpretation-using-the-dmap-ai-structured-scalogram-requ">B3. Method B - ChatGPT interpretation using the DMAP-AI structured scalogram request</a></li>
+<li class="toc-level-3"><a href="#b4-periodicity-method-comparison">B4. Periodicity method comparison</a></li>
+<li class="toc-level-2"><a href="#station-1-research-conclusion">Station 1 research conclusion</a></li>
+<li class="toc-level-2"><a href="#appendix-structured-request-files-used-for-station-1">Appendix. Structured-request files used for Station 1</a></li>
+      </ol>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div>&copy; 2026 AgriMetSoft. All rights reserved.</div>
+<!-- footer navigation removed (handled globally) -->
+    </div>
+  </footer>
+  <script src="/method-comparison/comparison-nav.js" defer></script>
+<script src="/assets/global-nav.js"></script>
+</body>
+</html>

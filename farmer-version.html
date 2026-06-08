@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>DMAP-AI Farmer Version | Agricultural Drought Risk Workflow</title>
+  <meta name="description" content="The DMAP-AI Farmer Version is under development. It is planned as an agricultural drought-risk workflow for crop-aware short-term moisture risk, drought indicators, and decision support." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="AgriMetSoft LLC" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="canonical" href="https://droughtanalysis.com/farmer-version" />
+
+  <!-- Optimized DMAP-AI logo preload -->
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" media="(max-width: 640px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" imagesrcset="/assets/logo-dmap-ai-225.webp 1x, /assets/logo-dmap-ai-450.webp 2x" type="image/webp" media="(min-width: 641px)" fetchpriority="high" />
+<!-- Favicons / app icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DMAP-AI" />
+  <meta property="og:title" content="DMAP-AI Farmer Version | Agricultural Drought Risk Workflow" />
+  <meta property="og:description" content="The DMAP-AI Farmer Version is under development and planned for crop-aware drought-risk analysis, short-term moisture risk, and field-level decision support." />
+  <meta property="og:url" content="https://droughtanalysis.com/farmer-version" />
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
+  <meta property="og:image:secure_url" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="DMAP-AI drought monitoring and analysis platform preview image" />
+
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DMAP-AI Farmer Version | Agricultural Drought Risk Workflow" />
+  <meta name="twitter:description" content="A planned crop-aware drought-risk workflow for farmers, advisors, and agricultural decision-makers." />
+  <meta name="twitter:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
+  <meta name="twitter:image:alt" content="DMAP-AI drought monitoring and analysis platform preview image" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6Z3VWV0W9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-W6Z3VWV0W9");
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "DMAP-AI Farmer Version",
+    "url": "https://droughtanalysis.com/farmer-version",
+    "image": "https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg",
+    "description": "The DMAP-AI Farmer Version is a planned agricultural drought-risk workflow for crop-aware short-term moisture risk and decision support.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AgriMetSoft LLC",
+      "url": "https://agrimetsoft.com/"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --blue-soft: #eff6ff;
+      --green-soft: #ecfdf5;
+      --green: #047857;
+      --amber-soft: #fffbeb;
+      --amber: #b45309;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      color: var(--slate-900);
+      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 48%, #eff6ff 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(100% - 2rem, 80rem);
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid var(--slate-200);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-block: .75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      min-width: 0;
+    }
+
+    .dmap-logo-img {
+      display: block;
+      width: auto;
+      height: 54px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: .875rem;
+      font-weight: 650;
+      color: var(--slate-700);
+    }
+
+    .nav-links a:hover { color: var(--blue-dark); }
+
+    .header-cta {
+      display: inline-flex;
+      padding: .55rem 1rem;
+      border-radius: .75rem;
+      background: var(--blue);
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, .15);
+    }
+
+    .header-cta:hover { background: var(--blue-dark); }
+
+    .hero {
+      padding-block: 3.5rem 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid #fde68a;
+      background: var(--amber-soft);
+      color: var(--amber);
+      padding: .25rem .75rem;
+      font-size: .875rem;
+      font-weight: 800;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      margin-top: 1.25rem;
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      font-weight: 850;
+      color: #020617;
+    }
+
+    .lead {
+      margin-top: 1.25rem;
+      max-width: 46rem;
+      color: var(--slate-600);
+      font-size: 1.125rem;
+      line-height: 1.78;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 1.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: .875rem;
+      padding: .75rem 1.25rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, .18);
+    }
+
+    .btn-primary:hover { background: var(--blue-dark); }
+
+    .btn-secondary {
+      background: white;
+      color: var(--slate-800);
+      border-color: var(--slate-200);
+    }
+
+    .btn-secondary:hover { background: var(--slate-50); }
+
+    .card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+      border-radius: 1rem;
+    }
+
+    .status-card {
+      padding: 1.5rem;
+    }
+
+    .status-box {
+      border-radius: 1.5rem;
+      border: 1px solid var(--slate-200);
+      background: linear-gradient(135deg, #fef3c7 0%, #eff6ff 55%, #ffffff 100%);
+      padding: 1.5rem;
+    }
+
+    .status-box h2 {
+      color: #020617;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .status-list {
+      display: grid;
+      gap: .9rem;
+      margin-top: 1.25rem;
+      padding: 0;
+      list-style: none;
+      color: var(--slate-700);
+    }
+
+    .status-list li {
+      display: flex;
+      gap: .7rem;
+      align-items: flex-start;
+    }
+
+    .dot {
+      margin-top: .45rem;
+      width: .5rem;
+      height: .5rem;
+      flex: 0 0 .5rem;
+      border-radius: 999px;
+      background: var(--blue);
+    }
+
+    .section {
+      padding-block: 3rem;
+    }
+
+    .section h2 {
+      font-size: clamp(1.8rem, 4vw, 2rem);
+      line-height: 1.16;
+      letter-spacing: -0.025em;
+      font-weight: 850;
+      color: #020617;
+    }
+
+    .section-intro {
+      max-width: 48rem;
+      color: var(--slate-600);
+      margin-top: .75rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.25rem;
+    }
+
+    .feature-card h3 {
+      color: var(--slate-900);
+      font-size: 1.1rem;
+      font-weight: 850;
+    }
+
+    .feature-card p {
+      margin-top: .5rem;
+      color: var(--slate-600);
+    }
+
+    .notice {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid #bfdbfe;
+      background: var(--blue-soft);
+      color: var(--slate-700);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--slate-200);
+      background: rgba(255, 255, 255, .72);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      padding-block: 1.5rem;
+      color: var(--slate-500);
+      font-size: .875rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .footer-links a:hover { color: var(--slate-700); }
+
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 1rem, 80rem); }
+      .dmap-logo-img { height: 42px; }
+      .header-cta { display: none; }
+      .hero { padding-block: 2.25rem; }
+      .lead { font-size: 1rem; line-height: 1.65; }
+      .actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+/* Optimized DMAP-AI logo display */
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex: 0 0 auto;
+}
+
+.brand-link:hover {
+  text-decoration: none;
+}
+
+.brand-link picture {
+  display: block;
+  line-height: 0;
+}
+
+.brand-logo {
+  display: block;
+  width: 225px;
+  max-width: 225px;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .brand-logo {
+    width: 160px;
+    max-width: 160px;
+    height: auto;
+  }
+}
+
+</style>
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+</head>
+
+<body>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Under development</p>
+          <h1>DMAP-AI Farmer Version is being developed</h1>
+          <p class="lead">
+            The Farmer Version is planned as a practical agricultural drought-risk workflow for farmers, crop advisors,
+            irrigation managers, and decision-makers who need short-term moisture-risk information in a field-friendly format.
+          </p>
+
+          <div class="actions">
+            <a href="/DMAP_AI_App" class="btn btn-primary">Use Research Version</a>
+            <a href="https://agrimetsoft.com/contact" class="btn btn-secondary">Contact AgriMetSoft</a>
+          </div>
+        </div>
+
+        <div class="card status-card">
+          <div class="status-box">
+            <h2>Planned Farmer Version focus</h2>
+            <ul class="status-list">
+              <li><span class="dot"></span><span>Short-term drought and moisture-risk summaries for the next 2–4 weeks.</span></li>
+              <li><span class="dot"></span><span>Crop-aware interpretation for corn and soybean workflows.</span></li>
+              <li><span class="dot"></span><span>Decision-oriented messages for producers, crop advisors, and local managers.</span></li>
+              <li><span class="dot"></span><span>Clear explanations that connect drought indicators with practical field conditions.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>Why this version is separate from the Research Version</h2>
+      <p class="section-intro">
+        The Research Version focuses on learning and point-based SPI analysis. The Farmer Version is planned for applied
+        agricultural decision support, where drought risk must be explained in relation to crop stage, short-term weather,
+        and field-management context.
+      </p>
+
+      <div class="feature-grid">
+        <article class="card feature-card">
+          <h3>Crop context</h3>
+          <p>
+            Future workflows are expected to include crop type, growing-stage information, and season-aware risk messages.
+          </p>
+        </article>
+
+        <article class="card feature-card">
+          <h3>Forward-looking risk</h3>
+          <p>
+            The goal is to support near-term planning using drought indicators and forecast-oriented information.
+          </p>
+        </article>
+
+        <article class="card feature-card">
+          <h3>Simple communication</h3>
+          <p>
+            Results should be easy to explain to farmers, advisors, agencies, and decision-makers.
+          </p>
+        </article>
+      </div>
+
+      <div class="notice">
+        <strong>Current availability:</strong> the Farmer Version is not active yet. Please use the Research Version for
+        the available point-based ERA5 yearly SPI workflow, or contact AgriMetSoft if you are interested in testing or collaboration.
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+<!-- footer navigation removed (handled globally) -->
+    </div>
+  </footer>
+<script src="/assets/global-nav.js"></script>
+</body>
+</html>

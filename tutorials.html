@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>DMAP-AI Tutorials | SPI Video, Research Version, and Farmer Version</title>
+<meta name="description" content="DMAP-AI tutorial hub with a point-based SPI video tutorial, a written Research Version guide, and Farmer Version information." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://droughtanalysis.com/tutorials" />
+
+
+  <!-- Optimized DMAP-AI logo preload -->
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" media="(max-width: 640px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" imagesrcset="/assets/logo-dmap-ai-225.webp 1x, /assets/logo-dmap-ai-450.webp 2x" type="image/webp" media="(min-width: 641px)" fetchpriority="high" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W6Z3VWV0W9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-W6Z3VWV0W9");
+</script>
+
+<!-- DMAP-AI brand assets -->
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="DMAP-AI" />
+<meta property="og:title" content="DMAP-AI Tutorials | SPI Video, Research Version, and Farmer Version" />
+<meta property="og:description" content="Choose a DMAP-AI tutorial: watch the point-based SPI video guide, read the Research Version guide, or review the Farmer Version page." />
+<meta property="og:url" content="https://droughtanalysis.com/tutorials" />
+<meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="DMAP-AI Tutorials | SPI Video, Research Version, and Farmer Version" />
+<meta name="twitter:description" content="Tutorial hub for the DMAP-AI point-based SPI video guide, Research Version tutorial, and Farmer Version workflow." />
+<meta name="twitter:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
+<style>
+:root{
+  --navy:#0f172a;
+  --slate:#334155;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --blue:#2563eb;
+  --blue-dark:#1d4ed8;
+  --green:#047857;
+  --green-soft:#ecfdf5;
+  --amber:#b45309;
+  --amber-soft:#fffbeb;
+  --soft:#f8fafc;
+  --soft-blue:#eff6ff;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--slate);
+  background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+  line-height:1.62;
+}
+a{color:#1d4ed8;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:min(100% - 2rem,80rem);margin-inline:auto}
+.topbar{
+  position:sticky;top:0;z-index:40;
+  background:rgba(255,255,255,.9);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(12px);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0}
+.brand{display:flex;align-items:center;gap:.75rem;color:var(--navy);font-weight:850}
+.brand:hover{text-decoration:none}
+.brand-logo{height:52px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:1rem;font-size:.9rem;font-weight:700;color:#475569;flex-wrap:wrap}
+.nav-links a{color:#475569}
+.nav-links a:hover{color:var(--blue-dark)}
+.nav-links .primary{
+  color:#fff;background:var(--blue);
+  padding:.55rem .9rem;border-radius:.8rem;box-shadow:0 8px 20px rgba(37,99,235,.16)
+}
+.hero{padding:3rem 0 1.5rem}
+.hero-card{
+  position:relative;overflow:hidden;
+  border:1px solid rgba(191,219,254,.8);
+  background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(239,246,255,.84));
+  box-shadow:0 24px 70px rgba(15,23,42,.08);
+  border-radius:1.8rem;
+  padding:2.15rem;
+}
+.hero-card:after{
+  content:"";position:absolute;right:-85px;top:-85px;width:240px;height:240px;border-radius:999px;
+  background:radial-gradient(circle,rgba(37,99,235,.16),transparent 70%);
+}
+.hero-content{position:relative;z-index:1}
+.breadcrumbs{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.breadcrumbs a{color:#475569}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.45rem;
+  border:1px solid #bfdbfe;border-radius:999px;background:var(--soft-blue);
+  color:#1d4ed8;padding:.34rem .7rem;font-size:.82rem;font-weight:850
+}
+h1,h2,h3,p{margin:0}
+h1{
+  margin-top:1rem;
+  color:#020617;
+  font-size:clamp(2.2rem,5vw,3.75rem);
+  line-height:1.05;
+  letter-spacing:-.048em;
+  font-weight:850;
+}
+.lead{
+  margin-top:1.1rem;
+  max-width:58rem;
+  color:#475569;
+  font-size:1.08rem;
+  line-height:1.78;
+}
+.page-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:.9rem;padding:.72rem 1.05rem;
+  font-weight:800;border:1px solid var(--line);
+  background:#fff;color:#334155;box-shadow:0 8px 18px rgba(15,23,42,.045)
+}
+.btn:hover{text-decoration:none;background:#f8fafc}
+.btn.primary{background:var(--blue);border-color:transparent;color:#fff}
+.btn.primary:hover{background:var(--blue-dark)}
+.section{padding:2.25rem 0}
+.section-head{max-width:52rem;margin-bottom:1.35rem}
+.section-head.center{text-align:center;margin-inline:auto}
+h2{
+  color:#020617;
+  font-size:clamp(1.65rem,3vw,2rem);
+  line-height:1.18;
+  letter-spacing:-.03em;
+  font-weight:850;
+}
+.section-head p{margin-top:.65rem;color:var(--muted)}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+.card{
+  background:rgba(255,255,255,.96);
+  border:1px solid var(--line);
+  border-radius:1.3rem;
+  padding:1.35rem;
+  box-shadow:0 14px 34px rgba(15,23,42,.055);
+}
+.tutorial-card{
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+}
+.tutorial-card h3{
+  margin:.75rem 0 .45rem;
+  color:var(--navy);
+  font-size:1.25rem;
+}
+.tutorial-card p{color:#55657a}
+.badge{
+  display:inline-flex;align-items:center;
+  border-radius:999px;
+  padding:.25rem .62rem;
+  font-size:.76rem;
+  font-weight:850;
+  border:1px solid #bfdbfe;
+  background:var(--soft-blue);
+  color:#1d4ed8;
+  width:max-content;
+}
+.badge.green{background:var(--green-soft);color:var(--green);border-color:#a7f3d0}
+.badge.amber{background:var(--amber-soft);color:var(--amber);border-color:#fde68a}
+.feature-list{
+  list-style:none;
+  padding:0;
+  margin:1rem 0 0;
+  display:grid;
+  gap:.48rem;
+  color:#475569;
+}
+.feature-list li{
+  display:flex;
+  gap:.5rem;
+  align-items:flex-start;
+}
+.feature-list li:before{
+  content:"";
+  flex:0 0 .46rem;
+  width:.46rem;
+  height:.46rem;
+  border-radius:999px;
+  background:#2563eb;
+  margin-top:.58rem;
+}
+.card-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:auto;padding-top:1.25rem}
+.note{
+  border:1px solid #bfdbfe;
+  border-left:5px solid var(--blue);
+  background:var(--soft-blue);
+  color:#1e3a8a;
+  border-radius:1rem;
+  padding:1rem;
+  margin-top:1rem;
+}
+.simple-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;margin-top:1rem}
+.mini{
+  border:1px solid var(--line);
+  border-radius:1rem;
+  padding:1rem;
+  background:#fff;
+}
+.mini strong{display:block;color:var(--navy);margin-bottom:.18rem}
+.footer{
+  border-top:1px solid var(--line);
+  margin-top:2rem;
+  background:rgba(255,255,255,.75);
+  color:var(--muted);
+  font-size:.9rem;
+}
+.footer-inner{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1.5rem 0}
+.footer-links{display:flex;gap:1rem;flex-wrap:wrap}
+@media(max-width:980px){
+  .grid-2,.simple-grid{grid-template-columns:1fr}
+  .nav{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .container{width:min(100% - 1rem,80rem)}
+  .brand-logo{height:42px}
+  .hero-card,.card{padding:1.15rem}
+  .page-actions,.card-actions{flex-direction:column}
+  .btn{width:100%}
+}
+/* Optimized DMAP-AI logo display */
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex: 0 0 auto;
+}
+
+.brand-link:hover {
+  text-decoration: none;
+}
+
+.brand-link picture {
+  display: block;
+  line-height: 0;
+}
+
+.brand-logo {
+  display: block;
+  width: 225px;
+  max-width: 225px;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .brand-logo {
+    width: 160px;
+    max-width: 160px;
+    height: auto;
+  }
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "DMAP-AI Tutorials",
+  "url": "https://droughtanalysis.com/tutorials",
+  "description": "Tutorial hub for the DMAP-AI point-based SPI video tutorial, Research Version guide, and Farmer Version page.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "AgriMetSoft LLC",
+    "url": "https://agrimetsoft.com"
+  },
+  "hasPart": [
+    {
+      "@type": "WebPage",
+      "name": "DMAP-AI Point-Based SPI Video Tutorial",
+      "url": "https://droughtanalysis.com/spi_tutorial"
+    },
+    {
+      "@type": "WebPage",
+      "name": "DMAP-AI Research Version Tutorial",
+      "url": "https://droughtanalysis.com/sv_tutorial"
+    },
+    {
+      "@type": "WebPage",
+      "name": "DMAP-AI Farmer Version",
+      "url": "https://droughtanalysis.com/farmer-version"
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="/">Home</a> / Tutorials</div>
+    <div class="hero-card">
+      <div class="hero-content">
+        <span class="eyebrow">DMAP-AI tutorial hub</span>
+        <h1>Choose the tutorial for your DMAP-AI workflow</h1>
+        <p class="lead">
+          DMAP-AI is the full platform. Start with the point-based SPI video tutorial for a quick walkthrough,
+          use the written Research Version guide for detailed explanations, and review the Farmer Version page
+          for the planned crop-aware decision-support workflow.
+        </p>
+        <div class="page-actions">
+          <a class="btn primary" href="/spi_tutorial">Watch SPI Video Tutorial</a>
+          <a class="btn" href="/sv_tutorial">Open Research Version Tutorial</a>
+          <a class="btn" href="/farmer-version">Open Farmer Version Page</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="simple-grid">
+      <div class="mini"><strong>Video tutorial</strong>Point-based SPI workflow</div>
+      <div class="mini"><strong>Research Version</strong>Free point-based SPI workflow</div>
+      <div class="mini"><strong>Farmer Version</strong>Expanded crop-aware workflow</div>
+    </div>
+</div>
+</section>
+
+<main>
+  <section class="container section">
+    <div class="section-head center">
+      <h2>Select a guide</h2>
+      <p>
+        Choose the guide that matches your need. The video tutorial gives a fast visual walkthrough, the Research Version guide provides detailed written help, and the Farmer Version page is kept separate for the expanded crop-aware workflow.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card tutorial-card">
+        <span class="badge green">Video tutorial</span>
+        <h3>Point-Based SPI Drought Analysis Video</h3>
+        <p>
+          Watch a complete DMAP-AI walkthrough showing how to select a location, run SPI analysis, review the Table,
+          Charts, Severity, Wavelet, Copula, Interpretation, JSON, and Export tabs, then save the project for later use.
+        </p>
+        <ul class="feature-list">
+          <li>Best quick start for new users who want to see the full workflow before running their own analysis.</li>
+          <li>Covers AI interpretation, JSON output, selected export items, and saved projects.</li>
+          <li>Includes chapter links and related pages for the app, written tutorial, and methods documentation.</li>
+        </ul>
+        <div class="card-actions">
+          <a class="btn primary" href="/spi_tutorial">Watch SPI Video Tutorial</a>
+          <a class="btn" href="https://www.youtube.com/watch?v=UzI3KnlZx_Y" target="_blank" rel="noopener">Watch on YouTube</a>
+        </div>
+      </article>
+
+      <article class="card tutorial-card">
+        <span class="badge green">Available now</span>
+        <h3>Research Version Tutorial</h3>
+        <p>
+          Step-by-step instructions for the free DMAP-AI Research Version. This guide should explain how to sign in,
+          select a point, choose NASA POWER or ERA5-Land/CDS, run SPI, read tables and charts, review severity,
+          wavelet and copula outputs, save runs, and understand practical thresholds.
+        </p>
+        <ul class="feature-list">
+          <li>Best starting point for instructors, researchers, consultants, engineers, scientists, and first-time users.</li>
+          <li>Current free workflow: SPI, historical mode, yearly point-based analysis.</li>
+          <li>NASA POWER is the default data source; ERA5-Land/CDS is an advanced option.</li>
+        </ul>
+        <div class="card-actions">
+          <a class="btn primary" href="/sv_tutorial">Open Research Version Tutorial</a>
+          <a class="btn" href="/DMAP_AI_App">Launch Research Version</a>
+        </div>
+      </article>
+
+      <article class="card tutorial-card">
+        <span class="badge amber">Platform expansion</span>
+        <h3>Farmer Version Page</h3>
+        <p>
+          A separate page for the expanded Farmer Version. This guide should focus on farmer and advisor questions:
+          how dry it is now, what the short-term moisture risk is, which fields or regions need attention first,
+          and how to explain the next 2–4 weeks to decision-makers.
+        </p>
+        <ul class="feature-list">
+          <li>Designed as an expanded crop-aware drought-risk interpretation workflow.</li>
+          <li>Planned focus: crop type, growth stage, short-term drought indicators, and practical messages.</li>
+          <li>Should stay separate from the Research Version guide so the free educational workflow and farmer decision-support workflow remain clear.</li>
+        </ul>
+        <div class="card-actions">
+          <a class="btn primary" href="/farmer-version">Open Farmer Version Page</a>
+          <a class="btn" href="/#versions">View Platform Structure</a>
+        </div>
+      </article>
+    </div>
+
+
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+<!-- footer navigation removed (handled globally) -->
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script src="/assets/global-nav.js"></script>
+</body>
+</html>
