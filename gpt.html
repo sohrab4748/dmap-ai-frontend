@@ -133,26 +133,53 @@
 
 <div class="card">
 <h2>🧠 Best Practice for Prompts</h2>
-<p>Use structured queries:</p>
+
+<p>For best results, explicitly request that DMAP-AI run the analysis.</p>
+
 <pre>
-Use DMAP-AI + task + location + time range + dataset + output type
+Use DMAP-AI (a custom GPT available in this chat) to
+RUN / PERFORM / GENERATE
++ analysis type
++ location
++ time range
++ dataset
++ desired outputs
 </pre>
+
 <ul>
-<li>Always specify location (e.g., Ames, Iowa)</li>
-<li>Always specify time range (1981–2025)</li>
-<li>Always specify dataset (NASA POWER or ERA5)</li>
-<li>Ask for one analysis type per request</li>
+<li>Start prompts with Run, Perform, Generate, or Analyze.</li>
+<li>Specify the location.</li>
+<li>Specify the time period.</li>
+<li>Specify NASA POWER or ERA5-Land.</li>
+<li>Describe the exact output you want (events, SPI table, wavelet results, report, etc.).</li>
 </ul>
 </div>
 
 <div class="card">
 <h2>📊 Ready-to-use Scientific Prompts</h2>
+
 <ul>
-<li>Use DMAP-AI to analyze SPI drought in Ames, Iowa (1981–2025) using NASA POWER and identify drought events and severity.</li>
-<li>Use DMAP-AI to compute SPI wavelet analysis for Ames, Iowa (1981–2025) and identify dominant periodicities.</li>
-<li>Use DMAP-AI to summarize drought variability in Ames, Iowa (1981–2025) using ERA5-Land SPI data.</li>
-<li>Use DMAP-AI to detect extreme drought events and their magnitude in Ames, Iowa (1981–2025).</li>
-<li>Use DMAP-AI to generate a publication-style drought report for Ames, Iowa (1981–2025).</li>
+
+<li>
+Use DMAP-AI (a custom GPT available in this chat) to perform a drought severity analysis for Ames, Iowa (1981–2025) using NASA POWER data. Run the analysis, identify all drought events (SPI ≤ -0.99), and report duration, minimum SPI, magnitude, and severity.
+</li>
+
+<li>
+Use DMAP-AI (a custom GPT available in this chat) to run a wavelet analysis of SPI-12 for Ames, Iowa (1981–2025) using NASA POWER data. Identify the dominant drought periodicities and summarize the global wavelet spectrum.
+</li>
+
+<li>
+Use DMAP-AI (a custom GPT available in this chat) to generate an SPI drought summary for Ames, Iowa (1981–2025) using ERA5-Land data. Run the analysis and explain the major drought and wet periods.
+</li>
+
+<li>
+Use DMAP-AI (a custom GPT available in this chat) to run a drought severity analysis for Ames, Iowa (1981–2025) and identify extreme drought events, their duration, minimum SPI, and magnitude.
+</li>
+
+<li>
+Use DMAP-AI (a custom GPT available in this chat) to generate a publication-style scientific report for Ames, Iowa (1981–2025) using NASA POWER SPI data. Include drought events, severity interpretation, and climate variability discussion.
+</li>
+
 </ul>
 </div>
 
