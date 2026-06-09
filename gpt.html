@@ -94,6 +94,15 @@
       border-radius: 20px;
       font-size: 12px;
     }
+    .prompt-template{
+    background:#f8fafc;
+    border-left:4px solid #1a73e8;
+    padding:14px 16px;
+    margin:15px 0;
+    border-radius:6px;
+    line-height:1.7;
+    font-size:15px;
+}
   </style>
 </head>
 
@@ -136,15 +145,17 @@
 
 <p>For best results, explicitly request that DMAP-AI run the analysis.</p>
 
-<pre>
-Use DMAP-AI (a custom GPT available in this chat) to
-RUN / PERFORM / GENERATE
-+ analysis type
-+ location
-+ time range
-+ dataset
-+ desired outputs
-</pre>
+<div class="prompt-template">
+<strong>Prompt Structure:</strong><br><br>
+
+Use DMAP-AI (a custom GPT available in this chat) to<br>
+<strong>RUN / PERFORM / GENERATE</strong><br>
++ Analysis Type<br>
++ Location<br>
++ Time Range<br>
++ Dataset<br>
++ Desired Outputs
+</div>
 
 <ul>
 <li>Start prompts with Run, Perform, Generate, or Analyze.</li>
