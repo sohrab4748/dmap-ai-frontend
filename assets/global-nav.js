@@ -26,8 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
       <span class="dmap-menu-button-bars" aria-hidden="true"></span>
       Menu
     </label>
+    <nav class="dmap-global-menu" aria-label="Main navigation">
 
-    
+
       <a class="dmap-menu-link" href="/">Home</a>
 
       <details class="dmap-menu-details dmap-menu-details-active">
@@ -70,6 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.prepend(container);
 });
 document.addEventListener("click", function (e) {
+  if (e.target.closest(".dmap-global-menu a")) {
+    const cb = document.getElementById("dmap-main-menu-toggle");
+    if (cb) cb.checked = false;
+  }
+
   const details = document.querySelectorAll(".dmap-menu-details");
 
   // If clicking inside a dropdown, close others
