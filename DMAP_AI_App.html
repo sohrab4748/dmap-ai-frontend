@@ -1205,6 +1205,88 @@ Click "Compute copula" after running SPI.
 
 
 
+    <!-- ============================================================
+         GA4 "sign_up" conversion tracking (Auth0 first-time sign-ups)
+         Fires gtag('event','sign_up') ONCE per new account.
+         Never fires for returning logins.
+         ============================================================ -->
+    <script>
+    (function () {
+        var CLAIM_NS = "https://droughtanalysis.com/";
+        // NOTE: key deliberately avoids "auth/user/dmap/email/token" so the
+        // page's clearBrowserAuthState() does not wipe it on sign-out.
+        var FIRED_KEY = "ga4_su_done";
+
+        function firedList() {
+            try { return JSON.parse(window.localStorage.getItem(FIRED_KEY) || "[]"); }
+            catch (e) { return []; }
+        }
+        function alreadyFired(sub) { return firedList().indexOf(sub) !== -1; }
+        function markFired(sub) {
+            try {
+                var arr = firedList();
+                if (arr.indexOf(sub) === -1) arr.push(sub);
+                window.localStorage.setItem(FIRED_KEY, JSON.stringify(arr));
+            } catch (e) {}
+        }
+
+        function isNewUser(user) {
+            // 1) Best signal: custom claims added by the Auth0 post-login Action
+            if (user[CLAIM_NS + "is_new_user"] === true) return true;
+            if (user[CLAIM_NS + "logins_count"] === 1) return true;
+            if (user[CLAIM_NS + "is_new_user"] === false) return false;
+            if (typeof user[CLAIM_NS + "logins_count"] === "number") return false;
+
+            // 2) Fallback (if the Action is not set up yet):
+            //    treat as new if the account was created < 10 minutes ago
+            var createdAt = user.created_at || user[CLAIM_NS + "created_at"];
+            if (createdAt) {
+                var ageMs = Date.now() - new Date(createdAt).getTime();
+                return !isNaN(ageMs) && ageMs >= 0 && ageMs < 10 * 60 * 1000;
+            }
+            return false; // no reliable signal -> do NOT count
+        }
+
+        // Returns true when a final decision was made (fired / not new / error),
+        // false when auth0Client is not ready or the user is not signed in yet.
+        async function trackSignupIfNew() {
+            try {
+                if (!window.auth0Client ||
+                    typeof window.auth0Client.isAuthenticated !== "function") {
+                    return false; // client not created yet, keep polling
+                }
+                var authed = await window.auth0Client.isAuthenticated();
+                if (!authed) return false; // may still be mid-redirect, keep polling
+
+                var user = await window.auth0Client.getUser();
+                if (!user || !user.sub) return true;
+                if (alreadyFired(user.sub)) return true;
+
+                if (isNewUser(user)) {
+                    if (typeof window.gtag === "function") {
+                        window.gtag("event", "sign_up", { method: "Google" });
+                    }
+                }
+                // Mark in both cases so returning users are never re-evaluated
+                markFired(user.sub);
+                return true;
+            } catch (e) {
+                return true; // do not retry forever on errors
+            }
+        }
+
+        // auth0Client is created asynchronously by /assets/dmap-ai-app.js,
+        // so poll every 500 ms for up to 20 s, then give up quietly.
+        var attempts = 0;
+        var timer = window.setInterval(function () {
+            attempts += 1;
+            trackSignupIfNew().then(function (done) {
+                if (done || attempts >= 40) window.clearInterval(timer);
+            });
+        }, 500);
+    })();
+    </script>
+
     <script src="dashboard_db.js?v=1"></script>
 <script src="/assets/global-nav.js"></script>
 </body>
