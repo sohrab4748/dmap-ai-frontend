@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>What is Drought? | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Learn what drought is, how it develops, the main drought types, drought impacts, and how drought can be monitored using climate data and indices such as SPI.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/what-is-drought/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="What is Drought?">
+  <meta property="og:description" content="A scientific introduction to drought, including drought types, causes, impacts, monitoring methods, and how DMAP-AI supports drought analysis.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/what-is-drought/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "What is Drought?",
+        "description": "A scientific introduction to drought, including drought types, causes, impacts, monitoring methods, and how DMAP-AI supports drought analysis.",
+        "author": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-01",
+        "mainEntityOfPage": "https://droughtanalysis.com/knowledge/what-is-drought/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://droughtanalysis.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Center",
+            "item": "https://droughtanalysis.com/knowledge/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "What is Drought?",
+            "item": "https://droughtanalysis.com/knowledge/what-is-drought/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is drought only caused by low rainfall?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Low precipitation is the most common starting point, but drought can also be intensified by high temperature, high evapotranspiration, soil conditions, water demand, land management, and reservoir or groundwater status."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does drought take to develop?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Drought can develop over weeks, months, seasons, or years. Flash drought can intensify within a few weeks, while hydrological drought may develop slowly and persist after rainfall returns."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which drought index is most common?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Standardized Precipitation Index, or SPI, is widely used because it is based on precipitation, can be calculated at multiple time scales, and allows comparison across different climates."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:#2563eb;
+      --blue-dark:#1d4ed8;
+      --slate-50:#f8fafc;
+      --slate-100:#f1f5f9;
+      --slate-200:#e2e8f0;
+      --slate-500:#64748b;
+      --slate-600:#475569;
+      --slate-700:#334155;
+      --slate-800:#1e293b;
+      --slate-900:#0f172a;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      color:var(--slate-900);
+      background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .container {
+      width:min(100% - 2rem,80rem);
+      margin-inline:auto;
+    }
+
+    .article-hero {
+      padding:3.5rem 0 1.5rem;
+    }
+
+    .article-hero-card {
+      border:1px solid #bfdbfe;
+      border-radius:1.75rem;
+      background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));
+      box-shadow:0 18px 45px rgba(15,23,42,.08);
+      padding:2.25rem;
+    }
+
+    .breadcrumb {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      align-items:center;
+      color:var(--slate-500);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+
+    .breadcrumb a {
+      color:#1d4ed8;
+      font-weight:700;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      border-radius:999px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .8rem;
+      font-size:.875rem;
+      font-weight:850;
+    }
+
+    h1 {
+      margin:1rem 0 0;
+      font-size:clamp(2.2rem,5vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#020617;
+    }
+
+    .lead {
+      max-width:58rem;
+      margin:1rem 0 0;
+      color:var(--slate-600);
+      font-size:1.1rem;
+      line-height:1.75;
+    }
+
+    .article-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1.25rem;
+      color:#475569;
+      font-size:.92rem;
+    }
+
+    .meta-pill {
+      border:1px solid #dbeafe;
+      background:#fff;
+      border-radius:999px;
+      padding:.35rem .7rem;
+      font-weight:700;
+    }
+
+    .article-layout {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 18rem;
+      gap:2rem;
+      align-items:start;
+      padding:1.5rem 0 3rem;
+    }
+
+    .article-main {
+      background:#fff;
+      border:1px solid var(--slate-200);
+      border-radius:1.25rem;
+      box-shadow:0 12px 30px rgba(15,23,42,.055);
+      padding:2rem;
+    }
+
+    .article-main h2 {
+      margin:2rem 0 .75rem;
+      color:#0f172a;
+      font-size:clamp(1.4rem,2.5vw,1.85rem);
+      line-height:1.2;
+      letter-spacing:-.02em;
+    }
+
+    .article-main h2:first-child {
+      margin-top:0;
+    }
+
+    .article-main h3 {
+      margin:1.5rem 0 .5rem;
+      font-size:1.15rem;
+      color:#0f172a;
+    }
+
+    .article-main p {
+      margin:.75rem 0;
+      color:#334155;
+    }
+
+    .article-main ul,
+    .article-main ol {
+      color:#334155;
+      padding-left:1.4rem;
+    }
+
+    .quick-answer {
+      border:1px solid #bfdbfe;
+      border-left:5px solid #2563eb;
+      background:#eff6ff;
+      border-radius:1rem;
+      padding:1.15rem;
+      margin-bottom:1.5rem;
+    }
+
+    .quick-answer h2 {
+      margin:0 0 .45rem;
+      font-size:1.2rem;
+    }
+
+    .definition-box {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1.1rem;
+      margin:1rem 0;
+    }
+
+    .table-wrap {
+      overflow-x:auto;
+      margin:1.25rem 0;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:680px;
+      background:#fff;
+    }
+
+    th, td {
+      text-align:left;
+      padding:.85rem;
+      border-bottom:1px solid #e2e8f0;
+      vertical-align:top;
+    }
+
+    th {
+      background:#f8fafc;
+      color:#0f172a;
+      font-size:.9rem;
+    }
+
+    tr:last-child td {
+      border-bottom:0;
+    }
+
+    .toc {
+      position:sticky;
+      top:1rem;
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:1.1rem;
+      padding:1rem;
+      box-shadow:0 10px 25px rgba(15,23,42,.055);
+    }
+
+    .toc h2 {
+      font-size:1rem;
+      margin:0 0 .75rem;
+    }
+
+    .toc a {
+      display:block;
+      color:#475569;
+      font-size:.92rem;
+      padding:.35rem 0;
+      border-bottom:1px solid #f1f5f9;
+    }
+
+    .toc a:hover {
+      color:#1d4ed8;
+    }
+
+    .callout {
+      border:1px solid #bbf7d0;
+      background:#f0fdf4;
+      border-radius:1rem;
+      padding:1rem;
+      margin:1.25rem 0;
+    }
+
+    .callout strong {
+      color:#166534;
+    }
+
+    .related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .related-card {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1rem;
+    }
+
+    .related-card strong {
+      display:block;
+      color:#0f172a;
+    }
+
+    .related-card span {
+      display:block;
+      color:#64748b;
+      font-size:.9rem;
+      margin-top:.35rem;
+    }
+
+    .references li {
+      margin:.55rem 0;
+    }
+
+    .site-footer {
+      border-top:1px solid var(--slate-200);
+      background:rgba(255,255,255,.72);
+      margin-top:2rem;
+    }
+
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding-block:1.5rem;
+      color:var(--slate-500);
+      font-size:.875rem;
+    }
+
+    @media(max-width:1050px) {
+      .article-layout {
+        grid-template-columns:1fr;
+      }
+
+      .toc {
+        position:static;
+        order:-1;
+      }
+    }
+
+    @media(max-width:640px) {
+      .container {
+        width:min(100% - 1rem,80rem);
+      }
+
+      .article-hero {
+        padding-top:2rem;
+      }
+
+      .article-hero-card,
+      .article-main {
+        padding:1.25rem;
+        border-radius:1.1rem;
+      }
+
+      .related-grid {
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/knowledge/">Knowledge Center</a>
+            <span>›</span>
+            <span>What is Drought?</span>
+          </nav>
+
+          <p class="eyebrow">Drought Basics</p>
+
+          <h1>What is Drought?</h1>
+
+          <p class="lead">
+            Drought is one of the most complex climate hazards because it develops slowly,
+            affects many sectors at the same time, and can continue even after rainfall begins
+            to recover. This article explains the meaning of drought, the main drought types,
+            common causes and impacts, and how drought can be monitored using climate data and
+            indices such as SPI.
+          </p>
+
+          <div class="article-meta">
+            <span class="meta-pill">Reading time: 10 min</span>
+            <span class="meta-pill">Level: Beginner</span>
+            <span class="meta-pill">Last updated: July 2026</span>
+            <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section class="quick-answer" id="quick-answer">
+          <h2>Short answer</h2>
+          <p>
+            Drought is a prolonged period of below-normal water availability. It usually begins
+            with a precipitation deficit, but its severity depends on temperature, evaporation,
+            soil moisture, streamflow, groundwater, water demand, land use, and the sensitivity
+            of crops, ecosystems, and communities. Because drought has many dimensions, it is
+            monitored using multiple datasets, indicators, and time scales.
+          </p>
+        </section>
+
+        <section id="definition">
+          <h2>Definition of drought</h2>
+
+          <p>
+            Drought is commonly described as an extended period when water supply is lower than
+            normal for a specific place and time. Unlike a heat wave, flood, or storm, drought
+            does not usually have a single start date or a visible boundary. It develops through
+            a sequence of water deficits that may first appear in rainfall records, then in soil
+            moisture, vegetation stress, streamflow, reservoir storage, and groundwater.
+          </p>
+
+          <div class="definition-box">
+            <strong>Working definition:</strong>
+            Drought is a sustained and abnormal shortage of water relative to the normal climate
+            and water demand of a region.
+          </div>
+
+          <p>
+            The phrase “relative to normal” is important. A month with 40 mm of rainfall may be
+            wet in an arid region but extremely dry in a humid region. For this reason, drought
+            analysis normally compares current conditions with a historical baseline. Indices
+            such as the Standardized Precipitation Index (SPI) transform rainfall departures
+            into standardized values so conditions can be compared across different climates.
+          </p>
+
+          <p>
+            Drought is also different from aridity. Aridity describes the long-term dryness of a
+            climate, such as a desert or semi-arid region. Drought is a temporary departure from
+            expected conditions. A desert can experience drought if rainfall is much lower than
+            its own historical norm, and a humid region can experience drought when rainfall,
+            soil moisture, or streamflow drop below expected levels for long enough to cause
+            impacts.
+          </p>
+        </section>
+
+        <section id="why-complex">
+          <h2>Why drought is difficult to define</h2>
+
+          <p>
+            Drought is difficult to define because it depends on the question being asked. A farmer
+            may be concerned about soil moisture during flowering. A water manager may be focused
+            on reservoir storage. An ecologist may track vegetation stress, stream temperature,
+            or groundwater-dependent ecosystems. A city may define drought through water supply
+            restrictions or demand management.
+          </p>
+
+          <p>
+            This means that a single rainfall statistic rarely tells the full story. A location may
+            have near-normal seasonal rainfall but still experience agricultural drought if most
+            rainfall occurred outside the critical crop-growth period. Similarly, streamflow can
+            remain low after rainfall returns if reservoirs, groundwater, and upstream storage have
+            not recovered.
+          </p>
+
+          <div class="callout">
+            <strong>Practical point:</strong>
+            A good drought assessment should combine the right time scale, variable, dataset, and
+            interpretation method for the decision being made.
+          </div>
+        </section>
+
+        <section id="types">
+          <h2>Main types of drought</h2>
+
+          <p>
+            Drought is often grouped into four major types: meteorological, agricultural,
+            hydrological, and socioeconomic drought. These categories are connected, but they do
+            not always occur at the same time or with the same intensity.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Main signal</th>
+                  <th>Typical variables</th>
+                  <th>Common users</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Meteorological drought</td>
+                  <td>Below-normal precipitation</td>
+                  <td>Rainfall, snowfall, precipitation anomalies, SPI</td>
+                  <td>Climatologists, drought monitors, researchers</td>
+                </tr>
+                <tr>
+                  <td>Agricultural drought</td>
+                  <td>Insufficient soil water for crops or vegetation</td>
+                  <td>Soil moisture, evapotranspiration, crop stage, vegetation indices</td>
+                  <td>Farmers, agronomists, irrigation planners</td>
+                </tr>
+                <tr>
+                  <td>Hydrological drought</td>
+                  <td>Reduced surface or subsurface water availability</td>
+                  <td>Streamflow, reservoir levels, lake levels, groundwater</td>
+                  <td>Water managers, hydrologists, utilities</td>
+                </tr>
+                <tr>
+                  <td>Socioeconomic drought</td>
+                  <td>Water shortage affects people, markets, or services</td>
+                  <td>Demand, supply, restrictions, crop losses, economic impacts</td>
+                  <td>Policy makers, agencies, communities</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Meteorological drought is often the first stage because it begins with below-normal
+            precipitation. Agricultural drought may follow when crops or natural vegetation cannot
+            access enough water. Hydrological drought may appear later because rivers, reservoirs,
+            and groundwater systems respond more slowly. Socioeconomic drought occurs when water
+            shortage affects human activities, food production, energy generation, or public supply.
+          </p>
+        </section>
+
+        <section id="causes">
+          <h2>What causes drought?</h2>
+
+          <p>
+            Drought can be caused by several interacting climate and land-surface processes. The
+            most direct cause is a deficit in precipitation, but drought severity can increase when
+            high temperatures, dry air, strong winds, or high solar radiation increase atmospheric
+            water demand. In agricultural areas, the same rainfall deficit may produce very different
+            impacts depending on soil texture, rooting depth, crop growth stage, and irrigation
+            availability.
+          </p>
+
+          <h3>Climate drivers</h3>
+          <p>
+            Large-scale climate patterns can shift storm tracks and moisture transport. Ocean-atmosphere
+            variability, persistent high-pressure systems, monsoon behavior, and regional circulation
+            anomalies can all influence drought risk. These drivers may affect drought frequency,
+            timing, persistence, and spatial extent.
+          </p>
+
+          <h3>Atmospheric demand</h3>
+          <p>
+            Temperature and evapotranspiration are important because drought impacts are not controlled
+            by rainfall alone. A moderately dry period during unusually hot weather can create stronger
+            crop stress than the same rainfall deficit under cool conditions. This is one reason indices
+            that include potential evapotranspiration, such as SPEI, can be useful for some applications.
+          </p>
+
+          <h3>Human and landscape factors</h3>
+          <p>
+            Land use, irrigation demand, reservoir operation, groundwater pumping, drainage, and water
+            allocation policies can influence how drought is experienced. These factors do not always
+            cause meteorological drought, but they can amplify or reduce impacts.
+          </p>
+        </section>
+
+        <section id="impacts">
+          <h2>Common drought impacts</h2>
+
+          <p>
+            Drought impacts vary by region and sector. In agriculture, drought can reduce germination,
+            limit vegetative growth, decrease pollination success, lower grain filling, increase
+            irrigation demand, and reduce yield. In water resources, drought can reduce reservoir
+            storage, streamflow, groundwater recharge, and hydropower production. In ecosystems,
+            drought can increase tree stress, wildfire risk, insect vulnerability, and habitat loss.
+          </p>
+
+          <p>
+            Drought can also affect public health and communities. Dust, smoke, heat exposure, reduced
+            water quality, and economic stress can all become part of a drought event. Because impacts
+            are distributed across sectors, drought planning requires both scientific monitoring and
+            practical decision support.
+          </p>
+        </section>
+
+        <section id="monitoring">
+          <h2>How drought is monitored</h2>
+
+          <p>
+            Drought monitoring usually begins with climate data. Precipitation is the most common input
+            because it directly reflects water supply from the atmosphere. Temperature, evapotranspiration,
+            soil moisture, vegetation, streamflow, and groundwater may also be used depending on the
+            drought type being assessed.
+          </p>
+
+          <p>
+            Drought indices convert climate or hydrological data into interpretable values. For example,
+            SPI uses precipitation over an accumulation period such as 1, 3, 6, 12, or 24 months. Short
+            time scales are more sensitive to recent rainfall and are often relevant for meteorological
+            and agricultural drought. Longer time scales are more useful for hydrological drought and
+            water-supply planning.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time scale</th>
+                  <th>Typical interpretation</th>
+                  <th>Example application</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1 month</td>
+                  <td>Short-term rainfall anomaly</td>
+                  <td>Early warning, flash drought, recent dryness</td>
+                </tr>
+                <tr>
+                  <td>3 months</td>
+                  <td>Seasonal moisture condition</td>
+                  <td>Crop stress, planting season, pasture conditions</td>
+                </tr>
+                <tr>
+                  <td>6 months</td>
+                  <td>Medium-term water deficit</td>
+                  <td>Growing-season analysis, reservoir inflow signals</td>
+                </tr>
+                <tr>
+                  <td>12 months</td>
+                  <td>Annual-scale drought condition</td>
+                  <td>Water supply, drought persistence, regional comparison</td>
+                </tr>
+                <tr>
+                  <td>24 months or longer</td>
+                  <td>Multi-year drought</td>
+                  <td>Groundwater, long-term planning, persistent drought</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            No single index is best for every purpose. A robust drought assessment often compares more
+            than one time scale or indicator and then interprets the results in the context of local
+            climate, land use, crops, and water demand.
+          </p>
+        </section>
+
+        <section id="dmap-ai">
+          <h2>How DMAP-AI uses this concept</h2>
+
+          <p>
+            DMAP-AI is designed to connect climate data, drought indices, statistical diagnostics, and
+            AI interpretation in one workflow. For a selected location and time period, DMAP-AI can
+            retrieve climate data, calculate SPI, summarize drought events, and provide chart-specific
+            AI interpretation. This helps users move from raw climate data to a more structured drought
+            assessment.
+          </p>
+
+          <p>
+            For example, an SPI-12 chart may identify multi-year dry periods, while a drought-event table
+            can summarize event duration, minimum SPI, and magnitude. Wavelet diagnostics can help detect
+            whether drought variability has persistent periodic patterns or whether the record is dominated
+            by irregular episodes. These outputs support more careful interpretation than relying on a
+            single chart or a single AI response.
+          </p>
+
+          <div class="callout">
+            <strong>DMAP-AI principle:</strong>
+            AI interpretation becomes more reliable when the model receives structured drought metrics,
+            chart metadata, and scientifically defined outputs rather than only a screenshot or a general
+            prompt.
+          </div>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+
+          <h3>Is drought the same as dry climate?</h3>
+          <p>
+            No. A dry climate is a long-term characteristic of a region. Drought is a temporary shortage
+            relative to the normal conditions of that region.
+          </p>
+
+          <h3>Can drought happen in a humid area?</h3>
+          <p>
+            Yes. Humid regions can experience drought when rainfall, soil moisture, streamflow, or water
+            storage fall below the normal range for that region.
+          </p>
+
+          <h3>Is drought only caused by low rainfall?</h3>
+          <p>
+            Low rainfall is often the starting point, but high temperature, evapotranspiration, soil
+            characteristics, crop stage, water use, and reservoir or groundwater conditions can strongly
+            influence drought severity.
+          </p>
+
+          <h3>Which drought index should I start with?</h3>
+          <p>
+            SPI is a good starting point because it is widely used, precipitation-based, and can be
+            calculated at different time scales. For applications where temperature and atmospheric
+            demand are important, SPEI or evapotranspiration-based indicators may also be useful.
+          </p>
+
+          <h3>How many years of data are needed?</h3>
+          <p>
+            Longer historical records usually produce more stable drought statistics. Many drought-index
+            applications prefer at least 30 years of data when possible, although shorter records may be
+            used with caution when data availability is limited.
+          </p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+
+          <ol class="references">
+            <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+            <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
+            <li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
+            <li>Vicente-Serrano, S. M., Beguería, S., and López-Moreno, J. I. (2010). A multiscalar drought index sensitive to global warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate.</li>
+            <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+          </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/types-of-drought/">
+              <strong>Types of Drought</strong>
+              <span>Meteorological, agricultural, hydrological, and socioeconomic drought.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/meteorological-drought/">
+              <strong>Meteorological Drought</strong>
+              <span>How precipitation deficits are measured and interpreted.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/agricultural-drought/">
+              <strong>Agricultural Drought</strong>
+              <span>How drought affects crops, soil moisture, and irrigation demand.</span>
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a>
+        <a href="#definition">Definition</a>
+        <a href="#why-complex">Why it is complex</a>
+        <a href="#types">Main types</a>
+        <a href="#causes">Causes</a>
+        <a href="#impacts">Impacts</a>
+        <a href="#monitoring">Monitoring</a>
+        <a href="#dmap-ai">How DMAP-AI uses this</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">References</a>
+        <a href="#related">Related articles</a>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="/assets/global-nav.js"></script>
+</body>
+</html>
