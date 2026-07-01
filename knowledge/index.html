@@ -187,6 +187,17 @@
       color:var(--slate-600);
     }
 
+    .topic-count {
+      display:inline-flex;
+      margin-top:.85rem;
+      border-radius:999px;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .7rem;
+      font-size:.82rem;
+      font-weight:800;
+    }
+
     .learning-grid {
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
@@ -278,35 +289,47 @@
     <section class="container section" aria-labelledby="topic-title">
       <h2 id="topic-title">Browse by topic</h2>
 
-      <div class="topic-grid">
+      <div class="topic-grid" data-topic-grid>
         <article class="topic-card">
           <h2>🌍 Drought Basics</h2>
           <p>Definitions, drought types, drought development, impacts, and monitoring concepts.</p>
+          <span class="topic-count">Loading article count…</span>
         </article>
 
         <article class="topic-card">
           <h2>📈 Drought Indices</h2>
           <p>SPI, SPEI, PDSI, EDDI, drought categories, thresholds, severity, and interpretation.</p>
+          <span class="topic-count">Loading article count…</span>
+        </article>
+
+        <article class="topic-card">
+          <h2>📊 Drought Events and Severity</h2>
+          <p>Drought severity, duration, magnitude, thresholds, and event summaries.</p>
+          <span class="topic-count">Loading article count…</span>
         </article>
 
         <article class="topic-card">
           <h2>🌦 Climate Data</h2>
           <p>Precipitation, temperature, evapotranspiration, NASA POWER, ERA5, GridMET, and related datasets.</p>
+          <span class="topic-count">Loading article count…</span>
         </article>
 
         <article class="topic-card">
           <h2>🔬 Analysis Methods</h2>
           <p>Wavelet analysis, event detection, probability distributions, trend analysis, and diagnostics.</p>
+          <span class="topic-count">Loading article count…</span>
         </article>
 
         <article class="topic-card">
           <h2>🤖 AI Interpretation</h2>
           <p>Structured metadata, chart-specific prompts, explainable AI outputs, and drought reporting.</p>
+          <span class="topic-count">Loading article count…</span>
         </article>
 
         <article class="topic-card">
           <h2>📚 Case Studies</h2>
           <p>Station-based and farm-scale drought analyses using DMAP-AI workflows and datasets.</p>
+          <span class="topic-count">Loading article count…</span>
         </article>
       </div>
     </section>
