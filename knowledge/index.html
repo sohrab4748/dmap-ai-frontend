@@ -1,110 +1,395 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>DMAP-AI Knowledge Center</title>
-        <meta name="description" content="Official DMAP-AI Knowledge Center">
-        <link rel="stylesheet" href="/knowledge/knowledge-style.css">
-    <link rel="stylesheet" href="/assets/dmap-global-nav.css">
-    <style>body{margin:0;font-family:system-ui;background:linear-gradient(135deg,#f0f9ff,#fff,#eff6ff)}.container{max-width:1200px;margin:auto;padding:24px}.hero{background:#fff;border:1px solid #bfdbfe;border-radius:24px;padding:40px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:24px}.card{background:#fff;border:1px solid #dbeafe;border-radius:18px;padding:20px}a.btn{display:inline-block;background:#2563eb;color:#fff;padding:12px 18px;border-radius:12px;text-decoration:none}</style>
-	</head>
-	<body>
-	<main class="container">
-	<section class="hero"><p><strong>Official Documentation</strong></p><h1>DMAP-AI Knowledge Center</h1><p>The official learning hub for drought science, SPI, climate datasets, wavelet analysis, AI interpretation and DMAP‑AI.</p><p><a class="btn" href="/knowledge/what-is-drought/">Start Learning</a></p></section><h2>Browse by Topic</h2><div class="cards"><div class="card"><h3>🌍 Drought Basics</h3><p>Foundational drought concepts.</p></div><div class="card"><h3>📈 Drought Indices</h3><p>SPI, SPEI, PDSI and EDDI.</p></div><div class="card"><h3>🌦 Climate Data</h3><p>ERA5, NASA POWER, GridMET and more.</p></div><div class="card"><h3>🔬 Analysis Methods</h3><p>Wavelets, statistics and drought events.</p></div><div class="card"><h3>🤖 AI Interpretation</h3><p>Structured AI workflows.</p></div><div class="card"><h3>📚 Case Studies</h3><p>Real-world applications.</p></div></div>
-	<section class="comparison-stations-section" aria-labelledby="knowledge-title">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <div class="comparison-stations-card">
+  <title>DMAP-AI Knowledge Center | Drought Science, Methods and AI Documentation</title>
+  <meta name="description" content="Official DMAP-AI Knowledge Center for drought science, drought indices, climate datasets, wavelet analysis, AI interpretation, and practical drought-monitoring documentation.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
 
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="DMAP-AI Knowledge Center">
+  <meta property="og:description" content="Scientific documentation for drought analysis, climate data, drought indices, wavelet diagnostics, and AI-assisted drought interpretation.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "DMAP-AI Knowledge Center",
+    "description": "Scientific articles and documentation for drought science, drought indices, climate datasets, wavelet analysis, and AI-assisted drought interpretation.",
+    "url": "https://droughtanalysis.com/knowledge/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AgriMetSoft LLC",
+      "url": "https://agrimetsoft.com/"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "DMAP-AI",
+      "url": "https://droughtanalysis.com/"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:#2563eb;
+      --blue-dark:#1d4ed8;
+      --slate-50:#f8fafc;
+      --slate-100:#f1f5f9;
+      --slate-200:#e2e8f0;
+      --slate-500:#64748b;
+      --slate-600:#475569;
+      --slate-700:#334155;
+      --slate-800:#1e293b;
+      --slate-900:#0f172a;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      color:var(--slate-900);
+      background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.55;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .container {
+      width:min(100% - 2rem,80rem);
+      margin-inline:auto;
+    }
+
+    .hero {
+      padding:3.5rem 0 1.5rem;
+    }
+
+    .hero-card {
+      border:1px solid #bfdbfe;
+      border-radius:1.75rem;
+      background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(239,246,255,.9));
+      box-shadow:0 18px 45px rgba(15,23,42,.08);
+      padding:2.25rem;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      border-radius:999px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .8rem;
+      font-size:.875rem;
+      font-weight:850;
+    }
+
+    h1 {
+      margin:1.1rem 0 0;
+      font-size:clamp(2.2rem,5vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#020617;
+    }
+
+    .lead {
+      max-width:58rem;
+      margin:1rem 0 0;
+      color:var(--slate-600);
+      font-size:1.1rem;
+      line-height:1.75;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1.5rem;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:.875rem;
+      padding:.75rem 1.25rem;
+      font-weight:750;
+      border:1px solid transparent;
+    }
+
+    .btn-primary {
+      background:var(--blue);
+      color:#fff;
+    }
+
+    .btn-primary:hover {
+      background:var(--blue-dark);
+    }
+
+    .btn-secondary {
+      background:#fff;
+      color:var(--slate-800);
+      border-color:var(--slate-200);
+    }
+
+    .section {
+      padding:2rem 0;
+    }
+
+    .topic-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+    }
+
+    .topic-card,
+    .path-card,
+    .info-card {
+      background:#fff;
+      border:1px solid var(--slate-200);
+      border-radius:1rem;
+      padding:1.25rem;
+      box-shadow:0 1px 2px rgba(15,23,42,.05);
+    }
+
+    .topic-card h2,
+    .path-card h2,
+    .info-card h2 {
+      font-size:1.05rem;
+      margin:0;
+      color:#0f172a;
+    }
+
+    .topic-card p,
+    .path-card p,
+    .info-card p {
+      margin:.5rem 0 0;
+      color:var(--slate-600);
+    }
+
+    .learning-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+    }
+
+    .path-card .btn {
+      margin-top:1rem;
+      width:fit-content;
+    }
+
+    .site-footer {
+      border-top:1px solid var(--slate-200);
+      background:rgba(255,255,255,.72);
+      margin-top:2rem;
+    }
+
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding-block:1.5rem;
+      color:var(--slate-500);
+      font-size:.875rem;
+    }
+
+    @media(max-width:1024px) {
+      .topic-grid,
+      .learning-grid {
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:640px) {
+      .container {
+        width:min(100% - 1rem,80rem);
+      }
+
+      .hero {
+        padding-top:2rem;
+      }
+
+      .hero-card {
+        padding:1.4rem;
+        border-radius:1.25rem;
+      }
+
+      .hero-actions {
+        flex-direction:column;
+      }
+
+      .btn {
+        width:100%;
+      }
+
+      .footer-inner {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <p class="eyebrow">Official DMAP-AI documentation</p>
+
+          <h1>Drought science, climate data, and AI interpretation</h1>
+
+          <p class="lead">
+            The DMAP-AI Knowledge Center explains the science behind drought monitoring,
+            drought indices, climate datasets, wavelet diagnostics, and AI-assisted interpretation.
+            It is designed for researchers, students, engineers, agricultural professionals,
+            and decision-makers who need clear and reproducible drought-analysis guidance.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/knowledge/what-is-drought/">Start with What is Drought?</a>
+            <a class="btn btn-secondary" href="/DMAP_AI_App">Launch DMAP-AI Research Version</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" aria-labelledby="topic-title">
+      <h2 id="topic-title">Browse by topic</h2>
+
+      <div class="topic-grid">
+        <article class="topic-card">
+          <h2>🌍 Drought Basics</h2>
+          <p>Definitions, drought types, drought development, impacts, and monitoring concepts.</p>
+        </article>
+
+        <article class="topic-card">
+          <h2>📈 Drought Indices</h2>
+          <p>SPI, SPEI, PDSI, EDDI, drought categories, thresholds, severity, and interpretation.</p>
+        </article>
+
+        <article class="topic-card">
+          <h2>🌦 Climate Data</h2>
+          <p>Precipitation, temperature, evapotranspiration, NASA POWER, ERA5, GridMET, and related datasets.</p>
+        </article>
+
+        <article class="topic-card">
+          <h2>🔬 Analysis Methods</h2>
+          <p>Wavelet analysis, event detection, probability distributions, trend analysis, and diagnostics.</p>
+        </article>
+
+        <article class="topic-card">
+          <h2>🤖 AI Interpretation</h2>
+          <p>Structured metadata, chart-specific prompts, explainable AI outputs, and drought reporting.</p>
+        </article>
+
+        <article class="topic-card">
+          <h2>📚 Case Studies</h2>
+          <p>Station-based and farm-scale drought analyses using DMAP-AI workflows and datasets.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-title">
+      <div class="comparison-stations-card">
         <div class="comparison-stations-head">
+          <div>
+            <h2 id="knowledge-title">Browse the Knowledge Center</h2>
+            <p>
+              Search and open articles from the central <code>/knowledge/articles.json</code> file.
+              New articles can be added to this list without changing the homepage layout.
+            </p>
+          </div>
 
-            <div>
-
-                <h2 id="knowledge-title">
-                    Browse the Knowledge Center
-                </h2>
-
-                <p>
-                    The Knowledge Center contains scientific articles,
-                    tutorials, datasets, methods, AI interpretation
-                    techniques, and practical case studies for drought
-                    monitoring and climate analysis.
-                </p>
-
-            </div>
-
-            <span class="station-count-pill">
-                Documentation
-            </span>
-
+          <span class="station-count-pill">Documentation</span>
         </div>
 
-        <div data-articles-nav></div>
+        <div data-articles-nav>
+          <div class="station-grid">
+            <a class="station-card" href="/knowledge/what-is-drought/">
+              <strong>What is Drought?</strong>
+              <span>Learn what drought is, why it occurs, how it develops, and why monitoring is important.</span>
+              <span>📖 Reading time: 10 min</span>
+              <span>🎓 Level: Beginner</span>
+              <span class="station-status">Featured</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="container section" aria-labelledby="paths-title">
+      <h2 id="paths-title">Learning paths</h2>
+
+      <div class="learning-grid">
+        <article class="path-card">
+          <h2>🌍 Beginner path</h2>
+          <p>Start here if you are new to drought monitoring, drought terminology, and basic interpretation.</p>
+          <a class="btn btn-primary" href="/knowledge/what-is-drought/">Start learning</a>
+        </article>
+
+        <article class="path-card">
+          <h2>📈 Intermediate path</h2>
+          <p>Learn how drought indices, climate datasets, and drought categories are used in monitoring.</p>
+          <a class="btn btn-secondary" href="/knowledge/types-of-drought/">View drought types</a>
+        </article>
+
+        <article class="path-card">
+          <h2>🔬 Advanced path</h2>
+          <p>Explore wavelet diagnostics, AI interpretation, structured metadata, and research applications.</p>
+          <a class="btn btn-secondary" href="/method-comparison/">View AI comparison study</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="topic-grid">
+        <article class="info-card">
+          <h2>Built for scientific users</h2>
+          <p>The Knowledge Center connects educational explanations with reproducible DMAP-AI workflows.</p>
+        </article>
+
+        <article class="info-card">
+          <h2>AI-search friendly</h2>
+          <p>Articles are structured with clear definitions, short answers, FAQs, references, and internal links.</p>
+        </article>
+
+        <article class="info-card">
+          <h2>Ready to expand</h2>
+          <p>The homepage reads article metadata from JSON, so the section can grow into a full documentation library.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
     </div>
+  </footer>
 
-</section>
-<section class="section">
-
-<div class="container">
-
-<h2>Learning Paths</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>🌍 Beginner</h3>
-
-<p>
-
-Start here if you are new to drought monitoring.
-
-</p>
-
-<a class="btn" href="/knowledge/what-is-drought/">
-
-Start →
-
-</a>
-
-</div>
-
-<div class="card">
-
-<h3>📈 Intermediate</h3>
-
-<p>
-
-Learn drought indices,
-SPI,
-SPEI,
-and climate datasets.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🔬 Advanced</h3>
-
-<p>
-
-Wavelet analysis,
-AI interpretation,
-and research methods.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-	</main>
-	<footer style="text-align:center;padding:30px">© 2026 AgriMetSoft LLC</footer><script src="/knowledge/knowledge-nav.js"></script><script src="/assets/global-nav.js"></script>
-    </body>
+  <script src="/knowledge/knowledge-nav.js" defer></script>
+  <script src="/assets/global-nav.js"></script>
+</body>
 </html>
