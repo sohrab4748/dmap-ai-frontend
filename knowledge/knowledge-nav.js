@@ -24,12 +24,16 @@
 
             <strong>${article.title}</strong>
 
-            <span>${article.summary}</span>
+            <span><strong>Summary:</strong> ${article.summary}</span>
 
-            <span>📖 ${article.readingTime}</span>
+            <span>📖 Reading time: ${article.readingTime}</span>
 
-            <span>🎓 ${article.difficulty}</span>
+            <span>🎓 Level: ${article.difficulty}</span>
+<span>
 
+📂 ${article.category}
+
+</span>
             <span class="station-status">
                 ${article.featured ? 'Featured' : 'Article'}
             </span>
