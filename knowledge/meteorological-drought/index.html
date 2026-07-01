@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Meteorological Drought | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Learn what meteorological drought is, how precipitation deficits are measured, which indicators are used, and how DMAP-AI supports meteorological drought assessment.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/meteorological-drought/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="Meteorological Drought">
+  <meta property="og:description" content="A scientific guide to meteorological drought, precipitation deficits, drought time scales, SPI, and DMAP-AI drought analysis workflows.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/meteorological-drought/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Meteorological Drought",
+        "description": "A scientific guide to meteorological drought, precipitation deficits, drought time scales, SPI, and DMAP-AI drought analysis workflows.",
+        "author": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-01",
+        "mainEntityOfPage": "https://droughtanalysis.com/knowledge/meteorological-drought/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://droughtanalysis.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Center",
+            "item": "https://droughtanalysis.com/knowledge/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Meteorological Drought",
+            "item": "https://droughtanalysis.com/knowledge/meteorological-drought/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is meteorological drought?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Meteorological drought is a period when precipitation is below the normal range for a region and season. It is usually the earliest detectable form of drought and is commonly measured with rainfall anomalies, percentiles, or standardized indices such as SPI."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is meteorological drought the same everywhere?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Meteorological drought is relative to local climate. The same rainfall amount can be normal in an arid region but very dry in a humid region, so drought assessment must compare current precipitation with the historical climate of that location."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is SPI useful for meteorological drought?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SPI is useful because it standardizes precipitation deficits across climates and time scales. This allows dry conditions at different locations and accumulation periods to be compared using a common drought-category scale."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:#2563eb;
+      --blue-dark:#1d4ed8;
+      --slate-50:#f8fafc;
+      --slate-100:#f1f5f9;
+      --slate-200:#e2e8f0;
+      --slate-500:#64748b;
+      --slate-600:#475569;
+      --slate-700:#334155;
+      --slate-800:#1e293b;
+      --slate-900:#0f172a;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      color:var(--slate-900);
+      background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .container {
+      width:min(100% - 2rem,80rem);
+      margin-inline:auto;
+    }
+
+    .article-hero {
+      padding:3.5rem 0 1.5rem;
+    }
+
+    .article-hero-card {
+      border:1px solid #bfdbfe;
+      border-radius:1.75rem;
+      background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));
+      box-shadow:0 18px 45px rgba(15,23,42,.08);
+      padding:2.25rem;
+    }
+
+    .breadcrumb {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      align-items:center;
+      color:var(--slate-500);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+
+    .breadcrumb a {
+      color:#1d4ed8;
+      font-weight:700;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      border-radius:999px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .8rem;
+      font-size:.875rem;
+      font-weight:850;
+    }
+
+    h1 {
+      margin:1rem 0 0;
+      font-size:clamp(2.2rem,5vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#020617;
+    }
+
+    .lead {
+      max-width:58rem;
+      margin:1rem 0 0;
+      color:var(--slate-600);
+      font-size:1.1rem;
+      line-height:1.75;
+    }
+
+    .article-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1.25rem;
+      color:#475569;
+      font-size:.92rem;
+    }
+
+    .meta-pill {
+      border:1px solid #dbeafe;
+      background:#fff;
+      border-radius:999px;
+      padding:.35rem .7rem;
+      font-weight:700;
+    }
+
+    .article-layout {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 18rem;
+      gap:2rem;
+      align-items:start;
+      padding:1.5rem 0 3rem;
+    }
+
+    .article-main {
+      background:#fff;
+      border:1px solid var(--slate-200);
+      border-radius:1.25rem;
+      box-shadow:0 12px 30px rgba(15,23,42,.055);
+      padding:2rem;
+    }
+
+    .article-main h2 {
+      margin:2rem 0 .75rem;
+      color:#0f172a;
+      font-size:clamp(1.4rem,2.5vw,1.85rem);
+      line-height:1.2;
+      letter-spacing:-.02em;
+    }
+
+    .article-main h2:first-child {
+      margin-top:0;
+    }
+
+    .article-main h3 {
+      margin:1.5rem 0 .5rem;
+      font-size:1.15rem;
+      color:#0f172a;
+    }
+
+    .article-main p {
+      margin:.75rem 0;
+      color:#334155;
+    }
+
+    .article-main ul,
+    .article-main ol {
+      color:#334155;
+      padding-left:1.4rem;
+    }
+
+    .quick-answer {
+      border:1px solid #bfdbfe;
+      border-left:5px solid #2563eb;
+      background:#eff6ff;
+      border-radius:1rem;
+      padding:1.15rem;
+      margin-bottom:1.5rem;
+    }
+
+    .quick-answer h2 {
+      margin:0 0 .45rem;
+      font-size:1.2rem;
+    }
+
+    .definition-box {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1.1rem;
+      margin:1rem 0;
+    }
+
+    .table-wrap {
+      overflow-x:auto;
+      margin:1.25rem 0;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:680px;
+      background:#fff;
+    }
+
+    th, td {
+      text-align:left;
+      padding:.85rem;
+      border-bottom:1px solid #e2e8f0;
+      vertical-align:top;
+    }
+
+    th {
+      background:#f8fafc;
+      color:#0f172a;
+      font-size:.9rem;
+    }
+
+    tr:last-child td {
+      border-bottom:0;
+    }
+
+    .toc {
+      position:sticky;
+      top:1rem;
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:1.1rem;
+      padding:1rem;
+      box-shadow:0 10px 25px rgba(15,23,42,.055);
+    }
+
+    .toc h2 {
+      font-size:1rem;
+      margin:0 0 .75rem;
+    }
+
+    .toc a {
+      display:block;
+      color:#475569;
+      font-size:.92rem;
+      padding:.35rem 0;
+      border-bottom:1px solid #f1f5f9;
+    }
+
+    .toc a:hover {
+      color:#1d4ed8;
+    }
+
+    .callout {
+      border:1px solid #bbf7d0;
+      background:#f0fdf4;
+      border-radius:1rem;
+      padding:1rem;
+      margin:1.25rem 0;
+    }
+
+    .callout strong {
+      color:#166534;
+    }
+
+    .warning-callout {
+      border:1px solid #fde68a;
+      background:#fffbeb;
+      border-radius:1rem;
+      padding:1rem;
+      margin:1.25rem 0;
+    }
+
+    .warning-callout strong {
+      color:#92400e;
+    }
+
+    .related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .related-card {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1rem;
+    }
+
+    .related-card strong {
+      display:block;
+      color:#0f172a;
+    }
+
+    .related-card span {
+      display:block;
+      color:#64748b;
+      font-size:.9rem;
+      margin-top:.35rem;
+    }
+
+    .references li {
+      margin:.55rem 0;
+    }
+
+    .site-footer {
+      border-top:1px solid var(--slate-200);
+      background:rgba(255,255,255,.72);
+      margin-top:2rem;
+    }
+
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding-block:1.5rem;
+      color:var(--slate-500);
+      font-size:.875rem;
+    }
+
+    @media(max-width:1050px) {
+      .article-layout {
+        grid-template-columns:1fr;
+      }
+
+      .toc {
+        position:static;
+        order:-1;
+      }
+    }
+
+    @media(max-width:640px) {
+      .container {
+        width:min(100% - 1rem,80rem);
+      }
+
+      .article-hero {
+        padding-top:2rem;
+      }
+
+      .article-hero-card,
+      .article-main {
+        padding:1.25rem;
+        border-radius:1.1rem;
+      }
+
+      .related-grid {
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/knowledge/">Knowledge Center</a>
+            <span>›</span>
+            <span>Meteorological Drought</span>
+          </nav>
+
+          <p class="eyebrow">Drought Basics</p>
+
+          <h1>Meteorological Drought</h1>
+
+          <p class="lead">
+            Meteorological drought is the climate-based form of drought. It occurs when precipitation
+            remains below the normal range for a region and season. Because it is usually the first
+            signal in the drought-development chain, meteorological drought is central to early warning,
+            drought monitoring, SPI analysis, and climate-risk interpretation.
+          </p>
+
+          <div class="article-meta">
+            <span class="meta-pill">Reading time: 9 min</span>
+            <span class="meta-pill">Level: Beginner</span>
+            <span class="meta-pill">Last updated: July 2026</span>
+            <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section class="quick-answer" id="quick-answer">
+          <h2>Short answer</h2>
+          <p>
+            Meteorological drought is a period of below-normal precipitation for a specific location,
+            season, and time scale. It is usually measured with rainfall anomalies, precipitation
+            percentiles, or standardized indices such as the Standardized Precipitation Index (SPI).
+            It often appears before agricultural or hydrological drought, but its impacts depend on
+            timing, temperature, evapotranspiration, soil moisture, and water demand.
+          </p>
+        </section>
+
+        <section id="definition">
+          <h2>Definition of meteorological drought</h2>
+
+          <p>
+            Meteorological drought is defined by a shortage of precipitation compared with the normal
+            climate of a region. The key phrase is “compared with normal.” A rainfall amount that is
+            severe drought in one location may be near normal in another. For this reason, meteorological
+            drought cannot be interpreted only from the absolute rainfall amount. It must be evaluated
+            against the historical distribution of precipitation for the same place and usually the same
+            season or accumulation period.
+          </p>
+
+          <div class="definition-box">
+            <strong>Working definition:</strong>
+            Meteorological drought is an abnormal and sustained precipitation deficit relative to the
+            long-term climate of a specific location and time scale.
+          </div>
+
+          <p>
+            Meteorological drought is often the first drought type to appear because precipitation is the
+            primary input to the land surface. When rainfall or snowfall is lower than expected, the deficit
+            can later propagate into soil moisture, vegetation stress, streamflow, reservoir storage, and
+            groundwater. However, this progression is not automatic. A short dry period may have little impact
+            if soils are wet, temperatures are mild, or irrigation is available. A similar dry period during
+            a hot and windy crop-growth stage can create serious agricultural impacts.
+          </p>
+        </section>
+
+        <section id="relative">
+          <h2>Why meteorological drought is relative to climate</h2>
+
+          <p>
+            Climate varies strongly from one region to another. A semi-arid location may naturally receive
+            little rainfall, while a humid location may receive several times more rainfall in the same
+            month. Meteorological drought therefore depends on how unusual the precipitation deficit is
+            for the local climate.
+          </p>
+
+          <p>
+            This relative nature is the reason standardized indicators are useful. If one city receives
+            30 mm of rain in a month and another receives 60 mm, the second city is not necessarily wetter
+            in a drought sense. The important question is whether each value is below, near, or above that
+            city's historical distribution for the same period.
+          </p>
+
+          <div class="warning-callout">
+            <strong>Common mistake:</strong>
+            Do not compare meteorological drought across regions using raw rainfall amounts alone. Compare
+            rainfall to the local historical baseline.
+          </div>
+        </section>
+
+        <section id="measurement">
+          <h2>How meteorological drought is measured</h2>
+
+          <p>
+            Meteorological drought can be measured in several ways. The simplest method is a precipitation
+            anomaly, which subtracts the long-term average from the observed precipitation. Another method
+            is percent of normal precipitation, which expresses current precipitation as a percentage of
+            the historical average. Percentiles compare current precipitation with the rank of historical
+            values. Standardized indices, such as SPI, transform precipitation into a common scale that can
+            be compared across climates.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>What it measures</th>
+                  <th>Strength</th>
+                  <th>Limitation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Precipitation anomaly</td>
+                  <td>Difference from long-term average</td>
+                  <td>Simple and easy to explain</td>
+                  <td>Hard to compare across climates</td>
+                </tr>
+                <tr>
+                  <td>Percent of normal</td>
+                  <td>Observed precipitation divided by average precipitation</td>
+                  <td>Useful for communication</td>
+                  <td>Can be unstable in dry regions or dry seasons</td>
+                </tr>
+                <tr>
+                  <td>Percentile</td>
+                  <td>Rank of current precipitation compared with history</td>
+                  <td>Shows rarity of conditions</td>
+                  <td>Requires enough historical data</td>
+                </tr>
+                <tr>
+                  <td>SPI</td>
+                  <td>Standardized precipitation departure</td>
+                  <td>Comparable across climates and time scales</td>
+                  <td>Uses precipitation only</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            In scientific drought monitoring, SPI is one of the most widely used indicators because it can
+            be calculated for multiple accumulation periods and interpreted using standardized drought
+            categories. For example, SPI-1 reflects short-term precipitation conditions, while SPI-12
+            provides an annual-scale view that is more relevant for persistent drought and water-supply
+            conditions.
+          </p>
+        </section>
+
+        <section id="time-scales">
+          <h2>Time scales in meteorological drought</h2>
+
+          <p>
+            Time scale is one of the most important choices in meteorological drought analysis. A short
+            accumulation period responds quickly to recent rainfall deficits, while a longer accumulation
+            period smooths short events and highlights persistent dry conditions.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Indicator time scale</th>
+                  <th>What it emphasizes</th>
+                  <th>Typical interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SPI-1</td>
+                  <td>Recent monthly precipitation</td>
+                  <td>Short-term dryness, flash drought signals, rapid changes</td>
+                </tr>
+                <tr>
+                  <td>SPI-3</td>
+                  <td>Seasonal precipitation</td>
+                  <td>Growing-season moisture, planting conditions, pasture stress</td>
+                </tr>
+                <tr>
+                  <td>SPI-6</td>
+                  <td>Medium-term rainfall deficit</td>
+                  <td>Seasonal drought development and persistence</td>
+                </tr>
+                <tr>
+                  <td>SPI-12</td>
+                  <td>Annual precipitation anomaly</td>
+                  <td>Longer drought episodes and water-resource context</td>
+                </tr>
+                <tr>
+                  <td>SPI-24</td>
+                  <td>Multi-year precipitation shortage</td>
+                  <td>Persistent drought and long-term planning</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            A single location can show different drought categories at different time scales. For example,
+            SPI-1 may indicate a very dry month, while SPI-12 remains near normal because the previous
+            months were wet. This does not mean the indices are contradictory. They answer different
+            questions. Short time scales describe recent weather; longer time scales describe accumulated
+            water deficit.
+          </p>
+        </section>
+
+        <section id="spi">
+          <h2>SPI and meteorological drought</h2>
+
+          <p>
+            The Standardized Precipitation Index is especially important for meteorological drought because
+            it is based only on precipitation. SPI fits the historical precipitation record to a probability
+            distribution and transforms the current accumulated precipitation into a standardized value.
+            Negative SPI values indicate drier-than-normal conditions, while positive values indicate
+            wetter-than-normal conditions.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>SPI value</th>
+                  <th>General category</th>
+                  <th>Interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0 to -0.99</td>
+                  <td>Near normal to mild dryness</td>
+                  <td>Below-average rainfall, usually not severe drought</td>
+                </tr>
+                <tr>
+                  <td>-1.00 to -1.49</td>
+                  <td>Moderate drought</td>
+                  <td>Clearly dry relative to historical conditions</td>
+                </tr>
+                <tr>
+                  <td>-1.50 to -1.99</td>
+                  <td>Severe drought</td>
+                  <td>Strong precipitation deficit with elevated impact risk</td>
+                </tr>
+                <tr>
+                  <td>≤ -2.00</td>
+                  <td>Extreme drought</td>
+                  <td>Rare and very dry conditions relative to the historical record</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            SPI is not a complete drought-impact index because it does not include temperature,
+            evapotranspiration, soil moisture, or water use. However, it is a strong foundation for
+            meteorological drought monitoring and is often the first index used before adding more
+            application-specific indicators.
+          </p>
+        </section>
+
+        <section id="limitations">
+          <h2>Limitations of meteorological drought analysis</h2>
+
+          <p>
+            Meteorological drought analysis is powerful, but it has limits. Precipitation data alone cannot
+            fully describe crop water stress, reservoir storage, groundwater depletion, or socioeconomic
+            impacts. Temperature and evapotranspiration can intensify drought impacts even when rainfall
+            deficits are moderate. Snow-dominated regions also require careful treatment because water
+            supply may depend more on snowpack timing and melt than on rainfall alone.
+          </p>
+
+          <p>
+            Data quality is another concern. Gauge records may have missing data, station relocations, or
+            changes in measurement practice. Gridded datasets and reanalysis products can fill gaps, but
+            they may have biases in complex terrain, coastal areas, or regions with sparse observations.
+            A responsible drought assessment should recognize these uncertainties rather than treating a
+            single dataset as perfect.
+          </p>
+
+          <div class="callout">
+            <strong>Best practice:</strong>
+            Use meteorological drought indicators as the climate foundation, then add soil moisture,
+            streamflow, crop stage, or water-demand information when the decision requires it.
+          </div>
+        </section>
+
+        <section id="dmap-ai">
+          <h2>How DMAP-AI supports meteorological drought analysis</h2>
+
+          <p>
+            DMAP-AI supports meteorological drought assessment by connecting climate data, SPI calculation,
+            drought-event detection, chart visualization, and AI interpretation. A user can select a location,
+            period, time scale, and climate data source, then generate SPI outputs that summarize wet and dry
+            periods in a reproducible way.
+          </p>
+
+          <p>
+            For meteorological drought, the most important DMAP-AI outputs include the SPI time series,
+            anomaly-style interpretation, drought event tables, and statistical summaries. Event metrics
+            such as duration, minimum SPI, and magnitude help distinguish a short dry event from a persistent
+            drought episode. These structured outputs give the AI interpreter more reliable information than
+            a chart-only request.
+          </p>
+
+          <p>
+            DMAP-AI can also help users compare drought behavior across time scales. For example, SPI-1 may
+            show rapid dry months, while SPI-12 may highlight longer episodes. This multi-scale view is
+            important because drought decisions often depend on whether the concern is recent rainfall,
+            seasonal agricultural conditions, or longer water-supply risk.
+          </p>
+        </section>
+
+        <section id="workflow">
+          <h2>Recommended workflow</h2>
+
+          <ol>
+            <li>Select a location and analysis period with enough historical data.</li>
+            <li>Choose a climate data source appropriate for the region and application.</li>
+            <li>Calculate SPI at one or more time scales, such as 1, 3, 6, and 12 months.</li>
+            <li>Identify drought events using a consistent threshold, such as SPI ≤ -1.0.</li>
+            <li>Compare event duration, minimum SPI, and magnitude across the record.</li>
+            <li>Interpret the results with local climate, crop calendar, water demand, and known drought history.</li>
+            <li>Use AI interpretation as a structured summary, not as a replacement for scientific judgment.</li>
+          </ol>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+
+          <h3>Is meteorological drought the first stage of drought?</h3>
+          <p>
+            Often yes. Meteorological drought usually begins with precipitation deficits. If the deficit
+            continues, it may propagate into soil moisture, vegetation, streamflow, reservoirs, and groundwater.
+          </p>
+
+          <h3>Can meteorological drought exist without agricultural drought?</h3>
+          <p>
+            Yes. A rainfall deficit may not cause agricultural drought if soil moisture is high, crop demand
+            is low, or irrigation is available. Timing and crop stage are critical.
+          </p>
+
+          <h3>Why does SPI use different time scales?</h3>
+          <p>
+            Different time scales represent different drought processes. Short time scales respond to recent
+            rainfall, while longer time scales show persistent accumulated deficits.
+          </p>
+
+          <h3>Is percent of normal precipitation enough?</h3>
+          <p>
+            Percent of normal is useful for simple communication, but it can be misleading in dry climates or
+            dry seasons. Standardized indicators such as SPI are usually better for comparison.
+          </p>
+
+          <h3>Should temperature be included?</h3>
+          <p>
+            Meteorological drought is commonly precipitation-based, but temperature and evapotranspiration
+            strongly influence impacts. For heat-sensitive drought assessment, SPEI or other evaporative-demand
+            indicators may be useful.
+          </p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+
+          <ol class="references">
+            <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+            <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
+            <li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
+            <li>Hayes, M. J., Svoboda, M. D., Wilhite, D. A., and Vanyarkho, O. V. (1999). Monitoring the 1996 drought using the Standardized Precipitation Index. Bulletin of the American Meteorological Society.</li>
+            <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+          </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/what-is-drought/">
+              <strong>What is Drought?</strong>
+              <span>Start with the general definition, causes, impacts, and monitoring concepts.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/types-of-drought/">
+              <strong>Types of Drought</strong>
+              <span>Compare meteorological, agricultural, hydrological, and socioeconomic drought.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/agricultural-drought/">
+              <strong>Agricultural Drought</strong>
+              <span>Learn how precipitation deficits become crop water stress and yield risk.</span>
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a>
+        <a href="#definition">Definition</a>
+        <a href="#relative">Relative to climate</a>
+        <a href="#measurement">Measurement</a>
+        <a href="#time-scales">Time scales</a>
+        <a href="#spi">SPI</a>
+        <a href="#limitations">Limitations</a>
+        <a href="#dmap-ai">How DMAP-AI uses this</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">References</a>
+        <a href="#related">Related articles</a>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="/assets/global-nav.js"></script>
+</body>
+</html>
