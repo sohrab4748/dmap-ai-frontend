@@ -1,43 +1,67 @@
 {
   "title": "DMAP-AI Knowledge Center",
-  "description": "Scientific articles, tutorials, and reference documentation for drought monitoring, drought indices, climate datasets, wavelet analysis, and AI-assisted drought interpretation.",
+  "description": "Scientific articles, tutorials, and reference documentation for drought monitoring, drought indices, climate datasets, wavelet analysis, agricultural drought risk, and AI-assisted drought interpretation.",
   "lastUpdated": "2026-07-01",
   "categories": [
     {
       "id": "drought-basics",
       "title": "Drought Basics",
-      "description": "Learn the fundamental concepts of drought, including its causes, development, impacts, and classification.",
+      "description": "Core drought definitions, drought types, causes, impacts, monitoring concepts, and terminology.",
       "icon": "🌍"
     },
     {
       "id": "drought-indices",
       "title": "Drought Indices",
-      "description": "Understand SPI, SPEI, PDSI, EDDI, and other commonly used drought indices.",
+      "description": "SPI, SPEI, PDSI, EDDI, drought categories, thresholds, severity, and interpretation.",
       "icon": "📈"
+    },
+    {
+      "id": "spi-tutorials",
+      "title": "SPI Tutorials",
+      "description": "Detailed SPI calculation, interpretation, time scales, distributions, and practical examples.",
+      "icon": "📊"
     },
     {
       "id": "climate-data",
       "title": "Climate Data",
-      "description": "Explore precipitation, temperature, evapotranspiration, and climate datasets used for drought monitoring.",
+      "description": "Climate datasets used for drought monitoring, including NASA POWER, ERA5, GridMET, CHIRPS, PRISM, Daymet, and CMIP6.",
       "icon": "🌦️"
     },
     {
       "id": "analysis-methods",
       "title": "Analysis Methods",
-      "description": "Scientific methods including wavelet analysis, probability distributions, trend analysis, and drought event detection.",
+      "description": "Drought event detection, drought severity, trend analysis, probability distributions, and uncertainty.",
       "icon": "🔬"
     },
     {
-      "id": "ai-analysis",
+      "id": "wavelet-analysis",
+      "title": "Wavelet Analysis",
+      "description": "Wavelet scalograms, global wavelet spectra, coherence, periodicity diagnostics, and interpretation limits.",
+      "icon": "〰️"
+    },
+    {
+      "id": "ai-interpretation",
       "title": "AI Interpretation",
-      "description": "Learn how AI and structured metadata improve drought interpretation and reporting.",
+      "description": "Structured AI prompts, chart-specific interpretation, hallucination reduction, reproducible metadata, and report generation.",
       "icon": "🤖"
     },
     {
+      "id": "agricultural-applications",
+      "title": "Agricultural Applications",
+      "description": "Crop drought risk, farm-scale drought assessment, irrigation planning, growing-season risk, and farmer reports.",
+      "icon": "🌽"
+    },
+    {
       "id": "case-studies",
-      "title": "Case Studies",
-      "description": "Real-world drought analyses using DMAP-AI.",
+      "title": "Regional Case Studies",
+      "description": "Location-specific drought examples using DMAP-AI workflows and climate datasets.",
       "icon": "📚"
+    },
+    {
+      "id": "dmap-ai-documentation",
+      "title": "DMAP-AI Documentation",
+      "description": "Guides for using DMAP-AI Research Version, Farmer Version, chart outputs, JSON context, and exports.",
+      "icon": "🧭"
     }
   ],
   "articles": [
@@ -46,175 +70,1928 @@
       "slug": "what-is-drought",
       "title": "What is Drought?",
       "category": "Drought Basics",
+      "categoryId": "drought-basics",
       "summary": "Learn what drought is, why it occurs, how it develops, and why accurate monitoring is important.",
       "readingTime": "10 min",
       "difficulty": "Beginner",
       "featured": true,
+      "status": "Available",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "drought",
-        "definition",
-        "water shortage",
-        "precipitation deficit",
-        "climate"
+        "what",
+        "drought"
       ],
-      "related": [
-        "types-of-drought",
-        "meteorological-drought",
-        "what-is-spi"
-      ]
+      "related": []
     },
     {
       "id": 2,
       "slug": "types-of-drought",
       "title": "Types of Drought",
       "category": "Drought Basics",
-      "summary": "Understand meteorological, agricultural, hydrological, and socioeconomic drought.",
+      "categoryId": "drought-basics",
+      "summary": "Understand meteorological, agricultural, hydrological, and socioeconomic drought and how they are connected.",
       "readingTime": "12 min",
       "difficulty": "Beginner",
       "featured": true,
+      "status": "Available",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "types",
-        "agricultural",
-        "hydrological",
-        "meteorological"
+        "drought"
       ],
-      "related": [
-        "what-is-drought",
-        "meteorological-drought",
-        "agricultural-drought"
-      ]
+      "related": []
     },
     {
       "id": 3,
       "slug": "meteorological-drought",
       "title": "Meteorological Drought",
       "category": "Drought Basics",
+      "categoryId": "drought-basics",
       "summary": "Learn how precipitation deficits initiate drought and how meteorological drought is measured.",
       "readingTime": "9 min",
       "difficulty": "Beginner",
       "featured": false,
+      "status": "Available",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "rainfall",
-        "precipitation",
-        "SPI"
+        "meteorological",
+        "drought"
       ],
-      "related": [
-        "types-of-drought",
-        "what-is-spi"
-      ]
+      "related": []
     },
     {
       "id": 4,
       "slug": "agricultural-drought",
       "title": "Agricultural Drought",
       "category": "Drought Basics",
-      "summary": "Discover how soil moisture deficits affect crop growth, irrigation, and food production.",
+      "categoryId": "drought-basics",
+      "summary": "Discover how soil moisture deficits affect crop growth, irrigation demand, and agricultural risk.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
+      "status": "Available",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "soil moisture",
-        "crop",
-        "irrigation",
-        "corn",
-        "soybean"
+        "agricultural",
+        "drought"
       ],
-      "related": [
-        "hydrological-drought",
-        "what-is-drought"
-      ]
+      "related": []
     },
     {
       "id": 5,
       "slug": "hydrological-drought",
       "title": "Hydrological Drought",
       "category": "Drought Basics",
-      "summary": "Understand how drought influences rivers, reservoirs, lakes, and groundwater.",
+      "categoryId": "drought-basics",
+      "summary": "Understand how drought influences rivers, reservoirs, lakes, groundwater, and water-supply planning.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
+      "status": "Available",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "streamflow",
-        "reservoir",
-        "groundwater"
+        "hydrological",
+        "drought"
       ],
-      "related": [
-        "agricultural-drought",
-        "types-of-drought"
-      ]
+      "related": []
     },
     {
       "id": 6,
       "slug": "what-is-spi",
       "title": "What is SPI?",
       "category": "Drought Indices",
-      "summary": "Learn what the Standardized Precipitation Index means, how SPI values are interpreted, and why SPI is widely used for drought monitoring.",
-      "readingTime": "12 min",
+      "categoryId": "drought-indices",
+      "summary": "Learn what the Standardized Precipitation Index is and why it is widely used for drought monitoring.",
+      "readingTime": "10 min",
       "difficulty": "Beginner",
       "featured": true,
+      "status": "Available",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "SPI",
-        "Standardized Precipitation Index",
-        "drought index",
-        "precipitation"
+        "what",
+        "spi"
       ],
-      "related": [
-        "how-spi-is-calculated",
-        "meteorological-drought",
-        "what-is-drought"
-      ]
+      "related": []
     },
     {
       "id": 7,
       "slug": "how-spi-is-calculated",
       "title": "How SPI is Calculated",
-      "category": "Drought Indices",
-      "summary": "A step-by-step explanation of SPI calculation from precipitation accumulation to probability fitting and standard normal transformation.",
-      "readingTime": "13 min",
+      "category": "SPI Tutorials",
+      "categoryId": "spi-tutorials",
+      "summary": "Understand the main steps used to calculate SPI from precipitation records and probability distributions.",
+      "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": true,
+      "status": "Available",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "SPI calculation",
-        "gamma distribution",
-        "cumulative probability",
-        "standard normal",
-        "drought index"
+        "how",
+        "spi",
+        "calculated"
       ],
-      "related": [
-        "what-is-spi",
-        "meteorological-drought",
-        "types-of-drought"
-      ]
+      "related": []
     },
     {
       "id": 8,
       "slug": "spi-interpretation",
-      "title": "SPI Interpretation",
-      "category": "Drought Indices",
-      "summary": "Learn how to interpret SPI values, drought categories, time scales, event duration, severity, magnitude, and common mistakes in SPI-based drought assessment.",
-      "readingTime": "14 min",
-      "difficulty": "Intermediate",
+      "title": "SPI Interpretation Guide",
+      "category": "SPI Tutorials",
+      "categoryId": "spi-tutorials",
+      "summary": "Learn how to interpret SPI values, drought categories, time scales, and common limitations.",
+      "readingTime": "11 min",
+      "difficulty": "Beginner",
       "featured": true,
+      "status": "Available",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "SPI interpretation",
-        "SPI categories",
-        "drought severity",
-        "drought duration",
-        "drought magnitude"
+        "spi",
+        "interpretation",
+        "guide"
       ],
-      "related": [
-        "what-is-spi",
-        "how-spi-is-calculated",
-        "meteorological-drought"
-      ]
+      "related": []
+    },
+    {
+      "id": 9,
+      "slug": "spi-vs-spei",
+      "title": "SPI vs SPEI",
+      "category": "Drought Indices",
+      "categoryId": "drought-indices",
+      "summary": "Compare SPI and SPEI, including precipitation-only drought monitoring versus water-balance drought monitoring.",
+      "readingTime": "10 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "spi",
+        "spei"
+      ],
+      "related": []
+    },
+    {
+      "id": 10,
+      "slug": "what-is-spei",
+      "title": "What is SPEI?",
+      "category": "Drought Indices",
+      "categoryId": "drought-indices",
+      "summary": "Learn how the Standardized Precipitation Evapotranspiration Index accounts for atmospheric water demand.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "what",
+        "spei"
+      ],
+      "related": []
+    },
+    {
+      "id": 11,
+      "slug": "what-is-pdsi",
+      "title": "What is PDSI?",
+      "category": "Drought Indices",
+      "categoryId": "drought-indices",
+      "summary": "Understand the Palmer Drought Severity Index and its role in long-term drought monitoring.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "what",
+        "pdsi"
+      ],
+      "related": []
+    },
+    {
+      "id": 12,
+      "slug": "what-is-eddi",
+      "title": "What is EDDI?",
+      "category": "Drought Indices",
+      "categoryId": "drought-indices",
+      "summary": "Learn how the Evaporative Demand Drought Index helps detect atmospheric drought stress and flash drought risk.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "what",
+        "eddi"
+      ],
+      "related": []
+    },
+    {
+      "id": 13,
+      "slug": "spi-time-scales",
+      "title": "SPI Time Scales",
+      "category": "SPI Tutorials",
+      "categoryId": "spi-tutorials",
+      "summary": "Learn how SPI-1, SPI-3, SPI-6, SPI-12, and SPI-24 describe different drought processes.",
+      "readingTime": "12 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "spi",
+        "time",
+        "scales"
+      ],
+      "related": []
+    },
+    {
+      "id": 14,
+      "slug": "spi-categories",
+      "title": "SPI Drought Categories",
+      "category": "SPI Tutorials",
+      "categoryId": "spi-tutorials",
+      "summary": "Understand SPI category thresholds, including moderate, severe, and extreme drought conditions.",
+      "readingTime": "8 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "spi",
+        "drought",
+        "categories"
+      ],
+      "related": []
+    },
+    {
+      "id": 15,
+      "slug": "spi-data-requirements",
+      "title": "How Much Data is Needed for SPI?",
+      "category": "SPI Tutorials",
+      "categoryId": "spi-tutorials",
+      "summary": "Learn why record length, missing data, and baseline period affect SPI reliability.",
+      "readingTime": "9 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "how",
+        "much",
+        "data",
+        "needed",
+        "for",
+        "spi"
+      ],
+      "related": []
+    },
+    {
+      "id": 16,
+      "slug": "spi-limitations",
+      "title": "Limitations of SPI",
+      "category": "SPI Tutorials",
+      "categoryId": "spi-tutorials",
+      "summary": "Understand what SPI can and cannot tell you about agricultural, hydrological, and climate-change drought risk.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "limitations",
+        "spi"
+      ],
+      "related": []
+    },
+    {
+      "id": 17,
+      "slug": "spi-and-climate-change",
+      "title": "SPI and Climate Change",
+      "category": "SPI Tutorials",
+      "categoryId": "spi-tutorials",
+      "summary": "Learn why SPI is useful but must be interpreted carefully under non-stationary climate conditions.",
+      "readingTime": "11 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "spi",
+        "and",
+        "climate",
+        "change"
+      ],
+      "related": []
+    },
+    {
+      "id": 18,
+      "slug": "spi-for-agriculture",
+      "title": "Using SPI for Agriculture",
+      "category": "Agricultural Applications",
+      "categoryId": "agricultural-applications",
+      "summary": "Learn how SPI time scales can support crop monitoring, seasonal drought assessment, and farm risk analysis.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "using",
+        "spi",
+        "for",
+        "agriculture"
+      ],
+      "related": []
+    },
+    {
+      "id": 19,
+      "slug": "spi-for-water-resources",
+      "title": "Using SPI for Water Resources",
+      "category": "Drought Indices",
+      "categoryId": "drought-indices",
+      "summary": "Understand how longer SPI time scales support reservoir, groundwater, and water-supply drought assessment.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "using",
+        "spi",
+        "for",
+        "water",
+        "resources"
+      ],
+      "related": []
+    },
+    {
+      "id": 20,
+      "slug": "spi-vs-rainfall-anomaly",
+      "title": "SPI vs Rainfall Anomaly",
+      "category": "Drought Indices",
+      "categoryId": "drought-indices",
+      "summary": "Compare standardized drought indices with simple rainfall anomaly calculations.",
+      "readingTime": "8 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "spi",
+        "rainfall",
+        "anomaly"
+      ],
+      "related": []
+    },
+    {
+      "id": 21,
+      "slug": "drought-severity",
+      "title": "Drought Severity",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Learn how drought severity is defined using drought intensity, duration, and threshold-based events.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "drought",
+        "severity"
+      ],
+      "related": []
+    },
+    {
+      "id": 22,
+      "slug": "drought-duration",
+      "title": "Drought Duration",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Understand how long drought events last and how duration depends on the selected drought index and threshold.",
+      "readingTime": "9 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "drought",
+        "duration"
+      ],
+      "related": []
+    },
+    {
+      "id": 23,
+      "slug": "drought-magnitude",
+      "title": "Drought Magnitude",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Learn how drought magnitude summarizes accumulated drought intensity over an event.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "drought",
+        "magnitude"
+      ],
+      "related": []
+    },
+    {
+      "id": 24,
+      "slug": "drought-intensity",
+      "title": "Drought Intensity",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Understand drought intensity and how it differs from severity, duration, and magnitude.",
+      "readingTime": "8 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "drought",
+        "intensity"
+      ],
+      "related": []
+    },
+    {
+      "id": 25,
+      "slug": "drought-event-detection",
+      "title": "Drought Event Detection",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Learn how drought events are detected from continuous drought-index time series.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "drought",
+        "event",
+        "detection"
+      ],
+      "related": []
+    },
+    {
+      "id": 26,
+      "slug": "drought-frequency",
+      "title": "Drought Frequency Analysis",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Understand how often droughts occur and how frequency can be summarized statistically.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "drought",
+        "frequency",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 27,
+      "slug": "return-period-drought",
+      "title": "Drought Return Periods",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Learn how return periods are used and why they must be interpreted carefully for drought events.",
+      "readingTime": "10 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "drought",
+        "return",
+        "periods"
+      ],
+      "related": []
+    },
+    {
+      "id": 28,
+      "slug": "probability-distributions-drought",
+      "title": "Probability Distributions in Drought Analysis",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Review common probability distributions used for drought indices and frequency analysis.",
+      "readingTime": "12 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "probability",
+        "distributions",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 29,
+      "slug": "gamma-distribution-spi",
+      "title": "Gamma Distribution for SPI",
+      "category": "SPI Tutorials",
+      "categoryId": "spi-tutorials",
+      "summary": "Learn why the gamma distribution is commonly used when fitting precipitation for SPI calculations.",
+      "readingTime": "12 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "gamma",
+        "distribution",
+        "for",
+        "spi"
+      ],
+      "related": []
+    },
+    {
+      "id": 30,
+      "slug": "empirical-spi",
+      "title": "Empirical SPI",
+      "category": "SPI Tutorials",
+      "categoryId": "spi-tutorials",
+      "summary": "Understand empirical approaches to SPI calculation when parametric assumptions are uncertain.",
+      "readingTime": "11 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "empirical",
+        "spi"
+      ],
+      "related": []
+    },
+    {
+      "id": 31,
+      "slug": "climate-data-for-drought",
+      "title": "Climate Data for Drought Monitoring",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Learn which climate variables are needed for drought monitoring and how they affect drought interpretation.",
+      "readingTime": "10 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "climate",
+        "data",
+        "for",
+        "drought",
+        "monitoring"
+      ],
+      "related": []
+    },
+    {
+      "id": 32,
+      "slug": "nasa-power-drought",
+      "title": "NASA POWER for Drought Analysis",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Understand how NASA POWER data can support drought analysis at global point locations.",
+      "readingTime": "11 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "nasa",
+        "power",
+        "for",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 33,
+      "slug": "era5-drought",
+      "title": "ERA5 for Drought Analysis",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Learn how ERA5 reanalysis data can be used for drought monitoring and climate diagnostics.",
+      "readingTime": "12 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "era5",
+        "for",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 34,
+      "slug": "era5-land-drought",
+      "title": "ERA5-Land for Drought Analysis",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Understand the advantages and limitations of ERA5-Land for land-surface drought applications.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "era5-land",
+        "for",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 35,
+      "slug": "gridmet-drought",
+      "title": "GridMET for Drought Analysis",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Learn how GridMET supports high-resolution drought monitoring in the United States.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "gridmet",
+        "for",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 36,
+      "slug": "terraclimate-drought",
+      "title": "TerraClimate for Drought Analysis",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Understand TerraClimate data and its use in monthly climate and drought studies.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "terraclimate",
+        "for",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 37,
+      "slug": "chirps-drought",
+      "title": "CHIRPS for Precipitation Drought Monitoring",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Learn how CHIRPS precipitation data supports drought monitoring in data-limited regions.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "chirps",
+        "for",
+        "precipitation",
+        "drought",
+        "monitoring"
+      ],
+      "related": []
+    },
+    {
+      "id": 38,
+      "slug": "prism-drought",
+      "title": "PRISM for Drought Analysis",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Understand how PRISM climate data supports U.S. drought monitoring and climatology.",
+      "readingTime": "9 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "prism",
+        "for",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 39,
+      "slug": "daymet-drought",
+      "title": "Daymet for Drought Analysis",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Learn how Daymet daily gridded data can support ecological and hydrological drought analysis.",
+      "readingTime": "9 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "daymet",
+        "for",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 40,
+      "slug": "cmip6-drought-projections",
+      "title": "CMIP6 Drought Projections",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Learn how CMIP6 climate projections can be used carefully for future drought risk assessment.",
+      "readingTime": "12 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "cmip6",
+        "drought",
+        "projections"
+      ],
+      "related": []
+    },
+    {
+      "id": 41,
+      "slug": "climate-data-bias",
+      "title": "Bias in Climate Datasets",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Understand why climate datasets can differ and how bias affects drought indices and interpretation.",
+      "readingTime": "11 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "bias",
+        "climate",
+        "datasets"
+      ],
+      "related": []
+    },
+    {
+      "id": 42,
+      "slug": "station-vs-gridded-data",
+      "title": "Station Data vs Gridded Data",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Compare station observations and gridded datasets for drought monitoring and research.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "station",
+        "data",
+        "gridded",
+        "data"
+      ],
+      "related": []
+    },
+    {
+      "id": 43,
+      "slug": "what-is-wavelet-analysis",
+      "title": "What is Wavelet Analysis?",
+      "category": "Wavelet Analysis",
+      "categoryId": "wavelet-analysis",
+      "summary": "Learn how wavelet analysis reveals time-varying drought variability and periodicity.",
+      "readingTime": "12 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "what",
+        "wavelet",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 44,
+      "slug": "wavelet-vs-fourier",
+      "title": "Wavelet vs Fourier Analysis",
+      "category": "Wavelet Analysis",
+      "categoryId": "wavelet-analysis",
+      "summary": "Compare wavelet and Fourier methods for climate and drought time series analysis.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "wavelet",
+        "fourier",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 45,
+      "slug": "wavelet-scalogram",
+      "title": "Wavelet Scalogram Interpretation",
+      "category": "Wavelet Analysis",
+      "categoryId": "wavelet-analysis",
+      "summary": "Learn how to interpret wavelet scalograms for drought time series.",
+      "readingTime": "12 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "wavelet",
+        "scalogram",
+        "interpretation"
+      ],
+      "related": []
+    },
+    {
+      "id": 46,
+      "slug": "global-wavelet-spectrum",
+      "title": "Global Wavelet Spectrum",
+      "category": "Wavelet Analysis",
+      "categoryId": "wavelet-analysis",
+      "summary": "Understand how the global wavelet spectrum summarizes dominant time scales in a drought record.",
+      "readingTime": "11 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "global",
+        "wavelet",
+        "spectrum"
+      ],
+      "related": []
+    },
+    {
+      "id": 47,
+      "slug": "wavelet-coherence",
+      "title": "Wavelet Coherence",
+      "category": "Wavelet Analysis",
+      "categoryId": "wavelet-analysis",
+      "summary": "Learn how wavelet coherence compares shared variability between drought and climate drivers.",
+      "readingTime": "12 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "wavelet",
+        "coherence"
+      ],
+      "related": []
+    },
+    {
+      "id": 48,
+      "slug": "cone-of-influence",
+      "title": "Cone of Influence in Wavelet Analysis",
+      "category": "Wavelet Analysis",
+      "categoryId": "wavelet-analysis",
+      "summary": "Understand edge effects and why wavelet results near the boundary should be interpreted carefully.",
+      "readingTime": "10 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "cone",
+        "influence",
+        "wavelet",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 49,
+      "slug": "dominant-periodicity",
+      "title": "Dominant Periodicity in Drought Records",
+      "category": "Wavelet Analysis",
+      "categoryId": "wavelet-analysis",
+      "summary": "Learn how to describe drought periodicity without over-interpreting cycles as deterministic schedules.",
+      "readingTime": "11 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dominant",
+        "periodicity",
+        "drought",
+        "records"
+      ],
+      "related": []
+    },
+    {
+      "id": 50,
+      "slug": "wavelet-misinterpretation",
+      "title": "Common Wavelet Misinterpretations",
+      "category": "Wavelet Analysis",
+      "categoryId": "wavelet-analysis",
+      "summary": "Review common mistakes when interpreting wavelet power, coherence, and periodicity diagnostics.",
+      "readingTime": "12 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "common",
+        "wavelet",
+        "misinterpretations"
+      ],
+      "related": []
+    },
+    {
+      "id": 51,
+      "slug": "climate-drivers-drought",
+      "title": "Climate Drivers of Drought",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Learn how large-scale climate patterns can influence drought variability and persistence.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "climate",
+        "drivers",
+        "drought"
+      ],
+      "related": []
+    },
+    {
+      "id": 52,
+      "slug": "enso-and-drought",
+      "title": "ENSO and Drought",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Understand how El Niño and La Niña can affect drought risk in different regions.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "enso",
+        "and",
+        "drought"
+      ],
+      "related": []
+    },
+    {
+      "id": 53,
+      "slug": "ai-drought-interpretation",
+      "title": "AI for Drought Interpretation",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Learn how AI can help explain drought charts, metrics, and risk indicators when properly constrained.",
+      "readingTime": "10 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "for",
+        "drought",
+        "interpretation"
+      ],
+      "related": []
+    },
+    {
+      "id": 54,
+      "slug": "structured-ai-prompts",
+      "title": "Structured AI Prompts for Drought Analysis",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Understand why structured prompts improve AI drought interpretation and reduce ambiguity.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "structured",
+        "prompts",
+        "for",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 55,
+      "slug": "chart-specific-ai",
+      "title": "Chart-Specific AI Interpretation",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Learn why each drought chart should be interpreted with its own metadata and analytical context.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "chart-specific",
+        "interpretation"
+      ],
+      "related": []
+    },
+    {
+      "id": 56,
+      "slug": "ai-hallucination-drought",
+      "title": "AI Hallucination in Drought Assessment",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Learn how drought-analysis prompts can reduce unsupported claims and improve scientific reliability.",
+      "readingTime": "12 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "hallucination",
+        "drought",
+        "assessment"
+      ],
+      "related": []
+    },
+    {
+      "id": 57,
+      "slug": "structured-metadata-drought",
+      "title": "Structured Metadata for Drought AI",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Understand how metadata helps AI interpret drought metrics, charts, thresholds, and locations.",
+      "readingTime": "11 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "structured",
+        "metadata",
+        "for",
+        "drought"
+      ],
+      "related": []
+    },
+    {
+      "id": 58,
+      "slug": "chart-only-vs-structured-ai",
+      "title": "Chart-Only vs Structured AI Interpretation",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Compare general chart interpretation with structured DMAP-AI request outputs.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "chart-only",
+        "structured",
+        "interpretation"
+      ],
+      "related": []
+    },
+    {
+      "id": 59,
+      "slug": "ai-farmer-reports",
+      "title": "AI Farmer Reports for Drought Risk",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Learn how AI-generated farmer reports can summarize drought risk in practical language.",
+      "readingTime": "10 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "farmer",
+        "reports",
+        "for",
+        "drought",
+        "risk"
+      ],
+      "related": []
+    },
+    {
+      "id": 60,
+      "slug": "ai-scientific-reports",
+      "title": "AI Scientific Reports for Drought Analysis",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Learn how AI can help summarize drought diagnostics for scientific and technical audiences.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "scientific",
+        "reports",
+        "for",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 61,
+      "slug": "responsible-ai-drought",
+      "title": "Responsible AI in Drought Decision Support",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Review principles for using AI carefully in drought monitoring, agriculture, and water management.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "responsible",
+        "drought",
+        "decision",
+        "support"
+      ],
+      "related": []
+    },
+    {
+      "id": 62,
+      "slug": "llms-drought-analysis",
+      "title": "Large Language Models for Drought Analysis",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Understand the opportunities and limits of LLMs in drought analysis and climate decision support.",
+      "readingTime": "12 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "large",
+        "language",
+        "models",
+        "for",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 63,
+      "slug": "corn-drought-risk",
+      "title": "Corn Drought Risk",
+      "category": "Agricultural Applications",
+      "categoryId": "agricultural-applications",
+      "summary": "Learn how drought affects corn during emergence, vegetative growth, pollination, and grain filling.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "corn",
+        "drought",
+        "risk"
+      ],
+      "related": []
+    },
+    {
+      "id": 64,
+      "slug": "soybean-drought-risk",
+      "title": "Soybean Drought Risk",
+      "category": "Agricultural Applications",
+      "categoryId": "agricultural-applications",
+      "summary": "Understand soybean drought sensitivity, growth stages, and management considerations.",
+      "readingTime": "9 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "soybean",
+        "drought",
+        "risk"
+      ],
+      "related": []
+    },
+    {
+      "id": 65,
+      "slug": "wheat-drought-risk",
+      "title": "Wheat Drought Risk",
+      "category": "Agricultural Applications",
+      "categoryId": "agricultural-applications",
+      "summary": "Learn how drought affects wheat establishment, heading, grain filling, and yield risk.",
+      "readingTime": "9 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "wheat",
+        "drought",
+        "risk"
+      ],
+      "related": []
+    },
+    {
+      "id": 66,
+      "slug": "rice-drought-risk",
+      "title": "Rice Drought Risk",
+      "category": "Agricultural Applications",
+      "categoryId": "agricultural-applications",
+      "summary": "Understand drought risk in rice systems and the importance of water management.",
+      "readingTime": "9 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "rice",
+        "drought",
+        "risk"
+      ],
+      "related": []
+    },
+    {
+      "id": 67,
+      "slug": "cotton-drought-risk",
+      "title": "Cotton Drought Risk",
+      "category": "Agricultural Applications",
+      "categoryId": "agricultural-applications",
+      "summary": "Learn how drought stress affects cotton growth, boll development, and irrigation decisions.",
+      "readingTime": "9 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "cotton",
+        "drought",
+        "risk"
+      ],
+      "related": []
+    },
+    {
+      "id": 68,
+      "slug": "irrigation-drought-planning",
+      "title": "Irrigation Planning During Drought",
+      "category": "Agricultural Applications",
+      "categoryId": "agricultural-applications",
+      "summary": "Learn how drought indicators can support irrigation timing, prioritization, and water conservation.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "irrigation",
+        "planning",
+        "during",
+        "drought"
+      ],
+      "related": []
+    },
+    {
+      "id": 69,
+      "slug": "soil-moisture-drought",
+      "title": "Soil Moisture and Drought",
+      "category": "Agricultural Applications",
+      "categoryId": "agricultural-applications",
+      "summary": "Understand how soil moisture connects climate deficits with crop and vegetation stress.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "soil",
+        "moisture",
+        "and",
+        "drought"
+      ],
+      "related": []
+    },
+    {
+      "id": 70,
+      "slug": "evapotranspiration-drought",
+      "title": "Evapotranspiration and Drought",
+      "category": "Agricultural Applications",
+      "categoryId": "agricultural-applications",
+      "summary": "Learn how evapotranspiration affects water demand and agricultural drought interpretation.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "evapotranspiration",
+        "and",
+        "drought"
+      ],
+      "related": []
+    },
+    {
+      "id": 71,
+      "slug": "flash-drought",
+      "title": "Flash Drought",
+      "category": "Drought Basics",
+      "categoryId": "drought-basics",
+      "summary": "Learn how rapidly intensifying drought develops and why early warning is difficult.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "flash",
+        "drought"
+      ],
+      "related": []
+    },
+    {
+      "id": 72,
+      "slug": "growing-season-drought",
+      "title": "Growing-Season Drought",
+      "category": "Agricultural Applications",
+      "categoryId": "agricultural-applications",
+      "summary": "Understand how seasonal timing affects drought impacts on crops and rangelands.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "growing-season",
+        "drought"
+      ],
+      "related": []
+    },
+    {
+      "id": 73,
+      "slug": "ames-iowa-drought-risk",
+      "title": "Ames, Iowa Drought Risk Case Study",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Explore drought risk for a corn-growing region using DMAP-AI concepts and climate indicators.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "ames",
+        "iowa",
+        "drought",
+        "risk",
+        "case",
+        "study"
+      ],
+      "related": []
+    },
+    {
+      "id": 74,
+      "slug": "phoenix-arizona-drought",
+      "title": "Phoenix, Arizona Drought Analysis",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Review drought characteristics in a hot arid urban region using DMAP-AI-style interpretation.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "phoenix",
+        "arizona",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 75,
+      "slug": "tucson-arizona-drought",
+      "title": "Tucson, Arizona Drought Analysis",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Explore drought monitoring challenges in southern Arizona.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "tucson",
+        "arizona",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 76,
+      "slug": "yuma-arizona-drought",
+      "title": "Yuma, Arizona Drought Analysis",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Learn how drought monitoring applies to irrigated agriculture in southwestern Arizona.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "yuma",
+        "arizona",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 77,
+      "slug": "flagstaff-arizona-drought",
+      "title": "Flagstaff, Arizona Drought Analysis",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Analyze drought variability in a higher-elevation Arizona climate context.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "flagstaff",
+        "arizona",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 78,
+      "slug": "california-drought-risk",
+      "title": "California Drought Risk",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Understand drought complexity in California water supply, agriculture, and climate variability.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "california",
+        "drought",
+        "risk"
+      ],
+      "related": []
+    },
+    {
+      "id": 79,
+      "slug": "texas-drought-risk",
+      "title": "Texas Drought Risk",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Learn how drought varies across Texas climate regions and agricultural systems.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "texas",
+        "drought",
+        "risk"
+      ],
+      "related": []
+    },
+    {
+      "id": 80,
+      "slug": "florida-drought-risk",
+      "title": "Florida Drought Risk",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Review drought monitoring in a humid region with strong seasonal rainfall variability.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "florida",
+        "drought",
+        "risk"
+      ],
+      "related": []
+    },
+    {
+      "id": 81,
+      "slug": "south-africa-drought",
+      "title": "South Africa Drought Analysis",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Explore drought monitoring challenges in a region with major agricultural and water-supply risk.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "south",
+        "africa",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 82,
+      "slug": "india-drought-risk",
+      "title": "India Drought Risk",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Understand drought monitoring in monsoon-dependent agricultural and water-resource systems.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "india",
+        "drought",
+        "risk"
+      ],
+      "related": []
+    },
+    {
+      "id": 83,
+      "slug": "dmap-ai-overview",
+      "title": "DMAP-AI Overview",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Learn what DMAP-AI does and how it connects climate data, indices, wavelet diagnostics, and AI interpretation.",
+      "readingTime": "8 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dmap-ai",
+        "overview"
+      ],
+      "related": []
+    },
+    {
+      "id": 84,
+      "slug": "dmap-ai-research-version",
+      "title": "DMAP-AI Research Version Guide",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Learn how to use the Research Version for scientific drought analysis and chart interpretation.",
+      "readingTime": "10 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dmap-ai",
+        "research",
+        "version",
+        "guide"
+      ],
+      "related": []
+    },
+    {
+      "id": 85,
+      "slug": "dmap-ai-farmer-version",
+      "title": "DMAP-AI Farmer Version Guide",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Understand how the Farmer Version summarizes drought risk in practical decision-support language.",
+      "readingTime": "10 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dmap-ai",
+        "farmer",
+        "version",
+        "guide"
+      ],
+      "related": []
+    },
+    {
+      "id": 86,
+      "slug": "dmap-ai-spi-line-chart",
+      "title": "DMAP-AI SPI Line Chart",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Learn how to read the SPI line chart and interpret drought/wetness conditions over time.",
+      "readingTime": "8 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dmap-ai",
+        "spi",
+        "line",
+        "chart"
+      ],
+      "related": []
+    },
+    {
+      "id": 87,
+      "slug": "dmap-ai-severity-table",
+      "title": "DMAP-AI Drought Severity Table",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Understand the drought severity table, event thresholds, minimum SPI, duration, and magnitude.",
+      "readingTime": "9 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dmap-ai",
+        "drought",
+        "severity",
+        "table"
+      ],
+      "related": []
+    },
+    {
+      "id": 88,
+      "slug": "dmap-ai-wavelet-charts",
+      "title": "DMAP-AI Wavelet Charts",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Learn how DMAP-AI wavelet charts support drought variability interpretation.",
+      "readingTime": "10 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dmap-ai",
+        "wavelet",
+        "charts"
+      ],
+      "related": []
+    },
+    {
+      "id": 89,
+      "slug": "dmap-ai-json-context",
+      "title": "DMAP-AI JSON Context",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Understand how DMAP-AI JSON context supports reproducible AI interpretation.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dmap-ai",
+        "json",
+        "context"
+      ],
+      "related": []
+    },
+    {
+      "id": 90,
+      "slug": "dmap-ai-exporting-results",
+      "title": "Exporting DMAP-AI Results",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Learn how to export charts, tables, data, and AI outputs for reports and research.",
+      "readingTime": "8 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "exporting",
+        "dmap-ai",
+        "results"
+      ],
+      "related": []
+    },
+    {
+      "id": 91,
+      "slug": "dmap-ai-faq",
+      "title": "DMAP-AI FAQ",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Answers to common questions about DMAP-AI data, indices, interpretation, and outputs.",
+      "readingTime": "8 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dmap-ai",
+        "faq"
+      ],
+      "related": []
+    },
+    {
+      "id": 92,
+      "slug": "dmap-ai-citation-guide",
+      "title": "How to Cite DMAP-AI",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Learn how to cite DMAP-AI, AgriMetSoft, datasets, and methodological references in research work.",
+      "readingTime": "7 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "how",
+        "cite",
+        "dmap-ai"
+      ],
+      "related": []
+    },
+    {
+      "id": 93,
+      "slug": "us-drought-monitor",
+      "title": "U.S. Drought Monitor Explained",
+      "category": "Regional Case Studies",
+      "categoryId": "case-studies",
+      "summary": "Learn how the U.S. Drought Monitor combines indicators, impacts, and expert assessment.",
+      "readingTime": "9 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "drought",
+        "monitor",
+        "explained"
+      ],
+      "related": []
+    },
+    {
+      "id": 94,
+      "slug": "dmap-ai-vs-usdm",
+      "title": "DMAP-AI vs U.S. Drought Monitor",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Compare DMAP-AI point-based diagnostics with U.S. Drought Monitor regional classifications.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dmap-ai",
+        "drought",
+        "monitor"
+      ],
+      "related": []
+    },
+    {
+      "id": 95,
+      "slug": "dmap-ai-vs-climate-engine",
+      "title": "DMAP-AI vs Climate Engine",
+      "category": "DMAP-AI Documentation",
+      "categoryId": "dmap-ai-documentation",
+      "summary": "Compare DMAP-AI drought analysis workflows with Climate Engine-style climate-data access and visualization.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "dmap-ai",
+        "climate",
+        "engine"
+      ],
+      "related": []
+    },
+    {
+      "id": 96,
+      "slug": "nasa-power-vs-era5",
+      "title": "NASA POWER vs ERA5",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Compare NASA POWER and ERA5 for point-based drought analysis and climate-data applications.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "nasa",
+        "power",
+        "era5"
+      ],
+      "related": []
+    },
+    {
+      "id": 97,
+      "slug": "era5-vs-gridmet",
+      "title": "ERA5 vs GridMET",
+      "category": "Climate Data",
+      "categoryId": "climate-data",
+      "summary": "Compare ERA5 reanalysis and GridMET gridded meteorological data for drought analysis.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "era5",
+        "gridmet"
+      ],
+      "related": []
+    },
+    {
+      "id": 98,
+      "slug": "drought-early-warning",
+      "title": "Drought Early Warning",
+      "category": "Drought Basics",
+      "categoryId": "drought-basics",
+      "summary": "Learn how drought indicators, climate outlooks, and monitoring systems support early warning.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "drought",
+        "early",
+        "warning"
+      ],
+      "related": []
+    },
+    {
+      "id": 99,
+      "slug": "uncertainty-in-drought-analysis",
+      "title": "Uncertainty in Drought Analysis",
+      "category": "Analysis Methods",
+      "categoryId": "analysis-methods",
+      "summary": "Understand uncertainty from data sources, index choices, baselines, thresholds, and interpretation.",
+      "readingTime": "11 min",
+      "difficulty": "Advanced",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "uncertainty",
+        "drought",
+        "analysis"
+      ],
+      "related": []
+    },
+    {
+      "id": 100,
+      "slug": "best-practices-drought-reporting",
+      "title": "Best Practices for Drought Reporting",
+      "category": "AI Interpretation",
+      "categoryId": "ai-interpretation",
+      "summary": "Learn how to write clear, reproducible drought reports using indicators, context, and uncertainty statements.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "status": "Planned",
+      "lastUpdated": "",
+      "keywords": [
+        "best",
+        "practices",
+        "for",
+        "drought",
+        "reporting"
+      ],
+      "related": []
     }
   ]
 }
