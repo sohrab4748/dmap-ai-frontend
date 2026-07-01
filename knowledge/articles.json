@@ -16,7 +16,7 @@
       "icon": "📈"
     },
     {
-      "id": "drought-events-severity",
+      "id": "drought-events",
       "title": "Drought Events and Severity",
       "description": "Drought severity, duration, magnitude, thresholds, and event summaries.",
       "icon": "📊"
@@ -34,10 +34,22 @@
       "icon": "🔬"
     },
     {
-      "id": "ai-interpretation",
+      "id": "wavelet-analysis",
+      "title": "Wavelet Analysis",
+      "description": "Scalograms, global wavelet spectrum, coherence, and drought periodicity.",
+      "icon": "🌊"
+    },
+    {
+      "id": "ai-analysis",
       "title": "AI Interpretation",
       "description": "Structured metadata, chart-specific prompts, and AI drought reporting.",
       "icon": "🤖"
+    },
+    {
+      "id": "agricultural-applications",
+      "title": "Agricultural Applications",
+      "description": "Crop-specific drought risk and farm decision support.",
+      "icon": "🌽"
     },
     {
       "id": "case-studies",
@@ -219,7 +231,7 @@
       "id": 10,
       "slug": "drought-severity",
       "title": "Drought Severity",
-      "category": "drought-events-severity",
+      "category": "drought-events",
       "summary": "Learn how drought severity is defined, categorized, and interpreted in event analysis.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
@@ -241,7 +253,7 @@
       "id": 11,
       "slug": "drought-duration",
       "title": "Drought Duration",
-      "category": "drought-events-severity",
+      "category": "drought-events",
       "summary": "Understand how long drought events last and why persistence matters.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
@@ -263,7 +275,7 @@
       "id": 12,
       "slug": "drought-magnitude",
       "title": "Drought Magnitude",
-      "category": "drought-events-severity",
+      "category": "drought-events",
       "summary": "Learn how accumulated drought deficit is summarized across an event.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
@@ -285,7 +297,7 @@
       "id": 13,
       "slug": "drought-event-detection",
       "title": "Drought Event Detection",
-      "category": "drought-events-severity",
+      "category": "drought-events",
       "summary": "Identify drought start, end, duration, minimum value, and accumulated deficit.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
@@ -308,7 +320,7 @@
       "id": 14,
       "slug": "drought-thresholds",
       "title": "Drought Thresholds",
-      "category": "drought-events-severity",
+      "category": "drought-events",
       "summary": "Compare index thresholds used to define moderate, severe, and extreme drought.",
       "readingTime": "9 min",
       "difficulty": "Intermediate",
@@ -330,7 +342,7 @@
       "id": 15,
       "slug": "drought-recovery",
       "title": "Drought Recovery",
-      "category": "drought-events-severity",
+      "category": "drought-events",
       "summary": "Learn how recovery is detected and why recovery can differ by sector.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
@@ -352,7 +364,7 @@
       "id": 16,
       "slug": "drought-frequency",
       "title": "Drought Frequency",
-      "category": "drought-events-severity",
+      "category": "drought-events",
       "summary": "Learn how drought frequency describes how often drought events occur, how it differs from severity and duration, and how frequency summaries support drought-risk analysis.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
@@ -377,7 +389,7 @@
       "id": 17,
       "slug": "return-periods-in-drought",
       "title": "Return Periods in Drought Analysis",
-      "category": "drought-events-severity",
+      "category": "drought-events",
       "summary": "Understand what return periods mean in drought analysis, why they should not be treated as exact schedules, and how they support risk-based planning.",
       "readingTime": "12 min",
       "difficulty": "Advanced",
@@ -984,15 +996,20 @@
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/precipitation-data-quality/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "precipitation",
         "data",
-        "quality"
+        "quality",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "cordex-for-drought",
+        "temperature-and-drought",
+        "cmip6-for-drought"
+      ]
     },
     {
       "id": 42,
@@ -1003,15 +1020,19 @@
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/temperature-and-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "temperature",
         "and",
         "drought"
       ],
-      "related": []
+      "related": [
+        "precipitation-data-quality",
+        "evapotranspiration-and-drought",
+        "cordex-for-drought"
+      ]
     },
     {
       "id": 43,
@@ -1022,15 +1043,19 @@
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/evapotranspiration-and-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "evapotranspiration",
         "and",
         "drought"
       ],
-      "related": []
+      "related": [
+        "temperature-and-drought",
+        "soil-moisture-data",
+        "precipitation-data-quality"
+      ]
     },
     {
       "id": 44,
@@ -1041,8 +1066,8 @@
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/soil-moisture-data/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "soil",
@@ -1051,7 +1076,11 @@
         "for",
         "drought"
       ],
-      "related": []
+      "related": [
+        "evapotranspiration-and-drought",
+        "streamflow-data",
+        "temperature-and-drought"
+      ]
     },
     {
       "id": 45,
@@ -1062,8 +1091,8 @@
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/streamflow-data/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "streamflow",
@@ -1071,202 +1100,249 @@
         "for",
         "drought"
       ],
-      "related": []
+      "related": [
+        "soil-moisture-data",
+        "evapotranspiration-and-drought",
+        "temperature-and-drought"
+      ]
     },
     {
       "id": 46,
       "slug": "what-is-wavelet-analysis",
       "title": "What is Wavelet Analysis?",
-      "category": "analysis-methods",
+      "category": "wavelet-analysis",
       "summary": "Learn how wavelet analysis detects time-varying periodicity in drought records.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/what-is-wavelet-analysis/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "what",
-        "is",
         "wavelet",
-        "analysis"
+        "analysis",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "wavelet-vs-fourier",
+        "wavelet-scalogram",
+        "global-wavelet-spectrum"
+      ]
     },
     {
       "id": 47,
       "slug": "wavelet-vs-fourier",
       "title": "Wavelet vs Fourier Analysis",
-      "category": "analysis-methods",
+      "category": "wavelet-analysis",
       "summary": "Compare time-frequency and frequency-only methods for climate signals.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/wavelet-vs-fourier/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "wavelet",
-        "vs",
         "fourier",
-        "analysis"
+        "analysis",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "what-is-wavelet-analysis",
+        "wavelet-scalogram",
+        "global-wavelet-spectrum"
+      ]
     },
     {
       "id": 48,
       "slug": "wavelet-scalogram",
       "title": "Wavelet Scalogram",
-      "category": "analysis-methods",
+      "category": "wavelet-analysis",
       "summary": "Interpret drought wavelet scalograms and localized power patterns.",
       "readingTime": "13 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/wavelet-scalogram/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "wavelet",
-        "scalogram"
+        "scalogram",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "wavelet-vs-fourier",
+        "global-wavelet-spectrum",
+        "what-is-wavelet-analysis"
+      ]
     },
     {
       "id": 49,
       "slug": "global-wavelet-spectrum",
       "title": "Global Wavelet Spectrum",
-      "category": "analysis-methods",
+      "category": "wavelet-analysis",
       "summary": "Understand average wavelet power and dominant drought periodicities.",
       "readingTime": "12 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/global-wavelet-spectrum/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "global",
         "wavelet",
-        "spectrum"
+        "spectrum",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "wavelet-scalogram",
+        "wavelet-coherence",
+        "wavelet-vs-fourier"
+      ]
     },
     {
       "id": 50,
       "slug": "wavelet-coherence",
       "title": "Wavelet Coherence",
-      "category": "analysis-methods",
+      "category": "wavelet-analysis",
       "summary": "Analyze relationships between drought and climate drivers through time and scale.",
       "readingTime": "14 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/wavelet-coherence/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "wavelet",
-        "coherence"
+        "coherence",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "global-wavelet-spectrum",
+        "coherence-paradox",
+        "wavelet-scalogram"
+      ]
     },
     {
       "id": 51,
       "slug": "coherence-paradox",
       "title": "The Coherence Paradox in Drought Analysis",
-      "category": "analysis-methods",
+      "category": "wavelet-analysis",
       "summary": "Understand why strong periodicity does not always imply strong coherence with a driver.",
       "readingTime": "13 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/coherence-paradox/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "the",
         "coherence",
         "paradox",
-        "in",
-        "drought"
+        "drought",
+        "analysis"
       ],
-      "related": []
+      "related": [
+        "wavelet-coherence",
+        "cone-of-influence",
+        "global-wavelet-spectrum"
+      ]
     },
     {
       "id": 52,
       "slug": "cone-of-influence",
       "title": "Cone of Influence in Wavelet Analysis",
-      "category": "analysis-methods",
+      "category": "wavelet-analysis",
       "summary": "Learn why edge effects matter in scalogram interpretation.",
       "readingTime": "10 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/cone-of-influence/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "cone",
-        "of",
         "influence",
-        "in",
-        "wavelet"
+        "wavelet",
+        "analysis",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "coherence-paradox",
+        "wavelet-significance",
+        "wavelet-coherence"
+      ]
     },
     {
       "id": 53,
       "slug": "wavelet-significance",
       "title": "Wavelet Significance Testing",
-      "category": "analysis-methods",
+      "category": "wavelet-analysis",
       "summary": "Interpret significant power regions and uncertainty in wavelet diagnostics.",
       "readingTime": "13 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/wavelet-significance/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "wavelet",
         "significance",
-        "testing"
+        "testing",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "cone-of-influence",
+        "dominant-periods",
+        "coherence-paradox"
+      ]
     },
     {
       "id": 54,
       "slug": "dominant-periods",
       "title": "Dominant Periods in Drought Records",
-      "category": "analysis-methods",
+      "category": "wavelet-analysis",
       "summary": "Identify and interpret dominant drought variability periods.",
       "readingTime": "12 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/dominant-periods/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "dominant",
         "periods",
-        "in",
         "drought",
         "records"
       ],
-      "related": []
+      "related": [
+        "wavelet-significance",
+        "drought-periodicity",
+        "cone-of-influence"
+      ]
     },
     {
       "id": 55,
       "slug": "drought-periodicity",
       "title": "Drought Periodicity",
-      "category": "analysis-methods",
+      "category": "wavelet-analysis",
       "summary": "Understand cycles, quasi-cycles, and nonstationary drought variability.",
       "readingTime": "12 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/drought-periodicity/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "drought",
         "periodicity"
       ],
-      "related": []
+      "related": [
+        "dominant-periods",
+        "wavelet-significance",
+        "cone-of-influence"
+      ]
     },
     {
       "id": 56,
@@ -1277,17 +1353,20 @@
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/trend-analysis/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "trend",
         "analysis",
-        "in",
         "drought",
         "records"
       ],
-      "related": []
+      "related": [
+        "mann-kendall-test",
+        "sen-slope",
+        "moving-average-drought"
+      ]
     },
     {
       "id": 57,
@@ -1298,17 +1377,22 @@
       "readingTime": "13 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/mann-kendall-test/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "mann-kendall",
+        "mann",
+        "kendall",
         "test",
         "for",
         "drought",
         "trends"
       ],
-      "related": []
+      "related": [
+        "trend-analysis",
+        "sen-slope",
+        "moving-average-drought"
+      ]
     },
     {
       "id": 58,
@@ -1319,17 +1403,20 @@
       "readingTime": "11 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/sen-slope/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "sen's",
+        "sen",
         "slope",
-        "in",
         "drought",
         "analysis"
       ],
-      "related": []
+      "related": [
+        "mann-kendall-test",
+        "moving-average-drought",
+        "trend-analysis"
+      ]
     },
     {
       "id": 59,
@@ -1340,17 +1427,20 @@
       "readingTime": "9 min",
       "difficulty": "Beginner",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/moving-average-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "moving",
         "averages",
-        "in",
         "drought",
         "analysis"
       ],
-      "related": []
+      "related": [
+        "sen-slope",
+        "probability-distributions-spi",
+        "mann-kendall-test"
+      ]
     },
     {
       "id": 60,
@@ -1361,16 +1451,21 @@
       "readingTime": "14 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/probability-distributions-spi/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "probability",
         "distributions",
         "for",
-        "spi"
+        "spi",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "moving-average-drought",
+        "gamma-distribution-spi",
+        "sen-slope"
+      ]
     },
     {
       "id": 61,
@@ -1381,16 +1476,21 @@
       "readingTime": "13 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/gamma-distribution-spi/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "gamma",
         "distribution",
         "for",
-        "spi"
+        "spi",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "probability-distributions-spi",
+        "empirical-spi",
+        "moving-average-drought"
+      ]
     },
     {
       "id": 62,
@@ -1401,14 +1501,19 @@
       "readingTime": "12 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/empirical-spi/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "empirical",
-        "spi"
+        "spi",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "gamma-distribution-spi",
+        "missing-data-drought",
+        "probability-distributions-spi"
+      ]
     },
     {
       "id": 63,
@@ -1419,17 +1524,20 @@
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/missing-data-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "missing",
         "data",
-        "in",
         "drought",
         "analysis"
       ],
-      "related": []
+      "related": [
+        "empirical-spi",
+        "uncertainty-drought-analysis",
+        "gamma-distribution-spi"
+      ]
     },
     {
       "id": 64,
@@ -1440,16 +1548,19 @@
       "readingTime": "12 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/uncertainty-drought-analysis/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "uncertainty",
-        "in",
         "drought",
         "analysis"
       ],
-      "related": []
+      "related": [
+        "missing-data-drought",
+        "spatial-drought-analysis",
+        "empirical-spi"
+      ]
     },
     {
       "id": 65,
@@ -1460,15 +1571,19 @@
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/spatial-drought-analysis/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "spatial",
         "drought",
         "analysis"
       ],
-      "related": []
+      "related": [
+        "uncertainty-drought-analysis",
+        "station-vs-gridded-data",
+        "missing-data-drought"
+      ]
     },
     {
       "id": 66,
@@ -1479,17 +1594,20 @@
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/station-vs-gridded-data/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "station",
         "data",
-        "vs",
         "gridded",
-        "data"
+        "drought"
       ],
-      "related": []
+      "related": [
+        "spatial-drought-analysis",
+        "copula-drought-analysis",
+        "uncertainty-drought-analysis"
+      ]
     },
     {
       "id": 67,
@@ -1500,8 +1618,8 @@
       "readingTime": "14 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/copula-drought-analysis/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "copula",
@@ -1509,7 +1627,11 @@
         "for",
         "drought"
       ],
-      "related": []
+      "related": [
+        "station-vs-gridded-data",
+        "drought-persistence",
+        "spatial-drought-analysis"
+      ]
     },
     {
       "id": 68,
@@ -1520,14 +1642,18 @@
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/drought-persistence/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "drought",
         "persistence"
       ],
-      "related": []
+      "related": [
+        "copula-drought-analysis",
+        "lagged-spi-analysis",
+        "station-vs-gridded-data"
+      ]
     },
     {
       "id": 69,
@@ -1538,356 +1664,430 @@
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/lagged-spi-analysis/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "lagged",
         "spi",
-        "analysis"
+        "analysis",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "drought-persistence",
+        "copula-drought-analysis",
+        "station-vs-gridded-data"
+      ]
     },
     {
       "id": 70,
       "slug": "ai-for-drought-analysis",
       "title": "AI for Drought Analysis",
-      "category": "ai-interpretation",
+      "category": "ai-analysis",
       "summary": "Learn how AI can support drought interpretation and reporting.",
       "readingTime": "10 min",
       "difficulty": "Beginner",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/ai-for-drought-analysis/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "ai",
         "for",
         "drought",
         "analysis"
       ],
-      "related": []
+      "related": [
+        "structured-ai-requests",
+        "chart-only-vs-structured-ai",
+        "ai-hallucinations-drought"
+      ]
     },
     {
       "id": 71,
       "slug": "structured-ai-requests",
       "title": "Structured AI Requests",
-      "category": "ai-interpretation",
+      "category": "ai-analysis",
       "summary": "Improve AI interpretation using metadata, thresholds, and chart context.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/structured-ai-requests/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "structured",
-        "ai",
-        "requests"
+        "requests",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "ai-for-drought-analysis",
+        "chart-only-vs-structured-ai",
+        "ai-hallucinations-drought"
+      ]
     },
     {
       "id": 72,
       "slug": "chart-only-vs-structured-ai",
       "title": "Chart-Only vs Structured AI Interpretation",
-      "category": "ai-interpretation",
+      "category": "ai-analysis",
       "summary": "Compare screenshot-based interpretation with structured DMAP-AI requests.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/chart-only-vs-structured-ai/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "chart-only",
-        "vs",
+        "chart",
+        "only",
         "structured",
-        "ai",
-        "interpretation"
+        "interpretation",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "structured-ai-requests",
+        "ai-hallucinations-drought",
+        "ai-for-drought-analysis"
+      ]
     },
     {
       "id": 73,
       "slug": "ai-hallucinations-drought",
       "title": "AI Hallucinations in Drought Assessment",
-      "category": "ai-interpretation",
+      "category": "ai-analysis",
       "summary": "Understand how AI can misread drought charts and how to reduce risk.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/ai-hallucinations-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "ai",
         "hallucinations",
-        "in",
         "drought",
         "assessment"
       ],
-      "related": []
+      "related": [
+        "chart-only-vs-structured-ai",
+        "ai-metadata-drought",
+        "structured-ai-requests"
+      ]
     },
     {
       "id": 74,
       "slug": "ai-metadata-drought",
       "title": "AI Metadata for Drought Charts",
-      "category": "ai-interpretation",
+      "category": "ai-analysis",
       "summary": "Learn what metadata helps AI explain drought outputs correctly.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/ai-metadata-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "ai",
         "metadata",
         "for",
         "drought",
         "charts"
       ],
-      "related": []
+      "related": [
+        "ai-hallucinations-drought",
+        "farmer-drought-reports",
+        "chart-only-vs-structured-ai"
+      ]
     },
     {
       "id": 75,
       "slug": "farmer-drought-reports",
       "title": "Farmer Drought Reports",
-      "category": "ai-interpretation",
+      "category": "ai-analysis",
       "summary": "Translate scientific drought outputs into practical farm-level explanations.",
       "readingTime": "10 min",
       "difficulty": "Beginner",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/farmer-drought-reports/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "farmer",
         "drought",
         "reports"
       ],
-      "related": []
+      "related": [
+        "ai-metadata-drought",
+        "scientific-drought-reports",
+        "ai-hallucinations-drought"
+      ]
     },
     {
       "id": 76,
       "slug": "scientific-drought-reports",
       "title": "Scientific Drought Reports",
-      "category": "ai-interpretation",
+      "category": "ai-analysis",
       "summary": "Create reproducible technical drought summaries for research users.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/scientific-drought-reports/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "scientific",
         "drought",
         "reports"
       ],
-      "related": []
+      "related": [
+        "farmer-drought-reports",
+        "plain-language-drought-explanations",
+        "ai-metadata-drought"
+      ]
     },
     {
       "id": 77,
       "slug": "plain-language-drought-explanations",
       "title": "Plain-Language Drought Explanations",
-      "category": "ai-interpretation",
+      "category": "ai-analysis",
       "summary": "Communicate drought risk clearly for nontechnical audiences.",
       "readingTime": "9 min",
       "difficulty": "Beginner",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/plain-language-drought-explanations/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "plain-language",
+        "plain",
+        "language",
         "drought",
         "explanations"
       ],
-      "related": []
+      "related": [
+        "scientific-drought-reports",
+        "dmap-ai-workflow",
+        "farmer-drought-reports"
+      ]
     },
     {
       "id": 78,
       "slug": "dmap-ai-workflow",
       "title": "DMAP-AI Workflow",
-      "category": "ai-interpretation",
+      "category": "ai-analysis",
       "summary": "Understand the full workflow from data selection to AI explanation.",
       "readingTime": "11 min",
       "difficulty": "Beginner",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/dmap-ai-workflow/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "dmap-ai",
-        "workflow"
+        "dmap",
+        "workflow",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "plain-language-drought-explanations",
+        "dmap-ai-json-context",
+        "scientific-drought-reports"
+      ]
     },
     {
       "id": 79,
       "slug": "dmap-ai-json-context",
       "title": "DMAP-AI JSON Context",
-      "category": "ai-interpretation",
+      "category": "ai-analysis",
       "summary": "Use structured JSON to support consistent AI drought interpretation.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/dmap-ai-json-context/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "dmap-ai",
+        "dmap",
         "json",
-        "context"
+        "context",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "dmap-ai-workflow",
+        "plain-language-drought-explanations",
+        "scientific-drought-reports"
+      ]
     },
     {
       "id": 80,
       "slug": "corn-drought-risk",
       "title": "Corn Drought Risk",
-      "category": "case-studies",
+      "category": "agricultural-applications",
       "summary": "Assess drought risk for corn across key growth stages.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/corn-drought-risk/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "corn",
         "drought",
         "risk"
       ],
-      "related": []
+      "related": [
+        "soybean-drought-risk",
+        "wheat-drought-risk",
+        "cotton-drought-risk"
+      ]
     },
     {
       "id": 81,
       "slug": "soybean-drought-risk",
       "title": "Soybean Drought Risk",
-      "category": "case-studies",
+      "category": "agricultural-applications",
       "summary": "Understand drought effects on soybean growth and yield.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/soybean-drought-risk/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "soybean",
         "drought",
         "risk"
       ],
-      "related": []
+      "related": [
+        "corn-drought-risk",
+        "wheat-drought-risk",
+        "cotton-drought-risk"
+      ]
     },
     {
       "id": 82,
       "slug": "wheat-drought-risk",
       "title": "Wheat Drought Risk",
-      "category": "case-studies",
+      "category": "agricultural-applications",
       "summary": "Analyze drought sensitivity in wheat systems.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/wheat-drought-risk/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "wheat",
         "drought",
         "risk"
       ],
-      "related": []
+      "related": [
+        "soybean-drought-risk",
+        "cotton-drought-risk",
+        "corn-drought-risk"
+      ]
     },
     {
       "id": 83,
       "slug": "cotton-drought-risk",
       "title": "Cotton Drought Risk",
-      "category": "case-studies",
+      "category": "agricultural-applications",
       "summary": "Understand drought impacts on cotton production and irrigation.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/cotton-drought-risk/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "cotton",
         "drought",
         "risk"
       ],
-      "related": []
+      "related": [
+        "wheat-drought-risk",
+        "rice-drought-risk",
+        "soybean-drought-risk"
+      ]
     },
     {
       "id": 84,
       "slug": "rice-drought-risk",
       "title": "Rice Drought Risk",
-      "category": "case-studies",
+      "category": "agricultural-applications",
       "summary": "Assess drought vulnerability in rice systems and water management.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/rice-drought-risk/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "rice",
         "drought",
         "risk"
       ],
-      "related": []
+      "related": [
+        "cotton-drought-risk",
+        "irrigation-and-drought",
+        "wheat-drought-risk"
+      ]
     },
     {
       "id": 85,
       "slug": "irrigation-and-drought",
       "title": "Irrigation and Drought",
-      "category": "case-studies",
+      "category": "agricultural-applications",
       "summary": "Use drought information to support irrigation planning.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/irrigation-and-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "irrigation",
         "and",
         "drought"
       ],
-      "related": []
+      "related": [
+        "rice-drought-risk",
+        "soil-water-holding-capacity",
+        "cotton-drought-risk"
+      ]
     },
     {
       "id": 86,
       "slug": "soil-water-holding-capacity",
       "title": "Soil Water-Holding Capacity",
-      "category": "case-studies",
+      "category": "agricultural-applications",
       "summary": "Understand how soils buffer agricultural drought.",
       "readingTime": "10 min",
       "difficulty": "Beginner",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/soil-water-holding-capacity/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "soil",
-        "water-holding",
-        "capacity"
+        "water",
+        "holding",
+        "capacity",
+        "drought"
       ],
-      "related": []
+      "related": [
+        "irrigation-and-drought",
+        "crop-growth-stages-drought",
+        "rice-drought-risk"
+      ]
     },
     {
       "id": 87,
       "slug": "crop-growth-stages-drought",
       "title": "Crop Growth Stages and Drought",
-      "category": "case-studies",
+      "category": "agricultural-applications",
       "summary": "Interpret drought risk by sensitive crop growth periods.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/crop-growth-stages-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "crop",
@@ -1896,38 +2096,46 @@
         "and",
         "drought"
       ],
-      "related": []
+      "related": [
+        "soil-water-holding-capacity",
+        "pasture-drought-risk",
+        "irrigation-and-drought"
+      ]
     },
     {
       "id": 88,
       "slug": "pasture-drought-risk",
       "title": "Pasture Drought Risk",
-      "category": "case-studies",
+      "category": "agricultural-applications",
       "summary": "Monitor drought effects on grazing and forage systems.",
       "readingTime": "10 min",
       "difficulty": "Beginner",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/pasture-drought-risk/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "pasture",
         "drought",
         "risk"
       ],
-      "related": []
+      "related": [
+        "crop-growth-stages-drought",
+        "farm-drought-decision-support",
+        "soil-water-holding-capacity"
+      ]
     },
     {
       "id": 89,
       "slug": "farm-drought-decision-support",
       "title": "Farm Drought Decision Support",
-      "category": "case-studies",
+      "category": "agricultural-applications",
       "summary": "Translate drought indicators into farm-management decisions.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/farm-drought-decision-support/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "farm",
@@ -1935,7 +2143,11 @@
         "decision",
         "support"
       ],
-      "related": []
+      "related": [
+        "pasture-drought-risk",
+        "crop-growth-stages-drought",
+        "soil-water-holding-capacity"
+      ]
     },
     {
       "id": 90,
@@ -1946,17 +2158,22 @@
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/ames-iowa-corn-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "ames",
         "iowa",
         "corn",
         "drought",
-        "case"
+        "case",
+        "study"
       ],
-      "related": []
+      "related": [
+        "phoenix-arizona-drought-case-study",
+        "tucson-arizona-drought-case-study",
+        "yuma-arizona-drought-case-study"
+      ]
     },
     {
       "id": 91,
@@ -1967,8 +2184,8 @@
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/phoenix-arizona-drought-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "phoenix",
@@ -1977,7 +2194,11 @@
         "case",
         "study"
       ],
-      "related": []
+      "related": [
+        "ames-iowa-corn-case-study",
+        "tucson-arizona-drought-case-study",
+        "yuma-arizona-drought-case-study"
+      ]
     },
     {
       "id": 92,
@@ -1988,8 +2209,8 @@
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/tucson-arizona-drought-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "tucson",
@@ -1998,7 +2219,11 @@
         "case",
         "study"
       ],
-      "related": []
+      "related": [
+        "phoenix-arizona-drought-case-study",
+        "yuma-arizona-drought-case-study",
+        "ames-iowa-corn-case-study"
+      ]
     },
     {
       "id": 93,
@@ -2009,8 +2234,8 @@
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/yuma-arizona-drought-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "yuma",
@@ -2019,7 +2244,11 @@
         "case",
         "study"
       ],
-      "related": []
+      "related": [
+        "tucson-arizona-drought-case-study",
+        "flagstaff-arizona-drought-case-study",
+        "phoenix-arizona-drought-case-study"
+      ]
     },
     {
       "id": 94,
@@ -2030,8 +2259,8 @@
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/flagstaff-arizona-drought-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "flagstaff",
@@ -2040,7 +2269,11 @@
         "case",
         "study"
       ],
-      "related": []
+      "related": [
+        "yuma-arizona-drought-case-study",
+        "california-drought-case-study",
+        "tucson-arizona-drought-case-study"
+      ]
     },
     {
       "id": 95,
@@ -2051,8 +2284,8 @@
       "readingTime": "13 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/california-drought-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "california",
@@ -2060,7 +2293,11 @@
         "case",
         "study"
       ],
-      "related": []
+      "related": [
+        "flagstaff-arizona-drought-case-study",
+        "texas-drought-case-study",
+        "yuma-arizona-drought-case-study"
+      ]
     },
     {
       "id": 96,
@@ -2071,8 +2308,8 @@
       "readingTime": "13 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/texas-drought-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "texas",
@@ -2080,7 +2317,11 @@
         "case",
         "study"
       ],
-      "related": []
+      "related": [
+        "california-drought-case-study",
+        "south-africa-drought-case-study",
+        "flagstaff-arizona-drought-case-study"
+      ]
     },
     {
       "id": 97,
@@ -2091,8 +2332,8 @@
       "readingTime": "13 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/south-africa-drought-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "south",
@@ -2101,7 +2342,11 @@
         "case",
         "study"
       ],
-      "related": []
+      "related": [
+        "texas-drought-case-study",
+        "ethiopia-drought-case-study",
+        "california-drought-case-study"
+      ]
     },
     {
       "id": 98,
@@ -2112,8 +2357,8 @@
       "readingTime": "13 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/ethiopia-drought-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "ethiopia",
@@ -2121,7 +2366,11 @@
         "case",
         "study"
       ],
-      "related": []
+      "related": [
+        "south-africa-drought-case-study",
+        "australia-drought-case-study",
+        "texas-drought-case-study"
+      ]
     },
     {
       "id": 99,
@@ -2132,8 +2381,8 @@
       "readingTime": "13 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/australia-drought-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "australia",
@@ -2141,7 +2390,11 @@
         "case",
         "study"
       ],
-      "related": []
+      "related": [
+        "ethiopia-drought-case-study",
+        "india-drought-case-study",
+        "south-africa-drought-case-study"
+      ]
     },
     {
       "id": 100,
@@ -2152,8 +2405,8 @@
       "readingTime": "13 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/india-drought-case-study/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "india",
@@ -2161,7 +2414,11 @@
         "case",
         "study"
       ],
-      "related": []
+      "related": [
+        "australia-drought-case-study",
+        "ethiopia-drought-case-study",
+        "south-africa-drought-case-study"
+      ]
     }
   ]
 }
