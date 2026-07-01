@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>How SPI is Calculated | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Learn how the Standardized Precipitation Index (SPI) is calculated from precipitation data, probability fitting, cumulative probability, and standard normal transformation.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/how-spi-is-calculated/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="How SPI is Calculated">
+  <meta property="og:description" content="A practical explanation of the SPI calculation workflow: data preparation, accumulation periods, probability fitting, cumulative probability, and standardized z-score transformation.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/how-spi-is-calculated/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "How SPI is Calculated",
+        "description": "A practical explanation of the SPI calculation workflow: data preparation, accumulation periods, probability fitting, cumulative probability, and standardized z-score transformation.",
+        "author": {"@type": "Organization", "name": "AgriMetSoft LLC", "url": "https://agrimetsoft.com/"},
+        "publisher": {"@type": "Organization", "name": "AgriMetSoft LLC", "url": "https://agrimetsoft.com/"},
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-01",
+        "mainEntityOfPage": "https://droughtanalysis.com/knowledge/how-spi-is-calculated/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://droughtanalysis.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Knowledge Center", "item": "https://droughtanalysis.com/knowledge/"},
+          {"@type": "ListItem", "position": 3, "name": "How SPI is Calculated", "item": "https://droughtanalysis.com/knowledge/how-spi-is-calculated/"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What data are required to calculate SPI?",
+            "acceptedAnswer": {"@type": "Answer", "text": "SPI requires a continuous precipitation time series and a historical baseline period. The data may be monthly totals, daily data aggregated to monthly totals, or another consistent time interval depending on the analysis design."}
+          },
+          {
+            "@type": "Question",
+            "name": "Why is a probability distribution used in SPI?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Precipitation is usually skewed and non-normal. A probability distribution is fitted to historical accumulated precipitation so each observed amount can be converted to a cumulative probability before being transformed to a standard normal value."}
+          },
+          {
+            "@type": "Question",
+            "name": "What does a negative SPI mean?",
+            "acceptedAnswer": {"@type": "Answer", "text": "A negative SPI means the accumulated precipitation is below the historical median or normal condition for the selected time scale and calendar period. More negative values indicate stronger drought conditions."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root{--blue:#2563eb;--blue-dark:#1d4ed8;--slate-50:#f8fafc;--slate-100:#f1f5f9;--slate-200:#e2e8f0;--slate-500:#64748b;--slate-600:#475569;--slate-700:#334155;--slate-800:#1e293b;--slate-900:#0f172a;--white:#ffffff}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;color:var(--slate-900);background:linear-gradient(135deg,#f0f9ff 0%,#fff 48%,#eff6ff 100%);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65} a{color:inherit;text-decoration:none}.container{width:min(100% - 2rem,80rem);margin-inline:auto}.article-hero{padding:3.5rem 0 1.5rem}.article-hero-card{border:1px solid #bfdbfe;border-radius:1.75rem;background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));box-shadow:0 18px 45px rgba(15,23,42,.08);padding:2.25rem}.breadcrumb{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;color:var(--slate-500);font-size:.9rem;margin-bottom:1rem}.breadcrumb a{color:#1d4ed8;font-weight:700}.eyebrow{display:inline-flex;border-radius:999px;border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;padding:.3rem .8rem;font-size:.875rem;font-weight:850}h1{margin:1rem 0 0;font-size:clamp(2.2rem,5vw,3.35rem);line-height:1.08;letter-spacing:-.035em;color:#020617}.lead{max-width:58rem;margin:1rem 0 0;color:var(--slate-600);font-size:1.1rem;line-height:1.75}.article-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.25rem;color:#475569;font-size:.92rem}.meta-pill{border:1px solid #dbeafe;background:#fff;border-radius:999px;padding:.35rem .7rem;font-weight:700}.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:.875rem;padding:.75rem 1.25rem;font-weight:750;border:1px solid transparent;text-decoration:none}.btn-primary{background:var(--blue);color:#fff}.btn-secondary{background:#fff;color:var(--slate-800);border-color:var(--slate-200)}.btn-secondary:hover{border-color:#93c5fd;background:#f8fbff;color:#1d4ed8}.article-layout{display:grid;grid-template-columns:minmax(0,1fr) 18rem;gap:2rem;align-items:start;padding:1.5rem 0 3rem}.article-main{background:#fff;border:1px solid var(--slate-200);border-radius:1.25rem;box-shadow:0 12px 30px rgba(15,23,42,.055);padding:2rem}.article-main h2{margin:2rem 0 .75rem;color:#0f172a;font-size:clamp(1.4rem,2.5vw,1.85rem);line-height:1.2;letter-spacing:-.02em}.article-main h2:first-child{margin-top:0}.article-main h3{margin:1.5rem 0 .5rem;font-size:1.15rem;color:#0f172a}.article-main p{margin:.75rem 0;color:#334155}.article-main ul,.article-main ol{color:#334155;padding-left:1.4rem}.quick-answer{border:1px solid #bfdbfe;border-left:5px solid #2563eb;background:#eff6ff;border-radius:1rem;padding:1.15rem;margin-bottom:1.5rem}.quick-answer h2{margin:0 0 .45rem;font-size:1.2rem}.formula-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:1rem;padding:1rem;margin:1rem 0;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;overflow-x:auto}.table-wrap{overflow-x:auto;margin:1.25rem 0;border:1px solid #e2e8f0;border-radius:1rem}table{width:100%;border-collapse:collapse;min-width:680px;background:#fff}th,td{text-align:left;padding:.85rem;border-bottom:1px solid #e2e8f0;vertical-align:top}th{background:#f8fafc;color:#0f172a;font-size:.9rem}tr:last-child td{border-bottom:0}.toc{position:sticky;top:1rem;background:#fff;border:1px solid #dbeafe;border-radius:1.1rem;padding:1rem;box-shadow:0 10px 25px rgba(15,23,42,.055)}.toc h2{font-size:1rem;margin:0 0 .75rem}.toc a{display:block;color:#475569;font-size:.92rem;padding:.35rem 0;border-bottom:1px solid #f1f5f9}.toc a:hover{color:#1d4ed8}.callout{border:1px solid #bbf7d0;background:#f0fdf4;border-radius:1rem;padding:1rem;margin:1.25rem 0}.callout strong{color:#166534}.related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}.related-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:1rem;padding:1rem}.related-card strong{display:block;color:#0f172a}.related-card span{display:block;color:#64748b;font-size:.9rem;margin-top:.35rem}.references li{margin:.55rem 0}.back-to-knowledge{width:min(100% - 2rem,80rem);margin:2rem auto 0}.back-to-knowledge a{display:inline-flex;align-items:center;border:1px solid #e2e8f0;background:#fff;color:#1e293b;border-radius:.875rem;padding:.75rem 1.1rem;font-weight:750;text-decoration:none}.back-to-knowledge a:hover{border-color:#93c5fd;background:#f8fbff;color:#1d4ed8}.site-footer{border-top:1px solid var(--slate-200);background:rgba(255,255,255,.72);margin-top:2rem}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding-block:1.5rem;color:var(--slate-500);font-size:.875rem}@media(max-width:1050px){.article-layout{grid-template-columns:1fr}.toc{position:static;order:-1}}@media(max-width:640px){.container{width:min(100% - 1rem,80rem)}.article-hero{padding-top:2rem}.article-hero-card,.article-main{padding:1.25rem;border-radius:1.1rem}.related-grid{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>›</span><a href="/knowledge/">Knowledge Center</a><span>›</span><span>How SPI is Calculated</span>
+          </nav>
+          <p class="eyebrow">Drought Indices</p>
+          <h1>How SPI is Calculated</h1>
+          <p class="lead">The Standardized Precipitation Index (SPI) converts accumulated precipitation into a standardized drought indicator. This article explains the calculation workflow step by step, from preparing precipitation data to fitting a probability distribution and transforming cumulative probability into a standard normal value.</p>
+          <div class="article-meta"><span class="meta-pill">Reading time: 13 min</span><span class="meta-pill">Level: Intermediate</span><span class="meta-pill">Last updated: July 2026</span><span class="meta-pill">Author: AgriMetSoft LLC</span></div>
+          <div class="hero-actions"><a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section class="quick-answer" id="quick-answer">
+          <h2>Short answer</h2>
+          <p>SPI is calculated by accumulating precipitation over a selected time scale, fitting a probability distribution to historical accumulated precipitation for the same calendar period, converting the current precipitation amount to a cumulative probability, and transforming that probability to a standard normal value. Negative SPI values indicate drier-than-normal conditions, while positive values indicate wetter-than-normal conditions.</p>
+        </section>
+
+        <section id="overview">
+          <h2>Overview of the SPI workflow</h2>
+          <p>The Standardized Precipitation Index is designed to describe how unusual a precipitation amount is compared with the historical climate of the same location. It is not simply the difference between current rainfall and the long-term mean. Instead, SPI uses probability theory to account for the fact that precipitation is usually skewed, bounded at zero, and highly variable from month to month.</p>
+          <p>The basic idea is simple: first, determine how much precipitation accumulated over a time scale such as 1, 3, 6, 12, or 24 months. Then compare that amount with the historical distribution of accumulated precipitation for the same calendar period. Finally, convert the probability of that amount into a standardized z-score. This standardized value is the SPI.</p>
+          <div class="formula-box">Accumulated precipitation → Probability distribution → Cumulative probability → Standard normal value → SPI</div>
+          <p>Because SPI is standardized, values from different regions can be compared more easily. An SPI of -1.5 indicates a dry condition that is unusually low relative to the local historical climate, whether the station is in a humid region or a semi-arid region.</p>
+        </section>
+
+        <section id="step-1">
+          <h2>Step 1: Prepare precipitation data</h2>
+          <p>The first requirement is a consistent precipitation record. Many SPI studies use monthly precipitation totals. Daily data can also be used, but they are usually aggregated to monthly totals before SPI is calculated. The data should be checked for missing values, unit consistency, duplicate records, and unrealistic values.</p>
+          <p>A long baseline period is preferred because SPI depends on historical probability estimation. When possible, 30 or more years of data are useful for stable fitting. Shorter records can be used, but the interpretation should be more cautious because the tails of the distribution are less certain.</p>
+          <p>Before fitting distributions, the analyst should decide how to handle missing months. In many workflows, SPI is not calculated for an accumulation window if one or more months inside the window are missing. Filling missing precipitation may be appropriate in some studies, but it should be documented because it can influence drought severity and duration.</p>
+        </section>
+
+        <section id="step-2">
+          <h2>Step 2: Select the accumulation time scale</h2>
+          <p>SPI can be calculated for different accumulation periods. SPI-1 uses one month of precipitation. SPI-3 uses the sum of the current month and the previous two months. SPI-12 uses twelve months of accumulated precipitation. The selected time scale should match the drought process being studied.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>SPI time scale</th><th>Input precipitation</th><th>Typical interpretation</th><th>Example use</th></tr></thead>
+              <tbody>
+                <tr><td>SPI-1</td><td>Current monthly precipitation</td><td>Short-term meteorological anomaly</td><td>Recent dryness, flash drought screening</td></tr>
+                <tr><td>SPI-3</td><td>Three-month accumulated precipitation</td><td>Seasonal moisture condition</td><td>Crop season monitoring, pasture conditions</td></tr>
+                <tr><td>SPI-6</td><td>Six-month accumulated precipitation</td><td>Medium-term water deficit</td><td>Growing-season assessment, reservoir inflow signals</td></tr>
+                <tr><td>SPI-12</td><td>Twelve-month accumulated precipitation</td><td>Annual-scale drought condition</td><td>Water supply, drought persistence, regional comparison</td></tr>
+                <tr><td>SPI-24</td><td>Twenty-four-month accumulated precipitation</td><td>Multi-year anomaly</td><td>Hydrological drought and long-term planning</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Short time scales respond quickly to rainfall changes, while long time scales are smoother and better represent persistent drought. A location may show drought at SPI-3 but normal conditions at SPI-12, or the reverse. This is not an error. It means short-term and long-term moisture conditions are different.</p>
+        </section>
+
+        <section id="step-3">
+          <h2>Step 3: Group values by calendar period</h2>
+          <p>Precipitation has strong seasonality. A dry month in summer may have a different meaning than the same precipitation amount in winter. To handle seasonality, SPI is usually fitted separately for each calendar month or period. For example, January SPI-3 values are compared with historical January SPI-3 accumulated precipitation values, not with all months combined.</p>
+          <p>This step is essential because it prevents wet-season and dry-season precipitation from being mixed incorrectly. It also makes SPI comparable through time because every value is interpreted relative to the normal precipitation distribution for the same part of the year.</p>
+        </section>
+
+        <section id="step-4">
+          <h2>Step 4: Fit a probability distribution</h2>
+          <p>Precipitation is not normally distributed. It is often right-skewed, especially at short time scales, and it cannot be less than zero. For this reason, SPI calculation fits a probability distribution to historical accumulated precipitation. The gamma distribution is widely used because it is flexible for positive, skewed precipitation data.</p>
+          <p>Other distributions or empirical methods may also be used depending on the dataset, climate, record length, and software implementation. In arid regions or short records, zero precipitation values and poor distribution fitting can become important. A robust SPI workflow should include checks for distribution quality and fallback options when fitting is unreliable.</p>
+          <div class="callout"><strong>Important:</strong> The distribution is fitted to accumulated precipitation for a specific time scale and calendar period. SPI-1 January, SPI-3 January, and SPI-12 January each have their own historical distribution.</div>
+        </section>
+
+        <section id="step-5">
+          <h2>Step 5: Convert precipitation to cumulative probability</h2>
+          <p>After fitting the distribution, the observed accumulated precipitation value is converted to a cumulative probability. This probability describes how common or rare that precipitation amount is in the historical distribution. A low probability means the precipitation is unusually low; a high probability means it is unusually wet.</p>
+          <p>For example, if the accumulated precipitation corresponds to the 10th percentile of the historical distribution, it means only about 10% of historical values were equal to or lower than that amount. That does not yet give the SPI value, but it provides the probability needed for the standard normal transformation.</p>
+        </section>
+
+        <section id="step-6">
+          <h2>Step 6: Transform probability to a standard normal value</h2>
+          <p>The final step is to transform the cumulative probability into a standard normal z-score. This z-score is the SPI. The transformation makes the index have a mean near zero and a standard deviation near one when calculated over the baseline period.</p>
+          <p>In practical terms, SPI values near zero represent normal precipitation conditions. Negative values indicate below-normal accumulated precipitation. Positive values indicate above-normal accumulated precipitation. The farther the value is from zero, the more unusual the condition is.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>SPI value</th><th>Common category</th><th>General interpretation</th></tr></thead>
+              <tbody>
+                <tr><td>2.0 or greater</td><td>Extremely wet</td><td>Very unusual wet condition</td></tr>
+                <tr><td>1.5 to 1.99</td><td>Very wet</td><td>Strong wet anomaly</td></tr>
+                <tr><td>1.0 to 1.49</td><td>Moderately wet</td><td>Above-normal precipitation</td></tr>
+                <tr><td>-0.99 to 0.99</td><td>Near normal</td><td>Normal or mild anomaly</td></tr>
+                <tr><td>-1.0 to -1.49</td><td>Moderate drought</td><td>Clear dry anomaly</td></tr>
+                <tr><td>-1.5 to -1.99</td><td>Severe drought</td><td>Strong dry anomaly</td></tr>
+                <tr><td>-2.0 or less</td><td>Extreme drought</td><td>Very unusual dry condition</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="example">
+          <h2>Simple calculation example</h2>
+          <p>Imagine a station where we want to calculate SPI-3 for June. First, the precipitation totals for April, May, and June are summed for every year in the baseline period. These historical June SPI-3 accumulation values form the distribution. Then the current April-May-June total is compared with that distribution.</p>
+          <p>If the current three-month total is much lower than most historical April-May-June totals, the cumulative probability will be low and the final SPI will be negative. If the total is close to the historical median, SPI will be near zero. If it is unusually high, SPI will be positive.</p>
+          <p>The same process is repeated for every month and every selected time scale. This produces an SPI time series that can be plotted, summarized, and used to detect drought events.</p>
+        </section>
+
+        <section id="quality">
+          <h2>Common calculation issues</h2>
+          <p>Several issues can influence SPI results. Missing data can break accumulation windows. Short records can make extreme drought estimates unstable. Very dry climates can produce many zero precipitation values, especially at SPI-1. Seasonal climates require careful calendar grouping. Different software tools may also use slightly different fitting methods or zero-precipitation corrections.</p>
+          <p>For scientific reporting, it is important to document the precipitation dataset, baseline period, accumulation time scale, distribution method, missing data treatment, and drought category thresholds. Without these details, it can be difficult to reproduce SPI results or compare them with another study.</p>
+        </section>
+
+        <section id="dmap-ai">
+          <h2>How DMAP-AI calculates and uses SPI</h2>
+          <p>DMAP-AI uses SPI as a core drought index because it is widely recognized, transparent, and suitable for multi-time-scale drought assessment. A user selects a location, data source, analysis period, and SPI time scale. DMAP-AI then processes the precipitation data, calculates SPI, identifies drought events, and generates charts and tables that can be interpreted by the user or by the AI interpretation module.</p>
+          <p>In addition to the SPI line chart, DMAP-AI can summarize drought events by duration, minimum SPI, and magnitude. These event metrics help move beyond a simple visual interpretation and provide structured information for comparing drought episodes. For AI-assisted analysis, these structured values are especially useful because they reduce the risk of vague or unsupported interpretation.</p>
+          <div class="callout"><strong>DMAP-AI principle:</strong> A clear SPI calculation workflow makes the AI interpretation more trustworthy because the drought categories, time scale, and event metrics are derived from explicit climate-data processing rather than from visual guesswork.</div>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+          <h3>Is SPI calculated from rainfall or precipitation?</h3>
+          <p>SPI is calculated from precipitation. Depending on the climate and dataset, this may include rainfall and snowfall water equivalent. The important point is that the input should represent total precipitation consistently.</p>
+          <h3>Can SPI use daily data?</h3>
+          <p>Yes, but daily data are commonly aggregated to monthly totals before traditional SPI calculation. Some specialized applications use shorter accumulation windows, but the method and interpretation should be documented carefully.</p>
+          <h3>Why is SPI standardized?</h3>
+          <p>Standardization allows drought conditions to be compared across regions with different average precipitation. It also gives the index a familiar interpretation using negative and positive deviations from normal.</p>
+          <h3>Does SPI include temperature?</h3>
+          <p>No. SPI is precipitation-based. If temperature and atmospheric water demand are important for the research question, SPEI or evapotranspiration-based indicators may be more appropriate.</p>
+          <h3>Can SPI identify drought duration?</h3>
+          <p>SPI itself is a time series. Drought duration is usually calculated by identifying consecutive periods where SPI remains below a selected threshold, such as -1.0.</p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+          <ol class="references">
+            <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+            <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
+            <li>Guttman, N. B. (1999). Accepting the Standardized Precipitation Index: A calculation algorithm. Journal of the American Water Resources Association.</li>
+            <li>Edwards, D. C., and McKee, T. B. (1997). Characteristics of 20th century drought in the United States at multiple time scales. Colorado State University.</li>
+            <li>Lloyd-Hughes, B., and Saunders, M. A. (2002). A drought climatology for Europe. International Journal of Climatology.</li>
+          </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/what-is-spi/"><strong>What is SPI?</strong><span>Learn what SPI means and how to interpret positive and negative values.</span></a>
+            <a class="related-card" href="/knowledge/meteorological-drought/"><strong>Meteorological Drought</strong><span>Understand how precipitation deficits initiate drought.</span></a>
+            <a class="related-card" href="/knowledge/types-of-drought/"><strong>Types of Drought</strong><span>Compare meteorological, agricultural, hydrological, and socioeconomic drought.</span></a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a><a href="#overview">Overview</a><a href="#step-1">Prepare data</a><a href="#step-2">Select time scale</a><a href="#step-3">Calendar grouping</a><a href="#step-4">Fit distribution</a><a href="#step-5">Cumulative probability</a><a href="#step-6">Standard normal value</a><a href="#example">Example</a><a href="#quality">Calculation issues</a><a href="#dmap-ai">How DMAP-AI uses SPI</a><a href="#faq">FAQ</a><a href="#references">References</a>
+      </aside>
+    </div>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
+      <div class="comparison-stations-card">
+        <div class="comparison-stations-head">
+          <div><h2 id="knowledge-browse-title">Browse the Knowledge Center</h2><p>Search and open other DMAP-AI Knowledge Center articles about drought science, drought indices, climate datasets, analysis methods, and AI interpretation.</p></div>
+          <span class="station-count-pill">Documentation</span>
+        </div>
+        <div data-articles-nav data-current-slug="how-spi-is-calculated"></div>
+      </div>
+    </section>
+
+    <p class="back-to-knowledge"><a href="/knowledge/">← Back to Knowledge Center</a></p>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span></div></footer>
+  <script src="/knowledge/knowledge-nav.js" defer></script>
+  <script src="/assets/global-nav.js"></script>
+</body>
+</html>

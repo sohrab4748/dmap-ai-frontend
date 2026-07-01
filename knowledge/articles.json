@@ -125,8 +125,7 @@
       ],
       "related": [
         "hydrological-drought",
-        "what-is-drought",
-        "what-is-spi"
+        "what-is-drought"
       ]
     },
     {
@@ -154,7 +153,7 @@
       "slug": "what-is-spi",
       "title": "What is SPI?",
       "category": "Drought Indices",
-      "summary": "Learn how the Standardized Precipitation Index measures precipitation deficits and supports multi-scale drought monitoring.",
+      "summary": "Learn what the Standardized Precipitation Index means, how SPI values are interpreted, and why SPI is widely used for drought monitoring.",
       "readingTime": "12 min",
       "difficulty": "Beginner",
       "featured": true,
@@ -163,11 +162,33 @@
         "SPI",
         "Standardized Precipitation Index",
         "drought index",
-        "precipitation",
-        "drought monitoring"
+        "precipitation"
       ],
       "related": [
-        "what-is-drought",
+        "how-spi-is-calculated",
+        "meteorological-drought",
+        "what-is-drought"
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "how-spi-is-calculated",
+      "title": "How SPI is Calculated",
+      "category": "Drought Indices",
+      "summary": "A step-by-step explanation of SPI calculation from precipitation accumulation to probability fitting and standard normal transformation.",
+      "readingTime": "13 min",
+      "difficulty": "Intermediate",
+      "featured": true,
+      "lastUpdated": "2026-07-01",
+      "keywords": [
+        "SPI calculation",
+        "gamma distribution",
+        "cumulative probability",
+        "standard normal",
+        "drought index"
+      ],
+      "related": [
+        "what-is-spi",
         "meteorological-drought",
         "types-of-drought"
       ]
