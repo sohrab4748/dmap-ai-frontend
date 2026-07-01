@@ -243,7 +243,11 @@
         "drought",
         "severity"
       ],
-      "related": []
+      "related": [
+        "spi-interpretation",
+        "drought-duration",
+        "drought-magnitude"
+      ]
     },
     {
       "id": 11,
@@ -254,14 +258,18 @@
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/drought-duration/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "drought",
         "duration"
       ],
-      "related": []
+      "related": [
+        "drought-severity",
+        "drought-magnitude",
+        "drought-event-detection"
+      ]
     },
     {
       "id": 12,
@@ -272,14 +280,18 @@
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/drought-magnitude/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "drought",
         "magnitude"
       ],
-      "related": []
+      "related": [
+        "drought-severity",
+        "drought-duration",
+        "drought-event-detection"
+      ]
     },
     {
       "id": 13,
@@ -290,15 +302,19 @@
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/drought-event-detection/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "drought",
         "event",
         "detection"
       ],
-      "related": []
+      "related": [
+        "drought-thresholds",
+        "drought-duration",
+        "drought-magnitude"
+      ]
     },
     {
       "id": 14,
@@ -309,14 +325,18 @@
       "readingTime": "9 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/drought-thresholds/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "drought",
         "thresholds"
       ],
-      "related": []
+      "related": [
+        "drought-event-detection",
+        "drought-severity",
+        "spi-interpretation"
+      ]
     },
     {
       "id": 15,
@@ -327,14 +347,18 @@
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/drought-recovery/",
       "lastUpdated": "2026-07-01",
       "keywords": [
         "drought",
         "recovery"
       ],
-      "related": []
+      "related": [
+        "drought-event-detection",
+        "drought-duration",
+        "hydrological-drought"
+      ]
     },
     {
       "id": 16,

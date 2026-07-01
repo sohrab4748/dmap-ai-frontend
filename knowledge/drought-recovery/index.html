@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Drought Recovery | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Learn what drought recovery means, how recovery is detected in drought indices, why recovery differs by sector, and how DMAP-AI supports recovery interpretation.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/drought-recovery/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="Drought Recovery">
+  <meta property="og:description" content="Learn what drought recovery means, how recovery is detected in drought indices, why recovery differs by sector, and how DMAP-AI supports recovery interpretation.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/drought-recovery/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Drought Recovery",
+      "description": "Learn what drought recovery means, how recovery is detected in drought indices, why recovery differs by sector, and how DMAP-AI supports recovery interpretation.",
+      "author": {
+        "@type": "Organization",
+        "name": "AgriMetSoft LLC",
+        "url": "https://agrimetsoft.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "AgriMetSoft LLC",
+        "url": "https://agrimetsoft.com/"
+      },
+      "datePublished": "2026-07-01",
+      "dateModified": "2026-07-01",
+      "mainEntityOfPage": "https://droughtanalysis.com/knowledge/drought-recovery/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://droughtanalysis.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Center",
+          "item": "https://droughtanalysis.com/knowledge/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Drought Recovery",
+          "item": "https://droughtanalysis.com/knowledge/drought-recovery/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is drought recovery the same as rainfall returning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Rainfall can begin recovery, but soil moisture, streamflow, reservoirs, groundwater, and crops may recover at different rates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can SPI-1 recover while SPI-12 remains dry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SPI-1 reflects recent monthly rainfall, while SPI-12 reflects accumulated precipitation over a year. Long-term deficits can persist even after short-term rainfall improves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should recovery require SPI to be positive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the purpose. For conservative planning, requiring SPI near zero or positive may be appropriate. For event detection, crossing above the drought threshold may be sufficient."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --blue:#2563eb;
+      --blue-dark:#1d4ed8;
+      --slate-50:#f8fafc;
+      --slate-100:#f1f5f9;
+      --slate-200:#e2e8f0;
+      --slate-500:#64748b;
+      --slate-600:#475569;
+      --slate-700:#334155;
+      --slate-800:#1e293b;
+      --slate-900:#0f172a;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      color:var(--slate-900);
+      background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .container {
+      width:min(100% - 2rem,80rem);
+      margin-inline:auto;
+    }
+
+    .article-hero {
+      padding:3.5rem 0 1.5rem;
+    }
+
+    .article-hero-card {
+      border:1px solid #bfdbfe;
+      border-radius:1.75rem;
+      background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));
+      box-shadow:0 18px 45px rgba(15,23,42,.08);
+      padding:2.25rem;
+    }
+
+    .breadcrumb {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      align-items:center;
+      color:var(--slate-500);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+
+    .breadcrumb a {
+      color:#1d4ed8;
+      font-weight:700;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      border-radius:999px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .8rem;
+      font-size:.875rem;
+      font-weight:850;
+    }
+
+    h1 {
+      margin:1rem 0 0;
+      font-size:clamp(2.2rem,5vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#020617;
+    }
+
+    .lead {
+      max-width:58rem;
+      margin:1rem 0 0;
+      color:var(--slate-600);
+      font-size:1.1rem;
+      line-height:1.75;
+    }
+
+    .article-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1.25rem;
+      color:#475569;
+      font-size:.92rem;
+    }
+
+    .meta-pill {
+      border:1px solid #dbeafe;
+      background:#fff;
+      border-radius:999px;
+      padding:.35rem .7rem;
+      font-weight:700;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1.5rem;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:.875rem;
+      padding:.75rem 1.25rem;
+      font-weight:750;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+
+    .btn-secondary {
+      background:#ffffff;
+      color:#1e293b;
+      border-color:#e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .article-layout {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 18rem;
+      gap:2rem;
+      align-items:start;
+      padding:1.5rem 0 3rem;
+    }
+
+    .article-main {
+      background:#fff;
+      border:1px solid var(--slate-200);
+      border-radius:1.25rem;
+      box-shadow:0 12px 30px rgba(15,23,42,.055);
+      padding:2rem;
+    }
+
+    .article-main h2 {
+      margin:2rem 0 .75rem;
+      color:#0f172a;
+      font-size:clamp(1.4rem,2.5vw,1.85rem);
+      line-height:1.2;
+      letter-spacing:-.02em;
+    }
+
+    .article-main h2:first-child {
+      margin-top:0;
+    }
+
+    .article-main h3 {
+      margin:1.5rem 0 .5rem;
+      font-size:1.15rem;
+      color:#0f172a;
+    }
+
+    .article-main p {
+      margin:.75rem 0;
+      color:#334155;
+    }
+
+    .article-main ul,
+    .article-main ol {
+      color:#334155;
+      padding-left:1.4rem;
+    }
+
+    .quick-answer {
+      border:1px solid #bfdbfe;
+      border-left:5px solid #2563eb;
+      background:#eff6ff;
+      border-radius:1rem;
+      padding:1.15rem;
+      margin-bottom:1.5rem;
+    }
+
+    .quick-answer h2 {
+      margin:0 0 .45rem;
+      font-size:1.2rem;
+    }
+
+    .definition-box {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1.1rem;
+      margin:1rem 0;
+    }
+
+    .table-wrap {
+      overflow-x:auto;
+      margin:1.25rem 0;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:680px;
+      background:#fff;
+    }
+
+    th, td {
+      text-align:left;
+      padding:.85rem;
+      border-bottom:1px solid #e2e8f0;
+      vertical-align:top;
+    }
+
+    th {
+      background:#f8fafc;
+      color:#0f172a;
+      font-size:.9rem;
+    }
+
+    tr:last-child td {
+      border-bottom:0;
+    }
+
+    .toc {
+      position:sticky;
+      top:1rem;
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:1.1rem;
+      padding:1rem;
+      box-shadow:0 10px 25px rgba(15,23,42,.055);
+    }
+
+    .toc h2 {
+      font-size:1rem;
+      margin:0 0 .75rem;
+    }
+
+    .toc a {
+      display:block;
+      color:#475569;
+      font-size:.92rem;
+      padding:.35rem 0;
+      border-bottom:1px solid #f1f5f9;
+    }
+
+    .toc a:hover {
+      color:#1d4ed8;
+    }
+
+    .callout {
+      border:1px solid #bbf7d0;
+      background:#f0fdf4;
+      border-radius:1rem;
+      padding:1rem;
+      margin:1.25rem 0;
+    }
+
+    .callout strong {
+      color:#166534;
+    }
+
+    .related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .related-card {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1rem;
+    }
+
+    .related-card strong {
+      display:block;
+      color:#0f172a;
+    }
+
+    .related-card span {
+      display:block;
+      color:#64748b;
+      font-size:.9rem;
+      margin-top:.35rem;
+    }
+
+    .back-to-knowledge {
+      width:min(100% - 2rem,80rem);
+      margin:2rem auto 0;
+    }
+
+    .back-to-knowledge a {
+      display:inline-flex;
+      align-items:center;
+      border:1px solid #e2e8f0;
+      background:#ffffff;
+      color:#1e293b;
+      border-radius:.875rem;
+      padding:.75rem 1.1rem;
+      font-weight:750;
+      text-decoration:none;
+    }
+
+    .back-to-knowledge a:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .site-footer {
+      border-top:1px solid var(--slate-200);
+      background:rgba(255,255,255,.72);
+      margin-top:2rem;
+    }
+
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding-block:1.5rem;
+      color:var(--slate-500);
+      font-size:.875rem;
+    }
+
+    @media(max-width:1050px) {
+      .article-layout {
+        grid-template-columns:1fr;
+      }
+
+      .toc {
+        position:static;
+        order:-1;
+      }
+    }
+
+    @media(max-width:640px) {
+      .container {
+        width:min(100% - 1rem,80rem);
+      }
+
+      .article-hero {
+        padding-top:2rem;
+      }
+
+      .article-hero-card,
+      .article-main {
+        padding:1.25rem;
+        border-radius:1.1rem;
+      }
+
+      .related-grid {
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/knowledge/">Knowledge Center</a>
+            <span>›</span>
+            <span>Drought Recovery</span>
+          </nav>
+
+          <p class="eyebrow">Drought Events and Severity</p>
+
+          <h1>Drought Recovery</h1>
+
+          <p class="lead">
+            Drought recovery is the transition from drought conditions toward normal or wet conditions. It may appear quickly in a short-term rainfall index, but agriculture, groundwater, reservoirs, ecosystems, and soils may recover at different speeds.
+          </p>
+
+          <div class="article-meta">
+            <span class="meta-pill">Reading time: 10 min</span>
+            <span class="meta-pill">Level: Intermediate</span>
+            <span class="meta-pill">Last updated: July 2026</span>
+            <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section class="quick-answer" id="quick-answer">
+          <h2>Short answer</h2>
+          <p>
+            Drought recovery occurs when drought indicators return above a defined recovery threshold, but recovery is not always complete across all sectors. SPI-1 may recover after one wet month, while SPI-12, groundwater, streamflow, and reservoirs may still show long-term deficits. Recovery should be reported with the drought index, time scale, threshold, and sector being considered.
+          </p>
+        </section>
+
+        <section id="definition">
+          <h2>What does drought recovery mean?</h2>
+
+          <p>
+            Drought recovery describes the end or weakening of drought conditions. In index analysis, recovery often occurs when the drought index rises above a selected threshold. In practical water management, recovery may require soil moisture, streamflow, reservoir storage, groundwater, or vegetation to return to acceptable levels.
+          </p>
+
+          <p>
+            This distinction is important because recovery in one indicator does not guarantee recovery in another. A single wet month can improve short-term SPI, but it may not refill reservoirs or restore groundwater.
+          </p>
+
+          <div class="definition-box">
+            <strong>Working definition:</strong> Drought recovery is the process by which drought indicators, water storage, or affected systems return from drought conditions toward normal or acceptable conditions according to a defined rule.
+          </div>
+        </section>
+        <section id="index-recovery">
+          <h2>Recovery in drought indices</h2>
+
+          <p>
+            In SPI-based event analysis, recovery can be defined in different ways. A simple rule ends the drought when SPI rises above the drought threshold. A stricter rule may require SPI to reach zero or become positive. These choices produce different event durations and recovery dates.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Recovery rule</th><th>Meaning</th><th>Effect on event duration</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Above drought threshold</td><td>Drought is no longer active by the event rule</td><td>Shorter duration</td></tr>
+                <tr><td>Near zero</td><td>Conditions return close to normal</td><td>Moderate duration</td></tr>
+                <tr><td>Positive index value</td><td>Wet enough to offset the drought signal</td><td>Longer duration</td></tr>
+                <tr><td>Multi-period confirmation</td><td>Recovery must persist for more than one step</td><td>Reduces false recovery</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            The best rule depends on whether the goal is early drought termination, full recovery, or conservative water-resource planning.
+          </p>
+        </section>
+        <section id="sector">
+          <h2>Recovery differs by sector</h2>
+
+          <p>
+            Meteorological recovery can occur quickly after rainfall returns. Agricultural recovery depends on soil moisture, crop stage, root depth, and whether the crop was damaged before rainfall arrived. Hydrological recovery can take much longer because reservoirs, rivers, aquifers, and snowpack respond slowly.
+          </p>
+
+          <p>
+            For this reason, a drought monitor may show improvement while farmers, water managers, or ecosystems still experience drought impacts. Communication should specify what has recovered and what has not.
+          </p>
+        </section>
+        <section id="false-recovery">
+          <h2>Partial and false recovery</h2>
+
+          <p>
+            A brief wet period can create the appearance of recovery in short-term indices. If dry conditions return soon afterward, the event may be better interpreted as a temporary interruption rather than a full recovery. Pooling rules or multi-period confirmation can help handle this problem.
+          </p>
+
+          <div class="callout">
+            <strong>Important:</strong> Recovery is not only a number crossing a threshold. It is also a question of whether the affected system has regained function, storage, or resilience.
+          </div>
+        </section>
+        <section id="dmap-ai">
+          <h2>How DMAP-AI supports recovery interpretation</h2>
+
+          <p>
+            DMAP-AI helps users interpret recovery by showing the time scale, event end date, drought threshold, and drought-event table. This allows users to see whether recovery was short-term or part of a longer persistent deficit.
+          </p>
+
+          <p>
+            In AI summaries, structured recovery information reduces misleading statements. Instead of saying “the drought ended” without context, DMAP-AI can support more precise language such as “SPI-3 rose above the drought threshold, but longer time-scale indicators should be checked for persistent water-supply deficits.”
+          </p>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+
+          <h3>Is drought recovery the same as rainfall returning?</h3>
+          <p>
+            No. Rainfall can begin recovery, but soil moisture, streamflow, reservoirs, groundwater, and crops may recover at different rates.
+          </p>
+
+          <h3>Why can SPI-1 recover while SPI-12 remains dry?</h3>
+          <p>
+            SPI-1 reflects recent monthly rainfall, while SPI-12 reflects accumulated precipitation over a year. Long-term deficits can persist even after short-term rainfall improves.
+          </p>
+
+          <h3>Should recovery require SPI to be positive?</h3>
+          <p>
+            It depends on the purpose. For conservative planning, requiring SPI near zero or positive may be appropriate. For event detection, crossing above the drought threshold may be sufficient.
+          </p>
+
+          <h3>Can crops recover after drought?</h3>
+          <p>
+            Sometimes. Recovery depends on growth stage, drought severity, soil moisture, temperature stress, and whether irreversible yield damage has occurred.
+          </p>
+
+          <h3>How should AI describe recovery?</h3>
+          <p>
+            AI should state the index, time scale, threshold, and sector. It should avoid claiming complete recovery when only one indicator has improved.
+          </p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+
+          <ol class="references">
+            <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
+            <li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
+            <li>Van Loon, A. F. (2015). Hydrological drought explained. Wiley Interdisciplinary Reviews: Water.</li>
+            <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+          </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/drought-event-detection/">
+              <strong>Drought Event Detection</strong>
+              <span>Learn how recovery rules define event end dates.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/drought-duration/">
+              <strong>Drought Duration</strong>
+              <span>See how recovery affects drought length.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/hydrological-drought/">
+              <strong>Hydrological Drought</strong>
+              <span>Understand why water systems can recover slowly.</span>
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a>
+        <a href="#definition">What does drought recovery mean?</a>
+        <a href="#index-recovery">Recovery in drought indices</a>
+        <a href="#sector">Recovery differs by sector</a>
+        <a href="#false-recovery">Partial and false recovery</a>
+        <a href="#dmap-ai">How DMAP-AI supports recovery interpretation</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">References</a>
+        <a href="#related">Related articles</a>
+      </aside>
+    </div>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
+      <div class="comparison-stations-card">
+        <div class="comparison-stations-head">
+          <div>
+            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+            <p>
+              Search and open other DMAP-AI Knowledge Center articles about drought science,
+              drought indices, climate datasets, analysis methods, and AI interpretation.
+            </p>
+          </div>
+          <span class="station-count-pill">Documentation</span>
+        </div>
+
+        <div data-articles-nav data-current-slug="drought-recovery"></div>
+      </div>
+    </section>
+
+    <p class="back-to-knowledge">
+      <a href="/knowledge/">← Back to Knowledge Center</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="/knowledge/knowledge-nav.js" defer></script>
+  <script src="/assets/global-nav.js"></script>
+</body>
+</html>
