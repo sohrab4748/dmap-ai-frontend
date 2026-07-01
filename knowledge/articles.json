@@ -740,203 +740,252 @@
       "slug": "nasa-power-for-drought",
       "title": "NASA POWER for Drought Analysis",
       "category": "climate-data",
-      "summary": "Use NASA POWER precipitation and temperature data for drought monitoring.",
+      "summary": "Use NASA POWER analysis-ready meteorological data for point-based drought monitoring, SPI calculation, and climate summaries.",
       "readingTime": "11 min",
       "difficulty": "Beginner",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/nasa-power-for-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "nasa",
-        "power",
-        "for",
-        "drought",
-        "analysis"
+        "NASA POWER",
+        "drought analysis",
+        "precipitation",
+        "temperature",
+        "SPI",
+        "climate data"
       ],
-      "related": []
+      "related": [
+        "era5-for-drought",
+        "chirps-for-drought",
+        "what-is-spi"
+      ]
     },
     {
       "id": 32,
       "slug": "era5-for-drought",
       "title": "ERA5 for Drought Analysis",
       "category": "climate-data",
-      "summary": "Understand ERA5 reanalysis data and its drought-monitoring applications.",
+      "summary": "Understand how ERA5 global reanalysis data can support drought monitoring, climate diagnostics, and comparison with local datasets.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/era5-for-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "era5",
-        "for",
-        "drought",
-        "analysis"
+        "ERA5",
+        "reanalysis",
+        "drought analysis",
+        "precipitation",
+        "temperature",
+        "climate data"
       ],
-      "related": []
+      "related": [
+        "era5-land-for-drought",
+        "nasa-power-for-drought",
+        "cmip6-for-drought"
+      ]
     },
     {
       "id": 33,
       "slug": "era5-land-for-drought",
       "title": "ERA5-Land for Drought Analysis",
       "category": "climate-data",
-      "summary": "Explore ERA5-Land for land-surface and hydrological drought variables.",
+      "summary": "Explore ERA5-Land for land-surface drought variables, soil-water context, precipitation, temperature, and hydrological applications.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/era5-land-for-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "era5-land",
-        "for",
-        "drought",
-        "analysis"
+        "ERA5-Land",
+        "land reanalysis",
+        "soil moisture",
+        "drought analysis",
+        "hydrology"
       ],
-      "related": []
+      "related": [
+        "era5-for-drought",
+        "terraclimate-for-drought",
+        "hydrological-drought"
+      ]
     },
     {
       "id": 34,
       "slug": "gridmet-for-drought",
       "title": "GridMET for Drought Analysis",
       "category": "climate-data",
-      "summary": "Learn how GridMET supports agricultural drought monitoring in the United States.",
+      "summary": "Learn how GridMET daily meteorological data supports agricultural drought monitoring and modeling in the contiguous United States.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/gridmet-for-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "gridmet",
-        "for",
-        "drought",
-        "analysis"
+        "GridMET",
+        "United States",
+        "agricultural drought",
+        "daily climate data",
+        "evapotranspiration"
       ],
-      "related": []
+      "related": [
+        "prism-for-drought",
+        "daymet-for-drought",
+        "agricultural-drought"
+      ]
     },
     {
       "id": 35,
       "slug": "terraclimate-for-drought",
       "title": "TerraClimate for Drought Analysis",
       "category": "climate-data",
-      "summary": "Understand TerraClimate variables and drought applications.",
+      "summary": "Understand TerraClimate monthly climate and water-balance variables and how they support global drought screening.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/terraclimate-for-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "terraclimate",
-        "for",
-        "drought",
-        "analysis"
+        "TerraClimate",
+        "water balance",
+        "monthly climate data",
+        "global drought",
+        "SPEI"
       ],
-      "related": []
+      "related": [
+        "era5-land-for-drought",
+        "gridmet-for-drought",
+        "index-baseline-periods"
+      ]
     },
     {
       "id": 36,
       "slug": "chirps-for-drought",
       "title": "CHIRPS for Drought Analysis",
       "category": "climate-data",
-      "summary": "Use CHIRPS precipitation data for drought monitoring in data-sparse regions.",
+      "summary": "Use CHIRPS rainfall estimates for precipitation-based drought monitoring, especially in data-sparse regions.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/chirps-for-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "chirps",
-        "for",
-        "drought",
-        "analysis"
+        "CHIRPS",
+        "rainfall",
+        "precipitation",
+        "satellite gauge data",
+        "drought monitoring"
       ],
-      "related": []
+      "related": [
+        "nasa-power-for-drought",
+        "index-baseline-periods",
+        "drought-frequency"
+      ]
     },
     {
       "id": 37,
       "slug": "prism-for-drought",
       "title": "PRISM for Drought Analysis",
       "category": "climate-data",
-      "summary": "Learn how PRISM climate data is used in U.S. drought monitoring.",
+      "summary": "Learn how PRISM high-resolution U.S. climate data can support station comparison, drought mapping, and local climate summaries.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/prism-for-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "prism",
-        "for",
-        "drought",
-        "analysis"
+        "PRISM",
+        "United States climate data",
+        "precipitation",
+        "temperature",
+        "drought monitoring"
       ],
-      "related": []
+      "related": [
+        "gridmet-for-drought",
+        "daymet-for-drought",
+        "drought-category-tables"
+      ]
     },
     {
       "id": 38,
       "slug": "daymet-for-drought",
       "title": "Daymet for Drought Analysis",
       "category": "climate-data",
-      "summary": "Explore daily gridded climate data for drought and agriculture.",
+      "summary": "Explore Daymet daily gridded weather data for drought, agriculture, snow, radiation, and land-surface applications in North America.",
       "readingTime": "9 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/daymet-for-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "daymet",
-        "for",
-        "drought",
-        "analysis"
+        "Daymet",
+        "daily weather data",
+        "North America",
+        "agricultural drought",
+        "precipitation"
       ],
-      "related": []
+      "related": [
+        "gridmet-for-drought",
+        "prism-for-drought",
+        "agricultural-drought"
+      ]
     },
     {
       "id": 39,
       "slug": "cmip6-for-drought",
       "title": "CMIP6 for Future Drought Analysis",
       "category": "climate-data",
-      "summary": "Use climate-model projections to explore future drought risk.",
+      "summary": "Use CMIP6 climate-model projections to examine future drought hazards while communicating model uncertainty responsibly.",
       "readingTime": "13 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/cmip6-for-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "cmip6",
-        "for",
-        "future",
-        "drought",
-        "analysis"
+        "CMIP6",
+        "climate projections",
+        "future drought",
+        "SSP scenarios",
+        "uncertainty"
       ],
-      "related": []
+      "related": [
+        "cordex-for-drought",
+        "spei-limitations",
+        "multi-index-drought-monitoring"
+      ]
     },
     {
       "id": 40,
       "slug": "cordex-for-drought",
       "title": "CORDEX for Regional Drought Analysis",
       "category": "climate-data",
-      "summary": "Understand regional climate projections and drought applications.",
+      "summary": "Understand how CORDEX regional climate projections support regional drought-impact studies and adaptation planning.",
       "readingTime": "13 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/cordex-for-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "cordex",
-        "for",
-        "regional",
-        "drought",
-        "analysis"
+        "CORDEX",
+        "regional climate models",
+        "downscaling",
+        "future drought",
+        "regional projections"
       ],
-      "related": []
+      "related": [
+        "cmip6-for-drought",
+        "era5-for-drought",
+        "index-baseline-periods"
+      ]
     },
     {
       "id": 41,
