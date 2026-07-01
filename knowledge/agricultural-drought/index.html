@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Agricultural Drought | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Learn what agricultural drought is, how it affects crops and soil moisture, how it differs from meteorological drought, and how DMAP-AI supports agricultural drought assessment.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/agricultural-drought/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="Agricultural Drought">
+  <meta property="og:description" content="A practical scientific guide to agricultural drought, soil moisture stress, crop growth stages, drought indicators, and DMAP-AI agricultural drought interpretation.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/agricultural-drought/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Agricultural Drought",
+        "description": "A practical scientific guide to agricultural drought, soil moisture stress, crop growth stages, drought indicators, and DMAP-AI agricultural drought interpretation.",
+        "author": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-01",
+        "mainEntityOfPage": "https://droughtanalysis.com/knowledge/agricultural-drought/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://droughtanalysis.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Center",
+            "item": "https://droughtanalysis.com/knowledge/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Agricultural Drought",
+            "item": "https://droughtanalysis.com/knowledge/agricultural-drought/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is agricultural drought?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Agricultural drought occurs when soil moisture and water availability are insufficient to meet crop or vegetation water needs during important growth periods."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is agricultural drought the same as meteorological drought?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Meteorological drought focuses mainly on precipitation deficits, while agricultural drought focuses on whether available water is enough for crops, pasture, or vegetation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which crop stage is most sensitive to drought?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The most sensitive stage depends on the crop. For corn, the period around tasseling, silking, pollination, and early grain fill is especially vulnerable to water stress."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:#2563eb;
+      --blue-dark:#1d4ed8;
+      --slate-50:#f8fafc;
+      --slate-100:#f1f5f9;
+      --slate-200:#e2e8f0;
+      --slate-500:#64748b;
+      --slate-600:#475569;
+      --slate-700:#334155;
+      --slate-800:#1e293b;
+      --slate-900:#0f172a;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      color:var(--slate-900);
+      background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .container {
+      width:min(100% - 2rem,80rem);
+      margin-inline:auto;
+    }
+
+    .article-hero {
+      padding:3.5rem 0 1.5rem;
+    }
+
+    .article-hero-card {
+      border:1px solid #bfdbfe;
+      border-radius:1.75rem;
+      background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));
+      box-shadow:0 18px 45px rgba(15,23,42,.08);
+      padding:2.25rem;
+    }
+
+    .breadcrumb {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      align-items:center;
+      color:var(--slate-500);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+
+    .breadcrumb a {
+      color:#1d4ed8;
+      font-weight:700;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      border-radius:999px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .8rem;
+      font-size:.875rem;
+      font-weight:850;
+    }
+
+    h1 {
+      margin:1rem 0 0;
+      font-size:clamp(2.2rem,5vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#020617;
+    }
+
+    .lead {
+      max-width:58rem;
+      margin:1rem 0 0;
+      color:var(--slate-600);
+      font-size:1.1rem;
+      line-height:1.75;
+    }
+
+    .article-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1.25rem;
+      color:#475569;
+      font-size:.92rem;
+    }
+
+    .meta-pill {
+      border:1px solid #dbeafe;
+      background:#fff;
+      border-radius:999px;
+      padding:.35rem .7rem;
+      font-weight:700;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:.875rem;
+      padding:.75rem 1.25rem;
+      font-weight:750;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+
+    .btn-secondary {
+      background:#ffffff;
+      color:#1e293b;
+      border-color:#e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1.5rem;
+    }
+
+    .back-to-knowledge {
+      width:min(100% - 2rem,80rem);
+      margin:2rem auto 0;
+    }
+
+    .back-to-knowledge a {
+      display:inline-flex;
+      align-items:center;
+      border:1px solid #e2e8f0;
+      background:#ffffff;
+      color:#1e293b;
+      border-radius:.875rem;
+      padding:.75rem 1.1rem;
+      font-weight:750;
+      text-decoration:none;
+    }
+
+    .back-to-knowledge a:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .article-layout {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 18rem;
+      gap:2rem;
+      align-items:start;
+      padding:1.5rem 0 3rem;
+    }
+
+    .article-main {
+      background:#fff;
+      border:1px solid var(--slate-200);
+      border-radius:1.25rem;
+      box-shadow:0 12px 30px rgba(15,23,42,.055);
+      padding:2rem;
+    }
+
+    .article-main h2 {
+      margin:2rem 0 .75rem;
+      color:#0f172a;
+      font-size:clamp(1.4rem,2.5vw,1.85rem);
+      line-height:1.2;
+      letter-spacing:-.02em;
+    }
+
+    .article-main h2:first-child {
+      margin-top:0;
+    }
+
+    .article-main h3 {
+      margin:1.5rem 0 .5rem;
+      font-size:1.15rem;
+      color:#0f172a;
+    }
+
+    .article-main p {
+      margin:.75rem 0;
+      color:#334155;
+    }
+
+    .article-main ul,
+    .article-main ol {
+      color:#334155;
+      padding-left:1.4rem;
+    }
+
+    .quick-answer {
+      border:1px solid #bfdbfe;
+      border-left:5px solid #2563eb;
+      background:#eff6ff;
+      border-radius:1rem;
+      padding:1.15rem;
+      margin-bottom:1.5rem;
+    }
+
+    .quick-answer h2 {
+      margin:0 0 .45rem;
+      font-size:1.2rem;
+    }
+
+    .definition-box {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1.1rem;
+      margin:1rem 0;
+    }
+
+    .table-wrap {
+      overflow-x:auto;
+      margin:1.25rem 0;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:720px;
+      background:#fff;
+    }
+
+    th, td {
+      text-align:left;
+      padding:.85rem;
+      border-bottom:1px solid #e2e8f0;
+      vertical-align:top;
+    }
+
+    th {
+      background:#f8fafc;
+      color:#0f172a;
+      font-size:.9rem;
+    }
+
+    tr:last-child td {
+      border-bottom:0;
+    }
+
+    .toc {
+      position:sticky;
+      top:1rem;
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:1.1rem;
+      padding:1rem;
+      box-shadow:0 10px 25px rgba(15,23,42,.055);
+    }
+
+    .toc h2 {
+      font-size:1rem;
+      margin:0 0 .75rem;
+    }
+
+    .toc a {
+      display:block;
+      color:#475569;
+      font-size:.92rem;
+      padding:.35rem 0;
+      border-bottom:1px solid #f1f5f9;
+    }
+
+    .toc a:hover {
+      color:#1d4ed8;
+    }
+
+    .callout {
+      border:1px solid #bbf7d0;
+      background:#f0fdf4;
+      border-radius:1rem;
+      padding:1rem;
+      margin:1.25rem 0;
+    }
+
+    .callout strong {
+      color:#166534;
+    }
+
+    .related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .related-card {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1rem;
+    }
+
+    .related-card strong {
+      display:block;
+      color:#0f172a;
+    }
+
+    .related-card span {
+      display:block;
+      color:#64748b;
+      font-size:.9rem;
+      margin-top:.35rem;
+    }
+
+    .references li {
+      margin:.55rem 0;
+    }
+
+    .site-footer {
+      border-top:1px solid var(--slate-200);
+      background:rgba(255,255,255,.72);
+      margin-top:2rem;
+    }
+
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding-block:1.5rem;
+      color:var(--slate-500);
+      font-size:.875rem;
+    }
+
+    @media(max-width:1050px) {
+      .article-layout {
+        grid-template-columns:1fr;
+      }
+
+      .toc {
+        position:static;
+        order:-1;
+      }
+    }
+
+    @media(max-width:640px) {
+      .container {
+        width:min(100% - 1rem,80rem);
+      }
+
+      .article-hero {
+        padding-top:2rem;
+      }
+
+      .article-hero-card,
+      .article-main {
+        padding:1.25rem;
+        border-radius:1.1rem;
+      }
+
+      .related-grid {
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/knowledge/">Knowledge Center</a>
+            <span>›</span>
+            <span>Agricultural Drought</span>
+          </nav>
+
+          <p class="eyebrow">Drought Basics</p>
+
+          <h1>Agricultural Drought</h1>
+
+          <p class="lead">
+            Agricultural drought occurs when water availability in the crop root zone is not enough
+            to meet crop or vegetation water needs. It is closely related to precipitation, soil
+            moisture, evapotranspiration, crop growth stage, irrigation, and management decisions.
+            This article explains how agricultural drought develops, how it affects crops, and how it
+            can be monitored using climate data and drought indicators.
+          </p>
+
+          <div class="article-meta">
+            <span class="meta-pill">Reading time: 11 min</span>
+            <span class="meta-pill">Level: Intermediate</span>
+            <span class="meta-pill">Last updated: July 2026</span>
+            <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section class="quick-answer" id="quick-answer">
+          <h2>Short answer</h2>
+          <p>
+            Agricultural drought is a condition in which soil water and available moisture are
+            insufficient to meet the needs of crops, pasture, or natural vegetation. It can occur
+            even before rivers and reservoirs show major deficits. Its severity depends on rainfall,
+            temperature, evapotranspiration, soil water-holding capacity, crop type, crop growth
+            stage, rooting depth, and irrigation availability.
+          </p>
+        </section>
+
+        <section id="definition">
+          <h2>Definition of agricultural drought</h2>
+
+          <p>
+            Agricultural drought is the form of drought most directly connected to crop production.
+            It occurs when water available in the soil is not enough to satisfy the water demand of
+            plants during a specific growth period. The key idea is not simply whether rainfall is
+            below average, but whether crops can access enough water at the time they need it.
+          </p>
+
+          <div class="definition-box">
+            <strong>Working definition:</strong>
+            Agricultural drought is a sustained shortage of plant-available water that causes crop,
+            pasture, or vegetation stress and may reduce yield, biomass, or quality.
+          </div>
+
+          <p>
+            This makes agricultural drought different from meteorological drought. Meteorological
+            drought focuses mainly on precipitation deficits. Agricultural drought focuses on the
+            water balance of the crop root zone. A region may receive below-normal rainfall but avoid
+            serious agricultural drought if soils were already wet, crops were at a less sensitive
+            stage, irrigation was available, or temperatures were mild. In contrast, a short dry and
+            hot period during a sensitive crop stage can create major agricultural stress even when
+            seasonal rainfall totals are not extremely low.
+          </p>
+
+          <p>
+            Agricultural drought is therefore a bridge between climate conditions and field-level
+            impacts. It translates weather anomalies into practical questions: Is the crop under
+            water stress? Is irrigation needed? Is yield potential declining? Is the current dry
+            spell likely to affect pollination, grain filling, or forage growth?
+          </p>
+        </section>
+
+        <section id="components">
+          <h2>Main components of agricultural drought</h2>
+
+          <p>
+            Agricultural drought is controlled by several interacting components. The same rainfall
+            deficit can produce different outcomes depending on soil, crop, temperature, and
+            management. A useful assessment should consider these components together instead of
+            relying on a single rainfall number.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Why it matters</th>
+                  <th>Example indicator</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Precipitation</td>
+                  <td>Controls the main water input to the soil surface.</td>
+                  <td>Rainfall anomaly, SPI, percent of normal precipitation</td>
+                </tr>
+                <tr>
+                  <td>Soil moisture</td>
+                  <td>Determines whether plant roots can access water.</td>
+                  <td>Root-zone soil moisture, soil moisture percentile</td>
+                </tr>
+                <tr>
+                  <td>Evapotranspiration</td>
+                  <td>Represents water loss from soil and vegetation.</td>
+                  <td>Actual ET, potential ET, ET deficit</td>
+                </tr>
+                <tr>
+                  <td>Temperature</td>
+                  <td>High temperature increases water demand and crop stress.</td>
+                  <td>Heat stress days, growing-degree days, vapor pressure deficit</td>
+                </tr>
+                <tr>
+                  <td>Crop stage</td>
+                  <td>Some stages are much more sensitive to water shortage.</td>
+                  <td>Planting date, phenological stage, flowering period</td>
+                </tr>
+                <tr>
+                  <td>Soil properties</td>
+                  <td>Texture and depth affect water storage and root access.</td>
+                  <td>Available water capacity, rooting depth</td>
+                </tr>
+                <tr>
+                  <td>Irrigation</td>
+                  <td>Can reduce or delay the impact of rainfall deficits.</td>
+                  <td>Irrigation amount, irrigation scheduling, water allocation</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            These components explain why agricultural drought is highly local. A sandy soil with
+            shallow rooting depth can show crop stress quickly after rainfall stops. A deeper loam
+            soil may support the crop for longer. Irrigated fields can respond differently from
+            rainfed fields even under the same weather conditions.
+          </p>
+        </section>
+
+        <section id="development">
+          <h2>How agricultural drought develops</h2>
+
+          <p>
+            Agricultural drought often begins after a period of below-normal precipitation, but the
+            field response depends on the existing soil water reserve. If rainfall is low during a
+            cool period or when crops are small, the immediate impact may be limited. If the dry
+            period continues into a hot, windy, or high-demand period, soil water can decline rapidly.
+          </p>
+
+          <p>
+            The development process usually follows a sequence. First, rainfall becomes insufficient
+            to recharge the soil. Second, plant-available water decreases in the root zone. Third,
+            plants reduce transpiration, leaf expansion, or photosynthesis. Fourth, visible symptoms
+            such as leaf rolling, wilting, reduced canopy growth, or early senescence may appear.
+            Finally, yield or biomass may decline if stress occurs during sensitive growth stages.
+          </p>
+
+          <div class="callout">
+            <strong>Important point:</strong>
+            Agricultural drought is not controlled only by how dry the weather is. It is controlled by
+            how the crop, soil, and atmosphere interact during a specific growth stage.
+          </div>
+        </section>
+
+        <section id="crop-stage">
+          <h2>Why crop growth stage matters</h2>
+
+          <p>
+            Crop sensitivity to drought changes during the growing season. Early-season water stress
+            may reduce plant establishment or vegetative growth. Mid-season stress may affect
+            flowering, pollination, and reproductive success. Late-season stress may reduce grain
+            filling, seed weight, or quality.
+          </p>
+
+          <p>
+            For corn, drought stress around tasseling, silking, pollination, and early grain fill is
+            especially important because water shortage can reduce kernel number and final yield.
+            For soybean, stress during flowering and pod filling can reduce pod set and seed size.
+            For wheat, drought during stem elongation, heading, flowering, or grain filling can reduce
+            biomass, grain number, or grain weight.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Crop stage</th>
+                  <th>Drought concern</th>
+                  <th>Possible impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Planting and emergence</td>
+                  <td>Dry seedbed, poor germination, uneven emergence</td>
+                  <td>Reduced stand establishment</td>
+                </tr>
+                <tr>
+                  <td>Vegetative growth</td>
+                  <td>Limited leaf area and root development</td>
+                  <td>Reduced canopy and biomass</td>
+                </tr>
+                <tr>
+                  <td>Flowering and pollination</td>
+                  <td>High sensitivity to water and heat stress</td>
+                  <td>Reduced seed or kernel number</td>
+                </tr>
+                <tr>
+                  <td>Grain or seed filling</td>
+                  <td>Insufficient water for carbohydrate accumulation</td>
+                  <td>Lower grain weight or seed size</td>
+                </tr>
+                <tr>
+                  <td>Maturity</td>
+                  <td>Early senescence under severe stress</td>
+                  <td>Reduced quality or harvestable yield</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="indicators">
+          <h2>Indicators used to monitor agricultural drought</h2>
+
+          <p>
+            Agricultural drought monitoring usually combines climate indicators with soil moisture,
+            crop condition, and vegetation information. Precipitation-based indices such as SPI are
+            useful for identifying moisture deficits, especially at short to seasonal time scales.
+            However, agricultural drought often requires additional context such as temperature,
+            evapotranspiration, soil water, and crop stage.
+          </p>
+
+          <h3>Precipitation indicators</h3>
+          <p>
+            Precipitation indicators show whether recent rainfall has been below normal. SPI at 1-,
+            3-, or 6-month accumulation periods can help identify short-term and seasonal dryness.
+            These time scales are often relevant for planting, early growth, and growing-season
+            moisture assessment.
+          </p>
+
+          <h3>Soil moisture indicators</h3>
+          <p>
+            Soil moisture is one of the most direct indicators of agricultural drought because it
+            represents water available to plant roots. Root-zone soil moisture is usually more useful
+            than surface soil moisture for established crops because deeper roots can access water
+            below the top few centimeters.
+          </p>
+
+          <h3>Evapotranspiration and atmospheric demand</h3>
+          <p>
+            Evapotranspiration links water supply and atmospheric demand. When temperature, wind,
+            radiation, or vapor pressure deficit increase, crops require more water. Indicators that
+            include evapotranspiration can show why crop stress may intensify even when rainfall is
+            only moderately below normal.
+          </p>
+
+          <h3>Vegetation indicators</h3>
+          <p>
+            Satellite vegetation indices can detect changes in greenness, canopy development, or plant
+            stress. These indicators are useful for regional monitoring, but they should be interpreted
+            carefully because vegetation response may lag behind climate conditions and can be affected
+            by crop type, land cover, management, and cloud contamination.
+          </p>
+        </section>
+
+        <section id="spi">
+          <h2>How SPI relates to agricultural drought</h2>
+
+          <p>
+            The Standardized Precipitation Index is useful for agricultural drought assessment because
+            it measures precipitation deficits at different accumulation periods. Shorter SPI time
+            scales, such as SPI-1 and SPI-3, can reflect recent rainfall shortages and seasonal crop
+            stress. SPI-6 can be useful for longer growing-season or storage conditions.
+          </p>
+
+          <p>
+            SPI does not directly measure soil moisture, crop water demand, or irrigation. Therefore,
+            SPI should be interpreted as a precipitation-based signal rather than a complete crop-stress
+            measurement. For rainfed agriculture, SPI can provide an important early warning. For
+            irrigated agriculture, SPI may still describe climatic dryness, but the actual crop impact
+            depends on water supply, irrigation timing, and management.
+          </p>
+
+          <div class="callout">
+            <strong>Practical use:</strong>
+            Use SPI to identify precipitation deficits, then interpret agricultural risk using crop
+            stage, soil, temperature, evapotranspiration, and irrigation information.
+          </div>
+        </section>
+
+        <section id="management">
+          <h2>Management and decision support</h2>
+
+          <p>
+            Agricultural drought information is most useful when it supports decisions. Farmers,
+            agronomists, and water managers may use drought monitoring to adjust irrigation schedules,
+            select crop varieties, prioritize fields, estimate yield risk, or communicate drought
+            impacts. In rainfed systems, early warning may help with planting decisions, insurance
+            documentation, forage planning, or marketing strategies. In irrigated systems, drought
+            monitoring can support allocation, pumping decisions, and water-use efficiency.
+          </p>
+
+          <p>
+            Because agricultural drought is stage-dependent, decision support should be time-specific.
+            A general statement such as “moderate drought” is less useful than a stage-aware
+            interpretation such as “short-term dryness during pollination may increase corn yield
+            risk if rainfall or irrigation does not occur soon.” This is why combining drought indices
+            with crop-stage information can make agricultural drought interpretation more practical.
+          </p>
+        </section>
+
+        <section id="dmap-ai">
+          <h2>How DMAP-AI uses this concept</h2>
+
+          <p>
+            DMAP-AI helps users connect climate-data signals with drought interpretation. In the
+            Research Version, a user can select a location, time period, data source, and analysis
+            settings to calculate drought indicators such as SPI. These results can support
+            agricultural interpretation by identifying dry periods, drought duration, minimum SPI,
+            and drought magnitude.
+          </p>
+
+          <p>
+            For agricultural applications, the interpretation should go beyond an index value. A
+            drought event in the growing season has a different meaning from a similar index value
+            outside the crop season. DMAP-AI outputs can therefore be combined with local crop
+            calendars, growth-stage information, and management context to produce more useful
+            decision support.
+          </p>
+
+          <p>
+            In the planned Farmer Version workflow, agricultural interpretation can become more
+            practical by connecting drought risk with crop type, selected growth stage, short-term
+            forecast signals, and simple advisory language. This is especially useful for crops such
+            as corn and soybean, where drought timing can strongly affect yield outcomes.
+          </p>
+
+          <div class="callout">
+            <strong>DMAP-AI principle:</strong>
+            Agricultural drought interpretation is strongest when climate indices are combined with
+            crop stage, soil-water context, and clear decision-focused language.
+          </div>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+
+          <h3>Is agricultural drought the same as low rainfall?</h3>
+          <p>
+            No. Low rainfall is an important cause, but agricultural drought depends on whether crops
+            have enough available water. Soil moisture, crop stage, temperature, evapotranspiration,
+            and irrigation can change the actual level of crop stress.
+          </p>
+
+          <h3>Can agricultural drought occur without hydrological drought?</h3>
+          <p>
+            Yes. Crops can experience root-zone water stress before rivers, reservoirs, or groundwater
+            show major deficits. Hydrological drought often develops more slowly than agricultural
+            drought.
+          </p>
+
+          <h3>Which SPI time scale is best for agriculture?</h3>
+          <p>
+            SPI-1 and SPI-3 are often useful for short-term and seasonal agricultural conditions.
+            SPI-6 may help for longer growing-season moisture assessment. The best time scale depends
+            on crop type, growth stage, soil conditions, and the decision being made.
+          </p>
+
+          <h3>Why does heat make agricultural drought worse?</h3>
+          <p>
+            Heat increases atmospheric water demand and can increase crop water use. When high
+            temperature occurs with low rainfall, soil moisture can decline faster and plants may
+            experience stronger stress.
+          </p>
+
+          <h3>Can irrigation eliminate agricultural drought?</h3>
+          <p>
+            Irrigation can reduce crop stress, but it does not eliminate climatic drought. If water
+            supply is limited, pumping costs are high, or allocation is restricted, agricultural
+            drought risk can still remain.
+          </p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+
+          <ol class="references">
+            <li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
+            <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+            <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+            <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
+            <li>Food and Agriculture Organization of the United Nations. Drought and agriculture guidance materials and technical reports.</li>
+          </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/what-is-drought/">
+              <strong>What is Drought?</strong>
+              <span>Basic definition, causes, impacts, and monitoring concepts.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/types-of-drought/">
+              <strong>Types of Drought</strong>
+              <span>Meteorological, agricultural, hydrological, and socioeconomic drought.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/hydrological-drought/">
+              <strong>Hydrological Drought</strong>
+              <span>How drought affects rivers, reservoirs, lakes, and groundwater.</span>
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a>
+        <a href="#definition">Definition</a>
+        <a href="#components">Main components</a>
+        <a href="#development">How it develops</a>
+        <a href="#crop-stage">Crop growth stage</a>
+        <a href="#indicators">Indicators</a>
+        <a href="#spi">SPI and agriculture</a>
+        <a href="#management">Management</a>
+        <a href="#dmap-ai">How DMAP-AI uses this</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">References</a>
+        <a href="#related">Related articles</a>
+      </aside>
+    </div>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
+      <div class="comparison-stations-card">
+        <div class="comparison-stations-head">
+          <div>
+            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+            <p>
+              Search and open other DMAP-AI Knowledge Center articles about drought science,
+              drought indices, climate datasets, analysis methods, and AI interpretation.
+            </p>
+          </div>
+          <span class="station-count-pill">Documentation</span>
+        </div>
+
+        <div data-articles-nav data-current-slug="agricultural-drought"></div>
+      </div>
+    </section>
+
+    <p class="back-to-knowledge">
+      <a href="/knowledge/">← Back to Knowledge Center</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="/assets/global-nav.js"></script>
+  <script src="/knowledge/knowledge-nav.js" defer></script>
+</body>
+</html>

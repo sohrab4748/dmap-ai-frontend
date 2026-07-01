@@ -210,6 +210,59 @@
       font-weight:700;
     }
 
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:.875rem;
+      padding:.75rem 1.25rem;
+      font-weight:750;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+
+    .btn-secondary {
+      background:#ffffff;
+      color:#1e293b;
+      border-color:#e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1.5rem;
+    }
+
+    .back-to-knowledge {
+      width:min(100% - 2rem,80rem);
+      margin:2rem auto 0;
+    }
+
+    .back-to-knowledge a {
+      display:inline-flex;
+      align-items:center;
+      border:1px solid #e2e8f0;
+      background:#ffffff;
+      color:#1e293b;
+      border-radius:.875rem;
+      padding:.75rem 1.1rem;
+      font-weight:750;
+      text-decoration:none;
+    }
+
+    .back-to-knowledge a:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
     .article-layout {
       display:grid;
       grid-template-columns:minmax(0,1fr) 18rem;
@@ -472,6 +525,9 @@
             <span class="meta-pill">Level: Beginner</span>
             <span class="meta-pill">Last updated: July 2026</span>
             <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
           </div>
         </div>
       </div>
@@ -863,6 +919,27 @@
         <a href="#related">Related articles</a>
       </aside>
     </div>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
+      <div class="comparison-stations-card">
+        <div class="comparison-stations-head">
+          <div>
+            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+            <p>
+              Search and open other DMAP-AI Knowledge Center articles about drought science,
+              drought indices, climate datasets, analysis methods, and AI interpretation.
+            </p>
+          </div>
+          <span class="station-count-pill">Documentation</span>
+        </div>
+
+        <div data-articles-nav data-current-slug="meteorological-drought"></div>
+      </div>
+    </section>
+
+    <p class="back-to-knowledge">
+      <a href="/knowledge/">← Back to Knowledge Center</a>
+    </p>
   </main>
 
   <footer class="site-footer">
@@ -872,5 +949,6 @@
   </footer>
 
   <script src="/assets/global-nav.js"></script>
+  <script src="/knowledge/knowledge-nav.js" defer></script>
 </body>
 </html>
