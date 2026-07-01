@@ -365,96 +365,125 @@
       "slug": "drought-frequency",
       "title": "Drought Frequency",
       "category": "drought-events",
-      "summary": "Measure how often drought occurs under a selected threshold and time scale.",
-      "readingTime": "10 min",
+      "summary": "Learn how drought frequency describes how often drought events occur, how it differs from severity and duration, and how frequency summaries support drought-risk analysis.",
+      "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/drought-frequency/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "drought",
-        "frequency"
+        "drought frequency",
+        "event count",
+        "recurrence",
+        "SPI",
+        "drought risk"
       ],
-      "related": []
+      "related": [
+        "drought-severity",
+        "drought-duration",
+        "return-periods-in-drought"
+      ]
     },
     {
       "id": 17,
       "slug": "return-periods-in-drought",
       "title": "Return Periods in Drought Analysis",
       "category": "drought-events",
-      "summary": "Understand recurrence concepts and limitations for drought risk assessment.",
-      "readingTime": "11 min",
+      "summary": "Understand what return periods mean in drought analysis, why they should not be treated as exact schedules, and how they support risk-based planning.",
+      "readingTime": "12 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/return-periods-in-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "return",
-        "periods",
-        "in",
-        "drought",
-        "analysis"
+        "return period",
+        "exceedance probability",
+        "drought frequency",
+        "risk",
+        "hazard"
       ],
-      "related": []
+      "related": [
+        "drought-frequency",
+        "drought-risk-vs-hazard",
+        "drought-thresholds"
+      ]
     },
     {
       "id": 18,
       "slug": "drought-risk-vs-hazard",
       "title": "Drought Risk vs Drought Hazard",
       "category": "drought-basics",
-      "summary": "Separate climate hazard from exposure, vulnerability, and decision risk.",
-      "readingTime": "9 min",
-      "difficulty": "Beginner",
+      "summary": "Understand the difference between drought hazard, exposure, vulnerability, and risk, and why this distinction matters for decision support.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/drought-risk-vs-hazard/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "drought",
-        "risk",
-        "vs",
-        "drought",
-        "hazard"
+        "drought risk",
+        "drought hazard",
+        "exposure",
+        "vulnerability",
+        "impact"
       ],
-      "related": []
+      "related": [
+        "what-is-drought",
+        "drought-frequency",
+        "return-periods-in-drought"
+      ]
     },
     {
       "id": 19,
       "slug": "flash-drought",
       "title": "Flash Drought",
       "category": "drought-basics",
-      "summary": "Learn how rapid intensification of dryness and high atmospheric demand create flash drought.",
+      "summary": "Learn what flash drought is, how rapidly it develops, why temperature and evaporative demand matter, and how monitoring differs from slow-onset drought.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/flash-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "flash",
-        "drought"
+        "flash drought",
+        "rapid onset drought",
+        "evaporative demand",
+        "soil moisture",
+        "heat"
       ],
-      "related": []
+      "related": [
+        "meteorological-drought",
+        "agricultural-drought",
+        "drought-recovery"
+      ]
     },
     {
       "id": 20,
       "slug": "socioeconomic-drought",
       "title": "Socioeconomic Drought",
       "category": "drought-basics",
-      "summary": "Understand drought impacts on people, markets, infrastructure, and water demand.",
+      "summary": "Learn how socioeconomic drought occurs when water shortage affects people, economies, institutions, and water-dependent activities.",
       "readingTime": "10 min",
       "difficulty": "Beginner",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/socioeconomic-drought/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "socioeconomic",
-        "drought"
+        "socioeconomic drought",
+        "water demand",
+        "impacts",
+        "drought risk",
+        "water supply"
       ],
-      "related": []
+      "related": [
+        "types-of-drought",
+        "hydrological-drought",
+        "drought-risk-vs-hazard"
+      ]
     },
     {
       "id": 21,

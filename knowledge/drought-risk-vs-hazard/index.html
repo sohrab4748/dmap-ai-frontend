@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Drought Risk vs Drought Hazard | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Understand the difference between drought hazard, exposure, vulnerability, and risk, and why this distinction matters for decision support.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/drought-risk-vs-hazard/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="Drought Risk vs Drought Hazard">
+  <meta property="og:description" content="A practical guide to drought hazard, drought risk, exposure, vulnerability, impacts, and decision support.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/drought-risk-vs-hazard/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Drought Risk vs Drought Hazard",
+        "description": "A practical guide to drought hazard, drought risk, exposure, vulnerability, impacts, and decision support.",
+        "author": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-01",
+        "mainEntityOfPage": "https://droughtanalysis.com/knowledge/drought-risk-vs-hazard/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://droughtanalysis.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Center",
+            "item": "https://droughtanalysis.com/knowledge/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Drought Risk vs Drought Hazard",
+            "item": "https://droughtanalysis.com/knowledge/drought-risk-vs-hazard/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:#2563eb;
+      --blue-dark:#1d4ed8;
+      --slate-50:#f8fafc;
+      --slate-100:#f1f5f9;
+      --slate-200:#e2e8f0;
+      --slate-500:#64748b;
+      --slate-600:#475569;
+      --slate-700:#334155;
+      --slate-800:#1e293b;
+      --slate-900:#0f172a;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      color:var(--slate-900);
+      background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .container {
+      width:min(100% - 2rem,80rem);
+      margin-inline:auto;
+    }
+
+    .article-hero {
+      padding:3.5rem 0 1.5rem;
+    }
+
+    .article-hero-card {
+      border:1px solid #bfdbfe;
+      border-radius:1.75rem;
+      background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));
+      box-shadow:0 18px 45px rgba(15,23,42,.08);
+      padding:2.25rem;
+    }
+
+    .breadcrumb {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      align-items:center;
+      color:var(--slate-500);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+
+    .breadcrumb a {
+      color:#1d4ed8;
+      font-weight:700;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      border-radius:999px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .8rem;
+      font-size:.875rem;
+      font-weight:850;
+    }
+
+    h1 {
+      margin:1rem 0 0;
+      font-size:clamp(2.2rem,5vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#020617;
+    }
+
+    .lead {
+      max-width:58rem;
+      margin:1rem 0 0;
+      color:var(--slate-600);
+      font-size:1.1rem;
+      line-height:1.75;
+    }
+
+    .article-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1.25rem;
+      color:#475569;
+      font-size:.92rem;
+    }
+
+    .meta-pill {
+      border:1px solid #dbeafe;
+      background:#fff;
+      border-radius:999px;
+      padding:.35rem .7rem;
+      font-weight:700;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1.5rem;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:.875rem;
+      padding:.75rem 1.25rem;
+      font-weight:750;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+
+    .btn-secondary {
+      background:#ffffff;
+      color:#1e293b;
+      border-color:#e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .article-layout {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 18rem;
+      gap:2rem;
+      align-items:start;
+      padding:1.5rem 0 3rem;
+    }
+
+    .article-main {
+      background:#fff;
+      border:1px solid var(--slate-200);
+      border-radius:1.25rem;
+      box-shadow:0 12px 30px rgba(15,23,42,.055);
+      padding:2rem;
+    }
+
+    .article-main h2 {
+      margin:2rem 0 .75rem;
+      color:#0f172a;
+      font-size:clamp(1.4rem,2.5vw,1.85rem);
+      line-height:1.2;
+      letter-spacing:-.02em;
+    }
+
+    .article-main h2:first-child {
+      margin-top:0;
+    }
+
+    .article-main h3 {
+      margin:1.5rem 0 .5rem;
+      font-size:1.15rem;
+      color:#0f172a;
+    }
+
+    .article-main p {
+      margin:.75rem 0;
+      color:#334155;
+    }
+
+    .article-main ul,
+    .article-main ol {
+      color:#334155;
+      padding-left:1.4rem;
+    }
+
+    .quick-answer {
+      border:1px solid #bfdbfe;
+      border-left:5px solid #2563eb;
+      background:#eff6ff;
+      border-radius:1rem;
+      padding:1.15rem;
+      margin-bottom:1.5rem;
+    }
+
+    .quick-answer h2 {
+      margin:0 0 .45rem;
+      font-size:1.2rem;
+    }
+
+    .definition-box {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1.1rem;
+      margin:1rem 0;
+    }
+
+    .table-wrap {
+      overflow-x:auto;
+      margin:1.25rem 0;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:680px;
+      background:#fff;
+    }
+
+    th, td {
+      text-align:left;
+      padding:.85rem;
+      border-bottom:1px solid #e2e8f0;
+      vertical-align:top;
+    }
+
+    th {
+      background:#f8fafc;
+      color:#0f172a;
+      font-size:.9rem;
+    }
+
+    tr:last-child td {
+      border-bottom:0;
+    }
+
+    .toc {
+      position:sticky;
+      top:1rem;
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:1.1rem;
+      padding:1rem;
+      box-shadow:0 10px 25px rgba(15,23,42,.055);
+    }
+
+    .toc h2 {
+      font-size:1rem;
+      margin:0 0 .75rem;
+    }
+
+    .toc a {
+      display:block;
+      color:#475569;
+      font-size:.92rem;
+      padding:.35rem 0;
+      border-bottom:1px solid #f1f5f9;
+    }
+
+    .toc a:hover {
+      color:#1d4ed8;
+    }
+
+    .callout {
+      border:1px solid #bbf7d0;
+      background:#f0fdf4;
+      border-radius:1rem;
+      padding:1rem;
+      margin:1.25rem 0;
+    }
+
+    .callout strong {
+      color:#166534;
+    }
+
+    .related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .related-card {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1rem;
+    }
+
+    .related-card strong {
+      display:block;
+      color:#0f172a;
+    }
+
+    .related-card span {
+      display:block;
+      color:#64748b;
+      font-size:.9rem;
+      margin-top:.35rem;
+    }
+
+    .back-to-knowledge {
+      width:min(100% - 2rem,80rem);
+      margin:2rem auto 0;
+    }
+
+    .back-to-knowledge a {
+      display:inline-flex;
+      align-items:center;
+      border:1px solid #e2e8f0;
+      background:#ffffff;
+      color:#1e293b;
+      border-radius:.875rem;
+      padding:.75rem 1.1rem;
+      font-weight:750;
+      text-decoration:none;
+    }
+
+    .back-to-knowledge a:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .site-footer {
+      border-top:1px solid var(--slate-200);
+      background:rgba(255,255,255,.72);
+      margin-top:2rem;
+    }
+
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding-block:1.5rem;
+      color:var(--slate-500);
+      font-size:.875rem;
+    }
+
+    @media(max-width:1050px) {
+      .article-layout {
+        grid-template-columns:1fr;
+      }
+
+      .toc {
+        position:static;
+        order:-1;
+      }
+    }
+
+    @media(max-width:640px) {
+      .container {
+        width:min(100% - 1rem,80rem);
+      }
+
+      .article-hero {
+        padding-top:2rem;
+      }
+
+      .article-hero-card,
+      .article-main {
+        padding:1.25rem;
+        border-radius:1.1rem;
+      }
+
+      .related-grid {
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/knowledge/">Knowledge Center</a>
+            <span>›</span>
+            <span>Drought Risk vs Drought Hazard</span>
+          </nav>
+
+          <p class="eyebrow">Drought Basics</p>
+
+          <h1>Drought Risk vs Drought Hazard</h1>
+
+          <p class="lead">
+            Drought hazard and drought risk are related, but they are not the same. Hazard describes the physical drought condition. Risk describes the possibility of harmful consequences when that hazard interacts with exposed and vulnerable people, farms, ecosystems, or infrastructure.
+          </p>
+
+          <div class="article-meta">
+            <span class="meta-pill">Reading time: 10 min</span>
+            <span class="meta-pill">Level: Intermediate</span>
+            <span class="meta-pill">Last updated: July 2026</span>
+            <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section id="quick-answer">
+          <h2>Short answer</h2>
+          <p>Drought hazard is the physical drought event, such as a precipitation deficit, low soil moisture, low streamflow, or negative SPI value. Drought risk is the potential for harm caused by that hazard. Risk depends not only on the drought itself, but also on exposure, vulnerability, preparedness, water demand, and adaptive capacity.</p>
+        </section>
+
+        <section id="definition">
+          <h2>Why the distinction matters</h2>
+          <p>Many drought reports describe the hazard: how dry it is, how long the dry period lasted, or how severe the index value became. Decision-makers, however, often need to understand risk: who or what may be affected, how serious the consequences could be, and what actions may reduce damage.</p>
+                    <p>A severe meteorological drought in an unpopulated desert may be a strong hazard but produce limited socioeconomic impact. A moderate drought during a crop’s reproductive stage in a rainfed agricultural region can create high risk because exposure and vulnerability are high.</p>
+                    <div class="definition-box"><strong>Working definition:</strong> Drought risk is the potential for adverse consequences when drought hazard interacts with exposed and vulnerable systems.</div>
+        </section>
+
+        <section id="components">
+          <h2>Main components of drought risk</h2>
+          <p>A useful drought-risk framework separates the problem into hazard, exposure, vulnerability, and capacity. This helps avoid the mistake of treating every drought index value as a direct measure of impact.</p>
+                    <div class="table-wrap">
+                      <table>
+                        <thead><tr><th>Component</th><th>Meaning</th><th>Example</th></tr></thead>
+                        <tbody>
+                          <tr><td>Hazard</td><td>The physical drought condition</td><td>SPI-3 below -1.5, low soil moisture, or low streamflow</td></tr>
+                          <tr><td>Exposure</td><td>People, crops, assets, or ecosystems in the affected area</td><td>Corn acreage, municipal water users, reservoirs, wetlands</td></tr>
+                          <tr><td>Vulnerability</td><td>Sensitivity to drought damage</td><td>Rainfed crops, shallow soils, limited storage, high water demand</td></tr>
+                          <tr><td>Adaptive capacity</td><td>Ability to prepare, respond, or recover</td><td>Irrigation, drought plans, insurance, diversified water supply</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+        </section>
+
+        <section id="examples">
+          <h2>Examples of hazard and risk</h2>
+          <p>Consider two farms with the same SPI-3 value. One has irrigation, deep soils, drought-tolerant hybrids, and flexible management. The other is rainfed, has shallow soils, and is at a sensitive crop stage. The drought hazard may be similar, but the drought risk is much higher for the second farm.</p>
+                    <p>The same distinction applies to water supply. A basin may experience a moderate precipitation deficit, but if reservoirs are already low and demand is high, the risk may be substantial. Another basin with full storage and low demand may experience the same hazard with less immediate impact.</p>
+        </section>
+
+        <section id="metrics">
+          <h2>Which metrics describe hazard and which describe risk?</h2>
+          <p>SPI, SPEI, precipitation anomaly, streamflow percentile, and soil moisture percentile primarily describe hazard. They help quantify the physical dryness. Risk assessment requires additional information about land use, crop stage, water demand, storage, population, infrastructure, economic value, and management options.</p>
+                    <p>This is why a drought-monitoring platform should avoid presenting an index alone as a complete risk assessment. The index is essential, but it is only one part of the risk picture.</p>
+        </section>
+
+        <section id="applications">
+          <h2>Applications in decision support</h2>
+          <p>Separating hazard and risk helps users choose better actions. A hazard map can identify where drought conditions are developing. A risk assessment can identify where interventions are most urgent, which users are most exposed, and which systems have the least capacity to adapt.</p>
+                    <p>In agriculture, this distinction supports crop-stage warnings, irrigation prioritization, forage planning, and yield-risk communication. In water management, it supports drought triggers, conservation messaging, and allocation planning.</p>
+        </section>
+
+        <section id="dmap-ai">
+          <h2>How DMAP-AI uses this distinction</h2>
+          <p>DMAP-AI’s Research Version focuses mainly on drought hazard diagnostics: index values, event duration, minimum SPI, magnitude, and periodicity. These outputs provide the physical basis for interpretation.</p>
+                    <p>For farmer-facing or decision-support applications, hazard information should be combined with crop, soil, forecast, irrigation, and management context. This is why structured AI interpretation should clearly state whether it is describing hazard, risk, or both.</p>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+          <h3>Can a low SPI value be called drought risk?</h3>
+                    <p>It is better to call it a drought hazard indicator. Risk requires information about exposure and vulnerability.</p>
+                    <h3>Can drought risk be high when drought severity is moderate?</h3>
+                    <p>Yes. Moderate drought can create high risk if it affects a vulnerable crop stage, a water-limited system, or a community with limited adaptive capacity.</p>
+                    <h3>Why does this matter for AI interpretation?</h3>
+                    <p>AI systems may overstate impacts if hazard data are interpreted as risk without context. Structured metadata helps keep the distinction clear.</p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+          <ol class="references">
+                      <li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
+                      <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+                      <li>IPCC. Climate Change reports: risk framing based on hazard, exposure, and vulnerability.</li>
+                      <li>UNDRR. Disaster risk terminology and risk framework.</li>
+                    </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/what-is-drought/">
+              <strong>What is Drought?</strong>
+              <span>Review the general definition of drought.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/drought-frequency/">
+              <strong>Drought Frequency</strong>
+              <span>Learn how often drought events occur.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/return-periods-in-drought/">
+              <strong>Return Periods in Drought Analysis</strong>
+              <span>Understand probability-based drought recurrence.</span>
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a>
+        <a href="#definition">Why it matters</a>
+        <a href="#components">Risk components</a>
+        <a href="#examples">Examples</a>
+        <a href="#metrics">Metrics</a>
+        <a href="#applications">Applications</a>
+        <a href="#dmap-ai">How DMAP-AI uses this</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">References</a>
+        <a href="#related">Related articles</a>
+      </aside>
+    </div>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
+      <div class="comparison-stations-card">
+        <div class="comparison-stations-head">
+          <div>
+            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+            <p>
+              Search and open other DMAP-AI Knowledge Center articles about drought science,
+              drought indices, climate datasets, analysis methods, and AI interpretation.
+            </p>
+          </div>
+          <span class="station-count-pill">Documentation</span>
+        </div>
+
+        <div data-articles-nav data-current-slug="drought-risk-vs-hazard"></div>
+      </div>
+    </section>
+
+    <p class="back-to-knowledge">
+      <a href="/knowledge/">← Back to Knowledge Center</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="/knowledge/knowledge-nav.js" defer></script>
+  <script src="/assets/global-nav.js"></script>
+</body>
+</html>
