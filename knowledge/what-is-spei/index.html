@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>What is SPEI? | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Learn how the Standardized Precipitation Evapotranspiration Index combines precipitation and atmospheric water demand to monitor drought.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/what-is-spei/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="What is SPEI?">
+  <meta property="og:description" content="A guide to SPEI, the Standardized Precipitation Evapotranspiration Index, including calculation logic, interpretation, strengths, and limitations.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/what-is-spei/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "What is SPEI?",
+        "description": "A guide to SPEI, the Standardized Precipitation Evapotranspiration Index, including calculation logic, interpretation, strengths, and limitations.",
+        "author": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-01",
+        "mainEntityOfPage": "https://droughtanalysis.com/knowledge/what-is-spei/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://droughtanalysis.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Center",
+            "item": "https://droughtanalysis.com/knowledge/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "What is SPEI?",
+            "item": "https://droughtanalysis.com/knowledge/what-is-spei/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:#2563eb;
+      --blue-dark:#1d4ed8;
+      --slate-50:#f8fafc;
+      --slate-100:#f1f5f9;
+      --slate-200:#e2e8f0;
+      --slate-500:#64748b;
+      --slate-600:#475569;
+      --slate-700:#334155;
+      --slate-800:#1e293b;
+      --slate-900:#0f172a;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      color:var(--slate-900);
+      background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .container {
+      width:min(100% - 2rem,80rem);
+      margin-inline:auto;
+    }
+
+    .article-hero {
+      padding:3.5rem 0 1.5rem;
+    }
+
+    .article-hero-card {
+      border:1px solid #bfdbfe;
+      border-radius:1.75rem;
+      background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));
+      box-shadow:0 18px 45px rgba(15,23,42,.08);
+      padding:2.25rem;
+    }
+
+    .breadcrumb {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      align-items:center;
+      color:var(--slate-500);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+
+    .breadcrumb a {
+      color:#1d4ed8;
+      font-weight:700;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      border-radius:999px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .8rem;
+      font-size:.875rem;
+      font-weight:850;
+    }
+
+    h1 {
+      margin:1rem 0 0;
+      font-size:clamp(2.2rem,5vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#020617;
+    }
+
+    .lead {
+      max-width:58rem;
+      margin:1rem 0 0;
+      color:var(--slate-600);
+      font-size:1.1rem;
+      line-height:1.75;
+    }
+
+    .article-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1.25rem;
+      color:#475569;
+      font-size:.92rem;
+    }
+
+    .meta-pill {
+      border:1px solid #dbeafe;
+      background:#fff;
+      border-radius:999px;
+      padding:.35rem .7rem;
+      font-weight:700;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1.5rem;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:.875rem;
+      padding:.75rem 1.25rem;
+      font-weight:750;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+
+    .btn-secondary {
+      background:#ffffff;
+      color:#1e293b;
+      border-color:#e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .article-layout {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 18rem;
+      gap:2rem;
+      align-items:start;
+      padding:1.5rem 0 3rem;
+    }
+
+    .article-main {
+      background:#fff;
+      border:1px solid var(--slate-200);
+      border-radius:1.25rem;
+      box-shadow:0 12px 30px rgba(15,23,42,.055);
+      padding:2rem;
+    }
+
+    .article-main h2 {
+      margin:2rem 0 .75rem;
+      color:#0f172a;
+      font-size:clamp(1.4rem,2.5vw,1.85rem);
+      line-height:1.2;
+      letter-spacing:-.02em;
+    }
+
+    .article-main h2:first-child {
+      margin-top:0;
+    }
+
+    .article-main h3 {
+      margin:1.5rem 0 .5rem;
+      font-size:1.15rem;
+      color:#0f172a;
+    }
+
+    .article-main p {
+      margin:.75rem 0;
+      color:#334155;
+    }
+
+    .article-main ul,
+    .article-main ol {
+      color:#334155;
+      padding-left:1.4rem;
+    }
+
+    .quick-answer {
+      border:1px solid #bfdbfe;
+      border-left:5px solid #2563eb;
+      background:#eff6ff;
+      border-radius:1rem;
+      padding:1.15rem;
+      margin-bottom:1.5rem;
+    }
+
+    .quick-answer h2 {
+      margin:0 0 .45rem;
+      font-size:1.2rem;
+    }
+
+    .definition-box {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1.1rem;
+      margin:1rem 0;
+    }
+
+    .table-wrap {
+      overflow-x:auto;
+      margin:1.25rem 0;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:680px;
+      background:#fff;
+    }
+
+    th, td {
+      text-align:left;
+      padding:.85rem;
+      border-bottom:1px solid #e2e8f0;
+      vertical-align:top;
+    }
+
+    th {
+      background:#f8fafc;
+      color:#0f172a;
+      font-size:.9rem;
+    }
+
+    tr:last-child td {
+      border-bottom:0;
+    }
+
+    .toc {
+      position:sticky;
+      top:1rem;
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:1.1rem;
+      padding:1rem;
+      box-shadow:0 10px 25px rgba(15,23,42,.055);
+    }
+
+    .toc h2 {
+      font-size:1rem;
+      margin:0 0 .75rem;
+    }
+
+    .toc a {
+      display:block;
+      color:#475569;
+      font-size:.92rem;
+      padding:.35rem 0;
+      border-bottom:1px solid #f1f5f9;
+    }
+
+    .toc a:hover {
+      color:#1d4ed8;
+    }
+
+    .callout {
+      border:1px solid #bbf7d0;
+      background:#f0fdf4;
+      border-radius:1rem;
+      padding:1rem;
+      margin:1.25rem 0;
+    }
+
+    .callout strong {
+      color:#166534;
+    }
+
+    .related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .related-card {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1rem;
+    }
+
+    .related-card strong {
+      display:block;
+      color:#0f172a;
+    }
+
+    .related-card span {
+      display:block;
+      color:#64748b;
+      font-size:.9rem;
+      margin-top:.35rem;
+    }
+
+    .back-to-knowledge {
+      width:min(100% - 2rem,80rem);
+      margin:2rem auto 0;
+    }
+
+    .back-to-knowledge a {
+      display:inline-flex;
+      align-items:center;
+      border:1px solid #e2e8f0;
+      background:#ffffff;
+      color:#1e293b;
+      border-radius:.875rem;
+      padding:.75rem 1.1rem;
+      font-weight:750;
+      text-decoration:none;
+    }
+
+    .back-to-knowledge a:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .site-footer {
+      border-top:1px solid var(--slate-200);
+      background:rgba(255,255,255,.72);
+      margin-top:2rem;
+    }
+
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding-block:1.5rem;
+      color:var(--slate-500);
+      font-size:.875rem;
+    }
+
+    @media(max-width:1050px) {
+      .article-layout {
+        grid-template-columns:1fr;
+      }
+
+      .toc {
+        position:static;
+        order:-1;
+      }
+    }
+
+    @media(max-width:640px) {
+      .container {
+        width:min(100% - 1rem,80rem);
+      }
+
+      .article-hero {
+        padding-top:2rem;
+      }
+
+      .article-hero-card,
+      .article-main {
+        padding:1.25rem;
+        border-radius:1.1rem;
+      }
+
+      .related-grid {
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/knowledge/">Knowledge Center</a>
+            <span>›</span>
+            <span>What is SPEI?</span>
+          </nav>
+
+          <p class="eyebrow">Drought Indices</p>
+
+          <h1>What is SPEI?</h1>
+
+          <p class="lead">
+            The Standardized Precipitation Evapotranspiration Index, or SPEI, is a drought index that combines precipitation and potential evapotranspiration to describe climatic water balance. It is useful when temperature and atmospheric water demand are important parts of drought development.
+          </p>
+
+          <div class="article-meta">
+            <span class="meta-pill">Reading time: 12 min</span>
+            <span class="meta-pill">Level: Intermediate</span>
+            <span class="meta-pill">Last updated: July 2026</span>
+            <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section id="quick-answer" class="quick-answer">
+          <h2>Short answer</h2>
+          <p>SPEI is a standardized drought index based on the difference between precipitation and potential evapotranspiration. Negative SPEI values indicate drier-than-normal water-balance conditions, while positive values indicate wetter-than-normal conditions. Unlike SPI, which uses precipitation alone, SPEI can reflect the effect of temperature and evaporative demand on drought stress.</p>
+        </section>
+
+        <section id="definition">
+          <h2>What is SPEI?</h2>
+          <p>The Standardized Precipitation Evapotranspiration Index was developed to extend the logic of SPI by including atmospheric water demand. Instead of standardizing precipitation alone, SPEI standardizes a climatic water-balance variable, usually precipitation minus potential evapotranspiration. This makes SPEI sensitive to both water supply and water demand.</p>
+          <p>Because warming temperatures can increase evaporative demand, SPEI is often useful in climate-change studies, agricultural drought analysis, and regions where heat stress and moisture deficit occur together.</p>
+          <div class="definition-box"><strong>Working definition:</strong> SPEI is a multi-time-scale standardized drought index calculated from climatic water balance, commonly precipitation minus potential evapotranspiration.</div>
+        </section>
+
+        <section id="calculation">
+          <h2>How SPEI is calculated</h2>
+          <p>A typical SPEI workflow starts with monthly precipitation and potential evapotranspiration. The difference between them is calculated for each time step. This water-balance series is then accumulated over selected time scales such as 1, 3, 6, 12, or 24 months. Finally, a probability distribution is fitted and values are transformed into standardized units.</p>
+          <div class="table-wrap">
+          <table>
+          <thead><tr><th>Step</th><th>Description</th><th>Why it matters</th></tr></thead>
+          <tbody>
+          <tr><td>1. Calculate water balance</td><td>Precipitation minus potential evapotranspiration</td><td>Combines water input and atmospheric demand</td></tr>
+          <tr><td>2. Accumulate over time scale</td><td>For example, 3-month or 12-month totals</td><td>Links drought to short-term or long-term impacts</td></tr>
+          <tr><td>3. Fit distribution</td><td>Fit a probability model to the accumulated series</td><td>Allows standardization across climates</td></tr>
+          <tr><td>4. Transform to standardized values</td><td>Convert probability values to SPEI units</td><td>Provides categories similar to SPI</td></tr>
+          </tbody>
+          </table>
+          </div>
+        </section>
+
+        <section id="interpretation">
+          <h2>How to interpret SPEI values</h2>
+          <p>SPEI is interpreted similarly to SPI. Values near zero indicate near-normal conditions. Negative values indicate dry water-balance anomalies, and positive values indicate wet anomalies. A value below -1 generally indicates moderate drought or worse, while values below -2 indicate extreme drought conditions in standardized terms.</p>
+          <p>However, SPEI should be interpreted carefully because it depends on the method used to estimate potential evapotranspiration. A simple temperature-based PET method can behave differently from a physically based method that uses radiation, wind, and humidity.</p>
+        </section>
+
+        <section id="spi-comparison">
+          <h2>SPEI compared with SPI</h2>
+          <p>SPI and SPEI can tell different stories during warm droughts. SPI may show near-normal precipitation, while SPEI may show drought because high temperatures and atmospheric demand increase water loss. This is especially important for agricultural drought, ecological stress, and climate-change attribution.</p>
+          <div class="table-wrap">
+          <table>
+          <thead><tr><th>Feature</th><th>SPI</th><th>SPEI</th></tr></thead>
+          <tbody>
+          <tr><td>Main input</td><td>Precipitation</td><td>Precipitation and potential evapotranspiration</td></tr>
+          <tr><td>Temperature sensitivity</td><td>No direct sensitivity</td><td>Yes, through PET</td></tr>
+          <tr><td>Best use</td><td>Precipitation drought</td><td>Water-balance drought</td></tr>
+          <tr><td>Data need</td><td>Lower</td><td>Higher</td></tr>
+          </tbody>
+          </table>
+          </div>
+        </section>
+
+        <section id="strengths">
+          <h2>Strengths and limitations</h2>
+          <p>SPEI is valuable because it responds to both dry precipitation conditions and increased evaporative demand. It can be especially informative in warming climates. It also preserves the multi-time-scale structure that makes SPI useful.</p>
+          <p>The main limitations are related to PET estimation, data quality, and interpretation. In some regions, PET uncertainty can influence the index strongly. SPEI also remains a climatic index; it does not directly measure soil moisture, irrigation, streamflow, or crop stress.</p>
+          <div class="callout"><strong>Practical advice:</strong> Use SPEI with SPI when you want to separate precipitation deficits from temperature-driven water-balance stress.</div>
+        </section>
+
+        <section id="dmap-ai">
+          <h2>How DMAP-AI can use SPEI</h2>
+          <p>DMAP-AI currently emphasizes SPI in the Research Version, but SPEI fits naturally into the same framework. A SPEI workflow can support multi-index drought monitoring by comparing precipitation-only drought with water-balance drought. This is especially useful when AI interpretation needs to explain whether drought stress is mainly rainfall-driven or intensified by temperature and evaporative demand.</p>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+          <h3>Is SPEI better than SPI?</h3>
+          <p>Not always. SPEI is better when atmospheric water demand matters, but SPI is simpler and requires fewer inputs. The best choice depends on the question.</p>
+          <h3>Can SPEI be used for agricultural drought?</h3>
+          <p>Yes, especially because crop stress is influenced by both water supply and evaporative demand. However, soil moisture and crop stage should also be considered.</p>
+          <h3>Why can SPEI and SPI disagree?</h3>
+          <p>They can disagree when precipitation is near normal but temperature or evaporative demand is unusually high.</p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+          <ol class="references">
+          <li>Vicente-Serrano, S. M., Beguería, S., and López-Moreno, J. I. (2010). A multiscalar drought index sensitive to global warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate.</li>
+          <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales.</li>
+          <li>World Meteorological Organization and Global Water Partnership. Handbook of Drought Indicators and Indices.</li>
+          </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/what-is-spi/">
+              <strong>What is SPI?</strong>
+              <span>Compare SPEI with the precipitation-only drought index.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/spi-vs-spei/">
+              <strong>SPI vs SPEI</strong>
+              <span>Learn when the two indices agree or differ.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/spei-limitations/">
+              <strong>Limitations of SPEI</strong>
+              <span>Understand practical cautions when using SPEI.</span>
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a>
+        <a href="#definition">Definition</a>
+        <a href="#calculation">Calculation</a>
+        <a href="#interpretation">Interpretation</a>
+        <a href="#spi-comparison">SPEI vs SPI</a>
+        <a href="#strengths">Strengths and limitations</a>
+        <a href="#dmap-ai">How DMAP-AI can use SPEI</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">References</a>
+        <a href="#related">Related articles</a>
+      </aside>
+    </div>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
+      <div class="comparison-stations-card">
+        <div class="comparison-stations-head">
+          <div>
+            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+            <p>
+              Search and open other DMAP-AI Knowledge Center articles about drought science,
+              drought indices, climate datasets, analysis methods, and AI interpretation.
+            </p>
+          </div>
+          <span class="station-count-pill">Documentation</span>
+        </div>
+
+        <div data-articles-nav data-current-slug="what-is-spei"></div>
+      </div>
+    </section>
+
+    <p class="back-to-knowledge">
+      <a href="/knowledge/">← Back to Knowledge Center</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="/knowledge/knowledge-nav.js" defer></script>
+  <script src="/assets/global-nav.js"></script>
+</body>
+</html>

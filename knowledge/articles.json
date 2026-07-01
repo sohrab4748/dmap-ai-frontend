@@ -490,95 +490,127 @@
       "slug": "what-is-spei",
       "title": "What is SPEI?",
       "category": "drought-indices",
-      "summary": "Learn the Standardized Precipitation Evapotranspiration Index.",
+      "summary": "Learn how the Standardized Precipitation Evapotranspiration Index combines precipitation and atmospheric water demand to monitor drought.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/what-is-spei/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "what",
-        "is",
-        "spei"
+        "SPEI",
+        "Standardized Precipitation Evapotranspiration Index",
+        "evapotranspiration",
+        "PET",
+        "drought index"
       ],
-      "related": []
+      "related": [
+        "what-is-spi",
+        "spi-vs-spei",
+        "spei-limitations"
+      ]
     },
     {
       "id": 22,
       "slug": "what-is-pdsi",
       "title": "What is PDSI?",
       "category": "drought-indices",
-      "summary": "Understand the Palmer Drought Severity Index and its applications.",
+      "summary": "Understand the Palmer Drought Severity Index, its water-balance logic, strengths, limitations, and practical applications.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/what-is-pdsi/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "what",
-        "is",
-        "pdsi"
+        "PDSI",
+        "Palmer Drought Severity Index",
+        "water balance",
+        "soil moisture",
+        "drought index"
       ],
-      "related": []
+      "related": [
+        "what-is-spi",
+        "spi-vs-pdsi",
+        "pdsi-limitations"
+      ]
     },
     {
       "id": 23,
       "slug": "what-is-eddi",
       "title": "What is EDDI?",
       "category": "drought-indices",
-      "summary": "Learn the Evaporative Demand Drought Index and its role in early warning.",
+      "summary": "Learn how the Evaporative Demand Drought Index uses atmospheric thirst to support drought early warning and flash-drought monitoring.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/what-is-eddi/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "what",
-        "is",
-        "eddi"
+        "EDDI",
+        "Evaporative Demand Drought Index",
+        "evaporative demand",
+        "flash drought",
+        "early warning"
       ],
-      "related": []
+      "related": [
+        "flash-drought",
+        "what-is-spei",
+        "multi-index-drought-monitoring"
+      ]
     },
     {
       "id": 24,
       "slug": "what-is-ssi",
       "title": "What is SSI?",
       "category": "drought-indices",
-      "summary": "Understand the Standardized Streamflow Index for hydrological drought.",
+      "summary": "Understand the Standardized Streamflow Index and how standardized streamflow anomalies are used to assess hydrological drought.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/what-is-ssi/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "what",
-        "is",
-        "ssi"
+        "SSI",
+        "Standardized Streamflow Index",
+        "streamflow",
+        "hydrological drought",
+        "river drought"
       ],
-      "related": []
+      "related": [
+        "hydrological-drought",
+        "what-is-spi",
+        "multi-index-drought-monitoring"
+      ]
     },
     {
       "id": 25,
       "slug": "spi-time-scales",
       "title": "SPI Time Scales",
       "category": "drought-indices",
-      "summary": "Learn how SPI-1, SPI-3, SPI-6, SPI-12, and SPI-24 differ.",
+      "summary": "Learn how SPI-1, SPI-3, SPI-6, SPI-12, and SPI-24 describe different drought processes and decision time horizons.",
       "readingTime": "12 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/spi-time-scales/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "spi",
-        "time",
-        "scales"
+        "SPI time scales",
+        "SPI-1",
+        "SPI-3",
+        "SPI-6",
+        "SPI-12",
+        "SPI-24",
+        "drought monitoring"
       ],
-      "related": []
+      "related": [
+        "what-is-spi",
+        "how-spi-is-calculated",
+        "spi-interpretation"
+      ]
     },
     {
       "id": 26,
