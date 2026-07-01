@@ -4,7 +4,7 @@
   "lastUpdated": "2026-07-01",
   "categories": [
     {
-      "id": "Drought-Basics",
+      "id": "drought-basics",
       "title": "Drought Basics",
       "description": "Learn the fundamental concepts of drought, including its causes, development, impacts, and classification.",
       "icon": "🌍"
@@ -45,7 +45,7 @@
       "id": 1,
       "slug": "what-is-drought",
       "title": "What is Drought?",
-      "category": "drought-basics",
+      "category": "Drought Basics",
       "summary": "Learn what drought is, why it occurs, how it develops, and why accurate monitoring is important.",
       "readingTime": "10 min",
       "difficulty": "Beginner",
@@ -68,7 +68,7 @@
       "id": 2,
       "slug": "types-of-drought",
       "title": "Types of Drought",
-      "category": "drought-basics",
+      "category": "Drought Basics",
       "summary": "Understand meteorological, agricultural, hydrological, and socioeconomic drought.",
       "readingTime": "12 min",
       "difficulty": "Beginner",
@@ -90,7 +90,7 @@
       "id": 3,
       "slug": "meteorological-drought",
       "title": "Meteorological Drought",
-      "category": "drought-basics",
+      "category": "Drought Basics",
       "summary": "Learn how precipitation deficits initiate drought and how meteorological drought is measured.",
       "readingTime": "9 min",
       "difficulty": "Beginner",
@@ -110,7 +110,7 @@
       "id": 4,
       "slug": "agricultural-drought",
       "title": "Agricultural Drought",
-      "category": "drought-basics",
+      "category": "Drought Basics",
       "summary": "Discover how soil moisture deficits affect crop growth, irrigation, and food production.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
@@ -125,14 +125,15 @@
       ],
       "related": [
         "hydrological-drought",
-        "what-is-drought"
+        "what-is-drought",
+        "what-is-spi"
       ]
     },
     {
       "id": 5,
       "slug": "hydrological-drought",
       "title": "Hydrological Drought",
-      "category": "drought-basics",
+      "category": "Drought Basics",
       "summary": "Understand how drought influences rivers, reservoirs, lakes, and groundwater.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
@@ -145,6 +146,29 @@
       ],
       "related": [
         "agricultural-drought",
+        "types-of-drought"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "what-is-spi",
+      "title": "What is SPI?",
+      "category": "Drought Indices",
+      "summary": "Learn how the Standardized Precipitation Index measures precipitation deficits and supports multi-scale drought monitoring.",
+      "readingTime": "12 min",
+      "difficulty": "Beginner",
+      "featured": true,
+      "lastUpdated": "2026-07-01",
+      "keywords": [
+        "SPI",
+        "Standardized Precipitation Index",
+        "drought index",
+        "precipitation",
+        "drought monitoring"
+      ],
+      "related": [
+        "what-is-drought",
+        "meteorological-drought",
         "types-of-drought"
       ]
     }

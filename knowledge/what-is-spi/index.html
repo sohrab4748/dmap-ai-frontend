@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>What is SPI? | Standardized Precipitation Index | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Learn what the Standardized Precipitation Index (SPI) is, how SPI is calculated, how SPI values are interpreted, and how DMAP-AI uses SPI for drought analysis.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/what-is-spi/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="What is SPI?">
+  <meta property="og:description" content="A clear scientific guide to the Standardized Precipitation Index, including SPI time scales, categories, strengths, limitations, and DMAP-AI usage.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/what-is-spi/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "What is SPI? Standardized Precipitation Index",
+        "description": "A scientific guide to the Standardized Precipitation Index, including calculation concepts, interpretation categories, time scales, strengths, limitations, and use in DMAP-AI.",
+        "author": {"@type": "Organization", "name": "AgriMetSoft LLC", "url": "https://agrimetsoft.com/"},
+        "publisher": {"@type": "Organization", "name": "AgriMetSoft LLC", "url": "https://agrimetsoft.com/"},
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-01",
+        "mainEntityOfPage": "https://droughtanalysis.com/knowledge/what-is-spi/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://droughtanalysis.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Knowledge Center", "item": "https://droughtanalysis.com/knowledge/"},
+          {"@type": "ListItem", "position": 3, "name": "What is SPI?", "item": "https://droughtanalysis.com/knowledge/what-is-spi/"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type": "Question", "name": "What does SPI measure?", "acceptedAnswer": {"@type": "Answer", "text": "SPI measures how unusual precipitation is for a selected location and accumulation period compared with that location's historical precipitation record."}},
+          {"@type": "Question", "name": "Does SPI include temperature?", "acceptedAnswer": {"@type": "Answer", "text": "No. SPI is based only on precipitation. If temperature and atmospheric water demand are important, SPEI or other evapotranspiration-sensitive indicators may be useful."}},
+          {"@type": "Question", "name": "Which SPI time scale should I use?", "acceptedAnswer": {"@type": "Answer", "text": "Short time scales such as SPI-1 and SPI-3 are useful for recent rainfall and agricultural monitoring. Longer time scales such as SPI-12 and SPI-24 are more useful for hydrological drought and persistent water deficits."}}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root{--blue:#2563eb;--blue-dark:#1d4ed8;--slate-50:#f8fafc;--slate-100:#f1f5f9;--slate-200:#e2e8f0;--slate-500:#64748b;--slate-600:#475569;--slate-700:#334155;--slate-800:#1e293b;--slate-900:#0f172a;--white:#ffffff}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--slate-900);background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65}a{color:inherit;text-decoration:none}.container{width:min(100% - 2rem,80rem);margin-inline:auto}.article-hero{padding:3.5rem 0 1.5rem}.article-hero-card{border:1px solid #bfdbfe;border-radius:1.75rem;background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));box-shadow:0 18px 45px rgba(15,23,42,.08);padding:2.25rem}.breadcrumb{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;color:var(--slate-500);font-size:.9rem;margin-bottom:1rem}.breadcrumb a{color:#1d4ed8;font-weight:700}.eyebrow{display:inline-flex;border-radius:999px;border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;padding:.3rem .8rem;font-size:.875rem;font-weight:850}h1{margin:1rem 0 0;font-size:clamp(2.2rem,5vw,3.35rem);line-height:1.08;letter-spacing:-.035em;color:#020617}.lead{max-width:58rem;margin:1rem 0 0;color:var(--slate-600);font-size:1.1rem;line-height:1.75}.article-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.25rem;color:#475569;font-size:.92rem}.meta-pill{border:1px solid #dbeafe;background:#fff;border-radius:999px;padding:.35rem .7rem;font-weight:700}.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:.875rem;padding:.75rem 1.25rem;font-weight:750;border:1px solid transparent;text-decoration:none}.btn-secondary{background:#fff;color:#1e293b;border-color:#e2e8f0}.btn-secondary:hover{border-color:#93c5fd;background:#f8fbff;color:#1d4ed8}.article-layout{display:grid;grid-template-columns:minmax(0,1fr) 18rem;gap:2rem;align-items:start;padding:1.5rem 0 3rem}.article-main{background:#fff;border:1px solid var(--slate-200);border-radius:1.25rem;box-shadow:0 12px 30px rgba(15,23,42,.055);padding:2rem}.article-main h2{margin:2rem 0 .75rem;color:#0f172a;font-size:clamp(1.4rem,2.5vw,1.85rem);line-height:1.2;letter-spacing:-.02em}.article-main h2:first-child{margin-top:0}.article-main h3{margin:1.5rem 0 .5rem;font-size:1.15rem;color:#0f172a}.article-main p{margin:.75rem 0;color:#334155}.article-main ul,.article-main ol{color:#334155;padding-left:1.4rem}.quick-answer{border:1px solid #bfdbfe;border-left:5px solid #2563eb;background:#eff6ff;border-radius:1rem;padding:1.15rem;margin-bottom:1.5rem}.quick-answer h2{margin:0 0 .45rem;font-size:1.2rem}.definition-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:1rem;padding:1.1rem;margin:1rem 0}.table-wrap{overflow-x:auto;margin:1.25rem 0;border:1px solid #e2e8f0;border-radius:1rem}table{width:100%;border-collapse:collapse;min-width:680px;background:#fff}th,td{text-align:left;padding:.85rem;border-bottom:1px solid #e2e8f0;vertical-align:top}th{background:#f8fafc;color:#0f172a;font-size:.9rem}tr:last-child td{border-bottom:0}.toc{position:sticky;top:1rem;background:#fff;border:1px solid #dbeafe;border-radius:1.1rem;padding:1rem;box-shadow:0 10px 25px rgba(15,23,42,.055)}.toc h2{font-size:1rem;margin:0 0 .75rem}.toc a{display:block;color:#475569;font-size:.92rem;padding:.35rem 0;border-bottom:1px solid #f1f5f9}.toc a:hover{color:#1d4ed8}.callout{border:1px solid #bbf7d0;background:#f0fdf4;border-radius:1rem;padding:1rem;margin:1.25rem 0}.callout strong{color:#166534}.related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}.related-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:1rem;padding:1rem}.related-card strong{display:block;color:#0f172a}.related-card span{display:block;color:#64748b;font-size:.9rem;margin-top:.35rem}.references li{margin:.55rem 0}.back-to-knowledge{width:min(100% - 2rem,80rem);margin:2rem auto 0}.back-to-knowledge a{display:inline-flex;align-items:center;border:1px solid #e2e8f0;background:#fff;color:#1e293b;border-radius:.875rem;padding:.75rem 1.1rem;font-weight:750;text-decoration:none}.back-to-knowledge a:hover{border-color:#93c5fd;background:#f8fbff;color:#1d4ed8}.site-footer{border-top:1px solid var(--slate-200);background:rgba(255,255,255,.72);margin-top:2rem}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding-block:1.5rem;color:var(--slate-500);font-size:.875rem}@media(max-width:1050px){.article-layout{grid-template-columns:1fr}.toc{position:static;order:-1}}@media(max-width:640px){.container{width:min(100% - 1rem,80rem)}.article-hero{padding-top:2rem}.article-hero-card,.article-main{padding:1.25rem;border-radius:1.1rem}.related-grid{grid-template-columns:1fr}.footer-inner{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>›</span><a href="/knowledge/">Knowledge Center</a><span>›</span><span>What is SPI?</span>
+          </nav>
+          <p class="eyebrow">Drought Indices</p>
+          <h1>What is SPI?</h1>
+          <p class="lead">The Standardized Precipitation Index (SPI) is one of the most widely used drought indicators. It converts precipitation departures into standardized values, making it possible to compare dry and wet conditions across climates and time scales.</p>
+          <div class="article-meta">
+            <span class="meta-pill">Reading time: 12 min</span>
+            <span class="meta-pill">Level: Beginner</span>
+            <span class="meta-pill">Last updated: July 2026</span>
+            <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+          <div class="hero-actions"><a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section class="quick-answer" id="quick-answer">
+          <h2>Short answer</h2>
+          <p>SPI, or Standardized Precipitation Index, measures how unusual precipitation is for a location and accumulation period compared with that location’s historical climate. Negative SPI values indicate drier-than-normal conditions, positive values indicate wetter-than-normal conditions, and values near zero indicate near-normal precipitation.</p>
+        </section>
+
+        <section id="definition">
+          <h2>Definition of SPI</h2>
+          <p>The Standardized Precipitation Index is a probability-based drought index developed to describe precipitation anomalies at multiple time scales. It answers a simple but important question: how unusual is the recent precipitation total compared with what is historically expected for this location and this time of year?</p>
+          <p>SPI is standardized, which means that values are expressed on a common scale. This is useful because rainfall amounts are not directly comparable between humid, semi-arid, mountain, and desert climates. A 50 mm monthly deficit may be extreme in one region but ordinary in another. SPI solves this problem by comparing precipitation with the local historical distribution before converting it into a standardized score.</p>
+          <div class="definition-box"><strong>Working definition:</strong> SPI is a standardized measure of precipitation deficit or surplus over a selected accumulation period, expressed relative to the historical precipitation behavior of the same location.</div>
+        </section>
+
+        <section id="why-important">
+          <h2>Why SPI is important</h2>
+          <p>SPI is important because it is simple, flexible, and widely recognized. It only requires precipitation data, which is usually more available than soil moisture, streamflow, groundwater, or evapotranspiration records. Because the method can be applied at multiple accumulation periods, it can support short-term agricultural monitoring as well as longer-term hydrological drought analysis.</p>
+          <p>For example, SPI-1 responds quickly to recent rainfall deficits and may be useful for identifying emerging dryness. SPI-3 can represent seasonal moisture conditions and is often relevant to crop development. SPI-12 is more useful for annual water-balance conditions and persistent drought. Longer SPI time scales can be used for multi-year drought and water-resource planning.</p>
+        </section>
+
+        <section id="calculation">
+          <h2>How SPI is calculated</h2>
+          <p>SPI calculation begins by selecting a time scale. For SPI-3, precipitation is accumulated over 3-month windows. For SPI-12, precipitation is accumulated over 12-month windows. The accumulated precipitation series is then compared with the historical probability distribution for that same location and time scale.</p>
+          <p>In many implementations, a gamma probability distribution is fitted to precipitation totals because precipitation is non-negative and often skewed. The cumulative probability is then transformed into a standard normal value. The final SPI value therefore behaves like a standardized anomaly: values below zero are dry, and values above zero are wet.</p>
+          <div class="callout"><strong>Important:</strong> SPI is not simply rainfall minus average rainfall. It is a standardized probability-based index that accounts for the historical distribution of precipitation.</div>
+        </section>
+
+        <section id="timescales">
+          <h2>SPI time scales</h2>
+          <p>The time scale is one of the most important choices in SPI analysis. A drought may look severe at one time scale and less severe at another. This does not mean the index is wrong. It means the index is describing different parts of the hydrologic system.</p>
+          <div class="table-wrap"><table><thead><tr><th>SPI time scale</th><th>Main meaning</th><th>Typical application</th></tr></thead><tbody><tr><td>SPI-1</td><td>Very short-term precipitation anomaly</td><td>Recent rainfall deficit, flash drought, early warning</td></tr><tr><td>SPI-3</td><td>Seasonal moisture condition</td><td>Agricultural drought, planting season, pasture stress</td></tr><tr><td>SPI-6</td><td>Medium-term precipitation deficit</td><td>Growing-season drought and reservoir inflow signals</td></tr><tr><td>SPI-12</td><td>Annual-scale drought condition</td><td>Water supply, persistent drought, regional comparison</td></tr><tr><td>SPI-24 or longer</td><td>Multi-year precipitation anomaly</td><td>Groundwater, long-term water planning, persistent hydrological drought</td></tr></tbody></table></div>
+        </section>
+
+        <section id="interpretation">
+          <h2>How to interpret SPI values</h2>
+          <p>SPI values are usually interpreted using standardized categories. Values near zero indicate near-normal precipitation. Negative values represent dry conditions, and positive values represent wet conditions. The farther the value is from zero, the more unusual the condition is compared with the historical climate.</p>
+          <div class="table-wrap"><table><thead><tr><th>SPI value</th><th>Common interpretation</th><th>General meaning</th></tr></thead><tbody><tr><td>2.00 or higher</td><td>Extremely wet</td><td>Very unusual wet condition</td></tr><tr><td>1.50 to 1.99</td><td>Severely wet</td><td>Strong wet anomaly</td></tr><tr><td>1.00 to 1.49</td><td>Moderately wet</td><td>Noticeably wetter than normal</td></tr><tr><td>-0.99 to 0.99</td><td>Near normal</td><td>No strong wet or dry signal</td></tr><tr><td>-1.00 to -1.49</td><td>Moderate drought</td><td>Noticeably drier than normal</td></tr><tr><td>-1.50 to -1.99</td><td>Severe drought</td><td>Strong dry anomaly</td></tr><tr><td>-2.00 or lower</td><td>Extreme drought</td><td>Very unusual dry condition</td></tr></tbody></table></div>
+          <p>These categories are useful, but they should not be interpreted without context. An SPI value during a critical crop stage may have a larger practical impact than the same value outside the growing season. Similarly, SPI-12 may show persistent dryness even after short-term rainfall improves.</p>
+        </section>
+
+        <section id="strengths">
+          <h2>Strengths of SPI</h2>
+          <ul>
+            <li><strong>Simple input:</strong> SPI only requires precipitation data.</li>
+            <li><strong>Multiple time scales:</strong> The same method can describe short-term and long-term drought.</li>
+            <li><strong>Climate comparison:</strong> Standardized values can be compared across different climates.</li>
+            <li><strong>Widely accepted:</strong> SPI is commonly used in drought monitoring, research, and operational applications.</li>
+            <li><strong>Both dry and wet signals:</strong> SPI can identify unusually dry and unusually wet periods.</li>
+          </ul>
+        </section>
+
+        <section id="limitations">
+          <h2>Limitations of SPI</h2>
+          <p>SPI is powerful, but it is not perfect. Because it is based only on precipitation, it does not directly include temperature, evapotranspiration, soil moisture, snowpack, streamflow, reservoir storage, irrigation, or groundwater. This means SPI may understate drought stress when high temperatures greatly increase atmospheric water demand.</p>
+          <p>SPI also depends on the quality and length of the precipitation record. Short or inconsistent records can produce less stable estimates. Missing data, station relocation, measurement changes, and poor gridded-data quality can influence results. For this reason, SPI should be interpreted together with data quality checks and, when possible, other indicators.</p>
+        </section>
+
+        <section id="dmap-ai">
+          <h2>How DMAP-AI uses SPI</h2>
+          <p>DMAP-AI uses SPI as a core drought-monitoring index because it is transparent, interpretable, and suitable for many locations. In the Research Version, users can select a location and analysis period, retrieve climate data, calculate SPI, and review drought charts, anomaly summaries, drought-event tables, and AI-assisted interpretations.</p>
+          <p>SPI outputs in DMAP-AI are not treated as isolated numbers. The platform also summarizes drought-event duration, minimum SPI, magnitude, and temporal behavior. This structure helps AI interpretation remain grounded in actual drought metrics rather than relying only on a visual chart or a general prompt.</p>
+          <div class="callout"><strong>DMAP-AI principle:</strong> SPI becomes more useful when it is combined with drought-event summaries, chart metadata, time-scale context, and transparent interpretation.</div>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+          <h3>Does SPI measure agricultural drought?</h3><p>SPI can support agricultural drought monitoring, especially at short seasonal time scales such as SPI-1, SPI-3, and SPI-6. However, agricultural drought also depends on soil moisture, crop stage, rooting depth, and evapotranspiration.</p>
+          <h3>Does SPI include temperature?</h3><p>No. SPI uses precipitation only. If temperature and atmospheric water demand are central to the analysis, SPEI or other evapotranspiration-sensitive indicators may be more appropriate.</p>
+          <h3>Can SPI be positive?</h3><p>Yes. Positive SPI values indicate wetter-than-normal precipitation conditions. SPI is useful for identifying both dry and wet anomalies.</p>
+          <h3>Which SPI time scale is best?</h3><p>There is no single best time scale. SPI-1 and SPI-3 are useful for short-term and agricultural conditions, while SPI-12 and longer time scales are more useful for persistent drought and water-resource assessment.</p>
+          <h3>Can SPI compare different regions?</h3><p>Yes, that is one of SPI’s strengths. Because SPI is standardized relative to the local historical climate, values from different climates can be compared more meaningfully than raw precipitation amounts.</p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+          <ol class="references">
+            <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+            <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
+            <li>Guttman, N. B. (1999). Accepting the Standardized Precipitation Index: A calculation algorithm. Journal of the American Water Resources Association.</li>
+            <li>Hayes, M. J., Svoboda, M. D., Wall, N., and Widhalm, M. (2011). The Lincoln Declaration on Drought Indices. Bulletin of the American Meteorological Society.</li>
+            <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+          </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/what-is-drought/"><strong>What is Drought?</strong><span>Basic drought definition, causes, impacts, and monitoring.</span></a>
+            <a class="related-card" href="/knowledge/meteorological-drought/"><strong>Meteorological Drought</strong><span>How precipitation deficits are measured and interpreted.</span></a>
+            <a class="related-card" href="/knowledge/types-of-drought/"><strong>Types of Drought</strong><span>Compare drought categories and their applications.</span></a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a>
+        <a href="#definition">Definition</a>
+        <a href="#why-important">Why SPI matters</a>
+        <a href="#calculation">Calculation concept</a>
+        <a href="#timescales">Time scales</a>
+        <a href="#interpretation">Interpretation</a>
+        <a href="#strengths">Strengths</a>
+        <a href="#limitations">Limitations</a>
+        <a href="#dmap-ai">How DMAP-AI uses SPI</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">References</a>
+        <a href="#related">Related articles</a>
+      </aside>
+    </div>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
+      <div class="comparison-stations-card">
+        <div class="comparison-stations-head">
+          <div><h2 id="knowledge-browse-title">Browse the Knowledge Center</h2><p>Search and open other DMAP-AI Knowledge Center articles about drought science, drought indices, climate datasets, analysis methods, and AI interpretation.</p></div>
+          <span class="station-count-pill">Documentation</span>
+        </div>
+        <div data-articles-nav data-current-slug="what-is-spi"></div>
+      </div>
+    </section>
+
+    <p class="back-to-knowledge"><a href="/knowledge/">← Back to Knowledge Center</a></p>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span></div></footer>
+  <script src="/knowledge/knowledge-nav.js" defer></script>
+  <script src="/assets/global-nav.js"></script>
+</body>
+</html>
