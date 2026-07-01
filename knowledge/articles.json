@@ -1,0 +1,152 @@
+{
+  "title": "DMAP-AI Knowledge Center",
+  "description": "Scientific articles, tutorials, and reference documentation for drought monitoring, drought indices, climate datasets, wavelet analysis, and AI-assisted drought interpretation.",
+  "lastUpdated": "2026-07-01",
+  "categories": [
+    {
+      "id": "drought-basics",
+      "title": "Drought Basics",
+      "description": "Learn the fundamental concepts of drought, including its causes, development, impacts, and classification.",
+      "icon": "🌍"
+    },
+    {
+      "id": "drought-indices",
+      "title": "Drought Indices",
+      "description": "Understand SPI, SPEI, PDSI, EDDI, and other commonly used drought indices.",
+      "icon": "📈"
+    },
+    {
+      "id": "climate-data",
+      "title": "Climate Data",
+      "description": "Explore precipitation, temperature, evapotranspiration, and climate datasets used for drought monitoring.",
+      "icon": "🌦️"
+    },
+    {
+      "id": "analysis-methods",
+      "title": "Analysis Methods",
+      "description": "Scientific methods including wavelet analysis, probability distributions, trend analysis, and drought event detection.",
+      "icon": "🔬"
+    },
+    {
+      "id": "ai-analysis",
+      "title": "AI Interpretation",
+      "description": "Learn how AI and structured metadata improve drought interpretation and reporting.",
+      "icon": "🤖"
+    },
+    {
+      "id": "case-studies",
+      "title": "Case Studies",
+      "description": "Real-world drought analyses using DMAP-AI.",
+      "icon": "📚"
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "slug": "what-is-drought",
+      "title": "What is Drought?",
+      "category": "drought-basics",
+      "summary": "Learn what drought is, why it occurs, how it develops, and why accurate monitoring is important.",
+      "readingTime": "10 min",
+      "difficulty": "Beginner",
+      "featured": true,
+      "lastUpdated": "2026-07-01",
+      "keywords": [
+        "drought",
+        "definition",
+        "water shortage",
+        "precipitation deficit",
+        "climate"
+      ],
+      "related": [
+        "types-of-drought",
+        "meteorological-drought",
+        "what-is-spi"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "types-of-drought",
+      "title": "Types of Drought",
+      "category": "drought-basics",
+      "summary": "Understand meteorological, agricultural, hydrological, and socioeconomic drought.",
+      "readingTime": "12 min",
+      "difficulty": "Beginner",
+      "featured": true,
+      "lastUpdated": "2026-07-01",
+      "keywords": [
+        "types",
+        "agricultural",
+        "hydrological",
+        "meteorological"
+      ],
+      "related": [
+        "what-is-drought",
+        "meteorological-drought",
+        "agricultural-drought"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "meteorological-drought",
+      "title": "Meteorological Drought",
+      "category": "drought-basics",
+      "summary": "Learn how precipitation deficits initiate drought and how meteorological drought is measured.",
+      "readingTime": "9 min",
+      "difficulty": "Beginner",
+      "featured": false,
+      "lastUpdated": "2026-07-01",
+      "keywords": [
+        "rainfall",
+        "precipitation",
+        "SPI"
+      ],
+      "related": [
+        "types-of-drought",
+        "what-is-spi"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "agricultural-drought",
+      "title": "Agricultural Drought",
+      "category": "drought-basics",
+      "summary": "Discover how soil moisture deficits affect crop growth, irrigation, and food production.",
+      "readingTime": "11 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "lastUpdated": "2026-07-01",
+      "keywords": [
+        "soil moisture",
+        "crop",
+        "irrigation",
+        "corn",
+        "soybean"
+      ],
+      "related": [
+        "hydrological-drought",
+        "what-is-drought"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "hydrological-drought",
+      "title": "Hydrological Drought",
+      "category": "drought-basics",
+      "summary": "Understand how drought influences rivers, reservoirs, lakes, and groundwater.",
+      "readingTime": "10 min",
+      "difficulty": "Intermediate",
+      "featured": false,
+      "lastUpdated": "2026-07-01",
+      "keywords": [
+        "streamflow",
+        "reservoir",
+        "groundwater"
+      ],
+      "related": [
+        "agricultural-drought",
+        "types-of-drought"
+      ]
+    }
+  ]
+}
