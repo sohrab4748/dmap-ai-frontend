@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Drought Category Tables | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Use drought category tables to translate index values into clear drought classes for communication and reporting.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/drought-category-tables/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="Drought Category Tables">
+  <meta property="og:description" content="A practical guide to drought category tables, SPI thresholds, drought classes, severity labels, and communication best practices.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/drought-category-tables/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Drought Category Tables",
+        "description": "A practical guide to drought category tables, SPI thresholds, drought classes, severity labels, and communication best practices.",
+        "author": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-01",
+        "mainEntityOfPage": "https://droughtanalysis.com/knowledge/drought-category-tables/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://droughtanalysis.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Knowledge Center", "item": "https://droughtanalysis.com/knowledge/"},
+          {"@type": "ListItem", "position": 3, "name": "Drought Category Tables", "item": "https://droughtanalysis.com/knowledge/drought-category-tables/"}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:#2563eb;
+      --blue-dark:#1d4ed8;
+      --slate-50:#f8fafc;
+      --slate-100:#f1f5f9;
+      --slate-200:#e2e8f0;
+      --slate-500:#64748b;
+      --slate-600:#475569;
+      --slate-700:#334155;
+      --slate-800:#1e293b;
+      --slate-900:#0f172a;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      color:var(--slate-900);
+      background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .container {
+      width:min(100% - 2rem,80rem);
+      margin-inline:auto;
+    }
+
+    .article-hero {
+      padding:3.5rem 0 1.5rem;
+    }
+
+    .article-hero-card {
+      border:1px solid #bfdbfe;
+      border-radius:1.75rem;
+      background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));
+      box-shadow:0 18px 45px rgba(15,23,42,.08);
+      padding:2.25rem;
+    }
+
+    .breadcrumb {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      align-items:center;
+      color:var(--slate-500);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+
+    .breadcrumb a {
+      color:#1d4ed8;
+      font-weight:700;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      border-radius:999px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .8rem;
+      font-size:.875rem;
+      font-weight:850;
+    }
+
+    h1 {
+      margin:1rem 0 0;
+      font-size:clamp(2.2rem,5vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#020617;
+    }
+
+    .lead {
+      max-width:58rem;
+      margin:1rem 0 0;
+      color:var(--slate-600);
+      font-size:1.1rem;
+      line-height:1.75;
+    }
+
+    .article-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1.25rem;
+      color:#475569;
+      font-size:.92rem;
+    }
+
+    .meta-pill {
+      border:1px solid #dbeafe;
+      background:#fff;
+      border-radius:999px;
+      padding:.35rem .7rem;
+      font-weight:700;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1.5rem;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:.875rem;
+      padding:.75rem 1.25rem;
+      font-weight:750;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+
+    .btn-secondary {
+      background:#ffffff;
+      color:#1e293b;
+      border-color:#e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .article-layout {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 18rem;
+      gap:2rem;
+      align-items:start;
+      padding:1.5rem 0 3rem;
+    }
+
+    .article-main {
+      background:#fff;
+      border:1px solid var(--slate-200);
+      border-radius:1.25rem;
+      box-shadow:0 12px 30px rgba(15,23,42,.055);
+      padding:2rem;
+    }
+
+    .article-main h2 {
+      margin:2rem 0 .75rem;
+      color:#0f172a;
+      font-size:clamp(1.4rem,2.5vw,1.85rem);
+      line-height:1.2;
+      letter-spacing:-.02em;
+    }
+
+    .article-main h2:first-child {
+      margin-top:0;
+    }
+
+    .article-main h3 {
+      margin:1.5rem 0 .5rem;
+      font-size:1.15rem;
+      color:#0f172a;
+    }
+
+    .article-main p {
+      margin:.75rem 0;
+      color:#334155;
+    }
+
+    .article-main ul,
+    .article-main ol {
+      color:#334155;
+      padding-left:1.4rem;
+    }
+
+    .quick-answer {
+      border:1px solid #bfdbfe;
+      border-left:5px solid #2563eb;
+      background:#eff6ff;
+      border-radius:1rem;
+      padding:1.15rem;
+      margin-bottom:1.5rem;
+    }
+
+    .quick-answer h2 {
+      margin:0 0 .45rem;
+      font-size:1.2rem;
+    }
+
+    .definition-box {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1.1rem;
+      margin:1rem 0;
+    }
+
+    .table-wrap {
+      overflow-x:auto;
+      margin:1.25rem 0;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:680px;
+      background:#fff;
+    }
+
+    th, td {
+      text-align:left;
+      padding:.85rem;
+      border-bottom:1px solid #e2e8f0;
+      vertical-align:top;
+    }
+
+    th {
+      background:#f8fafc;
+      color:#0f172a;
+      font-size:.9rem;
+    }
+
+    tr:last-child td {
+      border-bottom:0;
+    }
+
+    .toc {
+      position:sticky;
+      top:1rem;
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:1.1rem;
+      padding:1rem;
+      box-shadow:0 10px 25px rgba(15,23,42,.055);
+    }
+
+    .toc h2 {
+      font-size:1rem;
+      margin:0 0 .75rem;
+    }
+
+    .toc a {
+      display:block;
+      color:#475569;
+      font-size:.92rem;
+      padding:.35rem 0;
+      border-bottom:1px solid #f1f5f9;
+    }
+
+    .toc a:hover {
+      color:#1d4ed8;
+    }
+
+    .callout {
+      border:1px solid #bbf7d0;
+      background:#f0fdf4;
+      border-radius:1rem;
+      padding:1rem;
+      margin:1.25rem 0;
+    }
+
+    .callout strong {
+      color:#166534;
+    }
+
+    .related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .related-card {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1rem;
+    }
+
+    .related-card strong {
+      display:block;
+      color:#0f172a;
+    }
+
+    .related-card span {
+      display:block;
+      color:#64748b;
+      font-size:.9rem;
+      margin-top:.35rem;
+    }
+
+    .back-to-knowledge {
+      width:min(100% - 2rem,80rem);
+      margin:2rem auto 0;
+    }
+
+    .back-to-knowledge a {
+      display:inline-flex;
+      align-items:center;
+      border:1px solid #e2e8f0;
+      background:#ffffff;
+      color:#1e293b;
+      border-radius:.875rem;
+      padding:.75rem 1.1rem;
+      font-weight:750;
+      text-decoration:none;
+    }
+
+    .back-to-knowledge a:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .site-footer {
+      border-top:1px solid var(--slate-200);
+      background:rgba(255,255,255,.72);
+      margin-top:2rem;
+    }
+
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding-block:1.5rem;
+      color:var(--slate-500);
+      font-size:.875rem;
+    }
+
+    @media(max-width:1050px) {
+      .article-layout {
+        grid-template-columns:1fr;
+      }
+
+      .toc {
+        position:static;
+        order:-1;
+      }
+    }
+
+    @media(max-width:640px) {
+      .container {
+        width:min(100% - 1rem,80rem);
+      }
+
+      .article-hero {
+        padding-top:2rem;
+      }
+
+      .article-hero-card,
+      .article-main {
+        padding:1.25rem;
+        border-radius:1.1rem;
+      }
+
+      .related-grid {
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/knowledge/">Knowledge Center</a>
+            <span>›</span>
+            <span>Drought Category Tables</span>
+          </nav>
+
+          <p class="eyebrow">Drought Indices</p>
+          <h1>Drought Category Tables</h1>
+
+          <p class="lead">Drought category tables translate numerical drought indicators into descriptive classes such as moderate drought, severe drought, and extreme drought. They make drought information easier to communicate, but they must be used carefully because thresholds are simplified representations of complex conditions.</p>
+
+          <div class="article-meta">
+            <span class="meta-pill">Reading time: 9 min</span>
+            <span class="meta-pill">Level: Beginner</span>
+            <span class="meta-pill">Last updated: July 2026</span>
+            <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section id="quick-answer">
+          <h2>Short answer</h2>
+          <p>A drought category table converts index values into drought classes. For SPI, values between -1.0 and -1.49 are often called moderate drought, -1.5 to -1.99 severe drought, and -2.0 or lower extreme drought. These categories support communication, but they should not be treated as exact impact thresholds for every region or sector.</p>
+        </section>
+
+        <section id="purpose">
+          <h2>Purpose of drought category tables</h2>
+          <p>Drought indices produce numbers, but most users need meaningful labels. Category tables help translate a numerical value into a drought condition that can be communicated in reports, maps, dashboards, and decision-support systems.</p><p>Categories also improve consistency. When all users apply the same threshold table, drought maps and event summaries become easier to compare across locations and time periods.</p>
+        </section>
+
+        <section id="spi-table">
+          <h2>Common SPI category table</h2>
+          <div class="table-wrap"><table><thead><tr><th>SPI range</th><th>Common category</th><th>General interpretation</th></tr></thead><tbody><tr><td>2.00 or greater</td><td>Extremely wet</td><td>Very unusual wet conditions</td></tr><tr><td>1.50 to 1.99</td><td>Very wet</td><td>Strong positive precipitation anomaly</td></tr><tr><td>1.00 to 1.49</td><td>Moderately wet</td><td>Above-normal precipitation</td></tr><tr><td>-0.99 to 0.99</td><td>Near normal</td><td>No strong standardized anomaly</td></tr><tr><td>-1.00 to -1.49</td><td>Moderate drought</td><td>Noticeable dry anomaly</td></tr><tr><td>-1.50 to -1.99</td><td>Severe drought</td><td>Strong dry anomaly</td></tr><tr><td>-2.00 or lower</td><td>Extreme drought</td><td>Very rare dry anomaly</td></tr></tbody></table></div>
+        </section>
+
+        <section id="limits">
+          <h2>Limitations of category tables</h2>
+          <p>Category tables simplify interpretation, but drought impacts do not always begin at the same index value. A moderate SPI value can be damaging during a sensitive crop stage, while a severe SPI value may have less impact if water storage is high or irrigation is available.</p><p>Categories also depend on time scale. SPI-1 moderate drought and SPI-12 moderate drought describe different processes. A category label without the time scale can be misleading.</p>
+        </section>
+
+        <section id="communication">
+          <h2>Communication best practices</h2>
+          <p>When using category tables, report the index, time scale, dataset, threshold, and period. Avoid using category names without context. Instead of saying “the region is in severe drought,” say “SPI-12 indicates severe precipitation drought for the selected dataset and baseline period.”</p><p>For public communication, category colors and labels should be consistent, but technical reports should include the underlying numerical values.</p><div class="callout"><strong>Best practice:</strong> Use categories for communication, but keep the numerical values and metadata available for scientific interpretation.</div>
+        </section>
+
+        <section id="dmap-ai">
+          <h2>How DMAP-AI uses drought categories</h2>
+          <p>DMAP-AI can classify index values into drought categories and summarize events by severity. This helps users quickly identify when dry periods reach moderate, severe, or extreme thresholds. The platform also preserves event statistics such as duration, minimum index value, and magnitude, which are more informative than the category label alone.</p>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+          <h3>Are drought categories universal?</h3><p>They are standardized for many indices, but their impacts are not universal. Local vulnerability and sector-specific conditions matter.</p><h3>Is SPI -1.49 very different from SPI -1.50?</h3><p>Not physically. Category boundaries are useful communication tools, but the climate system does not change abruptly at the threshold.</p><h3>Should wet categories also be reported?</h3><p>Yes, when wet anomalies are relevant. Standardized indices describe both dry and wet departures from normal.</p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+          <ol class="references">
+                      <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+                      <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
+                      <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+                      <li>Vicente-Serrano, S. M., Beguería, S., and López-Moreno, J. I. (2010). A multiscalar drought index sensitive to global warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate.</li>
+                      <li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
+                    </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/spi-interpretation/">
+              <strong>SPI Interpretation</strong>
+              <span>Learn how SPI values are interpreted.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/drought-thresholds/">
+              <strong>Drought Thresholds</strong>
+              <span>Understand how thresholds define drought events.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/drought-severity/">
+              <strong>Drought Severity</strong>
+              <span>Connect categories with drought severity analysis.</span>
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a>
+        <a href="#purpose">Purpose of category tables</a>
+        <a href="#spi-table">Common SPI category table</a>
+        <a href="#limits">Limitations</a>
+        <a href="#communication">Communication best practices</a>
+        <a href="#dmap-ai">How DMAP-AI uses categories</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">References</a>
+        <a href="#related">Related articles</a>
+      </aside>
+    </div>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
+      <div class="comparison-stations-card">
+        <div class="comparison-stations-head">
+          <div>
+            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+            <p>Search and open other DMAP-AI Knowledge Center articles about drought science, indices, climate datasets, methods, and AI interpretation.</p>
+          </div>
+          <span class="station-count-pill">Documentation</span>
+        </div>
+        <div data-articles-nav data-current-slug="drought-category-tables"></div>
+      </div>
+    </section>
+
+    <p class="back-to-knowledge"><a href="/knowledge/">← Back to Knowledge Center</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="/knowledge/knowledge-nav.js" defer></script>
+  <script src="/assets/global-nav.js"></script>
+</body>
+</html>

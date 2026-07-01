@@ -617,97 +617,123 @@
       "slug": "spi-limitations",
       "title": "Limitations of SPI",
       "category": "drought-indices",
-      "summary": "Understand what SPI can and cannot tell you about drought conditions.",
+      "summary": "Understand what the Standardized Precipitation Index can and cannot tell you about drought conditions.",
       "readingTime": "10 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/spi-limitations/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "limitations",
-        "of",
-        "spi"
+        "SPI limitations",
+        "Standardized Precipitation Index",
+        "precipitation-only drought index",
+        "drought interpretation"
       ],
-      "related": []
+      "related": [
+        "what-is-spi",
+        "spi-time-scales",
+        "spei-limitations"
+      ]
     },
     {
       "id": 27,
       "slug": "spei-limitations",
       "title": "Limitations of SPEI",
       "category": "drought-indices",
-      "summary": "Learn when SPEI is useful and when it should be interpreted cautiously.",
-      "readingTime": "10 min",
+      "summary": "Learn when SPEI is useful, when it should be interpreted cautiously, and why evapotranspiration assumptions matter.",
+      "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/spei-limitations/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "limitations",
-        "of",
-        "spei"
+        "SPEI limitations",
+        "evapotranspiration",
+        "climate drought index",
+        "temperature effect"
       ],
-      "related": []
+      "related": [
+        "what-is-spei",
+        "spi-limitations",
+        "multi-index-drought-monitoring"
+      ]
     },
     {
       "id": 28,
       "slug": "multi-index-drought-monitoring",
       "title": "Multi-Index Drought Monitoring",
       "category": "drought-indices",
-      "summary": "Combine several drought indicators for more robust interpretation.",
+      "summary": "Combine several drought indicators to build a more reliable drought interpretation than any single index can provide.",
       "readingTime": "13 min",
       "difficulty": "Advanced",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/multi-index-drought-monitoring/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "multi-index",
-        "drought",
-        "monitoring"
+        "multi-index drought monitoring",
+        "SPI",
+        "SPEI",
+        "PDSI",
+        "EDDI",
+        "soil moisture"
       ],
-      "related": []
+      "related": [
+        "what-is-spi",
+        "what-is-spei",
+        "drought-risk-vs-hazard"
+      ]
     },
     {
       "id": 29,
       "slug": "drought-category-tables",
       "title": "Drought Category Tables",
       "category": "drought-indices",
-      "summary": "Use standardized category tables for communication and reporting.",
-      "readingTime": "8 min",
+      "summary": "Use drought category tables to translate index values into clear drought classes for communication and reporting.",
+      "readingTime": "9 min",
       "difficulty": "Beginner",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/drought-category-tables/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "drought",
-        "category",
-        "tables"
+        "drought category tables",
+        "SPI categories",
+        "drought classes",
+        "drought reporting"
       ],
-      "related": []
+      "related": [
+        "spi-interpretation",
+        "drought-thresholds",
+        "drought-severity"
+      ]
     },
     {
       "id": 30,
       "slug": "index-baseline-periods",
       "title": "Baseline Periods in Drought Indices",
       "category": "drought-indices",
-      "summary": "Understand how climatological baselines influence drought classification.",
+      "summary": "Understand how the reference period used to fit drought indices affects drought classification, trend interpretation, and comparisons across sites.",
       "readingTime": "11 min",
       "difficulty": "Intermediate",
       "featured": false,
-      "status": "Planned",
-      "url": "",
+      "status": "Available",
+      "url": "/knowledge/index-baseline-periods/",
       "lastUpdated": "2026-07-01",
       "keywords": [
-        "baseline",
-        "periods",
-        "in",
-        "drought",
-        "indices"
+        "baseline period",
+        "reference period",
+        "SPI baseline",
+        "climatology",
+        "drought index"
       ],
-      "related": []
+      "related": [
+        "how-spi-is-calculated",
+        "what-is-spei",
+        "spi-limitations"
+      ]
     },
     {
       "id": 31,

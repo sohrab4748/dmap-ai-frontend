@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Limitations of SPI | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Understand what the Standardized Precipitation Index can and cannot tell you about drought conditions.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/spi-limitations/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="Limitations of SPI">
+  <meta property="og:description" content="A practical guide to SPI limitations, precipitation-only interpretation, time-scale dependence, baseline effects, and responsible use in drought analysis.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/spi-limitations/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Limitations of SPI",
+        "description": "A practical guide to SPI limitations, precipitation-only interpretation, time-scale dependence, baseline effects, and responsible use in drought analysis.",
+        "author": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-01",
+        "mainEntityOfPage": "https://droughtanalysis.com/knowledge/spi-limitations/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://droughtanalysis.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Knowledge Center", "item": "https://droughtanalysis.com/knowledge/"},
+          {"@type": "ListItem", "position": 3, "name": "Limitations of SPI", "item": "https://droughtanalysis.com/knowledge/spi-limitations/"}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:#2563eb;
+      --blue-dark:#1d4ed8;
+      --slate-50:#f8fafc;
+      --slate-100:#f1f5f9;
+      --slate-200:#e2e8f0;
+      --slate-500:#64748b;
+      --slate-600:#475569;
+      --slate-700:#334155;
+      --slate-800:#1e293b;
+      --slate-900:#0f172a;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      color:var(--slate-900);
+      background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .container {
+      width:min(100% - 2rem,80rem);
+      margin-inline:auto;
+    }
+
+    .article-hero {
+      padding:3.5rem 0 1.5rem;
+    }
+
+    .article-hero-card {
+      border:1px solid #bfdbfe;
+      border-radius:1.75rem;
+      background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));
+      box-shadow:0 18px 45px rgba(15,23,42,.08);
+      padding:2.25rem;
+    }
+
+    .breadcrumb {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      align-items:center;
+      color:var(--slate-500);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+
+    .breadcrumb a {
+      color:#1d4ed8;
+      font-weight:700;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      border-radius:999px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .8rem;
+      font-size:.875rem;
+      font-weight:850;
+    }
+
+    h1 {
+      margin:1rem 0 0;
+      font-size:clamp(2.2rem,5vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#020617;
+    }
+
+    .lead {
+      max-width:58rem;
+      margin:1rem 0 0;
+      color:var(--slate-600);
+      font-size:1.1rem;
+      line-height:1.75;
+    }
+
+    .article-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1.25rem;
+      color:#475569;
+      font-size:.92rem;
+    }
+
+    .meta-pill {
+      border:1px solid #dbeafe;
+      background:#fff;
+      border-radius:999px;
+      padding:.35rem .7rem;
+      font-weight:700;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1.5rem;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:.875rem;
+      padding:.75rem 1.25rem;
+      font-weight:750;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+
+    .btn-secondary {
+      background:#ffffff;
+      color:#1e293b;
+      border-color:#e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .article-layout {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 18rem;
+      gap:2rem;
+      align-items:start;
+      padding:1.5rem 0 3rem;
+    }
+
+    .article-main {
+      background:#fff;
+      border:1px solid var(--slate-200);
+      border-radius:1.25rem;
+      box-shadow:0 12px 30px rgba(15,23,42,.055);
+      padding:2rem;
+    }
+
+    .article-main h2 {
+      margin:2rem 0 .75rem;
+      color:#0f172a;
+      font-size:clamp(1.4rem,2.5vw,1.85rem);
+      line-height:1.2;
+      letter-spacing:-.02em;
+    }
+
+    .article-main h2:first-child {
+      margin-top:0;
+    }
+
+    .article-main h3 {
+      margin:1.5rem 0 .5rem;
+      font-size:1.15rem;
+      color:#0f172a;
+    }
+
+    .article-main p {
+      margin:.75rem 0;
+      color:#334155;
+    }
+
+    .article-main ul,
+    .article-main ol {
+      color:#334155;
+      padding-left:1.4rem;
+    }
+
+    .quick-answer {
+      border:1px solid #bfdbfe;
+      border-left:5px solid #2563eb;
+      background:#eff6ff;
+      border-radius:1rem;
+      padding:1.15rem;
+      margin-bottom:1.5rem;
+    }
+
+    .quick-answer h2 {
+      margin:0 0 .45rem;
+      font-size:1.2rem;
+    }
+
+    .definition-box {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1.1rem;
+      margin:1rem 0;
+    }
+
+    .table-wrap {
+      overflow-x:auto;
+      margin:1.25rem 0;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:680px;
+      background:#fff;
+    }
+
+    th, td {
+      text-align:left;
+      padding:.85rem;
+      border-bottom:1px solid #e2e8f0;
+      vertical-align:top;
+    }
+
+    th {
+      background:#f8fafc;
+      color:#0f172a;
+      font-size:.9rem;
+    }
+
+    tr:last-child td {
+      border-bottom:0;
+    }
+
+    .toc {
+      position:sticky;
+      top:1rem;
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:1.1rem;
+      padding:1rem;
+      box-shadow:0 10px 25px rgba(15,23,42,.055);
+    }
+
+    .toc h2 {
+      font-size:1rem;
+      margin:0 0 .75rem;
+    }
+
+    .toc a {
+      display:block;
+      color:#475569;
+      font-size:.92rem;
+      padding:.35rem 0;
+      border-bottom:1px solid #f1f5f9;
+    }
+
+    .toc a:hover {
+      color:#1d4ed8;
+    }
+
+    .callout {
+      border:1px solid #bbf7d0;
+      background:#f0fdf4;
+      border-radius:1rem;
+      padding:1rem;
+      margin:1.25rem 0;
+    }
+
+    .callout strong {
+      color:#166534;
+    }
+
+    .related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .related-card {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1rem;
+    }
+
+    .related-card strong {
+      display:block;
+      color:#0f172a;
+    }
+
+    .related-card span {
+      display:block;
+      color:#64748b;
+      font-size:.9rem;
+      margin-top:.35rem;
+    }
+
+    .back-to-knowledge {
+      width:min(100% - 2rem,80rem);
+      margin:2rem auto 0;
+    }
+
+    .back-to-knowledge a {
+      display:inline-flex;
+      align-items:center;
+      border:1px solid #e2e8f0;
+      background:#ffffff;
+      color:#1e293b;
+      border-radius:.875rem;
+      padding:.75rem 1.1rem;
+      font-weight:750;
+      text-decoration:none;
+    }
+
+    .back-to-knowledge a:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .site-footer {
+      border-top:1px solid var(--slate-200);
+      background:rgba(255,255,255,.72);
+      margin-top:2rem;
+    }
+
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding-block:1.5rem;
+      color:var(--slate-500);
+      font-size:.875rem;
+    }
+
+    @media(max-width:1050px) {
+      .article-layout {
+        grid-template-columns:1fr;
+      }
+
+      .toc {
+        position:static;
+        order:-1;
+      }
+    }
+
+    @media(max-width:640px) {
+      .container {
+        width:min(100% - 1rem,80rem);
+      }
+
+      .article-hero {
+        padding-top:2rem;
+      }
+
+      .article-hero-card,
+      .article-main {
+        padding:1.25rem;
+        border-radius:1.1rem;
+      }
+
+      .related-grid {
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/knowledge/">Knowledge Center</a>
+            <span>›</span>
+            <span>Limitations of SPI</span>
+          </nav>
+
+          <p class="eyebrow">Drought Indices</p>
+          <h1>Limitations of SPI</h1>
+
+          <p class="lead">The Standardized Precipitation Index is one of the most widely used drought indicators because it is simple, standardized, and can be calculated at multiple time scales. However, SPI is not a complete drought-risk assessment. It describes precipitation anomaly, not every process that controls water stress, impacts, or recovery.</p>
+
+          <div class="article-meta">
+            <span class="meta-pill">Reading time: 10 min</span>
+            <span class="meta-pill">Level: Intermediate</span>
+            <span class="meta-pill">Last updated: July 2026</span>
+            <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section id="quick-answer">
+          <h2>Short answer</h2>
+          <p>SPI is a powerful precipitation-based drought index, but it has important limitations. It does not directly include temperature, evapotranspiration, soil moisture, snowpack, streamflow, irrigation, reservoir storage, crop stage, or socioeconomic vulnerability. SPI values must be interpreted with the selected time scale, baseline period, dataset quality, and application in mind.</p>
+        </section>
+
+        <section id="why-important">
+          <h2>Why SPI limitations matter</h2>
+          <p>SPI is often treated as a general drought index, but technically it standardizes precipitation over a selected accumulation period. This makes it useful for detecting unusually dry or wet precipitation conditions, yet it does not automatically represent agricultural stress, hydrologic shortage, or economic impacts.</p><p>Understanding SPI limitations does not reduce its value. Instead, it helps users apply it correctly. SPI is most useful when it is interpreted as one layer of evidence in a broader drought-monitoring workflow.</p><div class="definition-box"><strong>Key point:</strong> SPI tells you how unusual precipitation has been for a location and time scale. It does not tell you the full water balance or the full drought impact.</div>
+        </section>
+
+        <section id="precipitation-only">
+          <h2>SPI is precipitation-only</h2>
+          <p>The main strength of SPI is also one of its limitations: it requires only precipitation. This allows SPI to be calculated in data-limited regions and compared across climates. However, drought stress is also influenced by temperature, atmospheric demand, soil water storage, vegetation, irrigation, water management, and land use.</p><p>During hot periods, two locations with similar precipitation deficits may experience very different water stress because evaporative demand may differ. SPI alone cannot capture this difference. In warming climates, precipitation-only drought metrics may underestimate drought stress in some situations where temperature-driven water demand is important.</p>
+        </section>
+
+        <section id="time-scale">
+          <h2>Time-scale dependence</h2>
+          <p>SPI must always be interpreted with its accumulation period. SPI-1, SPI-3, SPI-6, SPI-12, and SPI-24 can describe different drought processes. A short time scale may identify rapid rainfall deficits, while longer time scales are more relevant to groundwater, reservoirs, and hydrologic drought.</p><div class="table-wrap"><table><thead><tr><th>SPI time scale</th><th>Useful for</th><th>Common limitation</th></tr></thead><tbody><tr><td>SPI-1</td><td>Short-term precipitation anomaly</td><td>Can fluctuate rapidly and may overstate brief dry spells</td></tr><tr><td>SPI-3</td><td>Seasonal agricultural context</td><td>Does not directly include soil moisture or crop stage</td></tr><tr><td>SPI-6</td><td>Seasonal to subannual deficits</td><td>May miss very rapid flash-drought development</td></tr><tr><td>SPI-12</td><td>Longer drought persistence</td><td>Can smooth short-term agricultural stress</td></tr><tr><td>SPI-24</td><td>Long hydrologic context</td><td>May respond slowly to recent rainfall recovery</td></tr></tbody></table></div>
+        </section>
+
+        <section id="baseline">
+          <h2>Baseline sensitivity</h2>
+          <p>SPI is standardized relative to a reference period. If the baseline period is short, contains unusual extremes, or does not represent the climate of interest, SPI classifications may be affected. Comparing SPI values across studies is difficult when the baseline period, dataset, or fitting method differs.</p><p>Climate trends also complicate baseline interpretation. A fixed historical baseline may make recent dry or wet conditions appear different than a moving or updated baseline. This does not make SPI invalid, but it means the baseline should be clearly reported.</p>
+        </section>
+
+        <section id="distribution">
+          <h2>Distribution and data quality</h2>
+          <p>SPI usually requires fitting a probability distribution to precipitation data. The result may be sensitive to missing data, record length, zero precipitation frequency, outliers, aggregation method, and distribution choice. Arid climates and short records require particular care because precipitation can be highly skewed and intermittent.</p><p>Data source also matters. Station observations, gridded products, reanalysis data, and satellite-derived precipitation can produce different SPI values, especially in complex terrain or data-sparse regions.</p>
+        </section>
+
+        <section id="risk">
+          <h2>SPI is not drought risk</h2>
+          <p>SPI describes drought hazard, not complete drought risk. Risk depends on exposure, vulnerability, management capacity, irrigation, crop type, water demand, and economic context. A negative SPI value may represent serious risk in one location and manageable conditions in another.</p><p>This distinction is especially important for AI interpretation. An AI system should not infer crop loss, reservoir shortage, or economic impact from SPI alone unless additional evidence is provided.</p>
+        </section>
+
+        <section id="best-practice">
+          <h2>Best-practice use</h2>
+          <p>SPI is most useful when it is reported with the dataset, period, time scale, baseline, fitting method, and threshold. For decision support, it should be combined with other indicators such as SPEI, soil moisture, EDDI, streamflow, reservoir storage, crop condition, or local impact reports.</p><div class="callout"><strong>Best practice:</strong> Use SPI as a standardized precipitation-drought indicator, then add other evidence when the question involves heat stress, agriculture, hydrology, or impacts.</div>
+        </section>
+
+        <section id="dmap-ai">
+          <h2>How DMAP-AI handles SPI limitations</h2>
+          <p>DMAP-AI keeps key metadata with each drought analysis, including location, dataset, time scale, analysis period, and drought-event statistics. This helps prevent unsupported interpretations. When AI summaries are generated, structured chart-specific information can guide the response so that SPI is interpreted as precipitation anomaly rather than complete drought impact.</p>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+          <h3>Is SPI still useful if it has limitations?</h3><p>Yes. SPI is useful because it is standardized, widely recognized, and easy to calculate from precipitation. Its limitations simply mean it should be interpreted in context.</p><h3>Can SPI detect agricultural drought?</h3><p>SPI can support agricultural drought monitoring, especially at short to seasonal time scales, but it does not directly measure soil moisture, crop stress, or crop stage.</p><h3>Should SPI be replaced by SPEI?</h3><p>Not necessarily. SPEI adds atmospheric water demand but introduces its own assumptions. In many studies, using both indices is better than relying on only one.</p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+          <ol class="references">
+                      <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+                      <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
+                      <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+                      <li>Vicente-Serrano, S. M., Beguería, S., and López-Moreno, J. I. (2010). A multiscalar drought index sensitive to global warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate.</li>
+                      <li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
+                    </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/what-is-spi/">
+              <strong>What is SPI?</strong>
+              <span>Review the definition and purpose of SPI.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/spi-time-scales/">
+              <strong>SPI Time Scales</strong>
+              <span>Understand how time scale changes SPI interpretation.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/spei-limitations/">
+              <strong>Limitations of SPEI</strong>
+              <span>Compare SPI limitations with SPEI limitations.</span>
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a>
+        <a href="#why-important">Why limitations matter</a>
+        <a href="#precipitation-only">SPI is precipitation-only</a>
+        <a href="#time-scale">Time-scale dependence</a>
+        <a href="#baseline">Baseline sensitivity</a>
+        <a href="#distribution">Distribution and data quality</a>
+        <a href="#risk">SPI is not drought risk</a>
+        <a href="#best-practice">Best-practice use</a>
+        <a href="#dmap-ai">How DMAP-AI handles this</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">References</a>
+        <a href="#related">Related articles</a>
+      </aside>
+    </div>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
+      <div class="comparison-stations-card">
+        <div class="comparison-stations-head">
+          <div>
+            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+            <p>Search and open other DMAP-AI Knowledge Center articles about drought science, indices, climate datasets, methods, and AI interpretation.</p>
+          </div>
+          <span class="station-count-pill">Documentation</span>
+        </div>
+        <div data-articles-nav data-current-slug="spi-limitations"></div>
+      </div>
+    </section>
+
+    <p class="back-to-knowledge"><a href="/knowledge/">← Back to Knowledge Center</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="/knowledge/knowledge-nav.js" defer></script>
+  <script src="/assets/global-nav.js"></script>
+</body>
+</html>

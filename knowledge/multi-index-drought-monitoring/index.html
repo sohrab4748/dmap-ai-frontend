@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Multi-Index Drought Monitoring | DMAP-AI Knowledge Center</title>
+  <meta name="description" content="Combine several drought indicators to build a more reliable drought interpretation than any single index can provide.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="canonical" href="https://droughtanalysis.com/knowledge/multi-index-drought-monitoring/">
+  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DMAP-AI">
+  <meta property="og:title" content="Multi-Index Drought Monitoring">
+  <meta property="og:description" content="A guide to multi-index drought monitoring using SPI, SPEI, PDSI, EDDI, soil moisture, streamflow, and impact information.">
+  <meta property="og:url" content="https://droughtanalysis.com/knowledge/multi-index-drought-monitoring/">
+  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Multi-Index Drought Monitoring",
+        "description": "A guide to multi-index drought monitoring using SPI, SPEI, PDSI, EDDI, soil moisture, streamflow, and impact information.",
+        "author": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AgriMetSoft LLC",
+          "url": "https://agrimetsoft.com/"
+        },
+        "datePublished": "2026-07-01",
+        "dateModified": "2026-07-01",
+        "mainEntityOfPage": "https://droughtanalysis.com/knowledge/multi-index-drought-monitoring/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://droughtanalysis.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Knowledge Center", "item": "https://droughtanalysis.com/knowledge/"},
+          {"@type": "ListItem", "position": 3, "name": "Multi-Index Drought Monitoring", "item": "https://droughtanalysis.com/knowledge/multi-index-drought-monitoring/"}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:#2563eb;
+      --blue-dark:#1d4ed8;
+      --slate-50:#f8fafc;
+      --slate-100:#f1f5f9;
+      --slate-200:#e2e8f0;
+      --slate-500:#64748b;
+      --slate-600:#475569;
+      --slate-700:#334155;
+      --slate-800:#1e293b;
+      --slate-900:#0f172a;
+      --white:#ffffff;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      color:var(--slate-900);
+      background:linear-gradient(135deg,#f0f9ff 0%,#ffffff 48%,#eff6ff 100%);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .container {
+      width:min(100% - 2rem,80rem);
+      margin-inline:auto;
+    }
+
+    .article-hero {
+      padding:3.5rem 0 1.5rem;
+    }
+
+    .article-hero-card {
+      border:1px solid #bfdbfe;
+      border-radius:1.75rem;
+      background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(239,246,255,.92));
+      box-shadow:0 18px 45px rgba(15,23,42,.08);
+      padding:2.25rem;
+    }
+
+    .breadcrumb {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      align-items:center;
+      color:var(--slate-500);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+
+    .breadcrumb a {
+      color:#1d4ed8;
+      font-weight:700;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      border-radius:999px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:.3rem .8rem;
+      font-size:.875rem;
+      font-weight:850;
+    }
+
+    h1 {
+      margin:1rem 0 0;
+      font-size:clamp(2.2rem,5vw,3.35rem);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      color:#020617;
+    }
+
+    .lead {
+      max-width:58rem;
+      margin:1rem 0 0;
+      color:var(--slate-600);
+      font-size:1.1rem;
+      line-height:1.75;
+    }
+
+    .article-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-top:1.25rem;
+      color:#475569;
+      font-size:.92rem;
+    }
+
+    .meta-pill {
+      border:1px solid #dbeafe;
+      background:#fff;
+      border-radius:999px;
+      padding:.35rem .7rem;
+      font-weight:700;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1.5rem;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:.875rem;
+      padding:.75rem 1.25rem;
+      font-weight:750;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+
+    .btn-secondary {
+      background:#ffffff;
+      color:#1e293b;
+      border-color:#e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .article-layout {
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 18rem;
+      gap:2rem;
+      align-items:start;
+      padding:1.5rem 0 3rem;
+    }
+
+    .article-main {
+      background:#fff;
+      border:1px solid var(--slate-200);
+      border-radius:1.25rem;
+      box-shadow:0 12px 30px rgba(15,23,42,.055);
+      padding:2rem;
+    }
+
+    .article-main h2 {
+      margin:2rem 0 .75rem;
+      color:#0f172a;
+      font-size:clamp(1.4rem,2.5vw,1.85rem);
+      line-height:1.2;
+      letter-spacing:-.02em;
+    }
+
+    .article-main h2:first-child {
+      margin-top:0;
+    }
+
+    .article-main h3 {
+      margin:1.5rem 0 .5rem;
+      font-size:1.15rem;
+      color:#0f172a;
+    }
+
+    .article-main p {
+      margin:.75rem 0;
+      color:#334155;
+    }
+
+    .article-main ul,
+    .article-main ol {
+      color:#334155;
+      padding-left:1.4rem;
+    }
+
+    .quick-answer {
+      border:1px solid #bfdbfe;
+      border-left:5px solid #2563eb;
+      background:#eff6ff;
+      border-radius:1rem;
+      padding:1.15rem;
+      margin-bottom:1.5rem;
+    }
+
+    .quick-answer h2 {
+      margin:0 0 .45rem;
+      font-size:1.2rem;
+    }
+
+    .definition-box {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1.1rem;
+      margin:1rem 0;
+    }
+
+    .table-wrap {
+      overflow-x:auto;
+      margin:1.25rem 0;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:680px;
+      background:#fff;
+    }
+
+    th, td {
+      text-align:left;
+      padding:.85rem;
+      border-bottom:1px solid #e2e8f0;
+      vertical-align:top;
+    }
+
+    th {
+      background:#f8fafc;
+      color:#0f172a;
+      font-size:.9rem;
+    }
+
+    tr:last-child td {
+      border-bottom:0;
+    }
+
+    .toc {
+      position:sticky;
+      top:1rem;
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:1.1rem;
+      padding:1rem;
+      box-shadow:0 10px 25px rgba(15,23,42,.055);
+    }
+
+    .toc h2 {
+      font-size:1rem;
+      margin:0 0 .75rem;
+    }
+
+    .toc a {
+      display:block;
+      color:#475569;
+      font-size:.92rem;
+      padding:.35rem 0;
+      border-bottom:1px solid #f1f5f9;
+    }
+
+    .toc a:hover {
+      color:#1d4ed8;
+    }
+
+    .callout {
+      border:1px solid #bbf7d0;
+      background:#f0fdf4;
+      border-radius:1rem;
+      padding:1rem;
+      margin:1.25rem 0;
+    }
+
+    .callout strong {
+      color:#166534;
+    }
+
+    .related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .related-card {
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:1rem;
+      padding:1rem;
+    }
+
+    .related-card strong {
+      display:block;
+      color:#0f172a;
+    }
+
+    .related-card span {
+      display:block;
+      color:#64748b;
+      font-size:.9rem;
+      margin-top:.35rem;
+    }
+
+    .back-to-knowledge {
+      width:min(100% - 2rem,80rem);
+      margin:2rem auto 0;
+    }
+
+    .back-to-knowledge a {
+      display:inline-flex;
+      align-items:center;
+      border:1px solid #e2e8f0;
+      background:#ffffff;
+      color:#1e293b;
+      border-radius:.875rem;
+      padding:.75rem 1.1rem;
+      font-weight:750;
+      text-decoration:none;
+    }
+
+    .back-to-knowledge a:hover {
+      border-color:#93c5fd;
+      background:#f8fbff;
+      color:#1d4ed8;
+    }
+
+    .site-footer {
+      border-top:1px solid var(--slate-200);
+      background:rgba(255,255,255,.72);
+      margin-top:2rem;
+    }
+
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding-block:1.5rem;
+      color:var(--slate-500);
+      font-size:.875rem;
+    }
+
+    @media(max-width:1050px) {
+      .article-layout {
+        grid-template-columns:1fr;
+      }
+
+      .toc {
+        position:static;
+        order:-1;
+      }
+    }
+
+    @media(max-width:640px) {
+      .container {
+        width:min(100% - 1rem,80rem);
+      }
+
+      .article-hero {
+        padding-top:2rem;
+      }
+
+      .article-hero-card,
+      .article-main {
+        padding:1.25rem;
+        border-radius:1.1rem;
+      }
+
+      .related-grid {
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-hero-card">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/knowledge/">Knowledge Center</a>
+            <span>›</span>
+            <span>Multi-Index Drought Monitoring</span>
+          </nav>
+
+          <p class="eyebrow">Drought Indices</p>
+          <h1>Multi-Index Drought Monitoring</h1>
+
+          <p class="lead">No single drought index fully describes drought hazard, impacts, and risk. Multi-index drought monitoring combines indicators that represent precipitation, atmospheric demand, soil moisture, vegetation, streamflow, and impacts to produce a more robust interpretation.</p>
+
+          <div class="article-meta">
+            <span class="meta-pill">Reading time: 13 min</span>
+            <span class="meta-pill">Level: Advanced</span>
+            <span class="meta-pill">Last updated: July 2026</span>
+            <span class="meta-pill">Author: AgriMetSoft LLC</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container article-layout">
+      <article class="article-main">
+        <section id="quick-answer">
+          <h2>Short answer</h2>
+          <p>Multi-index drought monitoring uses more than one drought indicator to reduce the limitations of any single metric. SPI may describe precipitation anomaly, SPEI includes atmospheric water demand, EDDI emphasizes evaporative demand, PDSI represents longer-term water balance, SSI describes streamflow, and soil-moisture or vegetation indicators provide impact-related evidence. Together they support more reliable interpretation.</p>
+        </section>
+
+        <section id="why">
+          <h2>Why one index is not enough</h2>
+          <p>Drought is complex. It can begin as a precipitation deficit, intensify through heat and evaporative demand, appear in soil moisture, affect vegetation, reduce streamflow, and eventually create socioeconomic impacts. One index cannot represent all of these processes at once.</p><p>Using a single index can be misleading when the selected index does not match the decision question. For example, SPI may identify precipitation drought but not heat-enhanced stress. Streamflow indicators may lag meteorological drought. Vegetation indices may respond after stress has already begun.</p>
+        </section>
+
+        <section id="indicator-groups">
+          <h2>Major indicator groups</h2>
+          <div class="table-wrap"><table><thead><tr><th>Indicator group</th><th>Examples</th><th>What it helps describe</th></tr></thead><tbody><tr><td>Precipitation anomaly</td><td>SPI, rainfall percentile</td><td>Meteorological drought</td></tr><tr><td>Atmospheric demand</td><td>SPEI, EDDI, PET anomaly</td><td>Heat-enhanced and evaporative stress</td></tr><tr><td>Soil water</td><td>Soil moisture percentile, root-zone moisture</td><td>Agricultural drought and plant stress</td></tr><tr><td>Hydrology</td><td>SSI, streamflow percentile, reservoir storage</td><td>Hydrological drought and water supply</td></tr><tr><td>Vegetation and impacts</td><td>NDVI anomaly, crop condition, impact reports</td><td>Observed response and damage context</td></tr></tbody></table></div>
+        </section>
+
+        <section id="integration">
+          <h2>How to combine indices</h2>
+          <p>There are several ways to combine drought indicators. A simple approach is a dashboard where each index is shown separately and interpreted by experts. Another approach is a rule-based classification system that weights indicators by application. More advanced methods may use statistical models, machine learning, or multivariate drought indices.</p><p>The best approach depends on the goal. Research analysis may require transparent separate indicators. Operational early warning may need a simple combined status. Agricultural decision support may prioritize soil moisture, crop stage, precipitation, forecast, and evaporative demand.</p>
+        </section>
+
+        <section id="conflicts">
+          <h2>When indicators disagree</h2>
+          <p>Disagreement among indices is not automatically an error. It can reveal different drought processes. SPI may be near normal while EDDI indicates high evaporative demand. Streamflow may remain low after rainfall improves. Vegetation may recover slowly after meteorological drought ends.</p><p>Instead of forcing all indicators into one answer, analysts should ask why they differ. The explanation often provides more insight than a single drought category.</p>
+        </section>
+
+        <section id="decision-support">
+          <h2>Applications in decision support</h2>
+          <p>Multi-index monitoring supports early warning, agriculture, water resources, ecosystem management, and drought communication. It helps reduce false confidence and allows users to match indicators to the decision being made.</p><p>For example, an irrigation planner may need precipitation, evapotranspiration, soil moisture, and crop stage. A reservoir manager may need long-term precipitation, snowpack, inflow, storage, and demand. A drought report may need standardized indices plus local impacts.</p>
+        </section>
+
+        <section id="ai">
+          <h2>AI interpretation and multi-index evidence</h2>
+          <p>AI summaries are more reliable when they are based on structured evidence from multiple indicators. Instead of asking an AI to infer drought conditions from one chart, a structured prompt can provide index values, time scale, event statistics, dataset, and indicator agreement or disagreement.</p><p>This reduces hallucination and helps the AI explain uncertainty, rather than producing a single unsupported conclusion.</p>
+        </section>
+
+        <section id="dmap-ai">
+          <h2>How DMAP-AI can support multi-index monitoring</h2>
+          <p>DMAP-AI currently provides structured drought outputs such as index time series, drought events, severity, duration, and wavelet diagnostics. As additional indices and datasets are added, the same structured-output approach can support multi-index interpretation.</p><p>The key design principle is transparency: users should see which indicators support the conclusion and which indicators disagree.</p>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+          <h3>Does multi-index monitoring mean averaging several indices?</h3><p>Not necessarily. Averaging can hide important differences. Many workflows keep indicators separate and interpret them together.</p><h3>Which drought index is best?</h3><p>There is no universal best index. The best indicator depends on whether the question is meteorological, agricultural, hydrological, ecological, or socioeconomic.</p><h3>Can AI replace expert drought interpretation?</h3><p>AI can help summarize evidence, but expert review remains important, especially when indicators disagree or decisions are high-stakes.</p>
+        </section>
+
+        <section id="references">
+          <h2>Selected references</h2>
+          <ol class="references">
+                      <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+                      <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
+                      <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+                      <li>Vicente-Serrano, S. M., Beguería, S., and López-Moreno, J. I. (2010). A multiscalar drought index sensitive to global warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate.</li>
+                      <li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
+                    </ol>
+        </section>
+
+        <section id="related">
+          <h2>Related articles</h2>
+          <div class="related-grid">
+            <a class="related-card" href="/knowledge/what-is-spi/">
+              <strong>What is SPI?</strong>
+              <span>Understand a core precipitation-based drought index.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/what-is-spei/">
+              <strong>What is SPEI?</strong>
+              <span>Learn how atmospheric water demand is included.</span>
+            </a>
+
+            <a class="related-card" href="/knowledge/drought-risk-vs-hazard/">
+              <strong>Drought Risk vs Drought Hazard</strong>
+              <span>Separate physical indicators from real-world risk.</span>
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <a href="#quick-answer">Short answer</a>
+        <a href="#why">Why one index is not enough</a>
+        <a href="#indicator-groups">Indicator groups</a>
+        <a href="#integration">How to combine indices</a>
+        <a href="#conflicts">When indicators disagree</a>
+        <a href="#decision-support">Decision support</a>
+        <a href="#ai">AI interpretation</a>
+        <a href="#dmap-ai">How DMAP-AI can support this</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">References</a>
+        <a href="#related">Related articles</a>
+      </aside>
+    </div>
+
+    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
+      <div class="comparison-stations-card">
+        <div class="comparison-stations-head">
+          <div>
+            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+            <p>Search and open other DMAP-AI Knowledge Center articles about drought science, indices, climate datasets, methods, and AI interpretation.</p>
+          </div>
+          <span class="station-count-pill">Documentation</span>
+        </div>
+        <div data-articles-nav data-current-slug="multi-index-drought-monitoring"></div>
+      </div>
+    </section>
+
+    <p class="back-to-knowledge"><a href="/knowledge/">← Back to Knowledge Center</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="/knowledge/knowledge-nav.js" defer></script>
+  <script src="/assets/global-nav.js"></script>
+</body>
+</html>
