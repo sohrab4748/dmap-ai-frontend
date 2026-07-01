@@ -34,11 +34,13 @@ document.addEventListener("DOMContentLoaded", function () {
       <details class="dmap-menu-details dmap-menu-details-active">
         <summary>Learn</summary>
         <div class="dmap-dropdown-panel">
-          <a href="/tutorials"><strong>Tutorials</strong><span>DMAP-AI learning pages</span></a>
-          <a href="/spi_tutorial"><strong>SPI Tutorial</strong><span>Point-based SPI video workflow</span></a>
+          <a href="https://droughtanalysis.com/knowledge/"><strong>Knowledge Center</strong><span>Drought science, data, methods, and AI guidance</span></a>
+          <a href="https://droughtanalysis.com/tutorials"><strong>Tutorials</strong><span>DMAP-AI learning pages</span></a>
+          <a href="https://droughtanalysis.com/spi_tutorial"><strong>SPI Tutorial</strong><span>Point-based SPI video workflow</span></a>
           <a href="/sv_tutorial"><strong>Research Version Guide</strong><span>Tables, charts, severity, and wavelet outputs</span></a>
-          <a href="/formulas"><strong>Methods &amp; Formulas</strong><span>SPI thresholds and drought metrics</span></a>
-          <a href="/method-comparison/"><strong>AI Interpretation Study</strong><span>Chart-only vs structured AI outputs</span></a>
+          <a href="https://droughtanalysis.com/formulas"><strong>Methods &amp; Formulas</strong><span>SPI thresholds and drought metrics</span></a>
+          <a href="https://droughtanalysis.com/method-comparison/"><strong>AI Interpretation Study</strong><span>Chart-only vs structured AI outputs</span></a>
+          <a href="https://droughtanalysis.com/gpt"><strong>DMAP-AI Custom GPT</strong><span>AI assistant for DMAP-AI workflows</span></a>
         </div>
       </details>
 
@@ -47,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="dmap-dropdown-panel">
           <a href="/DMAP_AI_App"><strong>Launch Research Version</strong><span>Open the free SPI analysis tool</span></a>
           <a href="/farmer-version"><strong>Farmer Version</strong><span>Future crop-aware decision support</span></a>
-          <a href="/gpt"><strong>GPT App</strong><span>Open GPT App</span></a>
         </div>
       </details>
 
