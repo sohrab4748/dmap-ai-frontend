@@ -192,6 +192,29 @@
         "meteorological-drought",
         "types-of-drought"
       ]
+    },
+    {
+      "id": 8,
+      "slug": "spi-interpretation",
+      "title": "SPI Interpretation",
+      "category": "Drought Indices",
+      "summary": "Learn how to interpret SPI values, drought categories, time scales, event duration, severity, magnitude, and common mistakes in SPI-based drought assessment.",
+      "readingTime": "14 min",
+      "difficulty": "Intermediate",
+      "featured": true,
+      "lastUpdated": "2026-07-01",
+      "keywords": [
+        "SPI interpretation",
+        "SPI categories",
+        "drought severity",
+        "drought duration",
+        "drought magnitude"
+      ],
+      "related": [
+        "what-is-spi",
+        "how-spi-is-calculated",
+        "meteorological-drought"
+      ]
     }
   ]
 }
