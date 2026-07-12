@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>DMAP-AI MCP Analytics</title>
+  <link rel="icon" href="/assets/favicon-32.png">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="/assets/mcp-analytics.css">
+  <script src="/auth0-spa-js.production.js" defer></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
+  <script src="/assets/global-nav.js" defer></script>
+  <script src="/assets/mcp-analytics.js" defer></script>
+</head>
+<body>
+  <main class="analytics-shell" id="mainContent">
+    <section id="statusPanel" class="state-card" aria-live="polite">
+      <h1>DMAP-AI MCP Analytics</h1>
+      <p id="statusMessage">Checking authentication…</p>
+      <button id="loginButton" class="primary hidden" type="button">Sign in with Google</button>
+    </section>
+
+    <div id="dashboard" class="hidden">
+      <header class="page-heading">
+        <div><p class="eyebrow">Private owner dashboard</p><h1>DMAP-AI MCP Analytics</h1></div>
+        <button id="logoutButton" class="secondary" type="button">Sign out</button>
+      </header>
+
+      <section class="toolbar card" aria-label="Analytics controls">
+        <div class="filter-group" role="group" aria-label="Time window">
+          <button class="filter active" data-window="live" type="button">Live</button>
+          <button class="filter" data-window="today" type="button">Today</button>
+          <button class="filter" data-window="7d" type="button">7 Days</button>
+          <button class="filter" data-window="30d" type="button">30 Days</button>
+          <button class="filter" data-window="custom" type="button">Custom</button>
+        </div>
+        <div id="customRange" class="custom-range hidden">
+          <label>Start <input id="customStart" type="datetime-local"></label>
+          <label>End <input id="customEnd" type="datetime-local"></label>
+          <button id="applyCustom" class="secondary" type="button">Apply</button>
+        </div>
+        <div class="refresh-group">
+          <span id="lastRefreshed">Not refreshed</span>
+          <button id="refreshButton" class="primary" type="button">Refresh now</button>
+          <button id="exportButton" class="secondary" type="button">Export CSV</button>
+        </div>
+      </section>
+
+      <div id="alert" class="alert hidden" role="alert"></div>
+      <section id="summaryCards" class="summary-grid" aria-label="Summary metrics"></section>
+
+      <section class="card section-card">
+        <h2>Locations Analyzed by DMAP-AI</h2>
+        <p class="privacy-note">Map markers show locations analyzed through DMAP-AI, not users’ physical locations.</p>
+        <div id="analyticsMap" aria-label="Map of locations analyzed through DMAP-AI"></div>
+        <p id="mapEmpty" class="empty hidden">No analyzed locations in this period.</p>
+      </section>
+
+      <div class="two-column">
+        <section class="card section-card"><h2>Activity over time</h2><div id="timelineChart" class="chart" role="img" aria-label="Tool calls over time"></div></section>
+        <section class="card section-card"><h2>Tool usage</h2><div class="table-wrap"><table><thead><tr><th>Tool</th><th>Calls</th><th>Success</th><th>Failed</th><th>Avg. duration</th></tr></thead><tbody id="toolsBody"></tbody></table></div></section>
+      </div>
+
+      <section class="card section-card"><h2>Recent analyses</h2><div class="table-wrap"><table><thead><tr><th>Time</th><th>Tool</th><th>Analyzed coordinates</th><th>Status</th><th>Duration</th><th>Traffic</th></tr></thead><tbody id="recentBody"></tbody></table></div></section>
+      <section class="card section-card"><h2>Errors</h2><div class="table-wrap"><table><thead><tr><th>Time</th><th>Tool</th><th>Safe error type</th><th>Duration</th></tr></thead><tbody id="errorsBody"></tbody></table></div></section>
+    </div>
+  </main>
+</body>
+</html>
