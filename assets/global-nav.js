@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <a href="https://droughtanalysis.com/formulas"><strong>Methods &amp; Formulas</strong><span>SPI thresholds and drought metrics</span></a>
           <a href="https://droughtanalysis.com/method-comparison/"><strong>AI Interpretation Study</strong><span>Chart-only vs structured AI outputs</span></a>
           <a href="https://droughtanalysis.com/gpt"><strong>DMAP-AI Custom GPT</strong><span>AI assistant for DMAP-AI workflows</span></a>
+          <a href="https://droughtanalysis.com/mcp-server"><strong>MCP Server</strong><span>Drought analysis tools for Claude and ChatGPT</span></a>
         </div>
       </details>
 

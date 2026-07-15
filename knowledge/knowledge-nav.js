@@ -211,6 +211,11 @@
         addBrowserStyles();
         renderTopicCards(data);
         roots.forEach(root => renderArticleBrowser(root, data));
+
+        // The static article index (injected at build time for non-JS crawlers)
+        // is replaced by the interactive browser once JS has rendered.
+        var staticIndex = document.getElementById('static-article-index');
+        if (staticIndex) staticIndex.remove();
       })
       .catch(error => {
         console.error(error);
