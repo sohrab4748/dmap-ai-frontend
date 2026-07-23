@@ -40,8 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
           <a href="/sv_tutorial"><strong>Research Version Guide</strong><span>Tables, charts, severity, and wavelet outputs</span></a>
           <a href="https://droughtanalysis.com/formulas"><strong>Methods &amp; Formulas</strong><span>SPI thresholds and drought metrics</span></a>
           <a href="https://droughtanalysis.com/method-comparison/"><strong>AI Interpretation Study</strong><span>Chart-only vs structured AI outputs</span></a>
-          <a href="https://droughtanalysis.com/gpt"><strong>DMAP-AI Custom GPT</strong><span>AI assistant for DMAP-AI workflows</span></a>
-          <a href="https://droughtanalysis.com/mcp-server"><strong>MCP Server</strong><span>Drought analysis tools for Claude and ChatGPT</span></a>
         </div>
       </details>
 
@@ -49,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <summary>Platform</summary>
         <div class="dmap-dropdown-panel">
           <a href="/DMAP_AI_App"><strong>Launch Research Version</strong><span>Open the free SPI analysis tool</span></a>
+          <a href="/gpt"><strong>DMAP-AI Custom GPT</strong><span>Run SPI drought analysis inside ChatGPT</span></a>
+          <a href="/mcp-server"><strong>MCP Server</strong><span>Drought analysis tools for Claude and ChatGPT</span></a>
           <a href="/farmer-version"><strong>Farmer Version</strong><span>Future crop-aware decision support</span></a>
         </div>
       </details>
