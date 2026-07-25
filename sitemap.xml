@@ -1,40 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://droughtanalysis.com/</loc>
     <lastmod>2026-05-05</lastmod>
-  <changefreq>monthly</changefreq>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://droughtanalysis.com/DMAP_AI_App</loc>
     <lastmod>2026-05-05</lastmod>
-  <changefreq>monthly</changefreq>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://droughtanalysis.com/sv_tutorial</loc>
     <lastmod>2026-05-05</lastmod>
-  <changefreq>monthly</changefreq>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://droughtanalysis.com/tutorials</loc>
     <lastmod>2026-05-05</lastmod>
-  <changefreq>monthly</changefreq>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://droughtanalysis.com/formulas</loc>
     <lastmod>2026-05-05</lastmod>
-  <changefreq>monthly</changefreq>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://droughtanalysis.com/farmer-version</loc>
     <lastmod>2026-05-05</lastmod>
-  <changefreq>monthly</changefreq>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
-  <loc>https://droughtanalysis.com/spi_tutorial</loc>
-  <lastmod>2026-05-13</lastmod>
-  <changefreq>monthly</changefreq>
-</url>
+    <loc>https://droughtanalysis.com/spi_tutorial</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
   <url>
     <loc>https://droughtanalysis.com/gpt</loc>
     <lastmod>2026-06-05</lastmod>
@@ -47,7 +47,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
-
   <url>
     <loc>https://droughtanalysis.com/method-comparison/</loc>
     <lastmod>2026-05-29</lastmod>
@@ -679,6 +678,24 @@
   <url>
     <loc>https://droughtanalysis.com/knowledge/india-drought-case-study/</loc>
     <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://droughtanalysis.com/knowledge/drought-projections-cmip6/</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://droughtanalysis.com/knowledge/drought-datasets/</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://droughtanalysis.com/knowledge/drought-analytics/</loc>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
