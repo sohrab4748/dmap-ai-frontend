@@ -135,6 +135,23 @@ a.station-card:hover {
   color: #64748b;
   font-size: .9rem;
 }
+.tool-availability-box {
+  border: 1px solid #bfdbfe;
+  border-left: 5px solid #2563eb;
+  background: #eff6ff;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1.25rem 0;
+  color: #334155;
+}
+.tool-availability-box strong {
+  color: #1d4ed8;
+}
+.tool-availability-box a {
+  color: #1d4ed8;
+  font-weight: 750;
+  text-decoration: underline;
+}
 @media (max-width: 700px) {
   .comparison-stations-section { padding: 0 12px; }
   .comparison-stations-card { padding: 18px; }
