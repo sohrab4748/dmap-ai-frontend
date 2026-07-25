@@ -2511,6 +2511,240 @@
                                          "drought-severity",
                                          "structured-ai-requests"
                                      ]
+                     },
+                     {
+                         "id":  104,
+                         "slug":  "kbdi-drought-index",
+                         "title":  "KBDI Drought Index",
+                         "category":  "drought-indices",
+                         "summary":  "Learn how the Keetch-Byram Drought Index supports fire-weather and drought monitoring, including inputs, interpretation, strengths, limitations, and DMAP-AI context.",
+                         "readingTime":  "12 min",
+                         "difficulty":  "Intermediate",
+                         "featured":  false,
+                         "status":  "Available",
+                         "url":  "/knowledge/kbdi-drought-index/",
+                         "lastUpdated":  "2026-07-25",
+                         "keywords":  [
+                                          "kbdi",
+                                          "drought",
+                                          "index"
+                                      ],
+                         "related":  [
+                                         "what-is-spi",
+                                         "drought-datasets",
+                                         "remote-sensing-drought-indices"
+                                     ]
+                     },
+                     {
+                         "id":  105,
+                         "slug":  "palmer-z-index",
+                         "title":  "Palmer Z-Index for Drought Monitoring",
+                         "category":  "drought-indices",
+                         "summary":  "Understand the Palmer Z-Index, how it differs from PDSI, and how short-term moisture anomalies can support drought monitoring.",
+                         "readingTime":  "11 min",
+                         "difficulty":  "Intermediate",
+                         "featured":  false,
+                         "status":  "Available",
+                         "url":  "/knowledge/palmer-z-index/",
+                         "lastUpdated":  "2026-07-25",
+                         "keywords":  [
+                                          "palmer",
+                                          "z-index",
+                                          "drought",
+                                          "monitoring"
+                                      ],
+                         "related":  [
+                                         "what-is-pdsi",
+                                         "drought-category-tables",
+                                         "drought-datasets"
+                                     ]
+                     },
+                     {
+                         "id":  106,
+                         "slug":  "standardized-runoff-index",
+                         "title":  "Standardized Runoff Index (SRI)",
+                         "category":  "drought-indices",
+                         "summary":  "Learn how the Standardized Runoff Index uses runoff anomalies to assess hydrological drought and water-resource stress.",
+                         "readingTime":  "12 min",
+                         "difficulty":  "Intermediate",
+                         "featured":  false,
+                         "status":  "Available",
+                         "url":  "/knowledge/standardized-runoff-index/",
+                         "lastUpdated":  "2026-07-25",
+                         "keywords":  [
+                                          "standardized",
+                                          "runoff",
+                                          "index",
+                                          "(sri)"
+                                      ],
+                         "related":  [
+                                         "what-is-ssi",
+                                         "hydrological-drought",
+                                         "streamflow-data"
+                                     ]
+                     },
+                     {
+                         "id":  107,
+                         "slug":  "vegetation-condition-index",
+                         "title":  "Vegetation Condition Index (VCI)",
+                         "category":  "drought-indices",
+                         "summary":  "Understand the Vegetation Condition Index and how satellite vegetation anomalies can support agricultural and ecological drought monitoring.",
+                         "readingTime":  "11 min",
+                         "difficulty":  "Intermediate",
+                         "featured":  false,
+                         "status":  "Available",
+                         "url":  "/knowledge/vegetation-condition-index/",
+                         "lastUpdated":  "2026-07-25",
+                         "keywords":  [
+                                          "vegetation",
+                                          "condition",
+                                          "index",
+                                          "(vci)"
+                                      ],
+                         "related":  [
+                                         "ndvi-for-drought",
+                                         "agricultural-drought",
+                                         "remote-sensing-drought-indices"
+                                     ]
+                     },
+                     {
+                         "id":  108,
+                         "slug":  "ndvi-for-drought",
+                         "title":  "NDVI for Drought Monitoring",
+                         "category":  "climate-data",
+                         "summary":  "Learn how NDVI is used in drought monitoring, what it can and cannot show, and why vegetation indices should be interpreted with climate context.",
+                         "readingTime":  "11 min",
+                         "difficulty":  "Beginner",
+                         "featured":  false,
+                         "status":  "Available",
+                         "url":  "/knowledge/ndvi-for-drought/",
+                         "lastUpdated":  "2026-07-25",
+                         "keywords":  [
+                                          "ndvi",
+                                          "drought",
+                                          "monitoring"
+                                      ],
+                         "related":  [
+                                         "vegetation-condition-index",
+                                         "remote-sensing-drought-indices",
+                                         "crop-growth-stages-drought"
+                                     ]
+                     },
+                     {
+                         "id":  109,
+                         "slug":  "remote-sensing-drought-indices",
+                         "title":  "Remote Sensing Drought Indices",
+                         "category":  "drought-indices",
+                         "summary":  "Compare remote-sensing drought indices based on vegetation, temperature, soil moisture, evapotranspiration, and combined satellite evidence.",
+                         "readingTime":  "13 min",
+                         "difficulty":  "Intermediate",
+                         "featured":  false,
+                         "status":  "Available",
+                         "url":  "/knowledge/remote-sensing-drought-indices/",
+                         "lastUpdated":  "2026-07-25",
+                         "keywords":  [
+                                          "remote",
+                                          "sensing",
+                                          "drought",
+                                          "indices"
+                                      ],
+                         "related":  [
+                                         "ndvi-for-drought",
+                                         "vegetation-condition-index",
+                                         "soil-moisture-data"
+                                     ]
+                     },
+                     {
+                         "id":  110,
+                         "slug":  "groundwater-drought",
+                         "title":  "Groundwater Drought",
+                         "category":  "drought-basics",
+                         "summary":  "Learn what groundwater drought is, why it often lags meteorological drought, and how groundwater indicators support water-resource planning.",
+                         "readingTime":  "12 min",
+                         "difficulty":  "Intermediate",
+                         "featured":  false,
+                         "status":  "Available",
+                         "url":  "/knowledge/groundwater-drought/",
+                         "lastUpdated":  "2026-07-25",
+                         "keywords":  [
+                                          "groundwater",
+                                          "drought"
+                                      ],
+                         "related":  [
+                                         "hydrological-drought",
+                                         "streamflow-data",
+                                         "drought-recovery"
+                                     ]
+                     },
+                     {
+                         "id":  111,
+                         "slug":  "reservoir-drought-monitoring",
+                         "title":  "Reservoir Drought Monitoring",
+                         "category":  "drought-basics",
+                         "summary":  "Understand how reservoir levels, inflow, storage, and demand are used to monitor drought impacts on water supply.",
+                         "readingTime":  "11 min",
+                         "difficulty":  "Intermediate",
+                         "featured":  false,
+                         "status":  "Available",
+                         "url":  "/knowledge/reservoir-drought-monitoring/",
+                         "lastUpdated":  "2026-07-25",
+                         "keywords":  [
+                                          "reservoir",
+                                          "drought",
+                                          "monitoring"
+                                      ],
+                         "related":  [
+                                         "hydrological-drought",
+                                         "drought-duration",
+                                         "return-periods-in-drought"
+                                     ]
+                     },
+                     {
+                         "id":  112,
+                         "slug":  "drought-early-warning-systems",
+                         "title":  "Drought Early Warning Systems",
+                         "category":  "analysis-methods",
+                         "summary":  "Learn how drought early warning systems combine monitoring, forecasts, triggers, impacts, communication, and decision support.",
+                         "readingTime":  "13 min",
+                         "difficulty":  "Intermediate",
+                         "featured":  false,
+                         "status":  "Available",
+                         "url":  "/knowledge/drought-early-warning-systems/",
+                         "lastUpdated":  "2026-07-25",
+                         "keywords":  [
+                                          "drought",
+                                          "early",
+                                          "warning",
+                                          "systems"
+                                      ],
+                         "related":  [
+                                         "flash-drought",
+                                         "drought-event-detection",
+                                         "drought-analytics"
+                                     ]
+                     },
+                     {
+                         "id":  113,
+                         "slug":  "drought-validation-benchmarking",
+                         "title":  "Drought Validation and Benchmarking",
+                         "category":  "analysis-methods",
+                         "summary":  "Learn how drought indicators and models are validated against observations, impacts, benchmarks, and independent datasets.",
+                         "readingTime":  "12 min",
+                         "difficulty":  "Advanced",
+                         "featured":  false,
+                         "status":  "Available",
+                         "url":  "/knowledge/drought-validation-benchmarking/",
+                         "lastUpdated":  "2026-07-25",
+                         "keywords":  [
+                                          "drought",
+                                          "validation",
+                                          "benchmarking"
+                                      ],
+                         "related":  [
+                                         "drought-analytics",
+                                         "uncertainty-drought-analysis",
+                                         "station-vs-gridded-data"
+                                     ]
                      }
                  ]
 }
