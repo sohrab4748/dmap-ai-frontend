@@ -1,27 +1,26 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>DMAP-AI MCP Server | SPI Drought Analysis Tools for Claude &amp; ChatGPT</title>
-<meta name="description" content="Connect the DMAP-AI MCP server to Claude or ChatGPT and run SPI drought analysis, drought events, and wavelet diagnostics from NASA POWER or ERA5-Land data.">
-<meta name="author" content="AgriMetSoft LLC">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#2563eb">
-<link rel="canonical" href="https://droughtanalysis.com/mcp-server">
-
-<meta property="og:site_name" content="DMAP-AI">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://droughtanalysis.com/mcp-server">
-<meta property="og:title" content="DMAP-AI MCP Server | SPI Drought Analysis Tools for Claude &amp; ChatGPT">
-<meta property="og:description" content="A Model Context Protocol (MCP) server for scientific drought analysis: SPI tables, drought events, wavelet scalograms, and drought periodicity inside AI assistants.">
-<meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
-<meta property="og:image:alt" content="DMAP-AI drought monitoring and SPI analysis platform preview image">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="DMAP-AI MCP Server | SPI Drought Analysis for Claude &amp; ChatGPT">
-<meta name="twitter:description" content="Run SPI drought analysis, drought events, and wavelet diagnostics inside Claude or ChatGPT via the DMAP-AI MCP server.">
-<meta name="twitter:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
-
+<meta content="Connect the DMAP-AI MCP server to Claude or ChatGPT and run SPI drought analysis, drought events, and wavelet diagnostics from NASA POWER or ERA5-Land data." name="description"/>
+<meta content="AgriMetSoft LLC" name="author"/>
+<meta content="index, follow" name="robots"/>
+<meta content="#2563eb" name="theme-color"/>
+<link href="https://droughtanalysis.com/mcp-server" rel="canonical"/>
+<meta content="DMAP-AI" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="https://droughtanalysis.com/mcp-server" property="og:url"/>
+<meta content="DMAP-AI MCP Server | SPI Drought Analysis Tools for Claude &amp; ChatGPT" property="og:title"/>
+<meta content="A Model Context Protocol (MCP) server for scientific drought analysis: SPI tables, drought events, wavelet scalograms, and drought periodicity inside AI assistants." property="og:description"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" property="og:image"/>
+<meta content="DMAP-AI drought monitoring and SPI analysis platform preview image" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="DMAP-AI MCP Server | SPI Drought Analysis for Claude &amp; ChatGPT" name="twitter:title"/>
+<meta content="Run SPI drought analysis, drought events, and wavelet diagnostics inside Claude or ChatGPT via the DMAP-AI MCP server." name="twitter:description"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" name="twitter:image"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -90,7 +89,6 @@
   ]
 }
 </script>
-
 <style>
   :root { --blue:#2563eb; --blue-dark:#1e40af; --ink:#0f172a; --muted:#475569; --bg:#f8fafc; --card:#ffffff; --border:#e2e8f0; }
   * { box-sizing:border-box; }
@@ -127,31 +125,28 @@
 </style>
 </head>
 <body>
-
 <header class="site">
-  <div class="wrap">
-    <nav class="crumbs"><a href="/">Home</a> › MCP Server</nav>
-    <span class="badge">Model Context Protocol · Free Research Version</span>
-    <h1>DMAP-AI MCP Server: SPI drought analysis inside Claude and ChatGPT</h1>
-    <p class="lead">
+<div class="wrap">
+<nav class="crumbs"><a href="/">Home</a> › MCP Server</nav>
+<span class="badge">Model Context Protocol · Free Research Version</span>
+<h1>DMAP-AI MCP Server: SPI drought analysis inside Claude and ChatGPT</h1>
+<p class="lead">
       The <strong>DMAP-AI MCP server</strong>, built by <strong>AgriMetSoft LLC</strong>, is a
       <a href="https://modelcontextprotocol.io/" style="color:#fff">Model Context Protocol</a> server for
-      <strong>historical meteorological drought analysis</strong>. Connect it to an AI assistant and ask for
-      SPI tables, drought events, wavelet scalograms, or drought periodicity for any point location,
-      computed from <strong>NASA POWER</strong> or <strong>ERA5-Land/CDS</strong> precipitation data.
+      <strong>historical <a href="/knowledge/meteorological-drought/">meteorological drought</a> analysis</strong>. Connect it to an AI assistant and ask for
+      SPI tables, drought events, wavelet scalograms, or <a href="/knowledge/drought-periodicity/">drought periodicity</a> for any point location,
+      computed from <strong><a href="/knowledge/nasa-power-for-drought/">NASA POWER</a></strong> or <strong>ERA5-Land/CDS</strong> precipitation data.
     </p>
-    <div class="cta">
-      <a class="btn btn-light" href="#connect">Connect to Claude or ChatGPT</a>
-      <a class="btn btn-ghost" href="#tools">See the 4 tools</a>
-    </div>
-  </div>
+<div class="cta">
+<a class="btn btn-light" href="#connect">Connect to Claude or ChatGPT</a>
+<a class="btn btn-ghost" href="#tools">See the 4 tools</a>
+</div>
+</div>
 </header>
-
 <main class="wrap">
-
 <section id="what">
-  <h2>What it does</h2>
-  <p>
+<h2>What it does</h2>
+<p>
     Instead of answering drought questions from general knowledge, an AI assistant connected to this server
     calls real scientific tools on the DMAP-AI backend. Each tool downloads historical precipitation for the
     requested coordinates, computes the <a href="/knowledge/what-is-spi/">Standardized Precipitation Index (SPI)</a>,
@@ -159,146 +154,130 @@
     <a href="/DMAP_AI_App">DMAP-AI Research Version web app</a>.
   </p>
 </section>
-
 <section id="tools">
-  <h2>Available tools</h2>
-
-  <div class="card">
-    <h3>1. <code>run_spi_table</code> — SPI time series and categories</h3>
-    <p>Returns a historical SPI table (precipitation totals, SPI values, and drought/wetness categories) for a
+<h2>Available tools</h2>
+<div class="card">
+<h3>1. <code>run_spi_table</code> — SPI time series and categories</h3>
+<p>Returns a historical SPI table (precipitation totals, SPI values, and drought/wetness categories) for a
        selected point and period. Supports Classic SPI thresholds, USDM-style labels, percentile bands, and
        k-means category schemes.</p>
-    <table>
-      <tr><th>Parameter</th><th>Required</th><th>Default</th><th>Notes</th></tr>
-      <tr><td><code>latitude</code>, <code>longitude</code></td><td>Yes</td><td>—</td><td>Point location (decimal degrees)</td></tr>
-      <tr><td><code>data_source</code></td><td>No</td><td><code>nasa_power</code></td><td>or <code>era5</code> (ERA5-Land/CDS)</td></tr>
-      <tr><td><code>start_date</code>, <code>end_date</code></td><td>No</td><td>1981-01-01 → 2024-12-31</td><td>NASA POWER supports 1981 onward</td></tr>
-      <tr><td><code>baseline_start</code>, <code>baseline_end</code></td><td>No</td><td>1981 → 2024</td><td>Baseline climatology years</td></tr>
-      <tr><td><code>spi_scale</code></td><td>No</td><td>12</td><td>SPI accumulation scale</td></tr>
-      <tr><td><code>step</code>, <code>yearly_method</code></td><td>No</td><td><code>yearly</code>, <code>jan_dec_totals</code></td><td>Temporal aggregation</td></tr>
-      <tr><td><code>category_scheme</code></td><td>No</td><td><code>classic_spi</code></td><td>Category labeling method</td></tr>
-    </table>
-  </div>
-
-  <div class="card">
-    <h3>2. <code>run_drought_severity_events</code> — drought event detection</h3>
-    <p>Identifies SPI-threshold drought events and returns the event table: start, end, duration,
+<table>
+<tr><th>Parameter</th><th>Required</th><th>Default</th><th>Notes</th></tr>
+<tr><td><code>latitude</code>, <code>longitude</code></td><td>Yes</td><td>—</td><td>Point location (decimal degrees)</td></tr>
+<tr><td><code>data_source</code></td><td>No</td><td><code>nasa_power</code></td><td>or <code>era5</code> (ERA5-Land/CDS)</td></tr>
+<tr><td><code>start_date</code>, <code>end_date</code></td><td>No</td><td>1981-01-01 → 2024-12-31</td><td>NASA POWER supports 1981 onward</td></tr>
+<tr><td><code>baseline_start</code>, <code>baseline_end</code></td><td>No</td><td>1981 → 2024</td><td>Baseline climatology years</td></tr>
+<tr><td><code>spi_scale</code></td><td>No</td><td>12</td><td>SPI accumulation scale</td></tr>
+<tr><td><code>step</code>, <code>yearly_method</code></td><td>No</td><td><code>yearly</code>, <code>jan_dec_totals</code></td><td>Temporal aggregation</td></tr>
+<tr><td><code>category_scheme</code></td><td>No</td><td><code>classic_spi</code></td><td>Category labeling method</td></tr>
+</table>
+</div>
+<div class="card">
+<h3>2. <code>run_drought_severity_events</code> — <a href="/knowledge/drought-event-detection/">drought event detection</a></h3>
+<p>Identifies SPI-threshold drought events and returns the event table: start, end, duration,
        minimum SPI, and magnitude for each event.</p>
-    <table>
-      <tr><th>Parameter</th><th>Required</th><th>Default</th><th>Notes</th></tr>
-      <tr><td><code>latitude</code>, <code>longitude</code></td><td>Yes</td><td>—</td><td>Point location</td></tr>
-      <tr><td><code>severity_threshold</code></td><td>No</td><td><code>-0.99</code></td><td>SPI values at or below this are drought steps</td></tr>
-      <tr><td colspan="4" class="muted">Plus the same data source, dates, baseline, scale, and aggregation parameters as <code>run_spi_table</code>.</td></tr>
-    </table>
-  </div>
-
-  <div class="card">
-    <h3>3. <code>run_wavelet_scalogram</code> — time-localized drought variability</h3>
-    <p>Returns a compact wavelet scalogram (power across time and period) showing when SPI variability was
+<table>
+<tr><th>Parameter</th><th>Required</th><th>Default</th><th>Notes</th></tr>
+<tr><td><code>latitude</code>, <code>longitude</code></td><td>Yes</td><td>—</td><td>Point location</td></tr>
+<tr><td><code>severity_threshold</code></td><td>No</td><td><code>-0.99</code></td><td>SPI values at or below this are drought steps</td></tr>
+<tr><td class="muted" colspan="4">Plus the same data source, dates, baseline, scale, and aggregation parameters as <code>run_spi_table</code>.</td></tr>
+</table>
+</div>
+<div class="card">
+<h3>3. <code>run_wavelet_scalogram</code> — time-localized drought variability</h3>
+<p>Returns a compact <a href="/knowledge/wavelet-scalogram/">wavelet scalogram</a> (power across time and period) showing when SPI variability was
        strong and at which time scales. Useful for spotting multi-year variability episodes in the record.</p>
-    <table>
-      <tr><th>Parameter</th><th>Required</th><th>Default</th><th>Notes</th></tr>
-      <tr><td><code>latitude</code>, <code>longitude</code></td><td>Yes</td><td>—</td><td>Point location</td></tr>
-      <tr><td><code>max_periods</code>, <code>max_times</code></td><td>No</td><td>24, 60</td><td>Downsampling caps for the returned matrix</td></tr>
-      <tr><td colspan="4" class="muted">Plus the shared data source, dates, baseline, scale, and aggregation parameters.</td></tr>
-    </table>
-  </div>
-
-  <div class="card">
-    <h3>4. <code>run_drought_periodicity_analysis</code> — dominant drought periodicities</h3>
-    <p>Returns the global wavelet spectrum and ranked periodicity bands across the complete historical record
+<table>
+<tr><th>Parameter</th><th>Required</th><th>Default</th><th>Notes</th></tr>
+<tr><td><code>latitude</code>, <code>longitude</code></td><td>Yes</td><td>—</td><td>Point location</td></tr>
+<tr><td><code>max_periods</code>, <code>max_times</code></td><td>No</td><td>24, 60</td><td>Downsampling caps for the returned matrix</td></tr>
+<tr><td class="muted" colspan="4">Plus the shared data source, dates, baseline, scale, and aggregation parameters.</td></tr>
+</table>
+</div>
+<div class="card">
+<h3>4. <code>run_drought_periodicity_analysis</code> — dominant drought periodicities</h3>
+<p>Returns the global wavelet spectrum and ranked periodicity bands across the complete historical record
        (for example, an approximate 3-, 5-, or 8-year variability band).</p>
-    <table>
-      <tr><th>Parameter</th><th>Required</th><th>Default</th><th>Notes</th></tr>
-      <tr><td><code>latitude</code>, <code>longitude</code></td><td>Yes</td><td>—</td><td>Point location</td></tr>
-      <tr><td colspan="4" class="muted">Plus the shared data source, dates, baseline, scale, and aggregation parameters.</td></tr>
-    </table>
-  </div>
+<table>
+<tr><th>Parameter</th><th>Required</th><th>Default</th><th>Notes</th></tr>
+<tr><td><code>latitude</code>, <code>longitude</code></td><td>Yes</td><td>—</td><td>Point location</td></tr>
+<tr><td class="muted" colspan="4">Plus the shared data source, dates, baseline, scale, and aggregation parameters.</td></tr>
+</table>
+</div>
 </section>
-
 <section id="connect">
-  <h2>How to connect</h2>
-
-  <div class="card">
-    <h3>Claude (web, desktop, mobile)</h3>
-    <ol class="connect">
-      <li>Open <strong>Settings → Connectors → Add custom connector</strong>.</li>
-      <li>Enter the DMAP-AI MCP endpoint: <pre>https://droughtanalysis.com/mcp</pre></li>
-      <li>Start a chat and ask, for example: <em>"Run a drought severity analysis for Ames, Iowa, 1981–2024, using NASA POWER."</em></li>
-    </ol>
-  </div>
-
-  <div class="card">
-    <h3>ChatGPT (Custom GPT)</h3>
-    <p>DMAP-AI is also available inside ChatGPT as a Custom GPT connected to the same MCP tools.
+<h2>How to connect</h2>
+<div class="card">
+<h3>Claude (web, desktop, mobile)</h3>
+<ol class="connect">
+<li>Open <strong>Settings → Connectors → Add custom connector</strong>.</li>
+<li>Enter the DMAP-AI MCP endpoint: <pre>https://droughtanalysis.com/mcp</pre></li>
+<li>Start a chat and ask, for example: <em>"Run a drought severity analysis for Ames, Iowa, 1981–2024, using NASA POWER."</em></li>
+</ol>
+</div>
+<div class="card">
+<h3>ChatGPT (Custom GPT)</h3>
+<p>DMAP-AI is also available inside ChatGPT as a Custom GPT connected to the same MCP tools.
        See the <a href="/gpt">DMAP-AI ChatGPT page</a> for the direct link and ready-to-use prompts.</p>
-  </div>
-
-  <div class="card">
-    <h3>Other MCP clients</h3>
-    <p>Any MCP-compatible client can use the server over Streamable HTTP at
+</div>
+<div class="card">
+<h3>Other MCP clients</h3>
+<p>Any MCP-compatible client can use the server over Streamable HTTP at
        <code>https://droughtanalysis.com/mcp</code>. Tools are listed via the standard MCP
        <code>tools/list</code> handshake.</p>
-  </div>
+</div>
 </section>
-
 <section id="prompts">
-  <h2>Example prompts</h2>
-  <ul class="plain">
-    <li>"Use DMAP-AI to generate the SPI table for Ames, Iowa (1981–2024) with NASA POWER and classify each year."</li>
-    <li>"Use DMAP-AI to list drought events for 40.7°N, −94.4°E … with duration, minimum SPI, and magnitude, threshold SPI ≤ −0.99."</li>
-    <li>"Use DMAP-AI to run a wavelet scalogram for Tucson, Arizona (1981–2024) and describe the high-power zones."</li>
-    <li>"Use DMAP-AI to find the dominant drought periodicities for Fresno, California using ERA5-Land."</li>
-  </ul>
+<h2>Example prompts</h2>
+<ul class="plain">
+<li>"Use DMAP-AI to generate the SPI table for Ames, Iowa (1981–2024) with NASA POWER and classify each year."</li>
+<li>"Use DMAP-AI to list drought events for 40.7°N, −94.4°E … with duration, minimum SPI, and magnitude, threshold SPI ≤ −0.99."</li>
+<li>"Use DMAP-AI to run a wavelet scalogram for Tucson, Arizona (1981–2024) and describe the high-power zones."</li>
+<li>"Use DMAP-AI to find the dominant drought periodicities for Fresno, California using ERA5-Land."</li>
+</ul>
 </section>
-
 <section id="limits">
-  <h2>Scope and limitations</h2>
-  <div class="warn">
-    <ul class="plain">
-      <li><strong>SPI only.</strong> No SPEI, PDSI, soil-moisture, crop-yield, or economic-impact analysis.</li>
-      <li><strong>Two datasets.</strong> NASA POWER (default) and ERA5-Land/CDS. No other sources.</li>
-      <li><strong>Historical and point-based.</strong> No forecasts, seasonal outlooks, or climate projections.</li>
-      <li><strong>Statistical events.</strong> SPI drought events are threshold events, not direct measurements of agricultural or hydrological impacts.</li>
-      <li><strong>Wavelet results are descriptive.</strong> Periodicities are variability bands in the historical record, not deterministic cycles or predictions.</li>
-    </ul>
-  </div>
+<h2>Scope and limitations</h2>
+<div class="warn">
+<ul class="plain">
+<li><strong>SPI only.</strong> No SPEI, PDSI, soil-moisture, crop-yield, or economic-impact analysis.</li>
+<li><strong>Two datasets.</strong> NASA POWER (default) and ERA5-Land/CDS. No other sources.</li>
+<li><strong>Historical and point-based.</strong> No forecasts, seasonal outlooks, or climate projections.</li>
+<li><strong>Statistical events.</strong> SPI drought events are threshold events, not direct measurements of agricultural or hydrological impacts.</li>
+<li><strong>Wavelet results are descriptive.</strong> Periodicities are variability bands in the historical record, not deterministic cycles or predictions.</li>
+</ul>
+</div>
 </section>
-
 <section id="faq">
-  <h2>Frequently asked questions</h2>
-  <details open><summary>What is the DMAP-AI MCP server?</summary>
-    <p>A Model Context Protocol server by AgriMetSoft LLC that gives AI assistants direct access to scientific
+<h2>Frequently asked questions</h2>
+<details open=""><summary>What is the DMAP-AI MCP server?</summary>
+<p>A Model Context Protocol server by AgriMetSoft LLC that gives AI assistants direct access to scientific
        drought-analysis tools: SPI tables, drought events, wavelet scalograms, and periodicity analysis for any
        point location, using NASA POWER or ERA5-Land historical data.</p></details>
-  <details><summary>Which drought indices are supported?</summary>
-    <p>Only SPI at this time. Additional indices (SPEI, PDSI, EDI, and others) are planned for licensed research workflows.</p></details>
-  <details><summary>Can it forecast future droughts?</summary>
-    <p>No. All analyses are historical and descriptive.</p></details>
-  <details><summary>Is it free?</summary>
-    <p>Yes — the Research Version tools exposed through MCP are free to use.</p></details>
-  <details><summary>How should I cite DMAP-AI?</summary>
-    <p>Kolsoumi Ayask, S. (2026). <em>DMAP-AI: Drought Monitoring and Analysis Platform – AI</em> (Version 1.0)
+<details><summary>Which drought indices are supported?</summary>
+<p>Only SPI at this time. Additional indices (SPEI, PDSI, EDI, and others) are planned for licensed research workflows.</p></details>
+<details><summary>Can it forecast future droughts?</summary>
+<p>No. All analyses are historical and descriptive.</p></details>
+<details><summary>Is it free?</summary>
+<p>Yes — the Research Version tools exposed through MCP are free to use.</p></details>
+<details><summary>How should I cite DMAP-AI?</summary>
+<p>Kolsoumi Ayask, S. (2026). <em>DMAP-AI: Drought Monitoring and Analysis Platform – AI</em> (Version 1.0)
        [Software]. AgriMetSoft LLC. https://droughtanalysis.com/</p></details>
 </section>
-
 <section id="learn">
-  <h2>Learn more</h2>
-  <p class="muted">
-    <a href="/knowledge/">Knowledge Center</a> ·
+<h2>Learn more</h2>
+<p class="muted">
+<a href="/knowledge/">Knowledge Center</a> ·
     <a href="/knowledge/what-is-spi/">What is SPI?</a> ·
     <a href="/knowledge/what-is-wavelet-analysis/">Wavelet analysis</a> ·
     <a href="/spi_tutorial">SPI video tutorial</a> ·
     <a href="/DMAP_AI_App">Open the web app</a>
-  </p>
+</p>
 </section>
-
 </main>
-
 <footer class="site">
-  <div class="wrap">© 2026 <a href="https://agrimetsoft.com/">AgriMetSoft</a>. All rights reserved. ·
+<div class="wrap">© 2026 <a href="https://agrimetsoft.com/">AgriMetSoft</a>. All rights reserved. ·
     <a href="/">DMAP-AI home</a></div>
 </footer>
-
 </body>
 </html>

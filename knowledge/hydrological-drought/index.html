@@ -1,33 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <title>Hydrological Drought | DMAP-AI Knowledge Center</title>
-  <meta name="description" content="Learn what hydrological drought is, how it differs from meteorological and agricultural drought, which variables are used to monitor it, and why it often persists after rainfall returns.">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="AgriMetSoft LLC">
-  <meta name="theme-color" content="#2563eb">
-
-  <link rel="canonical" href="https://droughtanalysis.com/knowledge/hydrological-drought/">
-  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-
-  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
-  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
-
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="DMAP-AI">
-  <meta property="og:title" content="Hydrological Drought">
-  <meta property="og:description" content="A scientific introduction to hydrological drought, including streamflow, reservoirs, groundwater, time scale, monitoring indicators, impacts, and DMAP-AI applications.">
-  <meta property="og:url" content="https://droughtanalysis.com/knowledge/hydrological-drought/">
-  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Hydrological Drought | DMAP-AI Knowledge Center</title>
+<meta content="Learn what hydrological drought is, how it differs from meteorological and agricultural drought, which variables are used to monitor it, and why it often persists after rainfall returns." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="AgriMetSoft LLC" name="author"/>
+<meta content="#2563eb" name="theme-color"/>
+<link href="https://droughtanalysis.com/knowledge/hydrological-drought/" rel="canonical"/>
+<link as="image" fetchpriority="high" href="/assets/logo-dmap-ai-225.webp" rel="preload" type="image/webp"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/knowledge/knowledge-style.css" rel="stylesheet"/>
+<link href="/assets/dmap-global-nav.css" rel="stylesheet"/>
+<meta content="article" property="og:type"/>
+<meta content="DMAP-AI" property="og:site_name"/>
+<meta content="Hydrological Drought" property="og:title"/>
+<meta content="A scientific introduction to hydrological drought, including streamflow, reservoirs, groundwater, time scale, monitoring indicators, impacts, and DMAP-AI applications." property="og:description"/>
+<meta content="https://droughtanalysis.com/knowledge/hydrological-drought/" property="og:url"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -89,8 +85,7 @@
     ]
   }
   </script>
-
-  <style>
+<style>
     :root {
       --blue:#2563eb;
       --blue-dark:#1d4ed8;
@@ -158,387 +153,333 @@
     @media(max-width:640px) { .container { width:min(100% - 1rem,80rem); } .article-hero { padding-top:2rem; } .article-hero-card, .article-main { padding:1.25rem; border-radius:1.1rem; } .related-grid { grid-template-columns:1fr; } .footer-inner { flex-direction:column; text-align:center; } }
   </style>
 </head>
-
 <body>
-  <main>
-    <section class="article-hero">
-      <div class="container">
-        <div class="article-hero-card">
-          <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span>›</span>
-            <a href="/knowledge/">Knowledge Center</a>
-            <span>›</span>
-            <span>Hydrological Drought</span>
-          </nav>
-
-          <p class="eyebrow">Drought Basics</p>
-
-          <h1>Hydrological Drought</h1>
-
-          <p class="lead">
+<main>
+<section class="article-hero">
+<div class="container">
+<div class="article-hero-card">
+<nav aria-label="Breadcrumb" class="breadcrumb">
+<a href="/">Home</a>
+<span>›</span>
+<a href="/knowledge/">Knowledge Center</a>
+<span>›</span>
+<span>Hydrological Drought</span>
+</nav>
+<p class="eyebrow">Drought Basics</p>
+<h1>Hydrological Drought</h1>
+<p class="lead">
             Hydrological drought occurs when rivers, reservoirs, lakes, snowpack, or groundwater
             remain below normal for a sustained period. It is closely connected to meteorological
             drought, but it often develops later, persists longer, and has major consequences for
             water supply, irrigation, hydropower, ecosystems, and drought planning.
           </p>
-
-          <div class="article-meta">
-            <span class="meta-pill">Reading time: 10 min</span>
-            <span class="meta-pill">Level: Intermediate</span>
-            <span class="meta-pill">Last updated: July 2026</span>
-            <span class="meta-pill">Author: AgriMetSoft LLC</span>
-          </div>
-
-          <div class="hero-actions">
-            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="container article-layout">
-      <article class="article-main">
-        <section class="quick-answer" id="quick-answer">
-          <h2>Short answer</h2>
-          <p>
+<div class="article-meta">
+<span class="meta-pill">Reading time: 10 min</span>
+<span class="meta-pill">Level: Intermediate</span>
+<span class="meta-pill">Last updated: July 2026</span>
+<span class="meta-pill">Author: AgriMetSoft LLC</span>
+</div>
+<div class="hero-actions">
+<a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+</div>
+</div>
+</div>
+</section>
+<div class="container article-layout">
+<article class="article-main">
+<section class="quick-answer" id="quick-answer">
+<h2>Short answer</h2>
+<p>
             Hydrological drought is a prolonged shortage of water in surface or subsurface water systems.
-            It is commonly observed as below-normal streamflow, reservoir storage, lake levels, snowpack,
+            It is commonly observed as below-normal <a href="/knowledge/streamflow-data/">streamflow</a>, reservoir storage, lake levels, snowpack,
             or groundwater. Unlike short-term rainfall drought, hydrological drought often develops slowly
             and may continue after precipitation improves because water systems need time to recover.
           </p>
-        </section>
-
-        <section id="definition">
-          <h2>Definition of hydrological drought</h2>
-
-          <p>
+</section>
+<section id="definition">
+<h2>Definition of hydrological drought</h2>
+<p>
             Hydrological drought describes a sustained deficit in the water stored or moving through a
             watershed. It is usually measured using variables such as streamflow, river discharge, reservoir
             storage, lake levels, groundwater depth, spring flow, snow-water equivalent, or runoff. It is not
             limited to rainfall conditions. Instead, it reflects the response of the hydrological system to
             climate, land use, storage, withdrawals, and water management.
           </p>
-
-          <div class="definition-box">
-            <strong>Working definition:</strong>
+<div class="definition-box">
+<strong>Working definition:</strong>
             Hydrological drought is a persistent reduction in surface-water or groundwater availability
             compared with the normal hydrological conditions of a basin or water-supply system.
           </div>
-
-          <p>
+<p>
             This drought type is especially important for water-resource planning because streamflow,
             reservoirs, groundwater, and lakes are the sources that support irrigation, municipal supply,
             industry, hydropower, navigation, recreation, and environmental flows. A region may receive
             rainfall after a dry period but still remain in hydrological drought if rivers, reservoirs, and
             aquifers have not recovered.
           </p>
-        </section>
-
-        <section id="lag">
-          <h2>Why hydrological drought often lags behind rainfall drought</h2>
-
-          <p>
-            Meteorological drought usually begins with below-normal precipitation. Hydrological drought
+</section>
+<section id="lag">
+<h2>Why hydrological drought often lags behind rainfall drought</h2>
+<p>
+<a href="/knowledge/meteorological-drought/">Meteorological drought</a> usually begins with below-normal precipitation. Hydrological drought
             often appears later because water must move through the landscape before it affects rivers,
             reservoirs, and aquifers. Some rainfall may be stored in the soil, lost through evapotranspiration,
             captured by vegetation, retained as snow, or delayed as groundwater recharge. These processes
             create a lag between rainfall deficits and hydrological impacts.
           </p>
-
-          <p>
+<p>
             The lag time depends on basin size, geology, soil depth, land cover, snowpack, reservoir operation,
             groundwater storage, and water withdrawals. A small steep watershed may respond quickly to rainfall
             deficits, while a large groundwater-fed basin may respond slowly and remain dry for months or years.
           </p>
-
-          <div class="callout">
-            <strong>Practical point:</strong>
+<div class="callout">
+<strong>Practical point:</strong>
             Rainfall recovery does not automatically mean hydrological recovery. Water managers should track
             streamflow, storage, and groundwater in addition to precipitation indices.
           </div>
-        </section>
-
-        <section id="indicators">
-          <h2>Common hydrological drought indicators</h2>
-
-          <p>
+</section>
+<section id="indicators">
+<h2>Common hydrological drought indicators</h2>
+<p>
             Hydrological drought can be monitored using many indicators. The best indicator depends on the
             system being managed. A reservoir-based water supply may focus on storage percent of capacity,
             while an ecological assessment may focus on low-flow duration, groundwater discharge, or stream
             temperature.
           </p>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Indicator</th>
-                  <th>What it measures</th>
-                  <th>Typical use</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Streamflow percentile</td>
-                  <td>River discharge compared with historical flow for the same season</td>
-                  <td>Low-flow monitoring, water allocation, ecological flow assessment</td>
-                </tr>
-                <tr>
-                  <td>Reservoir storage anomaly</td>
-                  <td>Current storage compared with normal or target storage</td>
-                  <td>Municipal supply, irrigation planning, drought restrictions</td>
-                </tr>
-                <tr>
-                  <td>Groundwater level</td>
-                  <td>Depth to water table or aquifer storage condition</td>
-                  <td>Well management, long-term drought, baseflow analysis</td>
-                </tr>
-                <tr>
-                  <td>Lake level</td>
-                  <td>Surface elevation or volume of natural lakes</td>
-                  <td>Water supply, recreation, ecosystem management</td>
-                </tr>
-                <tr>
-                  <td>Snow-water equivalent</td>
-                  <td>Water stored in snowpack before melt season</td>
-                  <td>Mountain basins, seasonal runoff forecasting, western water supply</td>
-                </tr>
-                <tr>
-                  <td>Long time-scale SPI</td>
-                  <td>Accumulated precipitation deficit over 12, 24, or more months</td>
-                  <td>Hydrological drought screening where direct streamflow data are limited</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section id="timescales">
-          <h2>Time scales for hydrological drought</h2>
-
-          <p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>What it measures</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Streamflow percentile</td>
+<td>River discharge compared with historical flow for the same season</td>
+<td>Low-flow monitoring, water allocation, ecological flow assessment</td>
+</tr>
+<tr>
+<td>Reservoir storage anomaly</td>
+<td>Current storage compared with normal or target storage</td>
+<td>Municipal supply, irrigation planning, drought restrictions</td>
+</tr>
+<tr>
+<td>Groundwater level</td>
+<td>Depth to water table or aquifer storage condition</td>
+<td>Well management, long-term drought, baseflow analysis</td>
+</tr>
+<tr>
+<td>Lake level</td>
+<td>Surface elevation or volume of natural lakes</td>
+<td>Water supply, recreation, ecosystem management</td>
+</tr>
+<tr>
+<td>Snow-water equivalent</td>
+<td>Water stored in snowpack before melt season</td>
+<td>Mountain basins, seasonal runoff forecasting, western water supply</td>
+</tr>
+<tr>
+<td>Long time-scale SPI</td>
+<td>Accumulated precipitation deficit over 12, 24, or more months</td>
+<td>Hydrological drought screening where direct streamflow data are limited</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="timescales">
+<h2>Time scales for hydrological drought</h2>
+<p>
             Hydrological drought is usually associated with longer time scales than meteorological or
             agricultural drought. A one-month rainfall deficit can be important, but rivers and reservoirs
             often respond to accumulated deficits over many months. For this reason, SPI-12, SPI-24, or
             longer accumulation periods are often more relevant to water-supply planning than SPI-1.
           </p>
-
-          <p>
+<p>
             Time scale should match the hydrological system. Short-term streamflow in a small basin may respond
-            to rainfall over days or weeks, while groundwater drought may reflect deficits over seasons or years.
+            to rainfall over days or weeks, while <a href="/knowledge/groundwater-drought/">groundwater drought</a> may reflect deficits over seasons or years.
             Snow-dominated basins may require monitoring snowpack, melt timing, and seasonal runoff rather than
             rainfall alone.
           </p>
-        </section>
-
-        <section id="causes">
-          <h2>Causes of hydrological drought</h2>
-
-          <p>
+</section>
+<section id="causes">
+<h2>Causes of hydrological drought</h2>
+<p>
             The main physical cause of hydrological drought is a sustained water-input deficit, often beginning
-            with below-normal precipitation or snowpack. However, hydrological drought severity can be intensified
+            with below-normal precipitation or snowpack. However, hydrological <a href="/knowledge/drought-severity/">drought severity</a> can be intensified
             by high evapotranspiration, reduced recharge, early snowmelt, low soil moisture, reservoir releases,
             irrigation withdrawals, groundwater pumping, and upstream water management.
           </p>
-
-          <h3>Climate causes</h3>
-          <p>
+<h3>Climate causes</h3>
+<p>
             Persistent high-pressure systems, altered storm tracks, weak monsoon seasons, reduced snowpack, and
             warmer temperatures can reduce water input and increase atmospheric demand. In snow-fed basins, warmer
             winters can shift snow to rain, reduce snow storage, and move runoff earlier in the year.
           </p>
-
-          <h3>Watershed and geology controls</h3>
-          <p>
+<h3>Watershed and geology controls</h3>
+<p>
             Soil depth, aquifer properties, slope, vegetation, land cover, and drainage network structure all affect
             how quickly precipitation becomes runoff or groundwater recharge. These controls explain why neighboring
             basins can experience different hydrological drought responses to the same climate anomaly.
           </p>
-
-          <h3>Human water use</h3>
-          <p>
+<h3>Human water use</h3>
+<p>
             Water withdrawals do not usually cause meteorological drought, but they can increase hydrological stress.
             Irrigation, municipal demand, industrial use, groundwater pumping, and reservoir operation can reduce the
             buffer capacity of a water system during dry years.
           </p>
-        </section>
-
-        <section id="impacts">
-          <h2>Impacts of hydrological drought</h2>
-
-          <p>
+</section>
+<section id="impacts">
+<h2>Impacts of hydrological drought</h2>
+<p>
             Hydrological drought can affect water supply, agriculture, energy, transportation, ecosystems, and public
             policy. Irrigated agriculture may face reduced allocations or higher pumping costs. Municipal systems may
             impose water restrictions. Hydropower production may decline when reservoir storage or streamflow decreases.
             Navigation can be disrupted by low river levels, and aquatic ecosystems may be stressed by reduced habitat,
             warmer water, and lower dissolved oxygen.
           </p>
-
-          <p>
+<p>
             These impacts can persist after rainfall returns because water storage is not immediately restored.
             Reservoirs may need several wet months or seasons to refill. Groundwater recovery can take much longer,
             especially in heavily pumped aquifers. This persistence is one reason hydrological drought is central to
             long-term drought planning.
           </p>
-        </section>
-
-        <section id="monitoring">
-          <h2>How to monitor hydrological drought</h2>
-
-          <p>
+</section>
+<section id="monitoring">
+<h2>How to monitor hydrological drought</h2>
+<p>
             A hydrological drought assessment should combine climate indicators with direct water-system observations
             when available. Precipitation-based drought indices provide early context, but streamflow, reservoir, and
             groundwater data are usually needed to evaluate actual water availability. Monitoring should also account
             for seasonality because low flow may be normal in one season and exceptional in another.
           </p>
-
-          <p>
+<p>
             In data-limited regions, long-term precipitation datasets and indices such as SPI-12 or SPI-24 can be used
             as screening tools. Where gauge records are available, hydrological indicators should be compared with
             historical percentiles or standardized anomalies for the same time of year.
           </p>
-        </section>
-
-        <section id="dmap-ai">
-          <h2>How DMAP-AI supports hydrological drought analysis</h2>
-
-          <p>
-            <a href="https://droughtanalysis.com/">DMAP-AI</a> can help users identify long-duration dry periods using precipitation-based drought indices at
+</section>
+<section id="dmap-ai">
+<h2>How DMAP-AI supports hydrological drought analysis</h2>
+<p>
+<a href="https://droughtanalysis.com/">DMAP-AI</a> can help users identify long-duration dry periods using precipitation-based drought indices at
             longer accumulation periods. For hydrological applications, SPI-12 and SPI-24 can provide useful context
             for streamflow, reservoir, and groundwater conditions, especially where direct hydrological records are
             unavailable or incomplete.
           </p>
-
-          <p>
+<p>
             The drought-event table in DMAP-AI can summarize dry episodes by duration, minimum SPI, and magnitude.
             These metrics help distinguish a short severe drought from a long moderate drought. Wavelet diagnostics
             can also help examine whether low-frequency drought variability is present in the climate record, while
             <a href="https://droughtanalysis.com/method-comparison/">structured AI interpretation</a> helps explain the results without relying only on visual chart inspection.
           </p>
-
-          <div class="callout">
-            <strong>DMAP-AI principle:</strong>
+<div class="callout">
+<strong>DMAP-AI principle:</strong>
             For hydrological drought, longer time scales and persistence metrics are often more important than a
             single short-term rainfall anomaly.
           </div>
-        </section>
-
-        <section id="faq">
-          <h2>Frequently asked questions</h2>
-
-          <h3>Is hydrological drought the same as meteorological drought?</h3>
-          <p>
+</section>
+<section id="faq">
+<h2>Frequently asked questions</h2>
+<h3>Is hydrological drought the same as meteorological drought?</h3>
+<p>
             No. Meteorological drought is usually based on below-normal precipitation. Hydrological drought refers to
             reduced water availability in rivers, reservoirs, lakes, snowpack, or groundwater. It often follows
             meteorological drought but may last longer.
           </p>
-
-          <h3>Can hydrological drought continue after rainfall returns?</h3>
-          <p>
+<h3>Can hydrological drought continue after rainfall returns?</h3>
+<p>
             Yes. Rivers, reservoirs, and aquifers may require weeks, months, or years to recover depending on storage,
             recharge, water use, and basin characteristics.
           </p>
-
-          <h3>Which SPI time scale is useful for hydrological drought?</h3>
-          <p>
+<h3>Which SPI time scale is useful for hydrological drought?</h3>
+<p>
             SPI-12, SPI-24, and longer time scales are often more relevant for hydrological drought than SPI-1 because
             water systems respond to accumulated deficits over longer periods.
           </p>
-
-          <h3>What is the best variable for hydrological drought?</h3>
-          <p>
+<h3>What is the best variable for hydrological drought?</h3>
+<p>
             The best variable depends on the system. Streamflow is useful for rivers, reservoir storage for managed
             supply systems, groundwater levels for aquifers, and snow-water equivalent for snow-fed basins.
           </p>
-
-          <h3>Why is hydrological drought important for planning?</h3>
-          <p>
+<h3>Why is hydrological drought important for planning?</h3>
+<p>
             It directly affects water availability for irrigation, cities, ecosystems, hydropower, navigation, and
             long-term water security.
           </p>
-        </section>
-
-        <section id="references">
-          <h2>Selected references</h2>
-
-          <ol class="references">
-            <li>Tallaksen, L. M., and Van Lanen, H. A. J. (2004). Hydrological Drought: Processes and Estimation Methods for Streamflow and Groundwater. Elsevier.</li>
-            <li>Van Loon, A. F. (2015). Hydrological drought explained. Wiley Interdisciplinary Reviews: Water.</li>
-            <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
-            <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
-            <li>Wilhite, D. A. (2000). Drought as a natural hazard: concepts and definitions. Drought: A Global Assessment.</li>
-          </ol>
-        </section>
-
-        <section id="related">
-          <h2>Related articles</h2>
-
-          <div class="related-grid">
-            <a class="related-card" href="/knowledge/what-is-drought/">
-              <strong>What is Drought?</strong>
-              <span>Basic definition, causes, monitoring, and impacts.</span>
-            </a>
-
-            <a class="related-card" href="/knowledge/types-of-drought/">
-              <strong>Types of Drought</strong>
-              <span>Meteorological, agricultural, hydrological, and socioeconomic drought.</span>
-            </a>
-
-            <a class="related-card" href="/knowledge/agricultural-drought/">
-              <strong>Agricultural Drought</strong>
-              <span>How water deficits affect soil moisture, crops, and irrigation demand.</span>
-            </a>
-          </div>
-        </section>
-      </article>
-
-      <aside class="toc" aria-label="Table of contents">
-        <h2>On this page</h2>
-        <a href="#quick-answer">Short answer</a>
-        <a href="#definition">Definition</a>
-        <a href="#lag">Lag and persistence</a>
-        <a href="#indicators">Indicators</a>
-        <a href="#timescales">Time scales</a>
-        <a href="#causes">Causes</a>
-        <a href="#impacts">Impacts</a>
-        <a href="#monitoring">Monitoring</a>
-        <a href="#dmap-ai">DMAP-AI use</a>
-        <a href="#faq">FAQ</a>
-        <a href="#references">References</a>
-        <a href="#related">Related articles</a>
-      </aside>
-    </div>
-
-    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
-      <div class="comparison-stations-card">
-        <div class="comparison-stations-head">
-          <div>
-            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
-            <p>
+</section>
+<section id="references">
+<h2>Selected references</h2>
+<ol class="references">
+<li>Tallaksen, L. M., and Van Lanen, H. A. J. (2004). Hydrological Drought: Processes and Estimation Methods for Streamflow and Groundwater. Elsevier.</li>
+<li>Van Loon, A. F. (2015). Hydrological drought explained. Wiley Interdisciplinary Reviews: Water.</li>
+<li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+<li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
+<li>Wilhite, D. A. (2000). Drought as a natural hazard: concepts and definitions. Drought: A Global Assessment.</li>
+</ol>
+</section>
+<section id="related">
+<h2>Related articles</h2>
+<div class="related-grid">
+<a class="related-card" href="/knowledge/what-is-drought/">
+<strong>What is Drought?</strong>
+<span>Basic definition, causes, monitoring, and impacts.</span>
+</a>
+<a class="related-card" href="/knowledge/types-of-drought/">
+<strong>Types of Drought</strong>
+<span>Meteorological, agricultural, hydrological, and socioeconomic drought.</span>
+</a>
+<a class="related-card" href="/knowledge/agricultural-drought/">
+<strong>Agricultural Drought</strong>
+<span>How water deficits affect soil moisture, crops, and irrigation demand.</span>
+</a>
+</div>
+</section>
+</article>
+<aside aria-label="Table of contents" class="toc">
+<h2>On this page</h2>
+<a href="#quick-answer">Short answer</a>
+<a href="#definition">Definition</a>
+<a href="#lag">Lag and persistence</a>
+<a href="#indicators">Indicators</a>
+<a href="#timescales">Time scales</a>
+<a href="#causes">Causes</a>
+<a href="#impacts">Impacts</a>
+<a href="#monitoring">Monitoring</a>
+<a href="#dmap-ai">DMAP-AI use</a>
+<a href="#faq">FAQ</a>
+<a href="#references">References</a>
+<a href="#related">Related articles</a>
+</aside>
+</div>
+<section aria-labelledby="knowledge-browse-title" class="comparison-stations-section">
+<div class="comparison-stations-card">
+<div class="comparison-stations-head">
+<div>
+<h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+<p>
               Search and open other DMAP-AI Knowledge Center articles about drought science,
               drought indices, climate datasets, analysis methods, and AI interpretation.
             </p>
-          </div>
-          <span class="station-count-pill">Documentation</span>
-        </div>
-
-        <div data-articles-nav data-current-slug="hydrological-drought"></div>
-      </div>
-    </section>
-
-    <p class="back-to-knowledge">
-      <a href="/knowledge/">← Back to Knowledge Center</a>
-    </p>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
-    </div>
-  </footer>
-
-  <script src="/knowledge/knowledge-nav.js" defer></script>
-  <script src="/assets/global-nav.js"></script>
+</div>
+<span class="station-count-pill">Documentation</span>
+</div>
+<div data-articles-nav="" data-current-slug="hydrological-drought"></div>
+</div>
+</section>
+<p class="back-to-knowledge">
+<a href="/knowledge/">← Back to Knowledge Center</a>
+</p>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<span>© 2026 <a href="https://agrimetsoft.com/" rel="noopener" target="_blank">AgriMetSoft</a>. All rights reserved.</span>
+</div>
+</footer>
+<script defer="" src="/knowledge/knowledge-nav.js"></script>
+<script src="/assets/global-nav.js"></script>
 </body>
 </html>

@@ -1,33 +1,29 @@
-﻿<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <title>Limitations of SPEI | DMAP-AI Knowledge Center</title>
-  <meta name="description" content="Learn when SPEI is useful, when it should be interpreted cautiously, and why evapotranspiration assumptions matter.">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="AgriMetSoft LLC">
-  <meta name="theme-color" content="#2563eb">
-
-  <link rel="canonical" href="https://droughtanalysis.com/knowledge/spei-limitations/">
-  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-
-  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
-  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
-
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="DMAP-AI">
-  <meta property="og:title" content="Limitations of SPEI">
-  <meta property="og:description" content="A practical guide to SPEI limitations, evapotranspiration assumptions, PET uncertainty, temperature sensitivity, and responsible drought interpretation.">
-  <meta property="og:url" content="https://droughtanalysis.com/knowledge/spei-limitations/">
-  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Limitations of SPEI | DMAP-AI Knowledge Center</title>
+<meta content="Learn when SPEI is useful, when it should be interpreted cautiously, and why evapotranspiration assumptions matter." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="AgriMetSoft LLC" name="author"/>
+<meta content="#2563eb" name="theme-color"/>
+<link href="https://droughtanalysis.com/knowledge/spei-limitations/" rel="canonical"/>
+<link as="image" fetchpriority="high" href="/assets/logo-dmap-ai-225.webp" rel="preload" type="image/webp"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/knowledge/knowledge-style.css" rel="stylesheet"/>
+<link href="/assets/dmap-global-nav.css" rel="stylesheet"/>
+<meta content="article" property="og:type"/>
+<meta content="DMAP-AI" property="og:site_name"/>
+<meta content="Limitations of SPEI" property="og:title"/>
+<meta content="A practical guide to SPEI limitations, evapotranspiration assumptions, PET uncertainty, temperature sensitivity, and responsible drought interpretation." property="og:description"/>
+<meta content="https://droughtanalysis.com/knowledge/spei-limitations/" property="og:url"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -60,8 +56,7 @@
     ]
   }
   </script>
-
-  <style>
+<style>
     :root {
       --blue:#2563eb;
       --blue-dark:#1d4ed8;
@@ -435,170 +430,146 @@
     }
   </style>
 </head>
-
 <body>
-  <main>
-    <section class="article-hero">
-      <div class="container">
-        <div class="article-hero-card">
-          <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span>›</span>
-            <a href="/knowledge/">Knowledge Center</a>
-            <span>›</span>
-            <span>Limitations of SPEI</span>
-          </nav>
-
-          <p class="eyebrow">Drought Indices</p>
-          <h1>Limitations of SPEI</h1>
-
-          <p class="lead">SPEI extends precipitation-based drought analysis by including atmospheric water demand, making it valuable in warming climates. But SPEI also depends on evapotranspiration estimation, input data quality, and assumptions about water balance, so it should not be interpreted as a direct measure of every drought impact.</p>
-
-          <div class="article-meta">
-            <span class="meta-pill">Reading time: 11 min</span>
-            <span class="meta-pill">Level: Intermediate</span>
-            <span class="meta-pill">Last updated: July 2026</span>
-            <span class="meta-pill">Author: AgriMetSoft LLC</span>
-          </div>
-
-          <div class="hero-actions">
-            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="container article-layout">
-      <article class="article-main">
-        <section id="quick-answer">
-          <h2>Short answer</h2>
-          <p>SPEI is useful because it includes precipitation and atmospheric water demand, but it has limitations. It depends on how potential evapotranspiration is estimated, the quality of temperature and climate inputs, the selected baseline period, and the assumption that a simplified climatic water balance can represent drought stress. SPEI should be interpreted with other indicators when impacts matter.</p>
-        </section>
+<main>
+<section class="article-hero">
+<div class="container">
+<div class="article-hero-card">
+<nav aria-label="Breadcrumb" class="breadcrumb">
+<a href="/">Home</a>
+<span>›</span>
+<a href="/knowledge/">Knowledge Center</a>
+<span>›</span>
+<span>Limitations of SPEI</span>
+</nav>
+<p class="eyebrow">Drought Indices</p>
+<h1>Limitations of SPEI</h1>
+<p class="lead">SPEI extends precipitation-based drought analysis by including atmospheric water demand, making it valuable in warming climates. But SPEI also depends on evapotranspiration estimation, input data quality, and assumptions about water balance, so it should not be interpreted as a direct measure of every drought impact.</p>
+<div class="article-meta">
+<span class="meta-pill">Reading time: 11 min</span>
+<span class="meta-pill">Level: Intermediate</span>
+<span class="meta-pill">Last updated: July 2026</span>
+<span class="meta-pill">Author: AgriMetSoft LLC</span>
+</div>
+<div class="hero-actions">
+<a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+</div>
+</div>
+</div>
+</section>
+<div class="container article-layout">
+<article class="article-main">
+<section id="quick-answer">
+<h2>Short answer</h2>
+<p>SPEI is useful because it includes precipitation and atmospheric water demand, but it has limitations. It depends on how potential evapotranspiration is estimated, the quality of temperature and climate inputs, the selected baseline period, and the assumption that a simplified climatic water balance can represent drought stress. SPEI should be interpreted with other indicators when impacts matter.</p>
+</section>
 <div class="tool-availability-box">
-  <strong>Tool availability:</strong>
+<strong>Tool availability:</strong>
   DMAP-AI Research Version currently focuses on SPI-based drought analysis in a browser workflow.
   For broader desktop drought-index analysis, including SPEI and other meteorological,
-  agricultural, hydrological, and remote-sensing drought indices, use the desktop
-  <a href="https://agrimetsoft.com/dmap/" target="_blank" rel="noopener">DMAP V2.1 software</a>.
+  agricultural, hydrological, and <a href="/knowledge/remote-sensing-drought-indices/">remote-sensing drought indices</a>, use the desktop
+  <a href="https://agrimetsoft.com/dmap/" rel="noopener" target="_blank">DMAP V2.1 software</a>.
 </div>
-
-        <section id="importance">
-          <h2>Why SPEI limitations matter</h2>
-          <p>SPEI is often preferred when temperature and evaporative demand are important. It can identify drought stress that precipitation-only SPI may miss, especially during hot periods. However, the added complexity means that SPEI can be sensitive to method choices and data uncertainty.</p><p>Understanding these limitations helps prevent overconfidence. SPEI is a drought indicator, not a complete physical model of soil water, crop stress, groundwater, or socioeconomic impact.</p>
-        </section>
-
-        <section id="pet">
-          <h2>Potential evapotranspiration uncertainty</h2>
-          <p>SPEI is based on the difference between precipitation and potential evapotranspiration or a related measure of atmospheric water demand. PET can be estimated using simple temperature-based methods or more data-intensive methods that use radiation, wind speed, and humidity. Different PET methods can produce different SPEI values.</p><div class="table-wrap"><table><thead><tr><th>PET issue</th><th>Why it matters</th><th>Possible consequence</th></tr></thead><tbody><tr><td>Method selection</td><td>Temperature-only and physically based methods may differ</td><td>Different drought intensity estimates</td></tr><tr><td>Input variables</td><td>Radiation, wind, humidity, and temperature may have errors</td><td>Uncertain atmospheric demand</td></tr><tr><td>Climate sensitivity</td><td>PET often increases in warmer conditions</td><td>SPEI may show stronger drying trends than SPI</td></tr><tr><td>Regional performance</td><td>PET methods may perform differently across climates</td><td>Comparability can be reduced</td></tr></tbody></table></div>
-        </section>
-
-        <section id="data">
-          <h2>Input data sensitivity</h2>
-          <p>SPEI requires more information than SPI. At minimum, it needs precipitation and an evapotranspiration estimate. Many workflows use temperature, and more complete workflows may also require radiation, wind, and humidity. Errors or biases in these variables can influence SPEI.</p><p>Data sensitivity is important when comparing station data, reanalysis products, and gridded datasets. In data-sparse areas, uncertainty in precipitation and temperature can affect both the water-balance calculation and the final standardized value.</p>
-        </section>
-
-        <section id="water-balance">
-          <h2>Simplified water balance</h2>
-          <p>SPEI is based on climatic water balance, but it does not explicitly simulate soil depth, rooting depth, irrigation, runoff, groundwater, snow processes, crop water uptake, or land management. These processes can be essential for local impacts.</p><p>For this reason, SPEI is best interpreted as a standardized climatic drought indicator. It may be strongly related to agricultural or ecological stress, but the relationship should be validated when possible.</p>
-        </section>
-
-        <section id="climate">
-          <h2>Climate and trend interpretation</h2>
-          <p>Because SPEI includes atmospheric demand, it is often more sensitive to warming than SPI. This can be an advantage when the goal is to evaluate drought under rising temperature. However, trend interpretation should be careful because PET method, baseline period, and input data changes can influence results.</p><p>Users should avoid saying that SPEI alone proves impact severity. It indicates climatic water-balance anomaly, which may contribute to impacts depending on exposure and vulnerability.</p>
-        </section>
-
-        <section id="comparison">
-          <h2>SPEI vs SPI</h2>
-          <p>SPI and SPEI answer related but different questions. SPI asks how unusual precipitation has been. SPEI asks how unusual the balance between precipitation and atmospheric demand has been. In cool or humid settings, they may be similar. During hot dry periods, SPEI may indicate stronger drought than SPI.</p><p>Using both indices can help separate precipitation deficit from temperature-enhanced dryness.</p>
-        </section>
-
-        <section id="best-practice">
-          <h2>Best-practice use</h2>
-          <p>Best practice is to report the PET method, climate variables used, dataset, baseline period, time scale, and thresholds. For applied decisions, SPEI should be compared with soil moisture, vegetation condition, streamflow, reservoir storage, crop information, or observed impacts.</p><div class="callout"><strong>Best practice:</strong> Use SPEI when atmospheric water demand matters, but avoid treating it as a direct measurement of soil moisture or yield loss.</div>
-        </section>
-
-        <section id="dmap-ai">
-          <h2>How DMAP-AI should use this concept</h2>
-          <p>As <a href="https://droughtanalysis.com/">DMAP-AI</a> expands beyond SPI, SPEI should be presented with clear metadata about evapotranspiration method and input dataset. <a href="https://droughtanalysis.com/method-comparison/">Structured AI interpretations</a> should explain that SPEI includes atmospheric water demand, but should also note that it remains a climatic index rather than a full impact model.</p>
-        </section>
-
-        <section id="faq">
-          <h2>Frequently asked questions</h2>
-          <h3>Is SPEI always better than SPI?</h3><p>No. SPEI includes atmospheric demand, but it also introduces PET uncertainty. SPI may be preferable when precipitation anomaly is the specific research question or when temperature data quality is weak.</p><h3>Does SPEI measure soil moisture?</h3><p>No. SPEI may correlate with soil moisture, but it does not directly simulate soil water storage, infiltration, rooting depth, or irrigation.</p><h3>Why can SPEI show stronger drought than SPI?</h3><p>Because SPEI includes atmospheric water demand. Hot, dry, windy, or low-humidity conditions can intensify climatic water deficit even if precipitation deficit alone is moderate.</p>
-        </section>
-
-        <section id="references">
-          <h2>Selected references</h2>
-          <ol class="references">
-                      <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
-                      <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
-                      <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
-                      <li>Vicente-Serrano, S. M., Beguería, S., and López-Moreno, J. I. (2010). A multiscalar drought index sensitive to global warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate.</li>
-                      <li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
-                    </ol>
-        </section>
-
-        <section id="related">
-          <h2>Related articles</h2>
-          <div class="related-grid">
-            <a class="related-card" href="/knowledge/what-is-spei/">
-              <strong>What is SPEI?</strong>
-              <span>Review the definition and calculation logic of SPEI.</span>
-            </a>
-
-            <a class="related-card" href="/knowledge/spi-limitations/">
-              <strong>Limitations of SPI</strong>
-              <span>Compare SPEI limitations with precipitation-only SPI.</span>
-            </a>
-
-            <a class="related-card" href="/knowledge/multi-index-drought-monitoring/">
-              <strong>Multi-Index Drought Monitoring</strong>
-              <span>Learn why several indicators are often better than one.</span>
-            </a>
-          </div>
-        </section>
-      </article>
-
-      <aside class="toc" aria-label="Table of contents">
-        <h2>On this page</h2>
-        <a href="#quick-answer">Short answer</a>
-        <a href="#importance">Why limitations matter</a>
-        <a href="#pet">PET uncertainty</a>
-        <a href="#data">Input data sensitivity</a>
-        <a href="#water-balance">Simplified water balance</a>
-        <a href="#climate">Climate and trend interpretation</a>
-        <a href="#comparison">SPEI vs SPI</a>
-        <a href="#best-practice">Best-practice use</a>
-        <a href="#dmap-ai">How DMAP-AI should use this</a>
-        <a href="#faq">FAQ</a>
-        <a href="#references">References</a>
-        <a href="#related">Related articles</a>
-      </aside>
-    </div>
-
-    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
-      <div class="comparison-stations-card">
-        <div class="comparison-stations-head">
-          <div>
-            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
-            <p>Search and open other DMAP-AI Knowledge Center articles about drought science, indices, climate datasets, methods, and AI interpretation.</p>
-          </div>
-          <span class="station-count-pill">Documentation</span>
-        </div>
-        <div data-articles-nav data-current-slug="spei-limitations"></div>
-      </div>
-    </section>
-
-    <p class="back-to-knowledge"><a href="/knowledge/">← Back to Knowledge Center</a></p>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
-    </div>
-  </footer>
-
-  <script src="/knowledge/knowledge-nav.js" defer></script>
-  <script src="/assets/global-nav.js"></script>
+<section id="importance">
+<h2>Why SPEI limitations matter</h2>
+<p>SPEI is often preferred when temperature and evaporative demand are important. It can identify drought stress that precipitation-only SPI may miss, especially during hot periods. However, the added complexity means that SPEI can be sensitive to method choices and data uncertainty.</p><p>Understanding these limitations helps prevent overconfidence. SPEI is a drought indicator, not a complete physical model of soil water, crop stress, groundwater, or socioeconomic impact.</p>
+</section>
+<section id="pet">
+<h2>Potential evapotranspiration uncertainty</h2>
+<p>SPEI is based on the difference between precipitation and potential evapotranspiration or a related measure of atmospheric water demand. PET can be estimated using simple temperature-based methods or more data-intensive methods that use radiation, wind speed, and humidity. Different PET methods can produce different SPEI values.</p><div class="table-wrap"><table><thead><tr><th>PET issue</th><th>Why it matters</th><th>Possible consequence</th></tr></thead><tbody><tr><td>Method selection</td><td>Temperature-only and physically based methods may differ</td><td>Different drought intensity estimates</td></tr><tr><td>Input variables</td><td>Radiation, wind, humidity, and temperature may have errors</td><td>Uncertain atmospheric demand</td></tr><tr><td>Climate sensitivity</td><td>PET often increases in warmer conditions</td><td>SPEI may show stronger drying trends than SPI</td></tr><tr><td>Regional performance</td><td>PET methods may perform differently across climates</td><td>Comparability can be reduced</td></tr></tbody></table></div>
+</section>
+<section id="data">
+<h2>Input data sensitivity</h2>
+<p>SPEI requires more information than SPI. At minimum, it needs precipitation and an evapotranspiration estimate. Many workflows use temperature, and more complete workflows may also require radiation, wind, and humidity. Errors or biases in these variables can influence SPEI.</p><p>Data sensitivity is important when comparing station data, reanalysis products, and gridded datasets. In data-sparse areas, uncertainty in precipitation and temperature can affect both the water-balance calculation and the final standardized value.</p>
+</section>
+<section id="water-balance">
+<h2>Simplified water balance</h2>
+<p>SPEI is based on climatic water balance, but it does not explicitly simulate soil depth, rooting depth, irrigation, runoff, groundwater, snow processes, crop water uptake, or land management. These processes can be essential for local impacts.</p><p>For this reason, SPEI is best interpreted as a standardized climatic drought indicator. It may be strongly related to agricultural or ecological stress, but the relationship should be validated when possible.</p>
+</section>
+<section id="climate">
+<h2>Climate and trend interpretation</h2>
+<p>Because SPEI includes atmospheric demand, it is often more sensitive to warming than SPI. This can be an advantage when the goal is to evaluate drought under rising temperature. However, trend interpretation should be careful because PET method, baseline period, and input data changes can influence results.</p><p>Users should avoid saying that SPEI alone proves impact severity. It indicates climatic water-balance anomaly, which may contribute to impacts depending on exposure and vulnerability.</p>
+</section>
+<section id="comparison">
+<h2>SPEI vs SPI</h2>
+<p>SPI and SPEI answer related but different questions. SPI asks how unusual precipitation has been. SPEI asks how unusual the balance between precipitation and atmospheric demand has been. In cool or humid settings, they may be similar. During hot dry periods, SPEI may indicate stronger drought than SPI.</p><p>Using both indices can help separate precipitation deficit from temperature-enhanced dryness.</p>
+</section>
+<section id="best-practice">
+<h2>Best-practice use</h2>
+<p>Best practice is to report the PET method, climate variables used, dataset, baseline period, time scale, and thresholds. For applied decisions, SPEI should be compared with <a href="/knowledge/soil-moisture-data/">soil moisture</a>, vegetation condition, streamflow, reservoir storage, crop information, or observed impacts.</p><div class="callout"><strong>Best practice:</strong> Use SPEI when atmospheric water demand matters, but avoid treating it as a direct measurement of soil moisture or yield loss.</div>
+</section>
+<section id="dmap-ai">
+<h2>How DMAP-AI should use this concept</h2>
+<p>As <a href="https://droughtanalysis.com/">DMAP-AI</a> expands beyond SPI, SPEI should be presented with clear metadata about evapotranspiration method and input dataset. <a href="https://droughtanalysis.com/method-comparison/">Structured AI interpretations</a> should explain that SPEI includes atmospheric water demand, but should also note that it remains a climatic index rather than a full impact model.</p>
+</section>
+<section id="faq">
+<h2>Frequently asked questions</h2>
+<h3>Is SPEI always better than SPI?</h3><p>No. SPEI includes atmospheric demand, but it also introduces PET uncertainty. SPI may be preferable when precipitation anomaly is the specific research question or when temperature data quality is weak.</p><h3>Does SPEI measure soil moisture?</h3><p>No. SPEI may correlate with soil moisture, but it does not directly simulate soil water storage, infiltration, rooting depth, or irrigation.</p><h3>Why can SPEI show stronger drought than SPI?</h3><p>Because SPEI includes atmospheric water demand. Hot, dry, windy, or low-humidity conditions can intensify climatic water deficit even if precipitation deficit alone is moderate.</p>
+</section>
+<section id="references">
+<h2>Selected references</h2>
+<ol class="references">
+<li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of <a href="/knowledge/drought-frequency/">drought frequency</a> and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+<li>World Meteorological Organization. <a href="/knowledge/what-is-spi/">Standardized Precipitation Index</a> User Guide. WMO-No. 1090.</li>
+<li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+<li>Vicente-Serrano, S. M., Beguería, S., and López-Moreno, J. I. (2010). A multiscalar drought index sensitive to global warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate.</li>
+<li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
+</ol>
+</section>
+<section id="related">
+<h2>Related articles</h2>
+<div class="related-grid">
+<a class="related-card" href="/knowledge/what-is-spei/">
+<strong>What is SPEI?</strong>
+<span>Review the definition and calculation logic of SPEI.</span>
+</a>
+<a class="related-card" href="/knowledge/spi-limitations/">
+<strong>Limitations of SPI</strong>
+<span>Compare SPEI limitations with precipitation-only SPI.</span>
+</a>
+<a class="related-card" href="/knowledge/multi-index-drought-monitoring/">
+<strong>Multi-Index Drought Monitoring</strong>
+<span>Learn why several indicators are often better than one.</span>
+</a>
+</div>
+</section>
+</article>
+<aside aria-label="Table of contents" class="toc">
+<h2>On this page</h2>
+<a href="#quick-answer">Short answer</a>
+<a href="#importance">Why limitations matter</a>
+<a href="#pet">PET uncertainty</a>
+<a href="#data">Input data sensitivity</a>
+<a href="#water-balance">Simplified water balance</a>
+<a href="#climate">Climate and trend interpretation</a>
+<a href="#comparison">SPEI vs SPI</a>
+<a href="#best-practice">Best-practice use</a>
+<a href="#dmap-ai">How DMAP-AI should use this</a>
+<a href="#faq">FAQ</a>
+<a href="#references">References</a>
+<a href="#related">Related articles</a>
+</aside>
+</div>
+<section aria-labelledby="knowledge-browse-title" class="comparison-stations-section">
+<div class="comparison-stations-card">
+<div class="comparison-stations-head">
+<div>
+<h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+<p>Search and open other DMAP-AI Knowledge Center articles about drought science, indices, climate datasets, methods, and AI interpretation.</p>
+</div>
+<span class="station-count-pill">Documentation</span>
+</div>
+<div data-articles-nav="" data-current-slug="spei-limitations"></div>
+</div>
+</section>
+<p class="back-to-knowledge"><a href="/knowledge/">← Back to Knowledge Center</a></p>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<span>© 2026 <a href="https://agrimetsoft.com/" rel="noopener" target="_blank">AgriMetSoft</a>. All rights reserved.</span>
+</div>
+</footer>
+<script defer="" src="/knowledge/knowledge-nav.js"></script>
+<script src="/assets/global-nav.js"></script>
 </body>
 </html>

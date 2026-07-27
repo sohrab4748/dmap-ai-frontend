@@ -1,42 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<title>DMAP-AI Research Version Tutorial | SPI Tables, Charts, Severity & Wavelet</title>
-<meta name="description" content="Learn how to run the DMAP-AI Research Version and interpret SPI tables, categories, charts, drought severity, magnitude, wavelet scalogram, spectrum, and coherence." />
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://droughtanalysis.com/sv_tutorial" />
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>DMAP-AI Research Version Tutorial | SPI Tables, Charts, Severity &amp; Wavelet</title>
+<meta content="Learn how to run the DMAP-AI Research Version and interpret SPI tables, categories, charts, drought severity, magnitude, wavelet scalogram, spectrum, and coherence." name="description"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://droughtanalysis.com/sv_tutorial" rel="canonical"/>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W6Z3VWV0W9"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-W6Z3VWV0W9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag("js", new Date());
   gtag("config", "G-W6Z3VWV0W9");
 </script>
-
-<link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="DMAP-AI" />
-<meta property="og:title" content="DMAP-AI Research Version Tutorial | SPI Tables, Charts, Severity & Wavelet" />
-<meta property="og:description" content="Run the DMAP-AI Research Version and interpret SPI tables, categories, charts, drought severity, magnitude, wavelet scalogram, spectrum, and coherence." />
-<meta property="og:url" content="https://droughtanalysis.com/sv_tutorial" />
-<meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="DMAP-AI Research Version Tutorial | SPI Tables, Charts, Severity & Wavelet" />
-<meta name="twitter:description" content="Step-by-step DMAP-AI Research Version guide for SPI tables, charts, drought severity, magnitude, wavelet outputs, and thresholds." />
-<meta name="twitter:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
-
-<link rel="preload" as="image" href="/assets/logo-dmap-ai.webp" imagesrcset="/assets/logo-dmap-ai.webp 1x, /assets/logo-dmap-ai@2x.webp 2x" />
-
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<meta content="website" property="og:type"/>
+<meta content="DMAP-AI" property="og:site_name"/>
+<meta content="DMAP-AI Research Version Tutorial | SPI Tables, Charts, Severity &amp; Wavelet" property="og:title"/>
+<meta content="Run the DMAP-AI Research Version and interpret SPI tables, categories, charts, drought severity, magnitude, wavelet scalogram, spectrum, and coherence." property="og:description"/>
+<meta content="https://droughtanalysis.com/sv_tutorial" property="og:url"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="DMAP-AI Research Version Tutorial | SPI Tables, Charts, Severity &amp; Wavelet" name="twitter:title"/>
+<meta content="Step-by-step DMAP-AI Research Version guide for SPI tables, charts, drought severity, magnitude, wavelet outputs, and thresholds." name="twitter:description"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" name="twitter:image"/>
+<link as="image" href="/assets/logo-dmap-ai.webp" imagesrcset="/assets/logo-dmap-ai.webp 1x, /assets/logo-dmap-ai@2x.webp 2x" rel="preload"/>
 <style>
 :root{--navy:#0f172a;--slate:#334155;--muted:#64748b;--line:#e2e8f0;--blue:#2563eb;--blue-dark:#1d4ed8;--green:#047857;--green-soft:#ecfdf5;--amber:#b45309;--amber-soft:#fffbeb;--soft:#f8fafc;--soft-blue:#eff6ff;--white:#fff}
 *{box-sizing:border-box}
@@ -129,11 +123,9 @@ tr:last-child td{border-bottom:0}
   }
 }
 </style>
-
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"DMAP-AI Research Version Tutorial","url":"https://droughtanalysis.com/sv_tutorial","description":"Research Version tutorial for DMAP-AI, including step-by-step use of the free point-based SPI workflow, table category methods, chart interpretation, drought severity, wavelet diagnostics, and thresholds.","publisher":{"@type":"Organization","name":"AgriMetSoft LLC","url":"https://agrimetsoft.com"}}
 </script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -160,379 +152,347 @@ tr:last-child td{border-bottom:0}
   ]
 }
 </script>
-
-  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+<link href="/assets/dmap-global-nav.css" rel="stylesheet"/>
 </head>
-
 <body>
-
 <section class="hero">
-  <div class="container">
-    <div class="breadcrumbs"><a href="/">Home</a> / <a href="/tutorials">Tutorial Hub</a> / Research Version Tutorial</div>
-    <div class="hero-card">
-      <div class="hero-content">
-        <span class="eyebrow">DMAP-AI Research Version guide</span>
-        <h1>How to run the Research Version and interpret SPI outputs</h1>
-        <p class="lead">This page explains the current free Research Version workflow. It shows how to sign in, select a point, choose NASA POWER or ERA5-Land/CDS, run SPI analysis, read the Table, Charts, Severity, and Wavelet tabs, save runs, and understand the thresholds used in the results.</p>
-        <div class="page-actions">
-          <a class="btn primary" href="/DMAP_AI_App">Open the DMAP-AI Research Version app</a>
-          <a class="btn" href="#table-output">Read the SPI table guide</a>
-          <a class="btn" href="#wavelet-output">Read the wavelet guide</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mini-grid">
-      <div class="mini"><strong>Current free workflow</strong>SPI drought analysis</div>
-      <div class="mini"><strong>Default data source</strong>NASA POWER</div>
-      <div class="mini"><strong>Advanced option</strong>ERA5-Land / CDS</div>
-      <div class="mini"><strong>Area type</strong>Point-based analysis</div>
-    </div>
-
-    <div class="quick-grid" aria-label="Research Version tutorial quick links">
-      <a class="quick-link" href="#table-output"><strong>SPI Table tutorial</strong><span>SPI values, categories, and thresholds</span></a>
-      <a class="quick-link" href="#chart-output"><strong>SPI Charts tutorial</strong><span>SPI line, anomalies, and boxplots</span></a>
-      <a class="quick-link" href="#severity-output"><strong>Drought Severity tutorial</strong><span>Drought events and shaded SPI events</span></a>
-      <a class="quick-link" href="#wavelet-output"><strong>Wavelet tutorial</strong><span>Scalogram, global spectrum, and coherence</span></a>
-    </div>
-  </div>
+<div class="container">
+<div class="breadcrumbs"><a href="/">Home</a> / <a href="/tutorials">Tutorial Hub</a> / Research Version Tutorial</div>
+<div class="hero-card">
+<div class="hero-content">
+<span class="eyebrow">DMAP-AI Research Version guide</span>
+<h1>How to run the Research Version and <a href="/knowledge/spi-interpretation/">interpret SPI</a> outputs</h1>
+<p class="lead">This page explains the current free Research Version workflow. It shows how to sign in, select a point, choose <a href="/knowledge/nasa-power-for-drought/">NASA POWER</a> or ERA5-Land/CDS, run SPI analysis, read the Table, Charts, Severity, and Wavelet tabs, save runs, and understand the thresholds used in the results.</p>
+<div class="page-actions">
+<a class="btn primary" href="/DMAP_AI_App">Open the DMAP-AI Research Version app</a>
+<a class="btn" href="#table-output">Read the SPI table guide</a>
+<a class="btn" href="#wavelet-output">Read the wavelet guide</a>
+</div>
+</div>
+</div>
+<div class="mini-grid">
+<div class="mini"><strong>Current free workflow</strong>SPI drought analysis</div>
+<div class="mini"><strong>Default data source</strong>NASA POWER</div>
+<div class="mini"><strong>Advanced option</strong><a href="/knowledge/era5-land-for-drought/">ERA5-Land</a> / CDS</div>
+<div class="mini"><strong>Area type</strong>Point-based analysis</div>
+</div>
+<div aria-label="Research Version tutorial quick links" class="quick-grid">
+<a class="quick-link" href="#table-output"><strong>SPI Table tutorial</strong><span>SPI values, categories, and thresholds</span></a>
+<a class="quick-link" href="#chart-output"><strong>SPI Charts tutorial</strong><span>SPI line, anomalies, and boxplots</span></a>
+<a class="quick-link" href="#severity-output"><strong>Drought Severity tutorial</strong><span>Drought events and shaded SPI events</span></a>
+<a class="quick-link" href="#wavelet-output"><strong>Wavelet tutorial</strong><span>Scalogram, global spectrum, and coherence</span></a>
+</div>
+</div>
 </section>
-
 <main>
-  <section id="steps" class="container section">
-    <div class="section-head">
-      <h2>Step-by-step: run the Research Version</h2>
-      <p>Follow these steps to run a point-based SPI analysis, review the outputs, and save the result in your DMAP-AI account.</p>
-    </div>
-    <ol class="steps">
-      <li><strong>Open the Research Version and sign in.</strong> Open the <a href="/DMAP_AI_App">DMAP-AI Research Version app</a>. Sign in with Google so completed runs can be saved and reloaded from the dashboard.</li>
-      <li><strong>Select the drought index.</strong> In the free Research Version, choose <b>SPI — Standardized Precipitation Index</b>. Other drought indices are shown as planned licensed or research capabilities.</li>
-      <li><strong>Select a point on the map.</strong> Choose <b>Point</b> mode, then click the map. The latitude and longitude boxes should be filled automatically. The values can also be typed manually.</li>
-      <li><strong>Use historical mode.</strong> The current free workflow uses historical analysis. Forecast and prediction workflows are planned for licensed or future versions.</li>
-      <li><strong>Choose the data source.</strong> Select <b>NASA POWER</b> for the default free point-based source. Select <b>ERA5-Land / CDS</b> when the advanced reanalysis option is needed and backend CDS access is configured.</li>
-      <li><strong>Set dates and baseline.</strong> Select the analysis period. NASA POWER supports dates from 1981 onward. The baseline box is optional; if it is left empty, the backend can use the selected analysis period as the baseline.</li>
-      <li><strong>Choose the aggregation.</strong> The Research Version is designed for <b>Yearly</b> point-based SPI. For the standard yearly workflow, use <b>Jan–Dec totals</b>.</li>
-      <li><strong>Click Run.</strong> The backend downloads or reads climate data, calculates SPI, and returns tables and charts. ERA5-Land can be slower on the first run because data may need to be downloaded.</li>
-      <li><strong>Review the result tabs.</strong> Use the <a href="#table-output">Table tab explanation</a>, <a href="#chart-output">Charts tab explanation</a>, <a href="#severity-output">Severity tab explanation</a>, and <a href="#wavelet-output">Wavelet tab explanation</a> below to read the outputs.</li>
-      <li><strong>Save the run.</strong> Click <b>Save current run</b> in the dashboard. Saved runs can be reloaded later from the dashboard.</li>
-      <li><strong>Use JSON or Debug when needed.</strong> The JSON tab is useful for reporting, reproducibility, or AI-ready context. The Debug tab is mainly for checking API requests and troubleshooting.</li>
-    </ol>
-  </section>
-
-  <section id="table-output" class="container section">
-    <div class="section-head">
-      <h2>Table tab: SPI values, categories, and thresholds</h2>
-      <p>The Table tab is the main numerical output of the Research Version. It shows the selected time step, precipitation total, SPI value, and drought/wetness category.</p>
-    </div>
-    <div class="grid-2">
-      <article class="card output-card">
-        <span class="badge">SPI table</span>
-        <h3>What does the SPI column mean?</h3>
-        <p>SPI is a standardized drought index based on precipitation. An SPI value near zero means precipitation is close to the baseline climate. Negative SPI values indicate drier-than-normal conditions, and positive SPI values indicate wetter-than-normal conditions.</p>
-        <ul class="text-list">
-          <li><b>SPI below 0:</b> drier than the baseline period.</li>
-          <li><b>SPI near 0:</b> close to normal precipitation.</li>
-          <li><b>SPI above 0:</b> wetter than the baseline period.</li>
-          <li><b>More negative SPI:</b> stronger drought signal.</li>
-        </ul>
-        <p class="note">Detailed background is available in the <a href="/formulas#spi">Standardized Precipitation Index method guide</a>.</p>
-      </article>
-
-      <article class="card output-card">
-        <span class="badge">Category methods</span>
-        <h3>Four category methods in the Table tab</h3>
-        <p>The category selector changes how the same SPI values are grouped into classes. The SPI values do not change; only the interpretation labels change.</p>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Category method</th><th>How it groups the SPI results</th><th>How to interpret it</th></tr></thead>
-            <tbody>
-              <tr><td>Classic SPI thresholds</td><td>Uses common SPI drought/wetness thresholds such as moderate, severe, and extreme drought.</td><td>Best for standard SPI reporting and comparison with many drought-index studies.</td></tr>
-              <tr><td>USDM style</td><td>Maps dry SPI values to drought-monitor style classes such as abnormally dry, moderate drought, severe drought, extreme drought, and exceptional drought.</td><td>Useful when the result needs to be described in language similar to drought-monitor products.</td></tr>
-              <tr><td>Percentile bands</td><td>Uses the rank or percentile position of values within the selected distribution.</td><td>Useful for reading how unusual a value is compared with the local record or baseline.</td></tr>
-              <tr><td>AI/ML k-means clusters</td><td>Uses data-driven clusters. The class boundaries are not fixed; they depend on the analyzed data.</td><td>Useful for exploratory grouping, but the classes should be read as relative clusters, not fixed drought thresholds.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </article>
-    </div>
-
-    
+<section class="container section" id="steps">
+<div class="section-head">
+<h2>Step-by-step: run the Research Version</h2>
+<p>Follow these steps to run a point-based SPI analysis, review the outputs, and save the result in your DMAP-AI account.</p>
+</div>
+<ol class="steps">
+<li><strong>Open the Research Version and sign in.</strong> Open the <a href="/DMAP_AI_App">DMAP-AI Research Version app</a>. Sign in with Google so completed runs can be saved and reloaded from the dashboard.</li>
+<li><strong>Select the drought index.</strong> In the free Research Version, choose <b>SPI — <a href="/knowledge/what-is-spi/">Standardized Precipitation Index</a></b>. Other drought indices are shown as planned licensed or research capabilities.</li>
+<li><strong>Select a point on the map.</strong> Choose <b>Point</b> mode, then click the map. The latitude and longitude boxes should be filled automatically. The values can also be typed manually.</li>
+<li><strong>Use historical mode.</strong> The current free workflow uses historical analysis. Forecast and prediction workflows are planned for licensed or future versions.</li>
+<li><strong>Choose the data source.</strong> Select <b>NASA POWER</b> for the default free point-based source. Select <b>ERA5-Land / CDS</b> when the advanced reanalysis option is needed and backend CDS access is configured.</li>
+<li><strong>Set dates and baseline.</strong> Select the analysis period. NASA POWER supports dates from 1981 onward. The baseline box is optional; if it is left empty, the backend can use the selected analysis period as the baseline.</li>
+<li><strong>Choose the aggregation.</strong> The Research Version is designed for <b>Yearly</b> point-based SPI. For the standard yearly workflow, use <b>Jan–Dec totals</b>.</li>
+<li><strong>Click Run.</strong> The backend downloads or reads climate data, calculates SPI, and returns tables and charts. ERA5-Land can be slower on the first run because data may need to be downloaded.</li>
+<li><strong>Review the result tabs.</strong> Use the <a href="#table-output">Table tab explanation</a>, <a href="#chart-output">Charts tab explanation</a>, <a href="#severity-output">Severity tab explanation</a>, and <a href="#wavelet-output">Wavelet tab explanation</a> below to read the outputs.</li>
+<li><strong>Save the run.</strong> Click <b>Save current run</b> in the dashboard. Saved runs can be reloaded later from the dashboard.</li>
+<li><strong>Use JSON or Debug when needed.</strong> The JSON tab is useful for reporting, reproducibility, or AI-ready context. The Debug tab is mainly for checking API requests and troubleshooting.</li>
+</ol>
+</section>
+<section class="container section" id="table-output">
+<div class="section-head">
+<h2>Table tab: SPI values, categories, and thresholds</h2>
+<p>The Table tab is the main numerical output of the Research Version. It shows the selected time step, precipitation total, SPI value, and drought/wetness category.</p>
+</div>
+<div class="grid-2">
+<article class="card output-card">
+<span class="badge">SPI table</span>
+<h3>What does the SPI column mean?</h3>
+<p>SPI is a standardized drought index based on precipitation. An SPI value near zero means precipitation is close to the baseline climate. Negative SPI values indicate drier-than-normal conditions, and positive SPI values indicate wetter-than-normal conditions.</p>
+<ul class="text-list">
+<li><b>SPI below 0:</b> drier than the baseline period.</li>
+<li><b>SPI near 0:</b> close to normal precipitation.</li>
+<li><b>SPI above 0:</b> wetter than the baseline period.</li>
+<li><b>More negative SPI:</b> stronger drought signal.</li>
+</ul>
+<p class="note">Detailed background is available in the <a href="/formulas#spi">Standardized Precipitation Index method guide</a>.</p>
+</article>
+<article class="card output-card">
+<span class="badge">Category methods</span>
+<h3>Four category methods in the Table tab</h3>
+<p>The category selector changes how the same SPI values are grouped into classes. The SPI values do not change; only the interpretation labels change.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Category method</th><th>How it groups the SPI results</th><th>How to interpret it</th></tr></thead>
+<tbody>
+<tr><td>Classic SPI thresholds</td><td>Uses common SPI drought/wetness thresholds such as moderate, severe, and extreme drought.</td><td>Best for standard SPI reporting and comparison with many drought-index studies.</td></tr>
+<tr><td>USDM style</td><td>Maps dry SPI values to drought-monitor style classes such as abnormally dry, moderate drought, severe drought, extreme drought, and exceptional drought.</td><td>Useful when the result needs to be described in language similar to drought-monitor products.</td></tr>
+<tr><td>Percentile bands</td><td>Uses the rank or percentile position of values within the selected distribution.</td><td>Useful for reading how unusual a value is compared with the local record or baseline.</td></tr>
+<tr><td>AI/ML k-means clusters</td><td>Uses data-driven clusters. The class boundaries are not fixed; they depend on the analyzed data.</td><td>Useful for exploratory grouping, but the classes should be read as relative clusters, not fixed <a href="/knowledge/drought-thresholds/">drought thresholds</a>.</td></tr>
+</tbody>
+</table>
+</div>
+</article>
+</div>
 <div class="card output-card" style="margin-top:1.2rem">
-      <span class="badge">Thresholds</span>
-      <h3>Category tables used in the Table tab</h3>
-      <p>
+<span class="badge">Thresholds</span>
+<h3>Category tables used in the Table tab</h3>
+<p>
         The Table tab can display the same SPI values using different category methods. The Classic and USDM-style methods use fixed SPI thresholds. The Percentile and AI/ML k-means methods depend on the distribution of the current run.
       </p>
-
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th colspan="3">Classic SPI threshold table</th></tr><tr><th>SPI range</th><th>Category</th><th>Interpretation</th></tr></thead>
-          <tbody>
-            <tr><td>SPI ≤ -2.00</td><td>Extreme drought</td><td>Very strong dry signal.</td></tr>
-            <tr><td>-2.00 &lt; SPI ≤ -1.50</td><td>Severe drought</td><td>Strong dry signal.</td></tr>
-            <tr><td>-1.50 &lt; SPI ≤ -1.00</td><td>Moderate drought</td><td>Moderate dry signal.</td></tr>
-            <tr><td>-1.00 &lt; SPI &lt; 1.00</td><td>Near normal</td><td>Close to normal precipitation conditions.</td></tr>
-            <tr><td>1.00 ≤ SPI &lt; 1.50</td><td>Moderately wet</td><td>Moderate wet signal.</td></tr>
-            <tr><td>1.50 ≤ SPI &lt; 2.00</td><td>Very wet</td><td>Strong wet signal.</td></tr>
-            <tr><td>SPI ≥ 2.00</td><td>Extremely wet</td><td>Very strong wet signal.</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th colspan="3">USDM-style category table used by the Research Version</th></tr><tr><th>SPI range</th><th>USDM-style label</th><th>Interpretation</th></tr></thead>
-          <tbody>
-            <tr><td>SPI ≤ -2.00</td><td>D4 – Exceptional drought</td><td>The strongest USDM drought category in the SPI/SPEI classification range.</td></tr>
-            <tr><td>-2.00 &lt; SPI ≤ -1.60</td><td>D3 – Extreme drought</td><td>Extreme dry conditions.</td></tr>
-            <tr><td>-1.60 &lt; SPI ≤ -1.30</td><td>D2 – Severe drought</td><td>Severe dry conditions.</td></tr>
-            <tr><td>-1.30 &lt; SPI ≤ -0.80</td><td>D1 – Moderate drought</td><td>Moderate drought conditions.</td></tr>
-            <tr><td>-0.80 &lt; SPI ≤ -0.50</td><td>D0 – Abnormally dry</td><td>Dryness signal; D0 is abnormally dry and is not counted as drought in the same way as D1–D4.</td></tr>
-            <tr><td>SPI &gt; -0.50</td><td>No drought / normal or wet</td><td>No USDM-style dry class is assigned from SPI. The official USDM table lists this as -0.49 or above.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note">
+<div class="table-wrap">
+<table>
+<thead><tr><th colspan="3">Classic SPI threshold table</th></tr><tr><th>SPI range</th><th>Category</th><th>Interpretation</th></tr></thead>
+<tbody>
+<tr><td>SPI ≤ -2.00</td><td>Extreme drought</td><td>Very strong dry signal.</td></tr>
+<tr><td>-2.00 &lt; SPI ≤ -1.50</td><td>Severe drought</td><td>Strong dry signal.</td></tr>
+<tr><td>-1.50 &lt; SPI ≤ -1.00</td><td>Moderate drought</td><td>Moderate dry signal.</td></tr>
+<tr><td>-1.00 &lt; SPI &lt; 1.00</td><td>Near normal</td><td>Close to normal precipitation conditions.</td></tr>
+<tr><td>1.00 ≤ SPI &lt; 1.50</td><td>Moderately wet</td><td>Moderate wet signal.</td></tr>
+<tr><td>1.50 ≤ SPI &lt; 2.00</td><td>Very wet</td><td>Strong wet signal.</td></tr>
+<tr><td>SPI ≥ 2.00</td><td>Extremely wet</td><td>Very strong wet signal.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th colspan="3">USDM-style category table used by the Research Version</th></tr><tr><th>SPI range</th><th>USDM-style label</th><th>Interpretation</th></tr></thead>
+<tbody>
+<tr><td>SPI ≤ -2.00</td><td>D4 – Exceptional drought</td><td>The strongest USDM drought category in the SPI/SPEI classification range.</td></tr>
+<tr><td>-2.00 &lt; SPI ≤ -1.60</td><td>D3 – Extreme drought</td><td>Extreme dry conditions.</td></tr>
+<tr><td>-1.60 &lt; SPI ≤ -1.30</td><td>D2 – Severe drought</td><td>Severe dry conditions.</td></tr>
+<tr><td>-1.30 &lt; SPI ≤ -0.80</td><td>D1 – Moderate drought</td><td>Moderate drought conditions.</td></tr>
+<tr><td>-0.80 &lt; SPI ≤ -0.50</td><td>D0 – Abnormally dry</td><td>Dryness signal; D0 is abnormally dry and is not counted as drought in the same way as D1–D4.</td></tr>
+<tr><td>SPI &gt; -0.50</td><td>No drought / normal or wet</td><td>No USDM-style dry class is assigned from SPI. The official USDM table lists this as -0.49 or above.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">
         These USDM-style labels are adapted from the official U.S. Drought Monitor drought classification table, which provides approximate SPI/SPEI ranges for D0–D4 classes. They are used inside the Research Version only as SPI-based communication labels. They are not an official U.S. Drought Monitor map because the official USDM uses multiple indicators, local information, expert assessment, and drought impacts; see the <a href="https://droughtmonitor.unl.edu/About/AbouttheData/DroughtClassification.aspx">U.S. Drought Monitor drought classification table</a>.
       </p>
-
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th colspan="3">Percentile bands used by the Research Version</th></tr><tr><th>Band</th><th>Label</th><th>Interpretation</th></tr></thead>
-          <tbody>
-            <tr><td>Lowest ≈5%</td><td>Extreme drought</td><td>One of the lowest SPI values in the current record.</td></tr>
-            <tr><td>≈5% to ≈20%</td><td>Moderate drought</td><td>Lower-than-usual SPI value relative to the current record.</td></tr>
-            <tr><td>≈20% to ≈80%</td><td>Near normal</td><td>Middle part of the SPI distribution.</td></tr>
-            <tr><td>≈80% to ≈95%</td><td>Moderate wet</td><td>Higher-than-usual SPI value relative to the current record.</td></tr>
-            <tr><td>Top ≈5%</td><td>Extreme wet</td><td>One of the highest SPI values in the current record.</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th colspan="3">AI/ML k-means clusters</th></tr><tr><th>Cluster position</th><th>Label style</th><th>Interpretation</th></tr></thead>
-          <tbody>
-            <tr><td>Driest cluster</td><td>AI: Extreme drought</td><td>The lowest SPI cluster in the current data.</td></tr>
-            <tr><td>Dry clusters</td><td>AI: Severe or moderate drought</td><td>Clusters below the near-normal group.</td></tr>
-            <tr><td>Middle cluster</td><td>AI: Near normal</td><td>Cluster closest to typical SPI behavior in the current data.</td></tr>
-            <tr><td>Wet clusters</td><td>AI: Moderately wet, very wet, or extremely wet</td><td>Clusters above the near-normal group.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note">
+<div class="table-wrap">
+<table>
+<thead><tr><th colspan="3">Percentile bands used by the Research Version</th></tr><tr><th>Band</th><th>Label</th><th>Interpretation</th></tr></thead>
+<tbody>
+<tr><td>Lowest ≈5%</td><td>Extreme drought</td><td>One of the lowest SPI values in the current record.</td></tr>
+<tr><td>≈5% to ≈20%</td><td>Moderate drought</td><td>Lower-than-usual SPI value relative to the current record.</td></tr>
+<tr><td>≈20% to ≈80%</td><td>Near normal</td><td>Middle part of the SPI distribution.</td></tr>
+<tr><td>≈80% to ≈95%</td><td>Moderate wet</td><td>Higher-than-usual SPI value relative to the current record.</td></tr>
+<tr><td>Top ≈5%</td><td>Extreme wet</td><td>One of the highest SPI values in the current record.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th colspan="3">AI/ML k-means clusters</th></tr><tr><th>Cluster position</th><th>Label style</th><th>Interpretation</th></tr></thead>
+<tbody>
+<tr><td>Driest cluster</td><td>AI: Extreme drought</td><td>The lowest SPI cluster in the current data.</td></tr>
+<tr><td>Dry clusters</td><td>AI: Severe or moderate drought</td><td>Clusters below the near-normal group.</td></tr>
+<tr><td>Middle cluster</td><td>AI: Near normal</td><td>Cluster closest to typical SPI behavior in the current data.</td></tr>
+<tr><td>Wet clusters</td><td>AI: Moderately wet, very wet, or extremely wet</td><td>Clusters above the near-normal group.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">
         K-means is data-driven. Its class boundaries change from one run to another, so it is useful for exploratory grouping but should not replace fixed <a href="/formulas#spi-thresholds">SPI drought threshold interpretation</a>.
       </p>
-    </div>
-  </section>
-
-  <section id="chart-output" class="container section">
-    <div class="section-head">
-      <h2>Charts tab: SPI line, precipitation anomaly, and boxplot</h2>
-      <p>The Charts tab helps users see the drought history visually. It is useful for finding dry periods, wet periods, shifts in precipitation behavior, and unusual years.</p>
-    </div>
-    <div class="grid-3">
-      <article class="card output-card"><span class="badge">SPI chart</span><h3>SPI time-series chart</h3><p>The SPI chart plots SPI values through time. Values below zero show dry conditions, and values above zero show wet conditions. The farther the line moves away from zero, the stronger the dry or wet signal.</p><ul class="text-list"><li>Periods below -1 usually indicate drought conditions.</li><li>Periods below -1.5 or -2 show stronger drought intensity.</li><li>Periods above 1 indicate wet conditions.</li></ul></article>
-      <article class="card output-card"><span class="badge">Bounds</span><h3>Lower and upper bounds</h3><p>The lower and upper bounds are visual reference lines. They help users see when SPI moves outside the near-normal range.</p><ul class="text-list"><li><b>Lower bound:</b> commonly used to highlight dry or drought conditions.</li><li><b>Upper bound:</b> commonly used to highlight wet conditions.</li><li>When SPI stays beyond a bound for several time steps, the event is more persistent.</li></ul></article>
-      <article class="card output-card"><span class="badge">Anomaly chart</span><h3>Precipitation anomaly chart</h3><p>The anomaly chart shows whether precipitation is above or below a reference level. Positive bars indicate wetter-than-reference periods, and negative bars indicate drier-than-reference periods.</p><ul class="text-list"><li>Large negative anomalies often align with negative SPI values.</li><li>Large positive anomalies often align with positive SPI values.</li><li>Repeated negative anomalies can help explain drought development.</li></ul></article>
-    </div>
-    <div class="card output-card" style="margin-top:1.2rem">
-      <span class="badge">Boxplot</span>
-      <h3>Boxplot chart interpretation</h3>
-      <p>A boxplot summarizes the spread of SPI or precipitation values. It shows the central range, typical variability, and possible outliers.</p>
-      <div class="table-wrap"><table><thead><tr><th>Boxplot item</th><th>Meaning</th><th>Interpretation</th></tr></thead><tbody><tr><td>Median line</td><td>The middle value of the distribution.</td><td>Shows the typical condition for the selected group.</td></tr><tr><td>Box</td><td>The middle 50% of values.</td><td>A taller box means more variability.</td></tr><tr><td>Whiskers</td><td>The wider range of non-outlier values.</td><td>Long whiskers show a wider spread.</td></tr><tr><td>Outliers</td><td>Values far from the main distribution.</td><td>Can indicate unusual dry or wet periods.</td></tr></tbody></table></div>
-      <p class="note">Use the <a href="#table-output">SPI table categories</a> together with the charts. The table gives exact values, and the charts show the temporal pattern.</p>
-    </div>
-  </section>
-
-  
-<section id="severity-output" class="container section">
-    <div class="section-head">
-      <h2>Severity tab: drought events, shaded SPI events, and drought magnitude</h2>
-      <p>
+</div>
+</section>
+<section class="container section" id="chart-output">
+<div class="section-head">
+<h2>Charts tab: SPI line, precipitation anomaly, and boxplot</h2>
+<p>The Charts tab helps users see the drought history visually. It is useful for finding dry periods, wet periods, shifts in precipitation behavior, and unusual years.</p>
+</div>
+<div class="grid-3">
+<article class="card output-card"><span class="badge">SPI chart</span><h3>SPI time-series chart</h3><p>The SPI chart plots SPI values through time. Values below zero show dry conditions, and values above zero show wet conditions. The farther the line moves away from zero, the stronger the dry or wet signal.</p><ul class="text-list"><li>Periods below -1 usually indicate drought conditions.</li><li>Periods below -1.5 or -2 show stronger drought intensity.</li><li>Periods above 1 indicate wet conditions.</li></ul></article>
+<article class="card output-card"><span class="badge">Bounds</span><h3>Lower and upper bounds</h3><p>The lower and upper bounds are visual reference lines. They help users see when SPI moves outside the near-normal range.</p><ul class="text-list"><li><b>Lower bound:</b> commonly used to highlight dry or drought conditions.</li><li><b>Upper bound:</b> commonly used to highlight wet conditions.</li><li>When SPI stays beyond a bound for several time steps, the event is more persistent.</li></ul></article>
+<article class="card output-card"><span class="badge">Anomaly chart</span><h3>Precipitation anomaly chart</h3><p>The anomaly chart shows whether precipitation is above or below a reference level. Positive bars indicate wetter-than-reference periods, and negative bars indicate drier-than-reference periods.</p><ul class="text-list"><li>Large negative anomalies often align with negative SPI values.</li><li>Large positive anomalies often align with positive SPI values.</li><li>Repeated negative anomalies can help explain drought development.</li></ul></article>
+</div>
+<div class="card output-card" style="margin-top:1.2rem">
+<span class="badge">Boxplot</span>
+<h3>Boxplot chart interpretation</h3>
+<p>A boxplot summarizes the spread of SPI or precipitation values. It shows the central range, typical variability, and possible outliers.</p>
+<div class="table-wrap"><table><thead><tr><th>Boxplot item</th><th>Meaning</th><th>Interpretation</th></tr></thead><tbody><tr><td>Median line</td><td>The middle value of the distribution.</td><td>Shows the typical condition for the selected group.</td></tr><tr><td>Box</td><td>The middle 50% of values.</td><td>A taller box means more variability.</td></tr><tr><td>Whiskers</td><td>The wider range of non-outlier values.</td><td>Long whiskers show a wider spread.</td></tr><tr><td>Outliers</td><td>Values far from the main distribution.</td><td>Can indicate unusual dry or wet periods.</td></tr></tbody></table></div>
+<p class="note">Use the <a href="#table-output">SPI table categories</a> together with the charts. The table gives exact values, and the charts show the temporal pattern.</p>
+</div>
+</section>
+<section class="container section" id="severity-output">
+<div class="section-head">
+<h2>Severity tab: drought events, shaded SPI events, and drought magnitude</h2>
+<p>
         The Severity tab identifies drought events and summarizes their duration, intensity, and drought magnitude. This section focuses on drought severity, not wetness magnitude.
       </p>
-    </div>
-
-    <div class="grid-2">
-      <article class="card output-card">
-        <span class="badge">Drought events</span>
-        <h3>What is a drought event?</h3>
-        <p>
+</div>
+<div class="grid-2">
+<article class="card output-card">
+<span class="badge">Drought events</span>
+<h3>What is a drought event?</h3>
+<p>
           A drought event is a continuous period when SPI remains below the selected drought threshold. For example, if the threshold is -1.0, each continuous sequence of SPI values at or below -1.0 is treated as one drought event.
         </p>
-        <ul class="text-list">
-          <li><b>Start:</b> the first time step when SPI crosses below the threshold.</li>
-          <li><b>End:</b> the time step when SPI returns above the threshold.</li>
-          <li><b>Duration:</b> the number of time steps in the event.</li>
-          <li><b>Minimum SPI:</b> the driest SPI value during the event.</li>
-        </ul>
-      </article>
-
-      <article class="card output-card">
-        <span class="badge">Shaded events</span>
-        <h3>Drought severity — SPI line with shaded events</h3>
-        <p>
+<ul class="text-list">
+<li><b>Start:</b> the first time step when SPI crosses below the threshold.</li>
+<li><b>End:</b> the time step when SPI returns above the threshold.</li>
+<li><b>Duration:</b> the number of time steps in the event.</li>
+<li><b>Minimum SPI:</b> the driest SPI value during the event.</li>
+</ul>
+</article>
+<article class="card output-card">
+<span class="badge">Shaded events</span>
+<h3>Drought severity — SPI line with shaded events</h3>
+<p>
           This chart shows the SPI line and shades the parts of the record classified as drought events. The shaded sections represent drought periods only. Wet periods above zero are not included in the drought-event magnitude calculation.
         </p>
-        <ul class="text-list">
-          <li>Longer shaded sections indicate longer drought duration.</li>
-          <li>Deeper SPI values inside shaded sections indicate stronger drought intensity.</li>
-          <li>Several shaded sections close together may show repeated drought stress.</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="card output-card" style="margin-top:1.2rem">
-      <span class="badge">Drought threshold SPI</span>
-      <h3>Which drought threshold should be entered?</h3>
-      <p>
+<ul class="text-list">
+<li>Longer shaded sections indicate longer drought duration.</li>
+<li>Deeper SPI values inside shaded sections indicate stronger drought intensity.</li>
+<li>Several shaded sections close together may show repeated drought stress.</li>
+</ul>
+</article>
+</div>
+<div class="card output-card" style="margin-top:1.2rem">
+<span class="badge">Drought threshold SPI</span>
+<h3>Which drought threshold should be entered?</h3>
+<p>
         The drought threshold is the SPI value used to decide whether a time step is part of a drought event. The common threshold for moderate drought detection is <b>-1.0</b>. The tool may show this as <b>SPI ≤ -1.0</b> or <b>SPI ≤ -0.99</b>.
       </p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Threshold entered</th><th>Event meaning</th><th>Use in interpretation</th></tr></thead>
-          <tbody>
-            <tr><td>-1.0</td><td>Moderate drought and worse</td><td>General drought-event detection.</td></tr>
-            <tr><td>-1.5</td><td>Severe drought and worse</td><td>Focuses on stronger drought events.</td></tr>
-            <tr><td>-2.0</td><td>Extreme drought</td><td>Focuses only on the most extreme dry events.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card output-card" style="margin-top:1.2rem">
-      <span class="badge">Magnitude</span>
-      <h3>What is drought magnitude?</h3>
-      <p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Threshold entered</th><th>Event meaning</th><th>Use in interpretation</th></tr></thead>
+<tbody>
+<tr><td>-1.0</td><td>Moderate drought and worse</td><td>General drought-event detection.</td></tr>
+<tr><td>-1.5</td><td>Severe drought and worse</td><td>Focuses on stronger drought events.</td></tr>
+<tr><td>-2.0</td><td>Extreme drought</td><td>Focuses only on the most extreme dry events.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card output-card" style="margin-top:1.2rem">
+<span class="badge">Magnitude</span>
+<h3>What is drought magnitude?</h3>
+<p>
         Drought magnitude summarizes how far the SPI values fall below the drought threshold during an event. It combines drought intensity and duration. Larger magnitude means a stronger and/or longer drought event.
       </p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Item</th><th>Meaning</th><th>Unit</th></tr></thead>
-          <tbody>
-            <tr><td>SPI deficit for one step</td><td>Difference between the drought threshold and the SPI value when SPI is below the threshold.</td><td>SPI units; SPI itself is dimensionless.</td></tr>
-            <tr><td>Magnitude for an event</td><td>Sum of drought deficits across all time steps in the drought event.</td><td>SPI × time step. For yearly analysis, this can be read as SPI-years.</td></tr>
-            <tr><td>Larger magnitude</td><td>The drought was deeper, longer, or both.</td><td>Relative severity value, not precipitation in millimeters.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Item</th><th>Meaning</th><th>Unit</th></tr></thead>
+<tbody>
+<tr><td>SPI deficit for one step</td><td>Difference between the drought threshold and the SPI value when SPI is below the threshold.</td><td>SPI units; SPI itself is dimensionless.</td></tr>
+<tr><td>Magnitude for an event</td><td>Sum of drought deficits across all time steps in the drought event.</td><td>SPI × time step. For yearly analysis, this can be read as SPI-years.</td></tr>
+<tr><td>Larger magnitude</td><td>The drought was deeper, longer, or both.</td><td>Relative severity value, not precipitation in millimeters.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">
         A magnitude greater than 2 does not have one universal category by itself. It depends on the selected threshold and time scale. For example, a magnitude near 2 could come from one very dry year or from several moderately dry years. Compare magnitude together with <a href="#table-output">SPI category thresholds</a>, event duration, and minimum SPI.
       </p>
-      <p class="note">Method details are available in the <a href="/formulas#severity">drought severity method guide</a>.</p>
-    </div>
-  </section>
-
-  
-<section id="wavelet-output" class="container section">
-    <div class="section-head">
-      <h2>Wavelet tab: scalogram, global spectrum, coherence, and dominant periodicity</h2>
-      <p>
+<p class="note">Method details are available in the <a href="/formulas#severity">drought severity method guide</a>.</p>
+</div>
+</section>
+<section class="container section" id="wavelet-output">
+<div class="section-head">
+<h2>Wavelet tab: scalogram, global spectrum, coherence, and dominant periodicity</h2>
+<p>
         Wavelet diagnostics help users examine when drought variability is strong and which time scales are dominant. In the Research Version, the period axis is interpreted in the time step of the analysis: years for yearly SPI and months for monthly SPI.
       </p>
-    </div>
-
-    <div class="grid-3">
-      <article class="card output-card">
-        <span class="badge">Scalogram</span>
-        <h3>Wavelet scalogram</h3>
-        <p>
+</div>
+<div class="grid-3">
+<article class="card output-card">
+<span class="badge">Scalogram</span>
+<h3>Wavelet scalogram</h3>
+<p>
           A wavelet scalogram shows wavelet power across time and period. The horizontal axis is time, the vertical axis is period or scale, and the color intensity shows the strength of SPI variability.
         </p>
-        <ul class="text-list">
-          <li><b>Unit:</b> time is in the selected analysis time step; period is also in time steps. For yearly SPI, a period of 4 means about 4 years.</li>
-          <li><b>Application:</b> shows when drought variability was strongest and whether it was short-term or multi-year.</li>
-          <li><b>Interpretation:</b> strong power concentrated at a period means SPI fluctuated strongly at that drought time scale during that part of the record.</li>
-        </ul>
-      </article>
-
-      <article class="card output-card">
-        <span class="badge">Global spectrum</span>
-        <h3>Global wavelet spectrum and dominant periodicity</h3>
-        <p>
+<ul class="text-list">
+<li><b>Unit:</b> time is in the selected analysis time step; period is also in time steps. For yearly SPI, a period of 4 means about 4 years.</li>
+<li><b>Application:</b> shows when drought variability was strongest and whether it was short-term or multi-year.</li>
+<li><b>Interpretation:</b> strong power concentrated at a period means SPI fluctuated strongly at that drought time scale during that part of the record.</li>
+</ul>
+</article>
+<article class="card output-card">
+<span class="badge">Global spectrum</span>
+<h3>Global wavelet spectrum and dominant periodicity</h3>
+<p>
           The global spectrum summarizes wavelet power across the whole record for each period. Peaks in this chart indicate dominant periodicities.
         </p>
-        <ul class="text-list">
-          <li><b>Unit:</b> the period axis is in the analysis time step. For yearly SPI, a peak near 5 means an approximate 5-year dominant periodicity.</li>
-          <li><b>Application:</b> identifies the main drought-relevant time scales in the full record.</li>
-          <li><b>Interpretation:</b> the highest peak is the dominant periodicity, but it should be checked against the scalogram to see whether it exists across the full record or only during part of it.</li>
-        </ul>
-      </article>
-
-      <article class="card output-card">
-        <span class="badge">Coherence</span>
-        <h3>SPI–precipitation coherence vs period</h3>
-        <p>
+<ul class="text-list">
+<li><b>Unit:</b> the period axis is in the analysis time step. For yearly SPI, a peak near 5 means an approximate 5-year dominant periodicity.</li>
+<li><b>Application:</b> identifies the main drought-relevant time scales in the full record.</li>
+<li><b>Interpretation:</b> the highest peak is the dominant periodicity, but it should be checked against the scalogram to see whether it exists across the full record or only during part of it.</li>
+</ul>
+</article>
+<article class="card output-card">
+<span class="badge">Coherence</span>
+<h3>SPI–precipitation coherence vs period</h3>
+<p>
           Coherence is a unitless value from 0 to 1 that shows how consistently SPI and precipitation vary together at each period. In the Research Version, SPI is calculated directly from precipitation, so coherence can be very high and may often be close to 1.
         </p>
-        <ul class="text-list">
-          <li><b>Unit:</b> coherence has no unit; it ranges from 0 to 1.</li>
-          <li><b>Application:</b> checks whether SPI behavior is aligned with the precipitation signal used to calculate it.</li>
-          <li><b>Interpretation:</b> if coherence is always near 1, it mainly confirms that the SPI output is consistent with the precipitation input. It is less useful as an independent discovery chart in this single-variable SPI workflow.</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="card output-card" style="margin-top:1.2rem">
-      <span class="badge">Interpretation workflow</span>
-      <h3>How to interpret the three wavelet charts together</h3>
-      <p>
+<ul class="text-list">
+<li><b>Unit:</b> coherence has no unit; it ranges from 0 to 1.</li>
+<li><b>Application:</b> checks whether SPI behavior is aligned with the precipitation signal used to calculate it.</li>
+<li><b>Interpretation:</b> if coherence is always near 1, it mainly confirms that the SPI output is consistent with the precipitation input. It is less useful as an independent discovery chart in this single-variable SPI workflow.</li>
+</ul>
+</article>
+</div>
+<div class="card output-card" style="margin-top:1.2rem">
+<span class="badge">Interpretation workflow</span>
+<h3>How to interpret the three wavelet charts together</h3>
+<p>
         The three wavelet charts answer different questions. The scalogram shows when strong drought variability occurred, the global spectrum shows the dominant periodicity across the full record, and coherence checks how strongly SPI follows the precipitation signal at each period.
       </p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Chart</th><th>Main question</th><th>Drought-analysis use</th></tr></thead>
-          <tbody>
-            <tr><td>Wavelet scalogram</td><td>When did strong SPI variability occur?</td><td>Find drought periods with strong short-term or multi-year variability.</td></tr>
-            <tr><td>Global spectrum</td><td>What period is dominant overall?</td><td>Identify dominant periodicity, such as an approximate 3-year, 5-year, or 8-year drought cycle in the analyzed record.</td></tr>
-            <tr><td>SPI–precipitation coherence</td><td>Does SPI follow precipitation at this period?</td><td>Confirm consistency between precipitation and SPI. If it is always 1, read it mostly as a calculation/consistency check.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Chart</th><th>Main question</th><th>Drought-analysis use</th></tr></thead>
+<tbody>
+<tr><td>Wavelet scalogram</td><td>When did strong SPI variability occur?</td><td>Find drought periods with strong short-term or multi-year variability.</td></tr>
+<tr><td>Global spectrum</td><td>What period is dominant overall?</td><td>Identify dominant periodicity, such as an approximate 3-year, 5-year, or 8-year drought cycle in the analyzed record.</td></tr>
+<tr><td>SPI–precipitation coherence</td><td>Does SPI follow precipitation at this period?</td><td>Confirm consistency between precipitation and SPI. If it is always 1, read it mostly as a calculation/consistency check.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">
         A dominant periodicity is not automatically a forecast. It describes repeated variability found in the historical record. It should be interpreted together with <a href="#severity-output">drought event severity</a>, <a href="#chart-output">SPI charts</a>, and the selected data source.
       </p>
-      <p class="note">See the <a href="/formulas#wavelet">wavelet diagnostics method guide</a> for additional scientific background.</p>
-    </div>
-  </section>
-
-  <section id="thresholds" class="container section">
-    <div class="section-head"><h2>Other Research Version interpretation rules</h2><p>These rules help explain data-source behavior, saved runs, and supporting output tabs.</p></div>
-    <div class="grid-2">
-      <article class="card threshold-card"><span class="badge">Data source rules</span><h3>NASA POWER and ERA5-Land/CDS</h3><p>NASA POWER is the default free point data source. ERA5-Land/CDS is available as an advanced option and may require backend CDS configuration.</p><div class="table-wrap"><table><thead><tr><th>Data source</th><th>Use in the Research Version</th></tr></thead><tbody><tr><td>NASA POWER</td><td>Available from 1981 onward for point-based Research Version runs.</td></tr><tr><td>ERA5-Land/CDS</td><td>Advanced reanalysis option. Long requests may take more time.</td></tr><tr><td>Baseline empty</td><td>The backend can use the selected analysis period as the baseline.</td></tr><tr><td>Baseline entered</td><td>The entered baseline period is used if it is valid for the selected source.</td></tr></tbody></table></div><p class="note warn">NASA POWER supports dates from 1981 onward. ERA5-Land/CDS requires CDS access configured on the backend server.</p></article>
-      <article class="card threshold-card"><span class="badge">Saved runs</span><h3>Project organization</h3><p>Saved runs help users compare locations, dates, and data sources. Each saved run keeps the selected inputs, outputs, and related metadata.</p><div class="table-wrap"><table><thead><tr><th>Action</th><th>Purpose</th></tr></thead><tbody><tr><td>Save current run</td><td>Save the active SPI results and metadata to the dashboard.</td></tr><tr><td>Load</td><td>Reload a previous result without running the API again.</td></tr><tr><td>Delete</td><td>Remove a saved run from the dashboard.</td></tr><tr><td>JSON tab</td><td>Use for reporting, reproducibility, or AI-ready scientific context.</td></tr></tbody></table></div></article>
-    </div>
-  </section>
-
-  <section id="method-links" class="container section">
-    <div class="card">
-      <div class="section-head"><h2>Learn more about each method</h2><p>This tutorial explains how to use and interpret the Research Version. The method pages explain the scientific background, formulas, and assumptions.</p></div>
-
-      <div class="note">
-        <strong>Related pages:</strong>
+<p class="note">See the <a href="/formulas#wavelet">wavelet diagnostics method guide</a> for additional scientific background.</p>
+</div>
+</section>
+<section class="container section" id="thresholds">
+<div class="section-head"><h2>Other Research Version interpretation rules</h2><p>These rules help explain data-source behavior, saved runs, and supporting output tabs.</p></div>
+<div class="grid-2">
+<article class="card threshold-card"><span class="badge">Data source rules</span><h3>NASA POWER and ERA5-Land/CDS</h3><p>NASA POWER is the default free point data source. ERA5-Land/CDS is available as an advanced option and may require backend CDS configuration.</p><div class="table-wrap"><table><thead><tr><th>Data source</th><th>Use in the Research Version</th></tr></thead><tbody><tr><td>NASA POWER</td><td>Available from 1981 onward for point-based Research Version runs.</td></tr><tr><td>ERA5-Land/CDS</td><td>Advanced reanalysis option. Long requests may take more time.</td></tr><tr><td>Baseline empty</td><td>The backend can use the selected analysis period as the baseline.</td></tr><tr><td>Baseline entered</td><td>The entered baseline period is used if it is valid for the selected source.</td></tr></tbody></table></div><p class="note warn">NASA POWER supports dates from 1981 onward. ERA5-Land/CDS requires CDS access configured on the backend server.</p></article>
+<article class="card threshold-card"><span class="badge">Saved runs</span><h3>Project organization</h3><p>Saved runs help users compare locations, dates, and data sources. Each saved run keeps the selected inputs, outputs, and related metadata.</p><div class="table-wrap"><table><thead><tr><th>Action</th><th>Purpose</th></tr></thead><tbody><tr><td>Save current run</td><td>Save the active SPI results and metadata to the dashboard.</td></tr><tr><td>Load</td><td>Reload a previous result without running the API again.</td></tr><tr><td>Delete</td><td>Remove a saved run from the dashboard.</td></tr><tr><td>JSON tab</td><td>Use for reporting, reproducibility, or AI-ready scientific context.</td></tr></tbody></table></div></article>
+</div>
+</section>
+<section class="container section" id="method-links">
+<div class="card">
+<div class="section-head"><h2>Learn more about each method</h2><p>This tutorial explains how to use and interpret the Research Version. The method pages explain the scientific background, formulas, and assumptions.</p></div>
+<div class="note">
+<strong>Related pages:</strong>
         Open the <a href="/DMAP_AI_App">DMAP-AI Research Version drought analysis app</a>,
         return to the <a href="/tutorials">DMAP-AI tutorial hub</a>,
         or review the <a href="/formulas">DMAP-AI drought methods and thresholds page</a>.
       </div>
-
-      <div class="grid-3">
-        <a class="link-card" href="/formulas#spi"><strong>Standardized Precipitation Index method</strong><span>Learn how SPI is calculated and why it is used for drought analysis.</span></a>
-        <a class="link-card" href="/formulas#spi-thresholds"><strong>SPI drought and wetness thresholds</strong><span>Review the threshold classes used to label SPI values.</span></a>
-        <a class="link-card" href="/formulas#severity"><strong>Drought severity and event detection</strong><span>Read about drought thresholds, duration, minimum SPI, and severity metrics.</span></a>
-        <a class="link-card" href="/formulas#wavelet"><strong>Wavelet scalogram and global spectrum</strong><span>Understand wavelet power, dominant periods, and time-scale diagnostics.</span></a>
-        <a class="link-card" href="/formulas#copula"><strong>Copula dependence and persistence diagnostics</strong><span>Review dependence, Kendall tau, tail dependence, and drought persistence concepts.</span></a>
-        <a class="link-card" href="/formulas#data-sources"><strong>NASA POWER and ERA5-Land/CDS data sources</strong><span>Learn how the Research Version uses precipitation data sources.</span></a>
-      </div>
-    </div>
-  </section>
+<div class="grid-3">
+<a class="link-card" href="/formulas#spi"><strong>Standardized Precipitation Index method</strong><span>Learn how SPI is calculated and why it is used for drought analysis.</span></a>
+<a class="link-card" href="/formulas#spi-thresholds"><strong>SPI drought and wetness thresholds</strong><span>Review the threshold classes used to label SPI values.</span></a>
+<a class="link-card" href="/formulas#severity"><strong>Drought severity and event detection</strong><span>Read about drought thresholds, duration, minimum SPI, and severity metrics.</span></a>
+<a class="link-card" href="/formulas#wavelet"><strong>Wavelet scalogram and global spectrum</strong><span>Understand wavelet power, dominant periods, and time-scale diagnostics.</span></a>
+<a class="link-card" href="/formulas#copula"><strong>Copula dependence and persistence diagnostics</strong><span>Review dependence, Kendall tau, tail dependence, and drought persistence concepts.</span></a>
+<a class="link-card" href="/formulas#data-sources"><strong>NASA POWER and ERA5-Land/CDS data sources</strong><span>Learn how the Research Version uses precipitation data sources.</span></a>
+</div>
+</div>
+</section>
 </main>
-
 <footer class="footer">
-  <div class="container footer-inner">
-    <span>© <span id="year"></span> AgriMetSoft. All rights reserved.</span>
+<div class="container footer-inner">
+<span>© <span id="year"></span> AgriMetSoft. All rights reserved.</span>
 <!-- footer navigation removed (handled globally) -->
-  </div>
+</div>
 </footer>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 <script src="/assets/global-nav.js"></script>

@@ -1,48 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>DMAP-AI | ChatGPT Research Version</title>
-
-  <meta name="description" content="DMAP-AI Research Version is available inside ChatGPT as a Custom GPT connected to MCP tools for SPI and drought analysis." />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="AgriMetSoft LLC" />
-  <meta name="theme-color" content="#2563eb" />
-  <link rel="canonical" href="https://droughtanalysis.com/gpt" />
-
-  <!-- favicon -->
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-
-  <!-- OpenGraph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="DMAP-AI ChatGPT Research Version" />
-  <meta property="og:description" content="AI-powered drought analysis inside ChatGPT using MCP tools." />
-  <meta property="og:url" content="https://droughtanalysis.com/gpt.html" />
-  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="DMAP-AI ChatGPT Research Version" />
-  <meta name="twitter:description" content="AI-powered drought analysis inside ChatGPT using MCP tools." />
-  <meta name="twitter:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6Z3VWV0W9"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>DMAP-AI | ChatGPT Research Version</title>
+<meta content="DMAP-AI Research Version is available inside ChatGPT as a Custom GPT connected to MCP tools for SPI and drought analysis." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="AgriMetSoft LLC" name="author"/>
+<meta content="#2563eb" name="theme-color"/>
+<link href="https://droughtanalysis.com/gpt" rel="canonical"/>
+<!-- favicon -->
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<!-- OpenGraph -->
+<meta content="website" property="og:type"/>
+<meta content="DMAP-AI ChatGPT Research Version" property="og:title"/>
+<meta content="AI-powered drought analysis inside ChatGPT using MCP tools." property="og:description"/>
+<meta content="https://droughtanalysis.com/gpt.html" property="og:url"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="DMAP-AI ChatGPT Research Version" name="twitter:title"/>
+<meta content="AI-powered drought analysis inside ChatGPT using MCP tools." name="twitter:description"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" name="twitter:image"/>
+<!-- CSS -->
+<link href="/assets/dmap-global-nav.css" rel="stylesheet"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-W6Z3VWV0W9"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag("js", new Date());
     gtag("config", "G-W6Z3VWV0W9");
   </script>
-  <style>
+<style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -105,58 +99,49 @@
 }
   </style>
 </head>
-
 <body>
 <div class="container">
-
-<h1>DMAP-AI Research Version</h1>
+<h1><a href="/DMAP_AI_App">DMAP-AI Research Version</a></h1>
 <span class="tag">ChatGPT Custom GPT</span>
-
 <div class="card">
 <h2>Overview</h2>
 <p>DMAP-AI is an AI-powered drought analysis system inside ChatGPT using SPI-based scientific workflows.</p>
 </div>
-
 <div class="card">
 <h2>Capabilities</h2>
 <ul>
 <li>SPI drought index analysis (1981–2024)</li>
-<li>Drought event detection</li>
-<li>Wavelet scalogram & global spectrum</li>
+<li><a href="/knowledge/drought-event-detection/">Drought event detection</a></li>
+<li><a href="/knowledge/wavelet-scalogram/">Wavelet scalogram</a> &amp; global spectrum</li>
 <li>Climate variability diagnostics</li>
 <li>AI interpretation</li>
 </ul>
 </div>
-
 <div class="card">
 <h2>⚠️ Tool Limitations (IMPORTANT)</h2>
 <ul>
-<li>Only SPI is supported (no PDSI, SPEI, or multi-index fusion)</li>
-<li>Data sources: NASA POWER + ERA5-Land/CDS only</li>
-<li>Analysis type: yearly & point-based only</li>
+<li>Only SPI is supported (no PDSI, <a href="/knowledge/what-is-spei/">SPEI</a>, or multi-index fusion)</li>
+<li>Data sources: <a href="/knowledge/nasa-power-for-drought/">NASA POWER</a> + ERA5-Land/CDS only</li>
+<li>Analysis type: yearly &amp; point-based only</li>
 <li>No forecasting or future prediction</li>
 <li>Wavelet analysis is descriptive, not predictive</li>
 <li>Results depend on single-location time series</li>
 </ul>
 </div>
-
 <div class="card">
 <h2>🧠 Best Practice for Prompts</h2>
-
 <p>For best results, explicitly request that DMAP-AI run the analysis.</p>
-
 <div class="prompt-template">
-<strong>Prompt Structure:</strong><br><br>
+<strong>Prompt Structure:</strong><br/><br/>
 
-Use DMAP-AI (a custom GPT available in this chat) to<br>
-<strong>RUN / PERFORM / GENERATE</strong><br>
-+ Analysis Type<br>
-+ Location<br>
-+ Time Range<br>
-+ Dataset<br>
+Use DMAP-AI (a custom GPT available in this chat) to<br/>
+<strong>RUN / PERFORM / GENERATE</strong><br/>
++ Analysis Type<br/>
++ Location<br/>
++ Time Range<br/>
++ Dataset<br/>
 + Desired Outputs
 </div>
-
 <ul>
 <li>Start prompts with Run, Perform, Generate, or Analyze.</li>
 <li>Specify the location.</li>
@@ -165,7 +150,6 @@ Use DMAP-AI (a custom GPT available in this chat) to<br>
 <li>Describe the exact output you want (events, SPI table, wavelet results, report, etc.).</li>
 </ul>
 </div>
-
 <div class="card">
 <h2>📊 Ready-to-use Scientific Prompts</h2>
 <p>
@@ -173,47 +157,35 @@ These prompts are designed for the DMAP-AI app. Include the phrase
 <strong>"Use DMAP-AI"</strong> in your request so ChatGPT knows to run the DMAP-AI analysis tools rather than answering from general knowledge.
 </p>
 <ul>
-
 <li>
 Use DMAP-AI to analyze drought severity events for Ames, Iowa (1981–2025) using NASA POWER data. Return the drought-event table with duration, minimum SPI, magnitude, and severity.
 </li>
-
 <li>
 Use DMAP-AI to generate the SPI table for Ames, Iowa (1981–2025) using NASA POWER data and classify each period.
 </li>
-
 <li>
 Use DMAP-AI to run a wavelet scalogram analysis for Ames, Iowa (1981–2025) using NASA POWER data and identify high-power zones.
 </li>
-
 <li>
 Use DMAP-AI to analyze drought periodicity for Ames, Iowa (1981–2025) using NASA POWER data and identify dominant drought cycles.
 </li>
-
 <li>
 Use DMAP-AI to generate a scientific drought report for Ames, Iowa (1981–2025) using NASA POWER data.
 </li>
-
 </ul>
 </div>
-
-
-
 <div class="card">
 <h2>Launch</h2>
 <a class="btn" href="https://chatgpt.com/apps/dmap-ai/asdk_app_6a08cc516b00819185f774d7e6c9205a">
 Open in ChatGPT
 </a>
 </div>
-
 </div>
 <script src="/assets/global-nav.js"></script>
 </body>
 </html><div class="card">
 <h2>⚙️ How to Install / Use DMAP-AI in ChatGPT</h2>
-
 <p>DMAP-AI Research Version runs inside ChatGPT as a Custom GPT connected to MCP tools.</p>
-
 <ul>
 <li>1. Open ChatGPT (Plus / Team / Enterprise account)</li>
 <li>2. Go to "Explore GPTs"</li>
@@ -221,22 +193,15 @@ Open in ChatGPT
 <li>4. Click "Open in ChatGPT" from this page</li>
 <li>5. Start using prompts like SPI analysis, wavelet analysis, or drought reporting</li>
 </ul>
-
 <p><b>Direct Access:</b> Click the button below to launch the GPT.</p>
-
 <p>
-<a class="btn" href="https://chatgpt.com/apps/dmap-ai/asdk_app_6a08cc516b00819185f774d7e6c9205a" target="_blank" rel="noopener">
+<a class="btn" href="https://chatgpt.com/apps/dmap-ai/asdk_app_6a08cc516b00819185f774d7e6c9205a" rel="noopener" target="_blank">
 Open DMAP-AI in ChatGPT
 </a>
 </p>
-
 <p style="margin-top:10px; font-size:12px; color:#666;">
 Note: Availability depends on GPT publishing status and account permissions.
 </p>
 </div>
 
-
-</div>
 <script src="/assets/global-nav.js"></script>
-</body>
-</html>

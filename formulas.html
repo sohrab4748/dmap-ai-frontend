@@ -1,49 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>DMAP-AI Methods and Formulas | SPI, Gamma Distribution, Empirical SPI, Severity, Wavelet</title>
-<meta name="description" content="Calculation methods and formulas used in the DMAP-AI Research Version, including precipitation aggregation, SPI with Gamma distribution and empirical fallback, drought categories, severity metrics, wavelet diagnostics, copula diagnostics, and data-source processing." />
-<meta name="robots" content="index, follow" />
-<meta name="author" content="AgriMetSoft LLC" />
-<meta name="theme-color" content="#2563eb" />
-<link rel="canonical" href="https://droughtanalysis.com/formulas" />
-
-<link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" imagesrcset="/assets/logo-dmap-ai-225.webp 225w, /assets/logo-dmap-ai-450.webp 450w" imagesizes="(max-width: 640px) 160px, 225px" />
-
-<link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="DMAP-AI" />
-<meta property="og:title" content="DMAP-AI Methods and Formulas" />
-<meta property="og:description" content="Scientific calculation guide for DMAP-AI: SPI with Gamma and empirical fallback, drought thresholds, severity, wavelet, copula, and data-source processing." />
-<meta property="og:url" content="https://droughtanalysis.com/formulas" />
-<meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
-<meta property="og:image:secure_url" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
-<meta property="og:image:type" content="image/jpeg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="DMAP-AI drought monitoring and SPI analysis platform preview image" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="DMAP-AI Methods and Formulas" />
-<meta name="twitter:description" content="SPI calculation, Gamma fitting, empirical SPI fallback, severity metrics, wavelet diagnostics, copula diagnostics, and data-source processing in DMAP-AI." />
-<meta name="twitter:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" />
-
+<meta content="Calculation methods and formulas used in the DMAP-AI Research Version, including precipitation aggregation, SPI with Gamma distribution and empirical fallback, drought categories, severity metrics, wavelet diagnostics, copula diagnostics, and data-source processing." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="AgriMetSoft LLC" name="author"/>
+<meta content="#2563eb" name="theme-color"/>
+<link href="https://droughtanalysis.com/formulas" rel="canonical"/>
+<link as="image" href="/assets/logo-dmap-ai-225.webp" imagesizes="(max-width: 640px) 160px, 225px" imagesrcset="/assets/logo-dmap-ai-225.webp 225w, /assets/logo-dmap-ai-450.webp 450w" rel="preload"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<meta content="website" property="og:type"/>
+<meta content="DMAP-AI" property="og:site_name"/>
+<meta content="DMAP-AI Methods and Formulas" property="og:title"/>
+<meta content="Scientific calculation guide for DMAP-AI: SPI with Gamma and empirical fallback, drought thresholds, severity, wavelet, copula, and data-source processing." property="og:description"/>
+<meta content="https://droughtanalysis.com/formulas" property="og:url"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" property="og:image"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" property="og:image:secure_url"/>
+<meta content="image/jpeg" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="DMAP-AI drought monitoring and SPI analysis platform preview image" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="DMAP-AI Methods and Formulas" name="twitter:title"/>
+<meta content="SPI calculation, Gamma fitting, empirical SPI fallback, severity metrics, wavelet diagnostics, copula diagnostics, and data-source processing in DMAP-AI." name="twitter:description"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" name="twitter:image"/>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W6Z3VWV0W9"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-W6Z3VWV0W9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag("js", new Date());
   gtag("config", "G-W6Z3VWV0W9");
 </script>
-
 <script>
   window.MathJax = {
     tex: {
@@ -53,8 +47,7 @@
     svg: { fontCache: "global" }
   };
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-
+<script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <style>
 :root{
   --blue:#2563eb;
@@ -167,7 +160,6 @@ tr:last-child td{border-bottom:0}
 @media(max-width:980px){.grid-2,.grid-3,.quick-grid{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.nav-links{gap:.75rem}}
 @media(max-width:640px){.container{width:min(100% - 1rem,80rem)}.brand-logo{width:160px}.hero-card,.card{padding:1.15rem}.page-actions{flex-direction:column}.btn{width:100%}}
 </style>
-
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -180,7 +172,6 @@ tr:last-child td{border-bottom:0}
   "publisher":{"@type":"Organization","name":"AgriMetSoft LLC","url":"https://agrimetsoft.com/"}
 }
 </script>
-
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -191,102 +182,94 @@ tr:last-child td{border-bottom:0}
   ]
 }
 </script>
-  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+<link href="/assets/dmap-global-nav.css" rel="stylesheet"/>
 </head>
-
 <body>
-
 <section class="hero">
-  <div class="container">
-    <div class="breadcrumbs"><a href="/">Home</a> / Methods and Formulas</div>
-    <div class="hero-card">
-      <div class="hero-content">
-        <span class="eyebrow">DMAP-AI calculation documentation</span>
-        <h1>Calculation process and formulas used in DMAP-AI</h1>
-        <p class="lead">
+<div class="container">
+<div class="breadcrumbs"><a href="/">Home</a> / Methods and Formulas</div>
+<div class="hero-card">
+<div class="hero-content">
+<span class="eyebrow">DMAP-AI calculation documentation</span>
+<h1>Calculation process and formulas used in DMAP-AI</h1>
+<p class="lead">
           This page documents how the current DMAP-AI Research Version calculates SPI and related diagnostic outputs. It is a methods page, not a step-by-step tutorial. The SPI workflow first uses a Gamma-distribution approach and then uses an empirical distribution as a safe fallback when the Gamma calculation becomes unstable or returns invalid values.
         </p>
-        <div class="page-actions">
-          <a class="btn primary" href="/DMAP_AI_App">Open Research Version</a>
-          <a class="btn" href="/sv_tutorial">Open Research Version Tutorial</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="quick-grid" aria-label="Formula page quick links">
-      <a class="quick-link" href="#calculation-workflow"><strong>Calculation workflow</strong><span>Data, aggregation, baseline, SPI, and outputs</span></a>
-      <a class="quick-link" href="#spi"><strong>SPI formula</strong><span>Gamma distribution and empirical fallback</span></a>
-      <a class="quick-link" href="#spi-thresholds"><strong>Thresholds</strong><span>Classic SPI, USDM-style, percentile, and k-means</span></a>
-      <a class="quick-link" href="#severity"><strong>Severity</strong><span>Drought events, duration, deficit, and magnitude</span></a>
-      <a class="quick-link" href="#wavelet"><strong>Wavelet</strong><span>Power, global spectrum, and coherence</span></a>
-      <a class="quick-link" href="#copula"><strong>Copula</strong><span>U–V scatter, dependence, and persistence</span></a>
-      <a class="quick-link" href="#data-sources"><strong>Data sources</strong><span>NASA POWER and ERA5-Land/CDS processing</span></a>
-    </div>
-  </div>
+<div class="page-actions">
+<a class="btn primary" href="/DMAP_AI_App">Open Research Version</a>
+<a class="btn" href="/sv_tutorial">Open Research Version Tutorial</a>
+</div>
+</div>
+</div>
+<div aria-label="Formula page quick links" class="quick-grid">
+<a class="quick-link" href="#calculation-workflow"><strong>Calculation workflow</strong><span>Data, aggregation, baseline, SPI, and outputs</span></a>
+<a class="quick-link" href="#spi"><strong>SPI formula</strong><span>Gamma distribution and empirical fallback</span></a>
+<a class="quick-link" href="#spi-thresholds"><strong>Thresholds</strong><span>Classic SPI, USDM-style, percentile, and k-means</span></a>
+<a class="quick-link" href="#severity"><strong>Severity</strong><span>Drought events, duration, deficit, and magnitude</span></a>
+<a class="quick-link" href="#wavelet"><strong>Wavelet</strong><span>Power, global spectrum, and coherence</span></a>
+<a class="quick-link" href="#copula"><strong>Copula</strong><span>U–V scatter, dependence, and persistence</span></a>
+<a class="quick-link" href="#data-sources"><strong>Data sources</strong><span>NASA POWER and ERA5-Land/CDS processing</span></a>
+</div>
+</div>
 </section>
-
 <main>
-  <section id="calculation-workflow" class="container section">
-    <div class="section-head">
-      <h2>Overall calculation workflow</h2>
-      <p>The Research Version calculates drought indicators from precipitation for one selected point. The current free workflow is point-based and focused on SPI.</p>
-    </div>
-    <ol class="flow">
-      <li><strong>Read the selected point and dates.</strong> The tool receives latitude, longitude, start date, end date, selected data source, and optional baseline period.</li>
-      <li><strong>Download or read precipitation.</strong> The backend obtains precipitation from NASA POWER or ERA5-Land/CDS depending on the user selection.</li>
-      <li><strong>Clean the precipitation series.</strong> Missing values are removed from the fitting set. Precipitation is treated as a non-negative variable.</li>
-      <li><strong>Aggregate precipitation.</strong> For the current yearly Research Version workflow, precipitation is summed over each calendar year.</li>
-      <li><strong>Define the baseline sample.</strong> If the user provides a valid baseline period, that period is used. If not, the analysis period can be used as the fitting baseline.</li>
-      <li><strong>Calculate SPI.</strong> DMAP-AI first tries the Gamma-distribution SPI calculation. If the Gamma probability is invalid, not finite, or numerically unstable, the backend falls back to an empirical distribution.</li>
-      <li><strong>Calculate categories and diagnostics.</strong> The returned outputs include SPI categories, drought events, severity metrics, wavelet diagnostics, optional copula diagnostics, and JSON metadata.</li>
-    </ol>
-  </section>
-
-  <section id="spi" class="container section">
-    <div class="section-head">
-      <h2>Standardized Precipitation Index (SPI)</h2>
-      <p>SPI transforms accumulated precipitation into a standard normal variable. Negative values represent drier-than-normal conditions, positive values represent wetter-than-normal conditions, and values near zero represent near-normal conditions.</p>
-    </div>
-
-    <div class="grid-2">
-      <article class="card">
-        <span class="badge green">Step 1</span>
-        <h3>Precipitation accumulation</h3>
-        <p>Let \(P_t\) be precipitation at time step \(t\). For an accumulation window of length \(k\), the accumulated precipitation is:</p>
-        <div class="formula">
+<section class="container section" id="calculation-workflow">
+<div class="section-head">
+<h2>Overall calculation workflow</h2>
+<p>The Research Version calculates drought indicators from precipitation for one selected point. The current free workflow is point-based and focused on SPI.</p>
+</div>
+<ol class="flow">
+<li><strong>Read the selected point and dates.</strong> The tool receives latitude, longitude, start date, end date, selected data source, and optional baseline period.</li>
+<li><strong>Download or read precipitation.</strong> The backend obtains precipitation from <a href="/knowledge/nasa-power-for-drought/">NASA POWER</a> or ERA5-Land/CDS depending on the user selection.</li>
+<li><strong>Clean the precipitation series.</strong> Missing values are removed from the fitting set. Precipitation is treated as a non-negative variable.</li>
+<li><strong>Aggregate precipitation.</strong> For the current yearly Research Version workflow, precipitation is summed over each calendar year.</li>
+<li><strong>Define the baseline sample.</strong> If the user provides a valid baseline period, that period is used. If not, the analysis period can be used as the fitting baseline.</li>
+<li><strong>Calculate SPI.</strong> DMAP-AI first tries the Gamma-distribution <a href="/knowledge/how-spi-is-calculated/">SPI calculation</a>. If the Gamma probability is invalid, not finite, or numerically unstable, the backend falls back to an empirical distribution.</li>
+<li><strong>Calculate categories and diagnostics.</strong> The returned outputs include SPI categories, drought events, severity metrics, wavelet diagnostics, optional copula diagnostics, and JSON metadata.</li>
+</ol>
+</section>
+<section class="container section" id="spi">
+<div class="section-head">
+<h2><a href="/knowledge/what-is-spi/">Standardized Precipitation Index</a> (SPI)</h2>
+<p>SPI transforms accumulated precipitation into a standard normal variable. Negative values represent drier-than-normal conditions, positive values represent wetter-than-normal conditions, and values near zero represent near-normal conditions.</p>
+</div>
+<div class="grid-2">
+<article class="card">
+<span class="badge green">Step 1</span>
+<h3>Precipitation accumulation</h3>
+<p>Let \(P_t\) be precipitation at time step \(t\). For an accumulation window of length \(k\), the accumulated precipitation is:</p>
+<div class="formula">
           \[
           X_t^{(k)} = \sum_{j=0}^{k-1} P_{t-j}
           \]
           <span class="caption">For the current yearly Research Version workflow, \(X_y\) is the Jan–Dec precipitation total for year \(y\).</span>
-        </div>
-        <p>For yearly SPI, the time step is one year. For future monthly workflows, the same formula can be applied to monthly accumulations such as 1-month, 3-month, 6-month, or 12-month SPI.</p>
-      </article>
-
-      <article class="card">
-        <span class="badge green">Step 2</span>
-        <h3>Gamma probability model</h3>
-        <p>The Gamma distribution is fitted to valid baseline precipitation accumulations. The probability density function is:</p>
-        <div class="formula">
+</div>
+<p>For yearly SPI, the time step is one year. For future monthly workflows, the same formula can be applied to monthly accumulations such as 1-month, 3-month, 6-month, or 12-month SPI.</p>
+</article>
+<article class="card">
+<span class="badge green">Step 2</span>
+<h3>Gamma probability model</h3>
+<p>The Gamma distribution is fitted to valid baseline precipitation accumulations. The probability density function is:</p>
+<div class="formula">
           \[
-          g(x;\alpha,\beta)=\frac{x^{\alpha-1}e^{-x/\beta}}{\Gamma(\alpha)\beta^{\alpha}}, \qquad x>0
+          g(x;\alpha,\beta)=\frac{x^{\alpha-1}e^{-x/\beta}}{\Gamma(\alpha)\beta^{\alpha}}, \qquad x&gt;0
           \]
           <span class="caption">\(\alpha\) is the shape parameter, \(\beta\) is the scale parameter, and \(\Gamma(\alpha)\) is the Gamma function.</span>
-        </div>
-        <p>The Gamma cumulative probability is:</p>
-        <div class="formula">
+</div>
+<p>The Gamma cumulative probability is:</p>
+<div class="formula">
           \[
           G(x)=\int_{0}^{x} g(u;\alpha,\beta)\,du
           \]
         </div>
-      </article>
-    </div>
-
-    <div class="grid-2" style="margin-top:1.2rem">
-      <article class="card">
-        <span class="badge">Zero precipitation adjustment</span>
-        <h3>Cumulative probability used for SPI</h3>
-        <p>If zero precipitation values exist in the fitting sample, their probability is included before transforming to SPI.</p>
-        <div class="formula">
+</article>
+</div>
+<div class="grid-2" style="margin-top:1.2rem">
+<article class="card">
+<span class="badge">Zero precipitation adjustment</span>
+<h3>Cumulative probability used for SPI</h3>
+<p>If zero precipitation values exist in the fitting sample, their probability is included before transforming to SPI.</p>
+<div class="formula">
           \[
           q = \frac{n_0}{n}
           \]
@@ -294,35 +277,33 @@ tr:last-child td{border-bottom:0}
           H(x)=q+(1-q)G(x)
           \]
           <span class="caption">\(n_0\) is the number of zero values and \(n\) is the number of valid baseline values. For annual precipitation, \(q\) is usually zero.</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <span class="badge">SPI transform</span>
-        <h3>Transform probability to standard normal space</h3>
-        <p>SPI is the inverse standard normal value associated with the cumulative probability.</p>
-        <div class="formula">
+</div>
+</article>
+<article class="card">
+<span class="badge">SPI transform</span>
+<h3>Transform probability to standard normal space</h3>
+<p>SPI is the inverse standard normal value associated with the cumulative probability.</p>
+<div class="formula">
           \[
           SPI_t = \Phi^{-1}\left(H(X_t)\right)
           \]
           <span class="caption">\(\Phi^{-1}\) is the inverse cumulative distribution function of the standard normal distribution.</span>
-        </div>
-        <p>To avoid infinite values, probabilities are clipped to a small open interval:</p>
-        <div class="formula">
+</div>
+<p>To avoid infinite values, probabilities are clipped to a small open interval:</p>
+<div class="formula">
           \[
           H^*(x)=\min\left(1-\varepsilon,\max\left(\varepsilon,H(x)\right)\right)
           \]
         </div>
-      </article>
-    </div>
-
-    <article class="card" style="margin-top:1.2rem">
-      <span class="badge amber">Backend stability rule</span>
-      <h3>Empirical distribution fallback used by DMAP-AI</h3>
-      <p>
+</article>
+</div>
+<article class="card" style="margin-top:1.2rem">
+<span class="badge amber">Backend stability rule</span>
+<h3>Empirical distribution fallback used by DMAP-AI</h3>
+<p>
         In the backend, SPI first uses the Gamma-distribution calculation. However, Gamma fitting can become unstable when the sample is too short, the values are nearly identical, the variance is very small, or the fitted distribution returns an invalid cumulative probability. In those cases, DMAP-AI uses an empirical distribution fallback instead of returning NaN.
       </p>
-      <div class="formula">
+<div class="formula">
         \[
         R(x_i)=\#\{x_j \le x_i\}
         \]
@@ -333,106 +314,99 @@ tr:last-child td{border-bottom:0}
         SPI_{emp}(x_i)=\Phi^{-1}\left(F_{emp}^*(x_i)\right)
         \]
         <span class="caption">\(R(x_i)\) is the rank of value \(x_i\) among the valid baseline values. \(F_{emp}^*(x_i)\) is the clipped empirical probability.</span>
-      </div>
-      <p class="note">
-        This fallback keeps the output usable when the Gamma method fails. The empirical SPI should be interpreted as a rank-based standardized value. It preserves the ordering of dry and wet years but does not assume that the precipitation sample follows a fitted Gamma distribution.
+</div>
+<p class="note">
+        This fallback keeps the output usable when the Gamma method fails. The <a href="/knowledge/empirical-spi/">empirical SPI</a> should be interpreted as a rank-based standardized value. It preserves the ordering of dry and wet years but does not assume that the precipitation sample follows a fitted Gamma distribution.
       </p>
-    </article>
-  </section>
-
-  <section id="spi-thresholds" class="container section">
-    <div class="section-head">
-      <h2>SPI category thresholds and classification formulas</h2>
-      <p>The category tables convert calculated SPI values into drought or wetness labels. The SPI values themselves do not change when the category method changes.</p>
-    </div>
-
-    <div class="card">
-      <span class="badge green">Classic SPI</span>
-      <h3>Classic SPI threshold table</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>SPI range</th><th>Category</th><th>Meaning</th></tr></thead>
-          <tbody>
-            <tr><td>\(SPI \le -2.00\)</td><td>Extreme drought</td><td>Very strong dry signal.</td></tr>
-            <tr><td>\(-2.00 &lt; SPI \le -1.50\)</td><td>Severe drought</td><td>Strong dry signal.</td></tr>
-            <tr><td>\(-1.50 &lt; SPI \le -1.00\)</td><td>Moderate drought</td><td>Moderate dry signal.</td></tr>
-            <tr><td>\(-1.00 &lt; SPI &lt; 1.00\)</td><td>Near normal</td><td>Close to normal precipitation conditions.</td></tr>
-            <tr><td>\(1.00 \le SPI &lt; 1.50\)</td><td>Moderately wet</td><td>Moderate wet signal.</td></tr>
-            <tr><td>\(1.50 \le SPI &lt; 2.00\)</td><td>Very wet</td><td>Strong wet signal.</td></tr>
-            <tr><td>\(SPI \ge 2.00\)</td><td>Extremely wet</td><td>Very strong wet signal.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="grid-2" style="margin-top:1.2rem">
-      <article class="card">
-        <span class="badge amber">USDM-style labels</span>
-        <h3>SPI/SPEI-based U.S. Drought Monitor-style categories</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>SPI range used in DMAP-AI</th><th>Label used in DMAP-AI</th><th>Official SPI/SPEI range shown by USDM</th></tr></thead>
-            <tbody>
-              <tr><td>\(SPI \le -2.00\)</td><td>D4 – Exceptional drought</td><td>-2.00 or less</td></tr>
-              <tr><td>\(-2.00 &lt; SPI \le -1.60\)</td><td>D3 – Extreme drought</td><td>-1.60 to -1.99</td></tr>
-              <tr><td>\(-1.60 &lt; SPI \le -1.30\)</td><td>D2 – Severe drought</td><td>-1.30 to -1.59</td></tr>
-              <tr><td>\(-1.30 &lt; SPI \le -0.80\)</td><td>D1 – Moderate drought</td><td>-0.80 to -1.29</td></tr>
-              <tr><td>\(-0.80 &lt; SPI \le -0.50\)</td><td>D0 – Abnormally dry</td><td>-0.50 to -0.79</td></tr>
-              <tr><td>\(SPI &gt; -0.50\)</td><td>No drought / normal or wet</td><td>-0.49 or above</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note warn">These thresholds are adapted from the official U.S. Drought Monitor drought classification table, which gives approximate SPI/SPEI ranges for D0–D4 categories. In DMAP-AI, they are used only as SPI-based communication labels. They are not an official U.S. Drought Monitor map because the official USDM uses multiple indicators, local information, expert assessment, and drought impacts.</p>
-      </article>
-
-      <article class="card">
-        <span class="badge">Percentile and k-means methods</span>
-        <h3>Distribution-based categories</h3>
-        <p>Percentile classes use the empirical probability position of each SPI value:</p>
-        <div class="formula">
+</article>
+</section>
+<section class="container section" id="spi-thresholds">
+<div class="section-head">
+<h2>SPI category thresholds and classification formulas</h2>
+<p>The category tables convert calculated SPI values into drought or wetness labels. The SPI values themselves do not change when the category method changes.</p>
+</div>
+<div class="card">
+<span class="badge green">Classic SPI</span>
+<h3>Classic SPI threshold table</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>SPI range</th><th>Category</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>\(SPI \le -2.00\)</td><td>Extreme drought</td><td>Very strong dry signal.</td></tr>
+<tr><td>\(-2.00 &lt; SPI \le -1.50\)</td><td>Severe drought</td><td>Strong dry signal.</td></tr>
+<tr><td>\(-1.50 &lt; SPI \le -1.00\)</td><td>Moderate drought</td><td>Moderate dry signal.</td></tr>
+<tr><td>\(-1.00 &lt; SPI &lt; 1.00\)</td><td>Near normal</td><td>Close to normal precipitation conditions.</td></tr>
+<tr><td>\(1.00 \le SPI &lt; 1.50\)</td><td>Moderately wet</td><td>Moderate wet signal.</td></tr>
+<tr><td>\(1.50 \le SPI &lt; 2.00\)</td><td>Very wet</td><td>Strong wet signal.</td></tr>
+<tr><td>\(SPI \ge 2.00\)</td><td>Extremely wet</td><td>Very strong wet signal.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="grid-2" style="margin-top:1.2rem">
+<article class="card">
+<span class="badge amber">USDM-style labels</span>
+<h3>SPI/SPEI-based U.S. Drought Monitor-style categories</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>SPI range used in DMAP-AI</th><th>Label used in DMAP-AI</th><th>Official SPI/SPEI range shown by USDM</th></tr></thead>
+<tbody>
+<tr><td>\(SPI \le -2.00\)</td><td>D4 – Exceptional drought</td><td>-2.00 or less</td></tr>
+<tr><td>\(-2.00 &lt; SPI \le -1.60\)</td><td>D3 – Extreme drought</td><td>-1.60 to -1.99</td></tr>
+<tr><td>\(-1.60 &lt; SPI \le -1.30\)</td><td>D2 – Severe drought</td><td>-1.30 to -1.59</td></tr>
+<tr><td>\(-1.30 &lt; SPI \le -0.80\)</td><td>D1 – Moderate drought</td><td>-0.80 to -1.29</td></tr>
+<tr><td>\(-0.80 &lt; SPI \le -0.50\)</td><td>D0 – Abnormally dry</td><td>-0.50 to -0.79</td></tr>
+<tr><td>\(SPI &gt; -0.50\)</td><td>No drought / normal or wet</td><td>-0.49 or above</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note warn">These thresholds are adapted from the official U.S. Drought Monitor drought classification table, which gives approximate SPI/SPEI ranges for D0–D4 categories. In DMAP-AI, they are used only as SPI-based communication labels. They are not an official U.S. Drought Monitor map because the official USDM uses multiple indicators, local information, expert assessment, and drought impacts.</p>
+</article>
+<article class="card">
+<span class="badge">Percentile and k-means methods</span>
+<h3>Distribution-based categories</h3>
+<p>Percentile classes use the empirical probability position of each SPI value:</p>
+<div class="formula">
           \[
           p_i = F_{emp}(SPI_i)
           \]
         </div>
-        <p>K-means groups SPI values by minimizing within-cluster variation:</p>
-        <div class="formula">
+<p>K-means groups SPI values by minimizing within-cluster variation:</p>
+<div class="formula">
           \[
           \min_{C_1,\ldots,C_K}\sum_{k=1}^{K}\sum_{SPI_i\in C_k}\left(SPI_i-\mu_k\right)^2
           \]
           <span class="caption">Clusters are sorted by their centroids \(\mu_k\), from driest to wettest, before labels are assigned.</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="severity" class="container section">
-    <div class="section-head">
-      <h2>Drought severity, event duration, and magnitude</h2>
-      <p>Severity calculations use only drought periods. They do not measure wetness magnitude.</p>
-    </div>
-
-    <div class="grid-2">
-      <article class="card">
-        <span class="badge red">Event detection</span>
-        <h3>Drought-event indicator</h3>
-        <p>Let \(\theta\) be the selected drought threshold, such as \(-1.0\) for moderate drought and worse. A time step is part of a drought event when:</p>
-        <div class="formula">
+</div>
+</article>
+</div>
+</section>
+<section class="container section" id="severity">
+<div class="section-head">
+<h2><a href="/knowledge/drought-severity/">Drought severity</a>, event duration, and magnitude</h2>
+<p>Severity calculations use only drought periods. They do not measure wetness magnitude.</p>
+</div>
+<div class="grid-2">
+<article class="card">
+<span class="badge red">Event detection</span>
+<h3>Drought-event indicator</h3>
+<p>Let \(\theta\) be the selected drought threshold, such as \(-1.0\) for moderate drought and worse. A time step is part of a drought event when:</p>
+<div class="formula">
           \[
           I_t =
           \begin{cases}
-          1, & SPI_t \le \theta \\
-          0, & SPI_t > \theta
+          1, &amp; SPI_t \le \theta \\
+          0, &amp; SPI_t &gt; \theta
           \end{cases}
           \]
         </div>
-        <p>A drought event is a consecutive sequence of time steps where \(I_t=1\).</p>
-      </article>
-
-      <article class="card">
-        <span class="badge red">Duration and minimum SPI</span>
-        <h3>Event summary metrics</h3>
-        <p>For a drought event \(E=[a,b]\), the duration and minimum SPI are:</p>
-        <div class="formula">
+<p>A drought event is a consecutive sequence of time steps where \(I_t=1\).</p>
+</article>
+<article class="card">
+<span class="badge red">Duration and minimum SPI</span>
+<h3>Event summary metrics</h3>
+<p>For a drought event \(E=[a,b]\), the duration and minimum SPI are:</p>
+<div class="formula">
           \[
           D_E=b-a+1
           \]
@@ -440,77 +414,72 @@ tr:last-child td{border-bottom:0}
           SPI_{min,E}=\min_{t\in E}(SPI_t)
           \]
           <span class="caption">For yearly analysis, duration is measured in years. For monthly analysis, duration would be measured in months.</span>
-        </div>
-      </article>
-    </div>
-
-    <article class="card" style="margin-top:1.2rem">
-      <span class="badge red">Magnitude</span>
-      <h3>Drought deficit and magnitude</h3>
-      <p>The drought deficit for one time step is the distance below the selected threshold:</p>
-      <div class="formula">
+</div>
+</article>
+</div>
+<article class="card" style="margin-top:1.2rem">
+<span class="badge red">Magnitude</span>
+<h3>Drought deficit and magnitude</h3>
+<p>The drought deficit for one time step is the distance below the selected threshold:</p>
+<div class="formula">
         \[
         d_t = \max(0,\theta-SPI_t)
         \]
       </div>
-      <p>The drought magnitude of an event is the sum of drought deficits during that event:</p>
-      <div class="formula">
+<p>The drought magnitude of an event is the sum of drought deficits during that event:</p>
+<div class="formula">
         \[
         M_E=\sum_{t\in E}(\theta-SPI_t)
         \]
         <span class="caption">Because \(SPI_t\le\theta\) inside a drought event, \(\theta-SPI_t\) is positive.</span>
-      </div>
-      <p>Mean event intensity can also be calculated as:</p>
-      <div class="formula">
+</div>
+<p>Mean event intensity can also be calculated as:</p>
+<div class="formula">
         \[
         \bar{I}_E=\frac{M_E}{D_E}
         \]
       </div>
-      <p class="note">Magnitude is expressed in SPI × time step. For yearly SPI, it can be read as SPI-years. A larger value means the drought was deeper, longer, or both. A value greater than 2 is not a universal category by itself; it must be interpreted with the selected threshold, duration, and minimum SPI.</p>
-    </article>
-  </section>
-
-  <section id="wavelet" class="container section">
-    <div class="section-head">
-      <h2>Wavelet diagnostics</h2>
-      <p>Wavelet diagnostics show how drought variability changes across time and period. In the Research Version, the period unit follows the selected time step: years for yearly SPI and months for monthly SPI.</p>
-    </div>
-
-    <div class="grid-3">
-      <article class="card">
-        <span class="badge">Scalogram</span>
-        <h3>Continuous wavelet transform</h3>
-        <p>The wavelet coefficient at time \(\tau\) and scale \(s\) can be written as:</p>
-        <div class="formula">
+<p class="note">Magnitude is expressed in SPI × time step. For yearly SPI, it can be read as SPI-years. A larger value means the drought was deeper, longer, or both. A value greater than 2 is not a universal category by itself; it must be interpreted with the selected threshold, duration, and minimum SPI.</p>
+</article>
+</section>
+<section class="container section" id="wavelet">
+<div class="section-head">
+<h2>Wavelet diagnostics</h2>
+<p>Wavelet diagnostics show how drought variability changes across time and period. In the Research Version, the period unit follows the selected time step: years for yearly SPI and months for monthly SPI.</p>
+</div>
+<div class="grid-3">
+<article class="card">
+<span class="badge">Scalogram</span>
+<h3>Continuous wavelet transform</h3>
+<p>The wavelet coefficient at time \(\tau\) and scale \(s\) can be written as:</p>
+<div class="formula">
           \[
           W_x(s,\tau)=\sum_{t=1}^{N}x_t\,\psi^*\left(\frac{t-\tau}{s}\right)
           \]
           <span class="caption">\(x_t\) is the SPI series, \(\psi^*\) is the complex conjugate of the mother wavelet, and \(s\) is the scale or period.</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <span class="badge">Power</span>
-        <h3>Wavelet power and global spectrum</h3>
-        <p>The wavelet power is:</p>
-        <div class="formula">
+</div>
+</article>
+<article class="card">
+<span class="badge">Power</span>
+<h3>Wavelet power and global spectrum</h3>
+<p>The wavelet power is:</p>
+<div class="formula">
           \[
           P_x(s,\tau)=|W_x(s,\tau)|^2
           \]
         </div>
-        <p>The global wavelet spectrum summarizes power over the whole record:</p>
-        <div class="formula">
+<p>The global wavelet spectrum summarizes power over the whole record:</p>
+<div class="formula">
           \[
           G_x(s)=\frac{1}{N}\sum_{\tau=1}^{N}|W_x(s,\tau)|^2
           \]
         </div>
-      </article>
-
-      <article class="card">
-        <span class="badge">Coherence</span>
-        <h3>Wavelet coherence</h3>
-        <p>For two series \(x\) and \(y\), such as SPI and precipitation, wavelet coherence is:</p>
-        <div class="formula">
+</article>
+<article class="card">
+<span class="badge">Coherence</span>
+<h3>Wavelet coherence</h3>
+<p>For two series \(x\) and \(y\), such as SPI and precipitation, wavelet coherence is:</p>
+<div class="formula">
           \[
           R^2_{xy}(s,\tau)=\frac{\left|S\left(s^{-1}W_{xy}(s,\tau)\right)\right|^2}{S\left(s^{-1}|W_x(s,\tau)|^2\right)S\left(s^{-1}|W_y(s,\tau)|^2\right)}
           \]
@@ -518,244 +487,229 @@ tr:last-child td{border-bottom:0}
           W_{xy}(s,\tau)=W_x(s,\tau)W_y^*(s,\tau)
           \]
           <span class="caption">\(S\) is a smoothing operator. Coherence ranges from 0 to 1.</span>
-        </div>
-      </article>
-    </div>
-
-    <p class="note">In this page, strong fluctuation means strong wavelet power at a specific time and period. It means SPI changed repeatedly and strongly at that time scale. It does not automatically mean that drought was severe every time that period appears.</p>
-  </section>
-
-  <section id="copula" class="container section">
-    <div class="section-head">
-      <h2>Copula diagnostics used in the Research Version</h2>
-      <p>
+</div>
+</article>
+</div>
+<p class="note">In this page, strong fluctuation means strong wavelet power at a specific time and period. It means SPI changed repeatedly and strongly at that time scale. It does not automatically mean that drought was severe every time that period appears.</p>
+</section>
+<section class="container section" id="copula">
+<div class="section-head">
+<h2>Copula diagnostics used in the Research Version</h2>
+<p>
         The Copula tab in the current Research Version is a bivariate, rank-based dependence diagnostic. It converts the selected paired variables to pseudo-observations in the unit square, draws the U–V scatter plot, and reports dependence and drought-persistence summaries. It is useful for describing association and persistence, but it is not a drought forecast by itself.
       </p>
-    </div>
-
-    <div class="card">
-      <span class="badge">User-selected pairing</span>
-      <h3>Step 1: build the paired variables</h3>
-      <p>
+</div>
+<div class="card">
+<span class="badge">User-selected pairing</span>
+<h3>Step 1: build the paired variables</h3>
+<p>
         The user selects a variable pairing in the Copula tab. For the option shown as <b>SPI vs SPI (lag 1; persistence)</b>, the paired variables are consecutive SPI values:
       </p>
-      <div class="formula">
+<div class="formula">
         \[
         X_i = SPI_t, \qquad Y_i = SPI_{t+1}
         \]
         <span class="caption">This pairing is used to examine whether dry or wet SPI conditions tend to persist into the next time step.</span>
-      </div>
-      <p>
+</div>
+<p>
         Other pairings follow the same structure. For example, a precipitation–SPI pairing uses one variable from precipitation and the other from SPI for the same matched time steps. Records with missing or invalid paired values are excluded before the diagnostic is calculated.
       </p>
-    </div>
-
-    <div class="grid-2" style="margin-top:1.2rem">
-      <article class="card">
-        <span class="badge">Pseudo-observations</span>
-        <h3>Step 2: convert pairs to U and V values</h3>
-        <p>
+</div>
+<div class="grid-2" style="margin-top:1.2rem">
+<article class="card">
+<span class="badge">Pseudo-observations</span>
+<h3>Step 2: convert pairs to U and V values</h3>
+<p>
           The Copula tab does not plot the original SPI or precipitation values directly. It first converts each paired variable to a rank-based probability value between 0 and 1:
         </p>
-        <div class="formula">
+<div class="formula">
           \[
           U_i = \frac{rank(X_i)}{n+1}, \qquad V_i = \frac{rank(Y_i)}{n+1}
           \]
           <span class="caption">Here, \(n\) is the number of valid paired observations. This is why the chart is labeled U–V scatter, and both axes range from 0 to 1.</span>
-        </div>
-        <p>
+</div>
+<p>
           In the U–V scatter plot, each dot is one valid paired time step. For SPI-related variables, small values near 0 represent the driest or lowest-ranked conditions, while values near 1 represent the wettest or highest-ranked conditions.
         </p>
-      </article>
-
-      <article class="card">
-        <span class="badge">Dependence summary</span>
-        <h3>Step 3: calculate correlation and Kendall tau</h3>
-        <p>
+</article>
+<article class="card">
+<span class="badge">Dependence summary</span>
+<h3>Step 3: calculate correlation and Kendall tau</h3>
+<p>
           The summary box reports the correlation between the rank-based U and V values as the Gaussian rho value:
         </p>
-        <div class="formula">
+<div class="formula">
           \[
           \hat{\rho}=Corr(U,V)
           \]
           <span class="caption">Correlation is bounded by \(-1 \le \hat{\rho} \le 1\). A positive value means the two variables tend to move in the same rank direction. A negative value means they tend to move in opposite rank directions.</span>
-        </div>
-        <p>
+</div>
+<p>
           Kendall tau is also reported as a nonparametric rank-dependence measure:
         </p>
-        <div class="formula">
+<div class="formula">
           \[
           \hat{\tau}=\frac{C-D}{\frac{1}{2}n(n-1)}
           \]
           <span class="caption">\(C\) is the number of concordant pairs and \(D\) is the number of discordant pairs.</span>
-        </div>
-        <p>
+</div>
+<p>
           Values near zero indicate weak dependence. In the SPI lag-1 persistence example, a positive value means low SPI ranks tend to be followed by low SPI ranks and high SPI ranks tend to be followed by high SPI ranks.
         </p>
-      </article>
-    </div>
-
-    <div class="grid-2" style="margin-top:1.2rem">
-      <article class="card">
-        <span class="badge">Gaussian family</span>
-        <h3>Why tail-dependence values are not shown in the tool</h3>
-        <p>
+</article>
+</div>
+<div class="grid-2" style="margin-top:1.2rem">
+<article class="card">
+<span class="badge">Gaussian family</span>
+<h3>Why tail-dependence values are not shown in the tool</h3>
+<p>
           The current Research Version uses a <b>Gaussian copula</b> to summarize overall dependence. In a Gaussian copula, lower-tail and upper-tail dependence are theoretically zero for any non-perfect correlation.
         </p>
-        <p class="note">
+<p class="note">
           Because these values are not informative in normal DMAP-AI runs, the Research Version does <b>not</b> show lower-tail or upper-tail dependence in the Copula summary. The more useful outputs are <b>Gaussian rho</b>, <b>Kendall tau</b>, the <b>U–V scatter</b>, <b>sample size</b>, and the persistence summaries such as <b>P(drought continues next step)</b>.
         </p>
-      </article>
-
-      <article class="card">
-        <span class="badge">Sample size</span>
-        <h3>Sample size used</h3>
-        <p>
+</article>
+<article class="card">
+<span class="badge">Sample size</span>
+<h3>Sample size used</h3>
+<p>
           The summary item <b>Sample size used</b> is the number of valid paired observations after the selected pairing is built and missing or invalid values are removed:
         </p>
-        <div class="formula">
+<div class="formula">
           \[
           n = \#\{(X_i,Y_i): X_i \text{ and } Y_i \text{ are valid and finite}\}
           \]
         </div>
-        <p>
+<p>
           For the lag-1 SPI persistence option, one time step is lost because each pair needs both \(SPI_t\) and \(SPI_{t+1}\).
         </p>
-      </article>
-    </div>
-
-    <article class="card" style="margin-top:1.2rem">
-      <span class="badge red">Persistence / duration</span>
-      <h3>Drought persistence summary for SPI ≤ -1.0</h3>
-      <p>
+</article>
+</div>
+<article class="card" style="margin-top:1.2rem">
+<span class="badge red">Persistence / duration</span>
+<h3>Drought persistence summary for SPI ≤ -1.0</h3>
+<p>
         When the selected pairing is SPI vs SPI lag 1, the summary box also reports persistence statistics based on a drought threshold of \(SPI \le -1.0\). Define a drought indicator as:
       </p>
-      <div class="formula">
+<div class="formula">
         \[
         D_t=
         \begin{cases}
-        1, & SPI_t \le -1.0 \\
-        0, & SPI_t > -1.0
+        1, &amp; SPI_t \le -1.0 \\
+        0, &amp; SPI_t &gt; -1.0
         \end{cases}
         \]
       </div>
-      <p>The probability that drought continues into the next step is calculated from times that are already in drought:</p>
-      <div class="formula">
+<p>The probability that drought continues into the next step is calculated from times that are already in drought:</p>
+<div class="formula">
         \[
         P(\text{drought continues next step})=
         \frac{\#\{t:D_t=1 \text{ and } D_{t+1}=1\}}{\#\{t:D_t=1\}}
         \]
       </div>
-      <p>The probability of a new drought next step is calculated from times that are not currently in drought:</p>
-      <div class="formula">
+<p>The probability of a new drought next step is calculated from times that are not currently in drought:</p>
+<div class="formula">
         \[
         P(\text{new drought next step})=
         \frac{\#\{t:D_t=0 \text{ and } D_{t+1}=1\}}{\#\{t:D_t=0\}}
         \]
       </div>
-      <p>The approximate mean drought length is the average length of consecutive drought runs:</p>
-      <div class="formula">
+<p>The approximate mean drought length is the average length of consecutive drought runs:</p>
+<div class="formula">
         \[
         \bar{L}=\frac{1}{m}\sum_{j=1}^{m} L_j
         \]
         <span class="caption">\(L_j\) is the length of drought run \(j\), and \(m\) is the number of drought runs. If the available record is too limited for this estimate, the tool can report NA.</span>
-      </div>
-    </article>
-
-    <article class="card" style="margin-top:1.2rem">
-      <span class="badge amber">How to read the Copula tab</span>
-      <h3>How the displayed results should be interpreted</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Displayed item</th><th>Meaning in the current Research Version</th></tr></thead>
-          <tbody>
-            <tr><td>U–V scatter</td><td>Rank-based paired values in the unit square. Each dot is one valid paired time step.</td></tr>
-            <tr><td>Pair type</td><td>The selected variable pairing, such as SPI vs SPI lag 1 for persistence analysis.</td></tr>
-            <tr><td>Family: Gaussian</td><td>The dependence summary is reported in a Gaussian-copula-style framework.</td></tr>
-            <tr><td>Gaussian rho</td><td>Correlation of the rank-based U and V values.</td></tr>
-            <tr><td>Kendall tau</td><td>Rank-dependence measure based on concordant and discordant pairs.</td></tr>
-                        <tr><td>Persistence / duration</td><td>Empirical transition statistics using \(SPI \le -1.0\) as the drought threshold.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note warn">
+</div>
+</article>
+<article class="card" style="margin-top:1.2rem">
+<span class="badge amber">How to read the Copula tab</span>
+<h3>How the displayed results should be interpreted</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Displayed item</th><th>Meaning in the current Research Version</th></tr></thead>
+<tbody>
+<tr><td>U–V scatter</td><td>Rank-based paired values in the unit square. Each dot is one valid paired time step.</td></tr>
+<tr><td>Pair type</td><td>The selected variable pairing, such as SPI vs SPI lag 1 for persistence analysis.</td></tr>
+<tr><td>Family: Gaussian</td><td>The dependence summary is reported in a Gaussian-copula-style framework.</td></tr>
+<tr><td>Gaussian rho</td><td>Correlation of the rank-based U and V values.</td></tr>
+<tr><td>Kendall tau</td><td>Rank-dependence measure based on concordant and discordant pairs.</td></tr>
+<tr><td>Persistence / duration</td><td>Empirical transition statistics using \(SPI \le -1.0\) as the drought threshold.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note warn">
         The Copula tab is a descriptive diagnostic. It should be interpreted together with the SPI table, charts, and drought severity tab. It does not replace the main SPI calculation and should not be interpreted as an official drought forecast.
       </p>
-    </article>
-  </section>
-
-    <section id="data-sources" class="container section">
-    <div class="section-head">
-      <h2>Data-source processing formulas</h2>
-      <p>The current Research Version uses point-based precipitation data. The same SPI formulas are used after precipitation is converted to a consistent unit and time scale.</p>
-    </div>
-
-    <div class="grid-2">
-      <article class="card">
-        <span class="badge green">NASA POWER</span>
-        <h3>NASA POWER precipitation</h3>
-        <p>NASA POWER is the default free point-based data source in the Research Version. Daily precipitation values are summed to the selected analysis period:</p>
-        <div class="formula">
+</article>
+</section>
+<section class="container section" id="data-sources">
+<div class="section-head">
+<h2>Data-source processing formulas</h2>
+<p>The current Research Version uses point-based precipitation data. The same SPI formulas are used after precipitation is converted to a consistent unit and time scale.</p>
+</div>
+<div class="grid-2">
+<article class="card">
+<span class="badge green">NASA POWER</span>
+<h3>NASA POWER precipitation</h3>
+<p>NASA POWER is the default free point-based data source in the Research Version. Daily precipitation values are summed to the selected analysis period:</p>
+<div class="formula">
           \[
           P_{year} = \sum_{d=1}^{D_y} P_d
           \]
           <span class="caption">\(D_y\) is the number of available days in year \(y\).</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <span class="badge amber">ERA5-Land / CDS</span>
-        <h3>ERA5-Land/CDS precipitation</h3>
-        <p>ERA5-Land/CDS is an advanced option. If precipitation is returned as meters of water equivalent, it is converted to millimeters before aggregation:</p>
-        <div class="formula">
+</div>
+</article>
+<article class="card">
+<span class="badge amber">ERA5-Land / CDS</span>
+<h3>ERA5-Land/CDS precipitation</h3>
+<p>ERA5-Land/CDS is an advanced option. If precipitation is returned as meters of water equivalent, it is converted to millimeters before aggregation:</p>
+<div class="formula">
           \[
           P_{mm}=1000\times P_m
           \]
         </div>
-        <p>After unit conversion, values are summed over the selected period in the same way as the NASA POWER workflow.</p>
-      </article>
-    </div>
-
-    <article class="card" style="margin-top:1.2rem">
-      <span class="badge">Quality rules</span>
-      <h3>Valid values used for fitting</h3>
-      <p>The fitting sample uses valid numerical precipitation accumulations. In formula form:</p>
-      <div class="formula">
+<p>After unit conversion, values are summed over the selected period in the same way as the NASA POWER workflow.</p>
+</article>
+</div>
+<article class="card" style="margin-top:1.2rem">
+<span class="badge">Quality rules</span>
+<h3>Valid values used for fitting</h3>
+<p>The fitting sample uses valid numerical precipitation accumulations. In formula form:</p>
+<div class="formula">
         \[
         \mathcal{B}=\{X_t: X_t \text{ is valid, finite, and inside the baseline period}\}
         \]
       </div>
-      <p class="note">The Gamma and empirical SPI calculations are based on this valid baseline set. Missing or invalid values should not be used to estimate the distribution.</p>
-    </article>
-  </section>
-
-  <section id="references" class="container section">
-    <div class="section-head">
-      <h2>References for methods</h2>
-      <p>These references support the scientific methods described on this page.</p>
-    </div>
-    <div class="card">
-      <ol class="refs">
-        <li>U.S. Drought Monitor. Drought Classification. National Drought Mitigation Center, University of Nebraska–Lincoln. https://droughtmonitor.unl.edu/About/AbouttheData/DroughtClassification.aspx</li>
-        <li>U.S. Drought Monitor. What is the USDM? National Drought Mitigation Center, University of Nebraska–Lincoln. https://droughtmonitor.unl.edu/About/WhatistheUSDM.aspx</li>
-        <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
-        <li>Edwards, D. C., and McKee, T. B. (1997). Characteristics of 20th century drought in the United States at multiple time scales. Colorado State University.</li>
-        <li>Guttman, N. B. (1999). Accepting the Standardized Precipitation Index: a calculation algorithm. Journal of the American Water Resources Association.</li>
-        <li>World Meteorological Organization (2012). Standardized Precipitation Index User Guide.</li>
-        <li>Torrence, C., and Compo, G. P. (1998). A practical guide to wavelet analysis. Bulletin of the American Meteorological Society.</li>
-        <li>Grinsted, A., Moore, J. C., and Jevrejeva, S. (2004). Application of the cross wavelet transform and wavelet coherence to geophysical time series. Nonlinear Processes in Geophysics.</li>
-        <li>Sklar, A. (1959). Fonctions de répartition à n dimensions et leurs marges. Publications de l’Institut de Statistique de l’Université de Paris.</li>
-        <li>Nelsen, R. B. (2006). An Introduction to Copulas. Springer.</li>
-      </ol>
-    </div>
-  </section>
+<p class="note">The Gamma and empirical SPI calculations are based on this valid baseline set. Missing or invalid values should not be used to estimate the distribution.</p>
+</article>
+</section>
+<section class="container section" id="references">
+<div class="section-head">
+<h2>References for methods</h2>
+<p>These references support the scientific methods described on this page.</p>
+</div>
+<div class="card">
+<ol class="refs">
+<li>U.S. Drought Monitor. Drought Classification. National Drought Mitigation Center, University of Nebraska–Lincoln. https://droughtmonitor.unl.edu/About/AbouttheData/DroughtClassification.aspx</li>
+<li>U.S. Drought Monitor. What is the USDM? National Drought Mitigation Center, University of Nebraska–Lincoln. https://droughtmonitor.unl.edu/About/WhatistheUSDM.aspx</li>
+<li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+<li>Edwards, D. C., and McKee, T. B. (1997). Characteristics of 20th century drought in the United States at multiple time scales. Colorado State University.</li>
+<li>Guttman, N. B. (1999). Accepting the Standardized Precipitation Index: a calculation algorithm. Journal of the American Water Resources Association.</li>
+<li>World Meteorological Organization (2012). Standardized Precipitation Index User Guide.</li>
+<li>Torrence, C., and Compo, G. P. (1998). A practical guide to wavelet analysis. Bulletin of the American Meteorological Society.</li>
+<li>Grinsted, A., Moore, J. C., and Jevrejeva, S. (2004). Application of the cross wavelet transform and wavelet coherence to geophysical time series. Nonlinear Processes in Geophysics.</li>
+<li>Sklar, A. (1959). Fonctions de répartition à n dimensions et leurs marges. Publications de l’Institut de Statistique de l’Université de Paris.</li>
+<li>Nelsen, R. B. (2006). An Introduction to Copulas. Springer.</li>
+</ol>
+</div>
+</section>
 </main>
-
 <footer class="footer">
-  <div class="container footer-inner">
-    <span>© <span id="year"></span> <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
+<div class="container footer-inner">
+<span>© <span id="year"></span> <a href="https://agrimetsoft.com/" rel="noopener" target="_blank">AgriMetSoft</a>. All rights reserved.</span>
 <!-- footer navigation removed (handled globally) -->
-  </div>
+</div>
 </footer>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 <script src="/assets/global-nav.js"></script>

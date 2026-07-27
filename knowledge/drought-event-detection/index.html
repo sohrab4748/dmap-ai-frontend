@@ -1,33 +1,29 @@
-﻿<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <title>Drought Event Detection | DMAP-AI Knowledge Center</title>
-  <meta name="description" content="Learn how drought events are detected from index time series, including start dates, end dates, thresholds, pooling rules, and DMAP-AI event summaries.">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="AgriMetSoft LLC">
-  <meta name="theme-color" content="#2563eb">
-
-  <link rel="canonical" href="https://droughtanalysis.com/knowledge/drought-event-detection/">
-  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-
-  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
-  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
-
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="DMAP-AI">
-  <meta property="og:title" content="Drought Event Detection">
-  <meta property="og:description" content="Learn how drought events are detected from index time series, including start dates, end dates, thresholds, pooling rules, and DMAP-AI event summaries.">
-  <meta property="og:url" content="https://droughtanalysis.com/knowledge/drought-event-detection/">
-  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Drought Event Detection | DMAP-AI Knowledge Center</title>
+<meta content="Learn how drought events are detected from index time series, including start dates, end dates, thresholds, pooling rules, and DMAP-AI event summaries." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="AgriMetSoft LLC" name="author"/>
+<meta content="#2563eb" name="theme-color"/>
+<link href="https://droughtanalysis.com/knowledge/drought-event-detection/" rel="canonical"/>
+<link as="image" fetchpriority="high" href="/assets/logo-dmap-ai-225.webp" rel="preload" type="image/webp"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/knowledge/knowledge-style.css" rel="stylesheet"/>
+<link href="/assets/dmap-global-nav.css" rel="stylesheet"/>
+<meta content="article" property="og:type"/>
+<meta content="DMAP-AI" property="og:site_name"/>
+<meta content="Drought Event Detection" property="og:title"/>
+<meta content="Learn how drought events are detected from index time series, including start dates, end dates, thresholds, pooling rules, and DMAP-AI event summaries." property="og:description"/>
+<meta content="https://droughtanalysis.com/knowledge/drought-event-detection/" property="og:url"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -104,8 +100,7 @@
   ]
 }
   </script>
-
-  <style>
+<style>
     :root {
       --blue:#2563eb;
       --blue-dark:#1d4ed8;
@@ -480,228 +475,191 @@
   </style>
 </head>
 <body>
-  <main>
-    <section class="article-hero">
-      <div class="container">
-        <div class="article-hero-card">
-          <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span>›</span>
-            <a href="/knowledge/">Knowledge Center</a>
-            <span>›</span>
-            <span>Drought Event Detection</span>
-          </nav>
-
-          <p class="eyebrow">Analysis Methods</p>
-
-          <h1>Drought Event Detection</h1>
-
-          <p class="lead">
+<main>
+<section class="article-hero">
+<div class="container">
+<div class="article-hero-card">
+<nav aria-label="Breadcrumb" class="breadcrumb">
+<a href="/">Home</a>
+<span>›</span>
+<a href="/knowledge/">Knowledge Center</a>
+<span>›</span>
+<span>Drought Event Detection</span>
+</nav>
+<p class="eyebrow">Analysis Methods</p>
+<h1>Drought Event Detection</h1>
+<p class="lead">
             Drought event detection converts a drought-index time series into a structured list of events. Each event can then be described by start date, end date, duration, severity, and magnitude.
           </p>
-
-          <div class="article-meta">
-            <span class="meta-pill">Reading time: 12 min</span>
-            <span class="meta-pill">Level: Intermediate</span>
-            <span class="meta-pill">Last updated: July 2026</span>
-            <span class="meta-pill">Author: AgriMetSoft LLC</span>
-          </div>
-
-          <div class="hero-actions">
-            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="container article-layout">
-      <article class="article-main">
-        <section class="quick-answer" id="quick-answer">
-          <h2>Short answer</h2>
-          <p>
+<div class="article-meta">
+<span class="meta-pill">Reading time: 12 min</span>
+<span class="meta-pill">Level: Intermediate</span>
+<span class="meta-pill">Last updated: July 2026</span>
+<span class="meta-pill">Author: AgriMetSoft LLC</span>
+</div>
+<div class="hero-actions">
+<a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+</div>
+</div>
+</div>
+</section>
+<div class="container article-layout">
+<article class="article-main">
+<section class="quick-answer" id="quick-answer">
+<h2>Short answer</h2>
+<p>
             Drought event detection is the process of identifying when a drought starts, when it ends, and how it should be summarized. In SPI analysis, an event is commonly detected when the index drops below a selected threshold such as -1.0 and remains active until the index returns above the recovery threshold. The detection rule controls event count, duration, severity, and magnitude.
           </p>
-        </section>
-
-        <section id="definition">
-          <h2>What is drought event detection?</h2>
-
-          <p>
+</section>
+<section id="definition">
+<h2>What is drought event detection?</h2>
+<p>
             Drought event detection is the step that turns a continuous drought-index record into discrete events. A line chart may show many wet and dry fluctuations, but an event table defines which periods count as droughts and how they should be summarized.
           </p>
-
-          <p>
+<p>
             This process is essential for reproducible reporting. Without a clear event-detection rule, two analysts may interpret the same SPI chart differently. One may identify a single long event, while another may split it into several shorter events.
           </p>
-
-          <div class="definition-box">
-            <strong>Working definition:</strong> Drought event detection is the identification of drought start, continuation, termination, and event-level metrics from a time series using a defined index, threshold, and temporal rule.
+<div class="definition-box">
+<strong>Working definition:</strong> Drought event detection is the identification of drought start, continuation, termination, and event-level metrics from a time series using a defined index, threshold, and temporal rule.
           </div>
-        </section>
-        <section id="rules">
-          <h2>Common event-detection rules</h2>
-
-          <p>
+</section>
+<section id="rules">
+<h2>Common event-detection rules</h2>
+<p>
             Most event-detection workflows use a threshold and a continuity rule. The threshold defines when drought is active. The continuity rule defines how to handle short interruptions, missing values, or brief returns to near-normal conditions.
           </p>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Rule element</th><th>Purpose</th><th>Example</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Drought threshold</td><td>Defines when drought starts</td><td>SPI ≤ -1.0</td></tr>
-                <tr><td>Recovery threshold</td><td>Defines when drought ends</td><td>SPI > -1.0 or SPI ≥ 0</td></tr>
-                <tr><td>Minimum duration</td><td>Removes very short events</td><td>At least 2 consecutive months</td></tr>
-                <tr><td>Pooling rule</td><td>Merges events separated by brief interruptions</td><td>Merge if break is only 1 month</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Rule element</th><th>Purpose</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td>Drought threshold</td><td>Defines when drought starts</td><td>SPI ≤ -1.0</td></tr>
+<tr><td>Recovery threshold</td><td>Defines when drought ends</td><td>SPI &gt; -1.0 or SPI ≥ 0</td></tr>
+<tr><td>Minimum duration</td><td>Removes very short events</td><td>At least 2 consecutive months</td></tr>
+<tr><td>Pooling rule</td><td>Merges events separated by brief interruptions</td><td>Merge if break is only 1 month</td></tr>
+</tbody>
+</table>
+</div>
+<p>
             The selected rule should match the decision context. A strict rule may identify fewer events, while a sensitive rule may detect early drought development but may also create more short events.
           </p>
-        </section>
-        <section id="start-end">
-          <h2>Start dates and end dates</h2>
-
-          <p>
+</section>
+<section id="start-end">
+<h2>Start dates and end dates</h2>
+<p>
             A drought start date is usually assigned to the first time step in which the index crosses below the drought threshold. The end date is the last time step before recovery is declared. In monthly data, these are months; in weekly data, they are weeks.
           </p>
-
-          <p>
+<p>
             End-date rules can vary. Some studies define recovery as the first time the index rises above the drought threshold. Others require the index to return to normal or positive values. A stricter recovery rule produces longer durations and larger magnitudes.
           </p>
-        </section>
-        <section id="quality">
-          <h2>Data quality and false events</h2>
-
-          <p>
+</section>
+<section id="quality">
+<h2>Data quality and false events</h2>
+<p>
             Event detection depends on data quality. Missing precipitation records, unit-conversion errors, incomplete years, or inconsistent aggregation can create false drought events. For this reason, quality checks should be performed before event detection.
           </p>
-
-          <p>
+<p>
             Short isolated drought signals can also be difficult to interpret. In a high-frequency record, a one-week dry anomaly may not represent a meaningful drought event. Minimum-duration rules help avoid over-interpreting noise.
           </p>
-        </section>
-        <section id="dmap-ai">
-          <h2>How DMAP-AI detects and summarizes events</h2>
-
-          <p>
-            <a href="https://droughtanalysis.com/">DMAP-AI</a> applies event-detection logic to the selected drought index and time scale, then produces a drought-event table. The table includes event dates, duration, minimum index value, and magnitude. These structured outputs make the results easier to compare across stations and easier for AI to explain accurately.
+</section>
+<section id="dmap-ai">
+<h2>How DMAP-AI detects and summarizes events</h2>
+<p>
+<a href="https://droughtanalysis.com/">DMAP-AI</a> applies event-detection logic to the selected drought index and time scale, then produces a drought-event table. The table includes event dates, duration, minimum index value, and magnitude. These structured outputs make the results easier to compare across stations and easier for AI to explain accurately.
           </p>
-
-          <p>
+<p>
             This structure is especially useful for <a href="https://droughtanalysis.com/method-comparison/">chart-specific AI requests</a>. Instead of asking an AI model to guess event boundaries from a figure, DMAP-AI can provide exact event metadata. That reduces hallucination and improves reproducibility in drought reports.
           </p>
-        </section>
-
-        <section id="faq">
-          <h2>Frequently asked questions</h2>
-
-          <h3>Why do different studies detect different numbers of events?</h3>
-          <p>
+</section>
+<section id="faq">
+<h2>Frequently asked questions</h2>
+<h3>Why do different studies detect different numbers of events?</h3>
+<p>
             They may use different indices, time scales, thresholds, minimum-duration rules, or recovery rules. Event counts are method-dependent.
           </p>
-
-          <h3>Should drought recovery require SPI to become positive?</h3>
-          <p>
+<h3>Should <a href="/knowledge/drought-recovery/">drought recovery</a> require SPI to become positive?</h3>
+<p>
             Not always. Some studies end an event when SPI rises above the drought threshold, while others require near-normal or positive conditions. The rule should be documented.
           </p>
-
-          <h3>Can a short interruption split a drought into two events?</h3>
-          <p>
+<h3>Can a short interruption split a drought into two events?</h3>
+<p>
             Yes, unless a pooling rule is used. Pooling rules merge events separated by brief near-normal periods.
           </p>
-
-          <h3>Why is event detection important for AI interpretation?</h3>
-          <p>
+<h3>Why is event detection important for AI interpretation?</h3>
+<p>
             Structured event detection gives AI exact dates and metrics instead of forcing it to infer events visually from a chart.
           </p>
-
-          <h3>Can event detection be used with SPEI or EDDI?</h3>
-          <p>
+<h3>Can event detection be used with <a href="/knowledge/what-is-spei/">SPEI</a> or EDDI?</h3>
+<p>
             Yes. The same concept can be applied to many drought indices if the threshold and interpretation are clearly defined.
           </p>
-        </section>
-
-        <section id="references">
-          <h2>Selected references</h2>
-
-          <ol class="references">
-            <li>Yevjevich, V. (1967). An objective approach to definitions and investigations of continental hydrologic droughts. Hydrology Paper.</li>
-            <li>Dracup, J. A., Lee, K. S., and Paulson, E. G. (1980). On the definition of droughts. Water Resources Research.</li>
-            <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
-            <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
-          </ol>
-        </section>
-
-        <section id="related">
-          <h2>Related articles</h2>
-
-          <div class="related-grid">
-            <a class="related-card" href="/knowledge/drought-thresholds/">
-              <strong>Drought Thresholds</strong>
-              <span>Learn how thresholds control event detection.</span>
-            </a>
-
-            <a class="related-card" href="/knowledge/drought-duration/">
-              <strong>Drought Duration</strong>
-              <span>Understand duration after event boundaries are defined.</span>
-            </a>
-
-            <a class="related-card" href="/knowledge/drought-magnitude/">
-              <strong>Drought Magnitude</strong>
-              <span>Learn how event boundaries affect accumulated deficit.</span>
-            </a>
-          </div>
-        </section>
-      </article>
-
-      <aside class="toc" aria-label="Table of contents">
-        <h2>On this page</h2>
-        <a href="#quick-answer">Short answer</a>
-        <a href="#definition">What is drought event detection?</a>
-        <a href="#rules">Common event-detection rules</a>
-        <a href="#start-end">Start dates and end dates</a>
-        <a href="#quality">Data quality and false events</a>
-        <a href="#dmap-ai">How DMAP-AI detects and summarizes events</a>
-        <a href="#faq">FAQ</a>
-        <a href="#references">References</a>
-        <a href="#related">Related articles</a>
-      </aside>
-    </div>
-
-    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
-      <div class="comparison-stations-card">
-        <div class="comparison-stations-head">
-          <div>
-            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
-            <p>
+</section>
+<section id="references">
+<h2>Selected references</h2>
+<ol class="references">
+<li>Yevjevich, V. (1967). An objective approach to definitions and investigations of continental hydrologic droughts. Hydrology Paper.</li>
+<li>Dracup, J. A., Lee, K. S., and Paulson, E. G. (1980). On the definition of droughts. Water Resources Research.</li>
+<li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of <a href="/knowledge/drought-frequency/">drought frequency</a> and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+<li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+</ol>
+</section>
+<section id="related">
+<h2>Related articles</h2>
+<div class="related-grid">
+<a class="related-card" href="/knowledge/drought-thresholds/">
+<strong>Drought Thresholds</strong>
+<span>Learn how thresholds control event detection.</span>
+</a>
+<a class="related-card" href="/knowledge/drought-duration/">
+<strong>Drought Duration</strong>
+<span>Understand duration after event boundaries are defined.</span>
+</a>
+<a class="related-card" href="/knowledge/drought-magnitude/">
+<strong>Drought Magnitude</strong>
+<span>Learn how event boundaries affect accumulated deficit.</span>
+</a>
+</div>
+</section>
+</article>
+<aside aria-label="Table of contents" class="toc">
+<h2>On this page</h2>
+<a href="#quick-answer">Short answer</a>
+<a href="#definition">What is drought event detection?</a>
+<a href="#rules">Common event-detection rules</a>
+<a href="#start-end">Start dates and end dates</a>
+<a href="#quality">Data quality and false events</a>
+<a href="#dmap-ai">How DMAP-AI detects and summarizes events</a>
+<a href="#faq">FAQ</a>
+<a href="#references">References</a>
+<a href="#related">Related articles</a>
+</aside>
+</div>
+<section aria-labelledby="knowledge-browse-title" class="comparison-stations-section">
+<div class="comparison-stations-card">
+<div class="comparison-stations-head">
+<div>
+<h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+<p>
               Search and open other DMAP-AI Knowledge Center articles about drought science,
               drought indices, climate datasets, analysis methods, and AI interpretation.
             </p>
-          </div>
-          <span class="station-count-pill">Documentation</span>
-        </div>
-
-        <div data-articles-nav data-current-slug="drought-event-detection"></div>
-      </div>
-    </section>
-
-    <p class="back-to-knowledge">
-      <a href="/knowledge/">← Back to Knowledge Center</a>
-    </p>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
-    </div>
-  </footer>
-
-  <script src="/knowledge/knowledge-nav.js" defer></script>
-  <script src="/assets/global-nav.js"></script>
+</div>
+<span class="station-count-pill">Documentation</span>
+</div>
+<div data-articles-nav="" data-current-slug="drought-event-detection"></div>
+</div>
+</section>
+<p class="back-to-knowledge">
+<a href="/knowledge/">← Back to Knowledge Center</a>
+</p>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<span>© 2026 <a href="https://agrimetsoft.com/" rel="noopener" target="_blank">AgriMetSoft</a>. All rights reserved.</span>
+</div>
+</footer>
+<script defer="" src="/knowledge/knowledge-nav.js"></script>
+<script src="/assets/global-nav.js"></script>
 </body>
 </html>

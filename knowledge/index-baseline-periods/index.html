@@ -1,33 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <title>Baseline Periods in Drought Indices | DMAP-AI Knowledge Center</title>
-  <meta name="description" content="Understand how the reference period used to fit drought indices affects drought classification, trend interpretation, and comparisons across sites.">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="AgriMetSoft LLC">
-  <meta name="theme-color" content="#2563eb">
-
-  <link rel="canonical" href="https://droughtanalysis.com/knowledge/index-baseline-periods/">
-  <link rel="preload" as="image" href="/assets/logo-dmap-ai-225.webp" type="image/webp" fetchpriority="high">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-
-  <link rel="stylesheet" href="/knowledge/knowledge-style.css">
-  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
-
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="DMAP-AI">
-  <meta property="og:title" content="Baseline Periods in Drought Indices">
-  <meta property="og:description" content="A guide to baseline periods, reference climatology, SPI and SPEI standardization, and careful comparison of drought index values.">
-  <meta property="og:url" content="https://droughtanalysis.com/knowledge/index-baseline-periods/">
-  <meta property="og:image" content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Baseline Periods in Drought Indices | DMAP-AI Knowledge Center</title>
+<meta content="Understand how the reference period used to fit drought indices affects drought classification, trend interpretation, and comparisons across sites." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="AgriMetSoft LLC" name="author"/>
+<meta content="#2563eb" name="theme-color"/>
+<link href="https://droughtanalysis.com/knowledge/index-baseline-periods/" rel="canonical"/>
+<link as="image" fetchpriority="high" href="/assets/logo-dmap-ai-225.webp" rel="preload" type="image/webp"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="/knowledge/knowledge-style.css" rel="stylesheet"/>
+<link href="/assets/dmap-global-nav.css" rel="stylesheet"/>
+<meta content="article" property="og:type"/>
+<meta content="DMAP-AI" property="og:site_name"/>
+<meta content="Baseline Periods in Drought Indices" property="og:title"/>
+<meta content="A guide to baseline periods, reference climatology, SPI and SPEI standardization, and careful comparison of drought index values." property="og:description"/>
+<meta content="https://droughtanalysis.com/knowledge/index-baseline-periods/" property="og:url"/>
+<meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -60,8 +56,7 @@
     ]
   }
   </script>
-
-  <style>
+<style>
     :root {
       --blue:#2563eb;
       --blue-dark:#1d4ed8;
@@ -435,151 +430,129 @@
     }
   </style>
 </head>
-
 <body>
-  <main>
-    <section class="article-hero">
-      <div class="container">
-        <div class="article-hero-card">
-          <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span>›</span>
-            <a href="/knowledge/">Knowledge Center</a>
-            <span>›</span>
-            <span>Baseline Periods in Drought Indices</span>
-          </nav>
-
-          <p class="eyebrow">Drought Indices</p>
-          <h1>Baseline Periods in Drought Indices</h1>
-
-          <p class="lead">A baseline period is the reference climate used to standardize a drought index. It strongly affects how “normal,” “dry,” and “wet” are defined. Choosing and reporting the baseline correctly is essential for comparing drought results across time, space, datasets, and studies.</p>
-
-          <div class="article-meta">
-            <span class="meta-pill">Reading time: 11 min</span>
-            <span class="meta-pill">Level: Intermediate</span>
-            <span class="meta-pill">Last updated: July 2026</span>
-            <span class="meta-pill">Author: AgriMetSoft LLC</span>
-          </div>
-
-          <div class="hero-actions">
-            <a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="container article-layout">
-      <article class="article-main">
-        <section id="quick-answer">
-          <h2>Short answer</h2>
-          <p>A baseline period is the reference period used to define normal climate conditions when calculating drought indices. SPI, SPEI, and related standardized indices compare current values with the distribution fitted to this period. Changing the baseline can change drought categories, trends, and comparisons, so the baseline should always be reported.</p>
-        </section>
-
-        <section id="definition">
-          <h2>What is a baseline period?</h2>
-          <p>In drought-index analysis, the baseline period is the historical record used to estimate the statistical distribution of precipitation, climatic water balance, streamflow, or another variable. Standardized values are then expressed relative to that reference distribution.</p><p>For example, an SPI analysis for 1981–2025 may use the same period as the baseline, or it may use a fixed climatological reference such as 1991–2020. The choice affects what is considered normal.</p><div class="definition-box"><strong>Working definition:</strong> A baseline period is the reference climate period used to calculate standardized drought index values and categories.</div>
-        </section>
-
-        <section id="why">
-          <h2>Why baseline choice matters</h2>
-          <p>Baseline choice matters because drought indices are relative. A dry month is classified based on how unusual it is compared with the reference period. If the reference period includes many dry years, recent dry conditions may appear less unusual. If it includes many wet years, the same recent value may appear more severe.</p><p>The effect is especially important when comparing sites, datasets, or time periods. Two maps may not be comparable if they use different baselines.</p>
-        </section>
-
-        <section id="selection">
-          <h2>Selecting a baseline period</h2>
-          <p>A good baseline should be long enough to represent climate variability and should match the purpose of the analysis. Many climatological applications use 30-year periods, but drought-frequency and distribution-fitting studies often benefit from longer records when available.</p><div class="table-wrap"><table><thead><tr><th>Baseline type</th><th>Advantages</th><th>Limitations</th></tr></thead><tbody><tr><td>Full analysis period</td><td>Uses all available data</td><td>May mix historical and recent climate regimes</td></tr><tr><td>Fixed 30-year climatology</td><td>Easy to communicate and compare</td><td>May be too short for extremes</td></tr><tr><td>Historical baseline</td><td>Useful for climate-change comparison</td><td>Recent conditions may appear increasingly anomalous</td></tr><tr><td>Moving baseline</td><td>Reflects recent climate conditions</td><td>Can hide long-term change</td></tr></tbody></table></div>
-        </section>
-
-        <section id="trends">
-          <h2>Climate trends and nonstationarity</h2>
-          <p>Standardized drought indices often assume that the reference distribution is meaningful for the period being analyzed. Climate trends challenge this assumption. Temperature increases, precipitation shifts, land-use change, and water management can all influence drought interpretation.</p><p>There is no single perfect solution. Analysts should select a baseline that matches the research question and clearly explain the implications. For climate-change studies, it may be helpful to compare results using more than one baseline.</p>
-        </section>
-
-        <section id="comparison">
-          <h2>Comparing results across studies</h2>
-          <p>When comparing drought results, check whether the same baseline period, dataset, time scale, distribution, and threshold were used. Differences in baseline can create apparent differences in drought severity even when the underlying climate data are similar.</p><p>For scientific reporting, the baseline should be listed with the dataset and methodology. For dashboards, it should be included in metadata and documentation.</p>
-        </section>
-
-        <section id="dmap-ai">
-          <h2>How DMAP-AI should report baselines</h2>
-          <p><a href="https://droughtanalysis.com/">DMAP-AI</a> should always preserve and display the baseline period used for drought-index calculations. When the baseline is left empty and the analysis period is used, that should be stated clearly. AI-generated summaries should not compare results across projects unless baseline periods and datasets are compatible.</p><p><a href="https://droughtanalysis.com/method-comparison/">Structured metadata</a> is especially useful here because it allows the AI interpretation to include phrases such as “relative to the 1981–2025 analysis period” rather than making an unsupported general statement about absolute drought severity.</p>
-        </section>
-
-        <section id="faq">
-          <h2>Frequently asked questions</h2>
-          <h3>Is a 30-year baseline always enough?</h3><p>Thirty years is common in climatology, but longer records are often better for drought extremes and probability fitting when reliable data are available.</p><h3>Can changing the baseline change drought categories?</h3><p>Yes. Because standardized indices are relative to the reference distribution, changing the baseline can shift index values and category classifications.</p><h3>Which baseline should I use?</h3><p>Use a baseline that matches your research question. For operational monitoring, a standard climatological period may be useful. For project-specific historical analysis, the full reliable record may be appropriate.</p>
-        </section>
-
-        <section id="references">
-          <h2>Selected references</h2>
-          <ol class="references">
-                      <li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of drought frequency and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
-                      <li>World Meteorological Organization. Standardized Precipitation Index User Guide. WMO-No. 1090.</li>
-                      <li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
-                      <li>Vicente-Serrano, S. M., Beguería, S., and López-Moreno, J. I. (2010). A multiscalar drought index sensitive to global warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate.</li>
-                      <li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
-                    </ol>
-        </section>
-
-        <section id="related">
-          <h2>Related articles</h2>
-          <div class="related-grid">
-            <a class="related-card" href="/knowledge/how-spi-is-calculated/">
-              <strong>How SPI is Calculated</strong>
-              <span>Learn how standardization uses a fitted reference distribution.</span>
-            </a>
-
-            <a class="related-card" href="/knowledge/what-is-spei/">
-              <strong>What is SPEI?</strong>
-              <span>Understand how SPEI uses a climatic water-balance baseline.</span>
-            </a>
-
-            <a class="related-card" href="/knowledge/spi-limitations/">
-              <strong>Limitations of SPI</strong>
-              <span>Review how baseline choice affects SPI interpretation.</span>
-            </a>
-          </div>
-        </section>
-      </article>
-
-      <aside class="toc" aria-label="Table of contents">
-        <h2>On this page</h2>
-        <a href="#quick-answer">Short answer</a>
-        <a href="#definition">What is a baseline period?</a>
-        <a href="#why">Why it matters</a>
-        <a href="#selection">Selecting a baseline</a>
-        <a href="#trends">Climate trends and nonstationarity</a>
-        <a href="#comparison">Comparing results</a>
-        <a href="#dmap-ai">How DMAP-AI should report baselines</a>
-        <a href="#faq">FAQ</a>
-        <a href="#references">References</a>
-        <a href="#related">Related articles</a>
-      </aside>
-    </div>
-
-    <section class="comparison-stations-section" aria-labelledby="knowledge-browse-title">
-      <div class="comparison-stations-card">
-        <div class="comparison-stations-head">
-          <div>
-            <h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
-            <p>Search and open other DMAP-AI Knowledge Center articles about drought science, indices, climate datasets, methods, and AI interpretation.</p>
-          </div>
-          <span class="station-count-pill">Documentation</span>
-        </div>
-        <div data-articles-nav data-current-slug="index-baseline-periods"></div>
-      </div>
-    </section>
-
-    <p class="back-to-knowledge"><a href="/knowledge/">← Back to Knowledge Center</a></p>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>© 2026 <a href="https://agrimetsoft.com/" target="_blank" rel="noopener">AgriMetSoft</a>. All rights reserved.</span>
-    </div>
-  </footer>
-
-  <script src="/knowledge/knowledge-nav.js" defer></script>
-  <script src="/assets/global-nav.js"></script>
+<main>
+<section class="article-hero">
+<div class="container">
+<div class="article-hero-card">
+<nav aria-label="Breadcrumb" class="breadcrumb">
+<a href="/">Home</a>
+<span>›</span>
+<a href="/knowledge/">Knowledge Center</a>
+<span>›</span>
+<span>Baseline Periods in Drought Indices</span>
+</nav>
+<p class="eyebrow">Drought Indices</p>
+<h1>Baseline Periods in Drought Indices</h1>
+<p class="lead">A baseline period is the reference climate used to standardize a drought index. It strongly affects how “normal,” “dry,” and “wet” are defined. Choosing and reporting the baseline correctly is essential for comparing drought results across time, space, datasets, and studies.</p>
+<div class="article-meta">
+<span class="meta-pill">Reading time: 11 min</span>
+<span class="meta-pill">Level: Intermediate</span>
+<span class="meta-pill">Last updated: July 2026</span>
+<span class="meta-pill">Author: AgriMetSoft LLC</span>
+</div>
+<div class="hero-actions">
+<a class="btn btn-secondary" href="/knowledge/">← Back to Knowledge Center</a>
+</div>
+</div>
+</div>
+</section>
+<div class="container article-layout">
+<article class="article-main">
+<section id="quick-answer">
+<h2>Short answer</h2>
+<p>A baseline period is the reference period used to define normal climate conditions when calculating drought indices. SPI, SPEI, and related standardized indices compare current values with the distribution fitted to this period. Changing the baseline can change drought categories, trends, and comparisons, so the baseline should always be reported.</p>
+</section>
+<section id="definition">
+<h2>What is a baseline period?</h2>
+<p>In drought-index analysis, the baseline period is the historical record used to estimate the statistical distribution of precipitation, climatic water balance, <a href="/knowledge/streamflow-data/">streamflow</a>, or another variable. Standardized values are then expressed relative to that reference distribution.</p><p>For example, an SPI analysis for 1981–2025 may use the same period as the baseline, or it may use a fixed climatological reference such as 1991–2020. The choice affects what is considered normal.</p><div class="definition-box"><strong>Working definition:</strong> A baseline period is the reference climate period used to calculate standardized drought index values and categories.</div>
+</section>
+<section id="why">
+<h2>Why baseline choice matters</h2>
+<p>Baseline choice matters because drought indices are relative. A dry month is classified based on how unusual it is compared with the reference period. If the reference period includes many dry years, recent dry conditions may appear less unusual. If it includes many wet years, the same recent value may appear more severe.</p><p>The effect is especially important when comparing sites, datasets, or time periods. Two maps may not be comparable if they use different baselines.</p>
+</section>
+<section id="selection">
+<h2>Selecting a baseline period</h2>
+<p>A good baseline should be long enough to represent climate variability and should match the purpose of the analysis. Many climatological applications use 30-year periods, but drought-frequency and distribution-fitting studies often benefit from longer records when available.</p><div class="table-wrap"><table><thead><tr><th>Baseline type</th><th>Advantages</th><th>Limitations</th></tr></thead><tbody><tr><td>Full analysis period</td><td>Uses all available data</td><td>May mix historical and recent climate regimes</td></tr><tr><td>Fixed 30-year climatology</td><td>Easy to communicate and compare</td><td>May be too short for extremes</td></tr><tr><td>Historical baseline</td><td>Useful for climate-change comparison</td><td>Recent conditions may appear increasingly anomalous</td></tr><tr><td>Moving baseline</td><td>Reflects recent climate conditions</td><td>Can hide long-term change</td></tr></tbody></table></div>
+</section>
+<section id="trends">
+<h2>Climate trends and nonstationarity</h2>
+<p>Standardized drought indices often assume that the reference distribution is meaningful for the period being analyzed. Climate trends challenge this assumption. Temperature increases, precipitation shifts, land-use change, and water management can all influence drought interpretation.</p><p>There is no single perfect solution. Analysts should select a baseline that matches the research question and clearly explain the implications. For climate-change studies, it may be helpful to compare results using more than one baseline.</p>
+</section>
+<section id="comparison">
+<h2>Comparing results across studies</h2>
+<p>When comparing drought results, check whether the same baseline period, dataset, time scale, distribution, and threshold were used. Differences in baseline can create apparent differences in <a href="/knowledge/drought-severity/">drought severity</a> even when the underlying climate data are similar.</p><p>For scientific reporting, the baseline should be listed with the dataset and methodology. For dashboards, it should be included in metadata and documentation.</p>
+</section>
+<section id="dmap-ai">
+<h2>How DMAP-AI should report baselines</h2>
+<p><a href="https://droughtanalysis.com/">DMAP-AI</a> should always preserve and display the baseline period used for drought-index calculations. When the baseline is left empty and the analysis period is used, that should be stated clearly. AI-generated summaries should not compare results across projects unless baseline periods and datasets are compatible.</p><p><a href="https://droughtanalysis.com/method-comparison/">Structured metadata</a> is especially useful here because it allows the AI interpretation to include phrases such as “relative to the 1981–2025 analysis period” rather than making an unsupported general statement about absolute drought severity.</p>
+</section>
+<section id="faq">
+<h2>Frequently asked questions</h2>
+<h3>Is a 30-year baseline always enough?</h3><p>Thirty years is common in climatology, but longer records are often better for drought extremes and probability fitting when reliable data are available.</p><h3>Can changing the baseline change drought categories?</h3><p>Yes. Because standardized indices are relative to the reference distribution, changing the baseline can shift index values and category classifications.</p><h3>Which baseline should I use?</h3><p>Use a baseline that matches your research question. For operational monitoring, a standard climatological period may be useful. For project-specific historical analysis, the full reliable record may be appropriate.</p>
+</section>
+<section id="references">
+<h2>Selected references</h2>
+<ol class="references">
+<li>McKee, T. B., Doesken, N. J., and Kleist, J. (1993). The relationship of <a href="/knowledge/drought-frequency/">drought frequency</a> and duration to time scales. Proceedings of the 8th Conference on Applied Climatology.</li>
+<li>World Meteorological Organization. <a href="/knowledge/what-is-spi/">Standardized Precipitation Index</a> User Guide. WMO-No. 1090.</li>
+<li>Mishra, A. K., and Singh, V. P. (2010). A review of drought concepts. Journal of Hydrology.</li>
+<li>Vicente-Serrano, S. M., Beguería, S., and López-Moreno, J. I. (2010). A multiscalar drought index sensitive to global warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate.</li>
+<li>Wilhite, D. A., and Glantz, M. H. (1985). Understanding the drought phenomenon: The role of definitions. Water International.</li>
+</ol>
+</section>
+<section id="related">
+<h2>Related articles</h2>
+<div class="related-grid">
+<a class="related-card" href="/knowledge/how-spi-is-calculated/">
+<strong>How SPI is Calculated</strong>
+<span>Learn how standardization uses a fitted reference distribution.</span>
+</a>
+<a class="related-card" href="/knowledge/what-is-spei/">
+<strong>What is SPEI?</strong>
+<span>Understand how SPEI uses a climatic water-balance baseline.</span>
+</a>
+<a class="related-card" href="/knowledge/spi-limitations/">
+<strong>Limitations of SPI</strong>
+<span>Review how baseline choice affects SPI interpretation.</span>
+</a>
+</div>
+</section>
+</article>
+<aside aria-label="Table of contents" class="toc">
+<h2>On this page</h2>
+<a href="#quick-answer">Short answer</a>
+<a href="#definition">What is a baseline period?</a>
+<a href="#why">Why it matters</a>
+<a href="#selection">Selecting a baseline</a>
+<a href="#trends">Climate trends and nonstationarity</a>
+<a href="#comparison">Comparing results</a>
+<a href="#dmap-ai">How DMAP-AI should report baselines</a>
+<a href="#faq">FAQ</a>
+<a href="#references">References</a>
+<a href="#related">Related articles</a>
+</aside>
+</div>
+<section aria-labelledby="knowledge-browse-title" class="comparison-stations-section">
+<div class="comparison-stations-card">
+<div class="comparison-stations-head">
+<div>
+<h2 id="knowledge-browse-title">Browse the Knowledge Center</h2>
+<p>Search and open other DMAP-AI Knowledge Center articles about drought science, indices, climate datasets, methods, and AI interpretation.</p>
+</div>
+<span class="station-count-pill">Documentation</span>
+</div>
+<div data-articles-nav="" data-current-slug="index-baseline-periods"></div>
+</div>
+</section>
+<p class="back-to-knowledge"><a href="/knowledge/">← Back to Knowledge Center</a></p>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<span>© 2026 <a href="https://agrimetsoft.com/" rel="noopener" target="_blank">AgriMetSoft</a>. All rights reserved.</span>
+</div>
+</footer>
+<script defer="" src="/knowledge/knowledge-nav.js"></script>
+<script src="/assets/global-nav.js"></script>
 </body>
 </html>
