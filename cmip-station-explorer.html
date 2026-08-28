@@ -74,7 +74,7 @@
 
     .progress {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 8px;
       margin: 28px 0 22px;
       padding: 10px;
@@ -288,6 +288,42 @@
     .validation { display: none; margin-bottom: 12px; padding: 10px 11px; border-radius: 10px; background: #fff0ee; color: var(--red); font-size: .74rem; font-weight: 700; }
     .validation.show { display: block; }
 
+    .workspace-tabs { display: flex; gap: 8px; margin-bottom: 18px; scroll-margin-top: 90px; }
+    .workspace-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--muted);
+      padding: 10px 17px;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+    .workspace-tab.active { border-color: var(--teal); background: var(--teal); color: #fff; }
+    .workspace-tab:disabled { cursor: not-allowed; opacity: .48; }
+    .app-view { display: none; }
+    .app-view.active { display: block; }
+    #outputs { display: none; }
+    .results-view { padding-bottom: 80px; }
+    .results-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin: 22px 0; }
+    .results-header h2 { margin-top: 5px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
+    .results-header p { max-width: 690px; margin: 8px 0 0; color: var(--muted); }
+    .results-grid { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 20px; align-items: start; }
+    .chart-card, .result-side-card { border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 10px 34px rgba(23,59,87,.06); }
+    .chart-card { padding: 22px; }
+    .chart-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .chart-wrap { position: relative; min-height: 390px; border: 1px solid #e6eeed; border-radius: 15px; background: #fbfdfc; overflow: hidden; }
+    #results-chart { display: block; width: 100%; height: 390px; }
+    .chart-caption { display: flex; justify-content: space-between; gap: 14px; margin-top: 12px; color: var(--muted); font-size: .72rem; }
+    .result-side { display: grid; gap: 14px; }
+    .result-side-card { padding: 18px; }
+    .result-side-card h3 { margin: 0 0 13px; color: var(--navy); font-size: .94rem; }
+    .result-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .result-actions { display: grid; gap: 9px; }
+    .result-note { margin: 12px 0 0; color: var(--muted); font-size: .72rem; }
+
     .scientific-note { display: grid; grid-template-columns: auto 1fr; gap: 12px; margin-top: 18px; padding: 16px; border-radius: 14px; background: var(--blue-soft); color: #244e70; font-size: .79rem; }
     .scientific-note .icon { font-size: 1.1rem; }
 
@@ -296,7 +332,7 @@
     .site-foot a { color: var(--teal-dark); font-weight: 750; text-decoration: none; }
 
     @media (max-width: 960px) {
-      .hero-grid, .layout { grid-template-columns: 1fr; }
+      .hero-grid, .layout, .results-grid { grid-template-columns: 1fr; }
       .hero-note { max-width: 620px; }
       .summary { position: static; }
       .progress { top: 78px; overflow-x: auto; grid-template-columns: repeat(5, minmax(145px, 1fr)); }
@@ -307,6 +343,7 @@
       h1 { font-size: 2.55rem; }
       .panel-head, .panel-body { padding-left: 18px; padding-right: 18px; }
       .choice-grid, .model-grid, .filters, .obs-fields { grid-template-columns: 1fr; }
+      .chart-controls { grid-template-columns: 1fr; }
       .filter-wide { grid-column: auto; }
       .fields { grid-template-columns: 1fr 1fr; }
       .fields label:first-child { grid-column: 1 / -1; }
@@ -337,13 +374,17 @@
       </div>
     </section>
 
-    <div class="shell">
+    <div class="shell workspace-tabs" role="tablist" aria-label="Climate workflow">
+      <button class="workspace-tab active" id="request-tab" type="button" role="tab" aria-selected="true" aria-controls="request-view"><span class="step-no">1</span> Build request</button>
+      <button class="workspace-tab" id="results-tab" type="button" role="tab" aria-selected="false" aria-controls="result-view" disabled><span class="step-no">2</span> Results</button>
+    </div>
+
+    <div class="shell app-view active" id="request-view" role="tabpanel" aria-labelledby="request-tab">
       <nav class="progress" aria-label="Request steps">
         <a href="#stations"><span class="step-no">1</span><span>Stations</span></a>
         <a href="#experiment"><span class="step-no">2</span><span>Experiment</span></a>
         <a href="#models"><span class="step-no">3</span><span>Models</span></a>
         <a href="#workflow"><span class="step-no">4</span><span>Workflow</span></a>
-        <a href="#outputs"><span class="step-no">5</span><span>Outputs</span></a>
       </nav>
 
       <div class="layout">
@@ -535,6 +576,46 @@
         </aside>
       </div>
     </div>
+
+    <section class="shell app-view results-view" id="result-view" role="tabpanel" aria-labelledby="results-tab">
+      <div class="results-header">
+        <div><span class="eyebrow">Completed CMIP6 request</span><h2>Your station projections are ready.</h2><p id="result-page-summary">Explore the selected ensemble and individual model series, then download the complete result package.</p></div>
+        <button class="btn btn-secondary" id="edit-request-button" type="button">← Edit request</button>
+      </div>
+      <div class="results-grid">
+        <article class="chart-card">
+          <div class="chart-controls">
+            <label>Station<select id="chart-station"></select></label>
+            <label>Series<select id="chart-series"></select></label>
+          </div>
+          <div class="chart-wrap"><canvas id="results-chart" aria-label="Climate projection time-series chart"></canvas></div>
+          <div class="chart-caption"><span id="chart-title">Ensemble projection</span><span id="chart-range"></span></div>
+        </article>
+        <aside class="result-side">
+          <section class="result-side-card">
+            <h3>Selected series</h3>
+            <div class="result-metrics">
+              <div class="metric"><small>First value</small><strong id="metric-first">—</strong></div>
+              <div class="metric"><small>Last value</small><strong id="metric-last">—</strong></div>
+              <div class="metric"><small>Minimum</small><strong id="metric-min">—</strong></div>
+              <div class="metric"><small>Maximum</small><strong id="metric-max">—</strong></div>
+            </div>
+          </section>
+          <section class="result-side-card">
+            <h3>Save results</h3>
+            <div class="result-actions">
+              <button class="btn btn-primary btn-block" id="result-download-ensemble" type="button">Download ensemble CSV</button>
+              <button class="btn btn-secondary btn-block" id="result-download-series" type="button">Download model CSV</button>
+              <button class="btn btn-secondary btn-block" id="result-download-metadata" type="button">Download metadata JSON</button>
+            </div>
+          </section>
+          <section class="result-side-card">
+            <h3>Method</h3>
+            <p class="result-note" id="result-method-note"></p>
+          </section>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <footer class="site-foot"><div class="shell"><span>DMAP-AI · Climate projection workspace prototype</span><span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span></div></footer>

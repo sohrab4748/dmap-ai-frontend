@@ -315,7 +315,8 @@
       $("#results-summary").textContent = `${stations.length} station${stations.length === 1 ? "" : "s"}, ${models.length} model${models.length === 1 ? "" : "s"}, ${$("#frequency").value.toLowerCase()} ${rule.label.toLowerCase()} values, and a ${ensembleMethodLabel().toLowerCase()}.`;
       $("#results-panel").classList.add("show");
       setRunStatus("CMIP6 data retrieved and ensemble statistics calculated.", "success");
-      $("#outputs").scrollIntoView({ behavior: "smooth", block: "start" });
+      prepareResultsView();
+      switchView("results");
     } catch (error) {
       console.error(error);
       setRunStatus(`Request failed: ${error.message}`, "error");
@@ -346,6 +347,116 @@
     link.click();
     link.remove();
     setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  }
+
+  function switchView(view) {
+    const showResults = view === "results" && resultState.ensembleRows.length > 0;
+    $("#request-view").classList.toggle("active", !showResults);
+    $("#result-view").classList.toggle("active", showResults);
+    $("#request-tab").classList.toggle("active", !showResults);
+    $("#results-tab").classList.toggle("active", showResults);
+    $("#request-tab").setAttribute("aria-selected", String(!showResults));
+    $("#results-tab").setAttribute("aria-selected", String(showResults));
+    $(".workspace-tabs").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function prepareResultsView() {
+    const stationSelect = $("#chart-station");
+    const seriesSelect = $("#chart-series");
+    stationSelect.innerHTML = stations.map((station, index) => `<option value="${index + 1}">${escapeHtml(station.name)}</option>`).join("");
+    seriesSelect.innerHTML = `<option value="ensemble">${escapeHtml(ensembleMethodLabel())}</option>${selectedModels().map(model => `<option value="${escapeHtml(model)}">${escapeHtml(modelLabel(model))}</option>`).join("")}`;
+    $("#results-tab").disabled = false;
+    $("#result-page-summary").textContent = `${stations.length} station${stations.length === 1 ? "" : "s"} · ${selectedModels().length} models · ${VARIABLE_RULES[$("#variable").value].label} · ${$("#frequency").value}`;
+    $("#result-method-note").textContent = `${ensembleMethodLabel()} with ${$("#statistics").selectedOptions[0].textContent.toLowerCase()}. ${selectedValue("workflow")}.`;
+    requestAnimationFrame(renderResultsChart);
+  }
+
+  function chartSeries() {
+    const stationIndex = Number($("#chart-station").value);
+    const series = $("#chart-series").value;
+    if (series === "ensemble") {
+      return resultState.ensembleRows.filter(row => row.station_index === stationIndex).map(row => ({ date: row.date, value: Number(row.ensemble_value), unit: row.unit })).filter(row => Number.isFinite(row.value));
+    }
+    return resultState.modelRows.filter(row => row.station_index === stationIndex && row.model === series).map(row => ({ date: row.date, value: Number(row.value), unit: row.unit })).filter(row => Number.isFinite(row.value));
+  }
+
+  function downsampleSeries(rows, maximum = 1200) {
+    if (rows.length <= maximum) return rows;
+    const step = Math.ceil(rows.length / maximum);
+    const sampled = [];
+    for (let index = 0; index < rows.length; index += step) {
+      const bucket = rows.slice(index, index + step);
+      const average = bucket.reduce((sum, row) => sum + row.value, 0) / bucket.length;
+      sampled.push({ ...bucket[Math.floor(bucket.length / 2)], value: average });
+    }
+    return sampled;
+  }
+
+  function formatChartValue(value, unit) {
+    if (!Number.isFinite(value)) return "—";
+    return `${value.toFixed(unit === "mm" ? 2 : 1)} ${unit}`;
+  }
+
+  function renderResultsChart() {
+    if (!$("#result-view").classList.contains("active")) return;
+    const fullRows = chartSeries();
+    const rows = downsampleSeries(fullRows);
+    const canvas = $("#results-chart");
+    const context = canvas.getContext("2d");
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    const width = Math.max(canvas.clientWidth, 320);
+    const height = 390;
+    canvas.width = Math.floor(width * ratio);
+    canvas.height = Math.floor(height * ratio);
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    context.clearRect(0, 0, width, height);
+    if (!rows.length) {
+      context.fillStyle = "#607477";
+      context.font = "14px system-ui";
+      context.textAlign = "center";
+      context.fillText("No values are available for this selection.", width / 2, height / 2);
+      return;
+    }
+    const values = fullRows.map(row => row.value);
+    let minimum = Math.min(...values);
+    let maximum = Math.max(...values);
+    if (minimum === maximum) { minimum -= 1; maximum += 1; }
+    const padding = { left: 62, right: 20, top: 24, bottom: 42 };
+    const plotWidth = width - padding.left - padding.right;
+    const plotHeight = height - padding.top - padding.bottom;
+    const y = value => padding.top + (maximum - value) / (maximum - minimum) * plotHeight;
+    const x = index => padding.left + index / Math.max(rows.length - 1, 1) * plotWidth;
+    context.strokeStyle = "#dfe9e7";
+    context.fillStyle = "#607477";
+    context.lineWidth = 1;
+    context.font = "11px system-ui";
+    context.textAlign = "right";
+    context.textBaseline = "middle";
+    for (let tick = 0; tick <= 4; tick += 1) {
+      const value = minimum + (maximum - minimum) * (4 - tick) / 4;
+      const py = padding.top + plotHeight * tick / 4;
+      context.beginPath(); context.moveTo(padding.left, py); context.lineTo(width - padding.right, py); context.stroke();
+      context.fillText(value.toFixed(1), padding.left - 9, py);
+    }
+    const fill = context.createLinearGradient(0, padding.top, 0, height - padding.bottom);
+    fill.addColorStop(0, "rgba(15,118,110,.22)");
+    fill.addColorStop(1, "rgba(15,118,110,.01)");
+    context.beginPath();
+    rows.forEach((row, index) => index ? context.lineTo(x(index), y(row.value)) : context.moveTo(x(index), y(row.value)));
+    context.lineTo(x(rows.length - 1), height - padding.bottom); context.lineTo(padding.left, height - padding.bottom); context.closePath(); context.fillStyle = fill; context.fill();
+    context.beginPath();
+    rows.forEach((row, index) => index ? context.lineTo(x(index), y(row.value)) : context.moveTo(x(index), y(row.value)));
+    context.strokeStyle = "#0f766e"; context.lineWidth = 2; context.lineJoin = "round"; context.stroke();
+    context.fillStyle = "#607477"; context.textBaseline = "top";
+    const dateIndexes = [0, Math.floor((rows.length - 1) / 2), rows.length - 1];
+    dateIndexes.forEach((rowIndex, index) => { context.textAlign = index === 0 ? "left" : index === 2 ? "right" : "center"; context.fillText(rows[rowIndex].date, x(rowIndex), height - padding.bottom + 12); });
+    const unit = fullRows[0].unit;
+    $("#metric-first").textContent = formatChartValue(fullRows[0].value, unit);
+    $("#metric-last").textContent = formatChartValue(fullRows[fullRows.length - 1].value, unit);
+    $("#metric-min").textContent = formatChartValue(minimum, unit);
+    $("#metric-max").textContent = formatChartValue(maximum, unit);
+    $("#chart-title").textContent = `${$("#chart-station").selectedOptions[0].textContent} · ${$("#chart-series").selectedOptions[0].textContent}`;
+    $("#chart-range").textContent = `${fullRows[0].date} to ${fullRows[fullRows.length - 1].date}`;
   }
 
   $("#station-form").addEventListener("submit", event => {
@@ -393,6 +504,16 @@
   $("#download-series").addEventListener("click", () => downloadFile(rowsToCsv(resultState.modelRows), "dmap-cmip6-model-series.csv", "text/csv;charset=utf-8"));
   $("#download-ensemble").addEventListener("click", () => downloadFile(rowsToCsv(resultState.ensembleRows), "dmap-cmip6-ensemble-statistics.csv", "text/csv;charset=utf-8"));
   $("#download-metadata").addEventListener("click", () => downloadFile(JSON.stringify(resultState.metadata, null, 2), "dmap-cmip6-metadata.json", "application/json"));
+  $("#request-tab").addEventListener("click", () => switchView("request"));
+  $("#results-tab").addEventListener("click", () => switchView("results"));
+  $("#edit-request-button").addEventListener("click", () => switchView("request"));
+  $("#chart-station").addEventListener("change", renderResultsChart);
+  $("#chart-series").addEventListener("change", renderResultsChart);
+  $("#result-download-series").addEventListener("click", () => downloadFile(rowsToCsv(resultState.modelRows), "dmap-cmip6-model-series.csv", "text/csv;charset=utf-8"));
+  $("#result-download-ensemble").addEventListener("click", () => downloadFile(rowsToCsv(resultState.ensembleRows), "dmap-cmip6-ensemble-statistics.csv", "text/csv;charset=utf-8"));
+  $("#result-download-metadata").addEventListener("click", () => downloadFile(JSON.stringify(resultState.metadata, null, 2), "dmap-cmip6-metadata.json", "application/json"));
+  let resizeTimer;
+  window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(renderResultsChart, 120); });
 
   renderStations();
   updatePhase();
