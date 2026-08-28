@@ -26,6 +26,31 @@
     return $$("#model-grid input:checked").map(input => input.value);
   }
 
+  function modelLabel(model) {
+    const input = $$("#model-grid input").find(item => item.value === model);
+    return input?.closest(".model")?.querySelector("strong")?.textContent || model;
+  }
+
+  function ensembleMethodLabel() {
+    return $("#ensemble-method").selectedOptions[0]?.textContent || "Equal-weight mean";
+  }
+
+  function modelWeights() {
+    return Object.fromEntries($$("#model-weights input[data-model]").map(input => [input.dataset.model, Math.max(0, Number(input.value) || 0)]));
+  }
+
+  function renderModelWeights() {
+    const previous = modelWeights();
+    $("#model-weights").innerHTML = selectedModels().map(model => `
+      <label>${escapeHtml(modelLabel(model))}<input type="number" min="0" step="0.1" value="${previous[model] ?? 1}" data-model="${escapeHtml(model)}" aria-label="Weight for ${escapeHtml(modelLabel(model))}"></label>`).join("");
+  }
+
+  function updateEnsembleMethod() {
+    const weighted = $("#ensemble-method").value === "weighted_mean";
+    $("#weights-panel").classList.toggle("show", weighted);
+    if (weighted) renderModelWeights();
+  }
+
   function escapeHtml(value) {
     const div = document.createElement("div");
     div.textContent = String(value);
@@ -111,8 +136,10 @@
       provider_bias_correction: corrected,
       correction_reference: corrected ? "ERA5-Land" : null,
       correction_method: corrected ? "Monthly linear bias correction" : null,
-      weighting: "Equal weight per model",
-      statistics: $("#statistics").value,
+      ensemble_method: $("#ensemble-method").value,
+      ensemble_method_label: ensembleMethodLabel(),
+      model_weights: $("#ensemble-method").value === "weighted_mean" ? modelWeights() : null,
+      reported_spread: $("#statistics").value,
       provider: "Open-Meteo Climate API",
       provider_documentation: CLIMATE_DOCS,
       source_note: "Processed CMIP6 HighResMIP series; individual ESGF versions, members, and scenarios are not exposed by this provider.",
@@ -128,6 +155,7 @@
     else if (!stations.length) message = "Add at least one station.";
     else if (stations.length > 25) message = "This first release supports up to 25 stations per request.";
     else if (!selectedModels().length) message = "Select at least one model.";
+    else if ($("#ensemble-method").value === "weighted_mean" && Object.values(modelWeights()).reduce((sum, weight) => sum + weight, 0) <= 0) message = "Set at least one model weight greater than zero.";
     else if (!start || !end || start < "1950-01-01" || end > "2050-01-01" || start > end) message = "Choose dates from 1950-01-01 through 2050-01-01, with the start before the end.";
     $("#validation-message").textContent = message;
     $("#validation-message").classList.toggle("show", Boolean(message));
@@ -178,16 +206,46 @@
   }
 
   function calculateEnsemble(rows) {
+    const method = $("#ensemble-method").value;
+    const weights = modelWeights();
+    const spreadMode = $("#statistics").value;
     const groups = new Map();
     rows.forEach(row => {
       const key = `${row.station_index}|${row.date}`;
       if (!groups.has(key)) groups.set(key, { station_index: row.station_index, station_name: row.station_name, latitude: row.latitude, longitude: row.longitude, grid_latitude: row.grid_latitude, grid_longitude: row.grid_longitude, date: row.date, unit: row.unit, values: [] });
-      if (row.value !== null && row.value !== "" && Number.isFinite(Number(row.value))) groups.get(key).values.push(Number(row.value));
+      if (row.value !== null && row.value !== "" && Number.isFinite(Number(row.value))) groups.get(key).values.push({ model: row.model, value: Number(row.value) });
     });
     return Array.from(groups.values()).map(group => {
-      const values = group.values.sort((a, b) => a - b);
+      const entries = group.values;
+      const values = entries.map(entry => entry.value).sort((a, b) => a - b);
       const mean = values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : null;
-      const output = { ...group, model_count: values.length, mean: round(mean), median: round(percentile(values, .5)), p10: round(percentile(values, .1)), p90: round(percentile(values, .9)), minimum: round(values[0]), maximum: round(values[values.length - 1]) };
+      const median = percentile(values, .5);
+      const trimmedValues = values.length >= 5 ? values.slice(1, -1) : values;
+      const trimmedMean = trimmedValues.length ? trimmedValues.reduce((sum, value) => sum + value, 0) / trimmedValues.length : null;
+      const weightedEntries = entries.filter(entry => (weights[entry.model] || 0) > 0);
+      const weightTotal = weightedEntries.reduce((sum, entry) => sum + weights[entry.model], 0);
+      const weightedMean = weightTotal > 0 ? weightedEntries.reduce((sum, entry) => sum + entry.value * weights[entry.model], 0) / weightTotal : null;
+      const centers = { equal_mean: mean, median, trimmed_mean: trimmedMean, weighted_mean: weightedMean };
+      const variance = values.length && Number.isFinite(mean) ? values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / values.length : null;
+      const output = {
+        ...group,
+        ensemble_method: ensembleMethodLabel(),
+        ensemble_value: round(centers[method]),
+        model_count: values.length,
+        mean: round(mean),
+        median: round(median),
+        minimum: round(values[0]),
+        maximum: round(values[values.length - 1])
+      };
+      if (spreadMode === "p10_p90" || spreadMode === "all") {
+        output.p10 = round(percentile(values, .1));
+        output.p90 = round(percentile(values, .9));
+      }
+      if (spreadMode === "p25_p75" || spreadMode === "all") {
+        output.p25 = round(percentile(values, .25));
+        output.p75 = round(percentile(values, .75));
+      }
+      if (spreadMode === "all") output.standard_deviation = round(variance == null ? null : Math.sqrt(variance));
       delete output.values;
       return output;
     });
@@ -254,7 +312,7 @@
       const ensembleRows = calculateEnsemble(finalRows);
       resultState = { modelRows: finalRows, ensembleRows, metadata: { ...requestObject(), completed_at: new Date().toISOString(), api_requests: requestUrls, model_row_count: finalRows.length, ensemble_row_count: ensembleRows.length } };
       $("#result-row-count").textContent = finalRows.length.toLocaleString();
-      $("#results-summary").textContent = `${stations.length} station${stations.length === 1 ? "" : "s"}, ${models.length} model${models.length === 1 ? "" : "s"}, ${$("#frequency").value.toLowerCase()} ${rule.label.toLowerCase()} values, and equal-model ensemble statistics.`;
+      $("#results-summary").textContent = `${stations.length} station${stations.length === 1 ? "" : "s"}, ${models.length} model${models.length === 1 ? "" : "s"}, ${$("#frequency").value.toLowerCase()} ${rule.label.toLowerCase()} values, and a ${ensembleMethodLabel().toLowerCase()}.`;
       $("#results-panel").classList.add("show");
       setRunStatus("CMIP6 data retrieved and ensemble statistics calculated.", "success");
       $("#outputs").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -319,14 +377,16 @@
   });
   $$("input[name=\"phase\"]").forEach(input => input.addEventListener("change", updatePhase));
   $$("input[name=\"workflow\"]").forEach(input => input.addEventListener("change", updateWorkflow));
-  $("#model-grid").addEventListener("change", updateSummary);
+  $("#model-grid").addEventListener("change", () => { updateSummary(); renderModelWeights(); });
   $("#toggle-models").addEventListener("click", () => {
     const boxes = $$("#model-grid input");
     const allChecked = boxes.every(box => box.checked);
     boxes.forEach(box => box.checked = !allChecked);
     $("#toggle-models").textContent = allChecked ? "Select all" : "Clear all";
     updateSummary();
+    renderModelWeights();
   });
+  $("#ensemble-method").addEventListener("change", updateEnsembleMethod);
   ["#variable", "#frequency", "#hist-period", "#future-period"].forEach(selector => $(selector).addEventListener("change", updateSummary));
   $("#review-button").addEventListener("click", fetchClimateData);
   $("#save-button").addEventListener("click", () => { if (validateRequest()) downloadFile(JSON.stringify(requestObject(), null, 2), "dmap-cmip6-request.json", "application/json"); });
@@ -337,4 +397,5 @@
   renderStations();
   updatePhase();
   updateWorkflow();
+  updateEnsembleMethod();
 }());

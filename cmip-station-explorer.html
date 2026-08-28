@@ -431,9 +431,9 @@
                 <label class="model"><input type="checkbox" value="FGOALS_f3_H" checked><span class="model-copy"><span class="model-name"><strong>FGOALS-f3-H</strong><small>CAS · 28 km source</small></span><span class="badge">Live</span></span></label>
                 <label class="model"><input type="checkbox" value="HiRAM_SIT_HR" checked><span class="model-copy"><span class="model-name"><strong>HiRAM-SIT-HR</strong><small>AS-RCEC · 25 km source</small></span><span class="badge">Live</span></span></label>
                 <label class="model"><input type="checkbox" value="MRI_AGCM3_2_S" checked><span class="model-copy"><span class="model-name"><strong>MRI-AGCM3-2-S</strong><small>MRI · 20 km source</small></span><span class="badge">Live</span></span></label>
-                <label class="model"><input type="checkbox" value="EC_Earth3P_HR"><span class="model-copy"><span class="model-name"><strong>EC-Earth3P-HR</strong><small>EC-Earth · 29 km source</small></span><span class="badge">Live</span></span></label>
-                <label class="model"><input type="checkbox" value="MPI_ESM1_2_XR"><span class="model-copy"><span class="model-name"><strong>MPI-ESM1-2-XR</strong><small>MPI-M · 51 km source</small></span><span class="badge">Live</span></span></label>
-                <label class="model"><input type="checkbox" value="NICAM16_8S"><span class="model-copy"><span class="model-name"><strong>NICAM16-8S</strong><small>JAMSTEC · 30 km source</small></span><span class="badge">Live</span></span></label>
+                <label class="model"><input type="checkbox" value="EC_Earth3P_HR" checked><span class="model-copy"><span class="model-name"><strong>EC-Earth3P-HR</strong><small>EC-Earth · 29 km source</small></span><span class="badge">Live</span></span></label>
+                <label class="model"><input type="checkbox" value="MPI_ESM1_2_XR" checked><span class="model-copy"><span class="model-name"><strong>MPI-ESM1-2-XR</strong><small>MPI-M · 51 km source</small></span><span class="badge">Live</span></span></label>
+                <label class="model"><input type="checkbox" value="NICAM16_8S" checked><span class="model-copy"><span class="model-name"><strong>NICAM16-8S</strong><small>JAMSTEC · 30 km source</small></span><span class="badge">Live</span></span></label>
               </div>
               <div class="scientific-note"><span class="icon" aria-hidden="true">ⓘ</span><span>This live source provides one processed series per model rather than individual ESGF versions and members. The full ESGF connector will add release, member, grid and scenario controls later.</span></div>
             </div>
@@ -468,8 +468,13 @@
               </div>
               <div class="filters">
                 <label>Member treatment<select id="member-treatment" disabled><option>One provider series per model</option></select></label>
-                <label>Model weighting<select id="weighting" disabled><option>Equal weight per model</option></select></label>
-                <label>Ensemble statistics<select id="statistics"><option>Mean, median & percentiles</option><option>Mean & standard deviation</option><option>All available statistics</option></select></label>
+                <label>Ensemble method<select id="ensemble-method"><option value="equal_mean">Equal-weight mean</option><option value="median">Median ensemble</option><option value="trimmed_mean">Trimmed mean (drop min/max)</option><option value="weighted_mean">User-weighted mean</option></select></label>
+                <label>Reported spread<select id="statistics"><option value="p10_p90">P10–P90 and full range</option><option value="p25_p75">P25–P75 and full range</option><option value="all">All percentiles and standard deviation</option></select></label>
+              </div>
+              <div class="obs-panel" id="weights-panel">
+                <div class="obs-head"><strong>User-defined model weights</strong><span class="badge blue">Normalized automatically</span></div>
+                <div class="model-grid" id="model-weights"></div>
+                <p class="subtitle">Use zero to exclude a model from the weighted center while retaining it in the downloaded model series and spread statistics.</p>
               </div>
             </div>
           </section>
