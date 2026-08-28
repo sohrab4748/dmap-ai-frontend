@@ -330,8 +330,8 @@
             <p>Choose your stations, models, releases and scenarios. Prepare a transparent direct ensemble or configure observation-based downscaling before combining models.</p>
           </div>
           <aside class="hero-note">
-            <strong>Built CMIP7-first</strong>
-            <p>Use the mature CMIP6 archive today while the same request structure tracks emerging CMIP7 model availability.</p>
+            <strong>Live CMIP6 access</strong>
+            <p>Run seven CMIP6 HighResMIP models now, with daily 1950–2050 data downscaled to 10 km. CMIP7 remains the target architecture.</p>
           </aside>
         </div>
       </div>
@@ -393,23 +393,23 @@
             <div class="panel-body">
               <div class="choice-grid">
                 <label class="choice">
-                  <input type="radio" name="phase" value="CMIP7" checked>
-                  <span class="choice-card"><span class="choice-top"><strong>CMIP7</strong><span class="badge amber">Emerging</span></span><p>Track the newest releases as modeling centers publish them.</p></span>
+                  <input type="radio" name="phase" value="CMIP7">
+                  <span class="choice-card"><span class="choice-top"><strong>CMIP7</strong><span class="badge amber">Catalogue only</span></span><p>Track the newest releases. Live processing will be connected when coverage matures.</p></span>
                 </label>
                 <label class="choice">
-                  <input type="radio" name="phase" value="CMIP6">
-                  <span class="choice-card"><span class="choice-top"><strong>CMIP6</strong><span class="badge">Available</span></span><p>Use the mature archive for complete workflow testing today.</p></span>
+                  <input type="radio" name="phase" value="CMIP6" checked>
+                  <span class="choice-card"><span class="choice-top"><strong>CMIP6</strong><span class="badge">Live</span></span><p>Retrieve station-scale HighResMIP projections and calculate ensemble statistics now.</p></span>
                 </label>
               </div>
               <div class="filters">
-                <label>Variable<select id="variable"><option value="Precipitation">Precipitation (pr)</option><option value="Near-surface temperature">Near-surface temperature (tas)</option><option value="Maximum temperature">Daily maximum temperature (tasmax)</option><option value="Minimum temperature">Daily minimum temperature (tasmin)</option></select></label>
-                <label>Frequency<select id="frequency"><option>Monthly</option><option>Daily</option></select></label>
-                <label>Future scenario<select id="scenario"><option value="scen7-m">Medium (scen7-m)</option><option value="scen7-h">High (scen7-h)</option><option value="scen7-vl">Very low (scen7-vl)</option></select></label>
-                <label>Historical period<input id="hist-period" type="text" value="1981–2014"></label>
-                <label>Projection period<input id="future-period" type="text" value="2021–2100"></label>
-                <label>Spatial extraction<select id="extraction"><option>Bilinear interpolation</option><option>Nearest land grid cell</option><option>Nearest grid cell</option><option>Local area average</option></select></label>
+                <label>Variable<select id="variable"><option value="precipitation_sum">Precipitation</option><option value="temperature_2m_mean">Mean temperature</option><option value="temperature_2m_max">Maximum temperature</option><option value="temperature_2m_min">Minimum temperature</option></select></label>
+                <label>Output frequency<select id="frequency"><option>Monthly</option><option>Daily</option></select></label>
+                <label>Climate pathway<select id="scenario" disabled><option value="highresmip">HighResMIP provider trajectory</option></select></label>
+                <label>Start date<input id="hist-period" type="date" min="1950-01-01" max="2050-01-01" value="1981-01-01"></label>
+                <label>End date<input id="future-period" type="date" min="1950-01-01" max="2050-01-01" value="2050-01-01"></label>
+                <label>Spatial product<select id="extraction" disabled><option>Provider grid (workflow dependent)</option></select></label>
               </div>
-              <div class="availability" id="availability-note"><strong>CMIP7 availability:</strong> the catalogue is still growing. Only published combinations will be selectable, and every request will preserve its exact dataset version.</div>
+              <div class="availability" id="availability-note"><strong>CMIP6 live source:</strong> Open-Meteo serves seven CMIP6 HighResMIP models at 10 km from 1950–2050. The pathway is approximately high-emissions and cannot be changed in this source.</div>
             </div>
           </section>
 
@@ -423,18 +423,19 @@
             </div>
             <div class="panel-body">
               <div class="model-tools">
-                <span>Preview catalogue entries for interface development</span>
+                <span>Live CMIP6 HighResMIP models available from the provider</span>
                 <button class="text-button" id="toggle-models" type="button">Select all</button>
               </div>
               <div class="model-grid" id="model-grid">
-                <label class="model"><input type="checkbox" value="ACCESS-ESM1-5" checked><span class="model-copy"><span class="model-name"><strong>ACCESS-ESM1-5</strong><small>CSIRO · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
-                <label class="model"><input type="checkbox" value="CanESM5" checked><span class="model-copy"><span class="model-name"><strong>CanESM5</strong><small>CCCma · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
-                <label class="model"><input type="checkbox" value="GFDL-ESM4" checked><span class="model-copy"><span class="model-name"><strong>GFDL-ESM4</strong><small>NOAA-GFDL · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
-                <label class="model"><input type="checkbox" value="MPI-ESM1-2-LR" checked><span class="model-copy"><span class="model-name"><strong>MPI-ESM1-2-LR</strong><small>MPI-M · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
-                <label class="model"><input type="checkbox" value="MIROC6"><span class="model-copy"><span class="model-name"><strong>MIROC6</strong><small>MIROC · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
-                <label class="model"><input type="checkbox" value="MRI-ESM2-0"><span class="model-copy"><span class="model-name"><strong>MRI-ESM2-0</strong><small>MRI · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
+                <label class="model"><input type="checkbox" value="CMCC_CM2_VHR4" checked><span class="model-copy"><span class="model-name"><strong>CMCC-CM2-VHR4</strong><small>CMCC · 30 km source</small></span><span class="badge">Live</span></span></label>
+                <label class="model"><input type="checkbox" value="FGOALS_f3_H" checked><span class="model-copy"><span class="model-name"><strong>FGOALS-f3-H</strong><small>CAS · 28 km source</small></span><span class="badge">Live</span></span></label>
+                <label class="model"><input type="checkbox" value="HiRAM_SIT_HR" checked><span class="model-copy"><span class="model-name"><strong>HiRAM-SIT-HR</strong><small>AS-RCEC · 25 km source</small></span><span class="badge">Live</span></span></label>
+                <label class="model"><input type="checkbox" value="MRI_AGCM3_2_S" checked><span class="model-copy"><span class="model-name"><strong>MRI-AGCM3-2-S</strong><small>MRI · 20 km source</small></span><span class="badge">Live</span></span></label>
+                <label class="model"><input type="checkbox" value="EC_Earth3P_HR"><span class="model-copy"><span class="model-name"><strong>EC-Earth3P-HR</strong><small>EC-Earth · 29 km source</small></span><span class="badge">Live</span></span></label>
+                <label class="model"><input type="checkbox" value="MPI_ESM1_2_XR"><span class="model-copy"><span class="model-name"><strong>MPI-ESM1-2-XR</strong><small>MPI-M · 51 km source</small></span><span class="badge">Live</span></span></label>
+                <label class="model"><input type="checkbox" value="NICAM16_8S"><span class="model-copy"><span class="model-name"><strong>NICAM16-8S</strong><small>JAMSTEC · 30 km source</small></span><span class="badge">Live</span></span></label>
               </div>
-              <div class="scientific-note"><span class="icon" aria-hidden="true">ⓘ</span><span>At processing time, the catalogue will verify that historical and scenario records share the selected source, member, grid and compatible variable definition. Preview model names are illustrative until the ESGF connection is enabled.</span></div>
+              <div class="scientific-note"><span class="icon" aria-hidden="true">ⓘ</span><span>This live source provides one processed series per model rather than individual ESGF versions and members. The full ESGF connector will add release, member, grid and scenario controls later.</span></div>
             </div>
           </section>
 
@@ -448,26 +449,26 @@
             <div class="panel-body">
               <div class="choice-grid">
                 <label class="choice">
-                  <input type="radio" name="workflow" value="Direct ensemble" checked>
-                  <span class="choice-card"><span class="choice-top"><strong>Direct ensemble</strong><span class="radio-mark"></span></span><p>Extract each series, calculate historical anomalies, then combine equally weighted models.</p></span>
+                  <input type="radio" name="workflow" value="Uncorrected model ensemble" checked>
+                  <span class="choice-card"><span class="choice-top"><strong>Uncorrected model ensemble</strong><span class="radio-mark"></span></span><p>Use provider model series with ERA5-Land statistical downscaling and bias correction disabled.</p></span>
                 </label>
                 <label class="choice">
-                  <input type="radio" name="workflow" value="Downscale, then ensemble">
-                  <span class="choice-card"><span class="choice-top"><strong>Downscale, then ensemble</strong><span class="radio-mark"></span></span><p>Calibrate each model independently with station observations before combining results.</p></span>
+                  <input type="radio" name="workflow" value="Bias-correct, then ensemble">
+                  <span class="choice-card"><span class="choice-top"><strong>Bias-correct, then ensemble</strong><span class="radio-mark"></span></span><p>Use the provider's monthly linear bias correction against ERA5-Land, then combine models.</p></span>
                 </label>
               </div>
               <div class="obs-panel" id="obs-panel">
-                <div class="obs-head"><strong>Observation and calibration settings</strong><span class="badge amber">Required</span></div>
+                <div class="obs-head"><strong>Provider downscaling settings</strong><span class="badge">Available now</span></div>
                 <div class="obs-fields">
-                  <label>Observation source<select id="obs-source"><option>User-uploaded station data</option><option>Provider integration (coming later)</option></select></label>
-                  <label>Method<select id="downscale-method"><option>Quantile delta mapping</option><option>Linear scaling</option><option>Empirical quantile mapping</option></select></label>
-                  <label>Validation<select id="validation-method"><option>Time-block holdout</option><option>K-fold by year</option></select></label>
+                  <label>Reference source<select id="obs-source" disabled><option>ERA5-Land</option></select></label>
+                  <label>Method<select id="downscale-method" disabled><option>Monthly linear bias correction</option></select></label>
+                  <label>Output grid<select id="validation-method" disabled><option>10 km</option></select></label>
                 </div>
-                <label class="checkline"><input id="trend-preserve" type="checkbox" checked><span>Preserve the modeled climate-change signal during bias adjustment.</span></label>
+                <label class="checkline"><input id="trend-preserve" type="checkbox" checked disabled><span>The provider reports that its linear correction preserves the modeled climate-change signal. User-uploaded station observations will be added in a later backend phase.</span></label>
               </div>
               <div class="filters">
-                <label>Member treatment<select id="member-treatment"><option>Average members within model</option><option>Use first member only</option><option>Keep every member separate</option></select></label>
-                <label>Model weighting<select id="weighting"><option>Equal weight per model</option><option>Performance weighted</option><option>User-defined weights</option></select></label>
+                <label>Member treatment<select id="member-treatment" disabled><option>One provider series per model</option></select></label>
+                <label>Model weighting<select id="weighting" disabled><option>Equal weight per model</option></select></label>
                 <label>Ensemble statistics<select id="statistics"><option>Mean, median & percentiles</option><option>Mean & standard deviation</option><option>All available statistics</option></select></label>
               </div>
             </div>
@@ -484,8 +485,21 @@
               <div class="choice-grid">
                 <label class="choice"><input type="checkbox" name="output" value="Station time series" checked><span class="choice-card"><span class="choice-top"><strong>Station time series</strong><span class="badge">CSV</span></span><p>One tidy file per variable with model, member and scenario columns.</p></span></label>
                 <label class="choice"><input type="checkbox" name="output" value="Ensemble statistics" checked><span class="choice-card"><span class="choice-top"><strong>Ensemble statistics</strong><span class="badge">CSV</span></span><p>Mean, median, spread, percentiles and model agreement.</p></span></label>
-                <label class="choice"><input type="checkbox" name="output" value="Analysis archive" checked><span class="choice-card"><span class="choice-top"><strong>Analysis archive</strong><span class="badge blue">NetCDF</span></span><p>Machine-readable series with standardized metadata and units.</p></span></label>
-                <label class="choice"><input type="checkbox" name="output" value="Method report" checked><span class="choice-card"><span class="choice-top"><strong>Method report</strong><span class="badge amber">PDF</span></span><p>Dataset citations, versions, QC warnings and reproducibility details.</p></span></label>
+                <label class="choice"><input type="checkbox" name="output" value="Request metadata" checked><span class="choice-card"><span class="choice-top"><strong>Request metadata</strong><span class="badge blue">JSON</span></span><p>Coordinates, models, processing settings, source URL and attribution.</p></span></label>
+                <label class="choice"><input type="checkbox" name="output" value="Method notes" checked><span class="choice-card"><span class="choice-top"><strong>Method notes</strong><span class="badge amber">Included</span></span><p>Limitations, units, aggregation rules and provider attribution.</p></span></label>
+              </div>
+              <div class="obs-panel" id="results-panel">
+                <div class="obs-head"><strong id="results-title">Results ready</strong><span class="badge" id="results-badge">Complete</span></div>
+                <p class="subtitle" id="results-summary"></p>
+                <div class="estimate">
+                  <div class="metric"><small>Rows returned</small><strong id="result-row-count">0</strong></div>
+                  <div class="metric"><small>Data source</small><strong>Open-Meteo CMIP6</strong></div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px">
+                  <button class="btn btn-secondary" id="download-series" type="button">Model CSV</button>
+                  <button class="btn btn-secondary" id="download-ensemble" type="button">Ensemble CSV</button>
+                  <button class="btn btn-secondary" id="download-metadata" type="button">Metadata JSON</button>
+                </div>
               </div>
             </div>
           </section>
@@ -497,19 +511,20 @@
             <div class="validation" id="validation-message">Add at least one station and select one model.</div>
             <dl class="summary-list">
               <div class="summary-row"><dt>Stations</dt><dd id="summary-stations">3 points</dd></div>
-              <div class="summary-row"><dt>Archive</dt><dd id="summary-phase">CMIP7</dd></div>
+              <div class="summary-row"><dt>Archive</dt><dd id="summary-phase">CMIP6</dd></div>
               <div class="summary-row"><dt>Variable</dt><dd id="summary-variable">Precipitation</dd></div>
-              <div class="summary-row"><dt>Scenario</dt><dd id="summary-scenario">Medium (scen7-m)</dd></div>
+              <div class="summary-row"><dt>Pathway</dt><dd id="summary-scenario">HighResMIP</dd></div>
               <div class="summary-row"><dt>Models</dt><dd id="summary-models">4 models</dd></div>
-              <div class="summary-row"><dt>Workflow</dt><dd id="summary-workflow">Direct ensemble</dd></div>
-              <div class="summary-row"><dt>Projection</dt><dd id="summary-period">2021–2100</dd></div>
+              <div class="summary-row"><dt>Workflow</dt><dd id="summary-workflow">Uncorrected model ensemble</dd></div>
+              <div class="summary-row"><dt>Period</dt><dd id="summary-period">1981–2050</dd></div>
             </dl>
             <div class="estimate">
               <div class="metric"><small>Estimated series</small><strong id="series-estimate">12</strong></div>
               <div class="metric"><small>Output format</small><strong>ZIP package</strong></div>
             </div>
-            <button class="btn btn-primary btn-block" id="review-button" type="button">Review request</button>
+            <button class="btn btn-primary btn-block" id="review-button" type="button">Run CMIP6 request</button>
             <button class="btn btn-secondary btn-block" id="save-button" type="button" style="margin-top:9px">Download request JSON</button>
+            <div class="validation" id="run-status" style="margin:12px 0 0"></div>
             <p class="privacy-note">No account is required in this interface prototype.</p>
           </div>
         </aside>
@@ -519,7 +534,7 @@
 
   <footer class="site-foot"><div class="shell"><span>DMAP-AI · Climate projection workspace prototype</span><span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span></div></footer>
 
-  <script>
+  <script type="text/plain" id="legacy-cmip-prototype-script">
     const stations = [
       { name: "Ames, Iowa", lat: 42.0308, lon: -93.6319, elev: 288 },
       { name: "Tucson, Arizona", lat: 32.2226, lon: -110.9747, elev: 728 },
@@ -707,5 +722,6 @@
     renderStations();
     updateWorkflow();
   </script>
+  <script src="/assets/cmip-station-explorer.js"></script>
 </body>
 </html>
