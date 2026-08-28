@@ -284,6 +284,8 @@
     .metric { padding: 12px; border-radius: 12px; background: var(--canvas); }
     .metric small { display: block; color: var(--muted); font-size: .66rem; }
     .metric strong { display: block; margin-top: 3px; color: var(--navy); font-size: .95rem; }
+    .api-load-note { margin: -8px 0 14px; color: var(--muted); font-size: .68rem; text-align: center; }
+    .api-load-note.warning { color: var(--red); font-weight: 750; }
     .privacy-note { margin: 12px 0 0; color: var(--muted); font-size: .68rem; text-align: center; }
     .validation { display: none; margin-bottom: 12px; padding: 10px 11px; border-radius: 10px; background: #fff0ee; color: var(--red); font-size: .74rem; font-weight: 700; }
     .validation.show { display: block; }
@@ -566,8 +568,9 @@
             </dl>
             <div class="estimate">
               <div class="metric"><small>Estimated series</small><strong id="series-estimate">12</strong></div>
-              <div class="metric"><small>Output format</small><strong>ZIP package</strong></div>
+              <div class="metric"><small>Estimated API load</small><strong id="api-load-estimate">—</strong></div>
             </div>
+            <p class="api-load-note" id="api-load-note">Open-Meteo free limit: 5,000 units per hour. Repeated runs on this page reuse downloaded data.</p>
             <button class="btn btn-primary btn-block" id="review-button" type="button">Run CMIP6 request</button>
             <button class="btn btn-secondary btn-block" id="save-button" type="button" style="margin-top:9px">Download request JSON</button>
             <div class="validation" id="run-status" style="margin:12px 0 0"></div>
@@ -808,6 +811,6 @@
     renderStations();
     updateWorkflow();
   </script>
-  <script src="/assets/cmip-station-explorer.js?v=20260828-2"></script>
+  <script src="/assets/cmip-station-explorer.js?v=20260828-4"></script>
 </body>
 </html>

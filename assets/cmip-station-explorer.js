@@ -10,6 +10,9 @@
   const $$ = selector => Array.from(document.querySelectorAll(selector));
   const CLIMATE_API = "https://climate-api.open-meteo.com/v1/climate";
   const CLIMATE_DOCS = "https://open-meteo.com/en/docs/climate-api";
+  const FREE_HOURLY_API_LIMIT = 5000;
+  const SAFE_REQUEST_API_LIMIT = 4500;
+  const climateResponseCache = new Map();
   const VARIABLE_RULES = {
     precipitation_sum: { label: "Precipitation", unit: "mm", monthly: "sum" },
     temperature_2m_mean: { label: "Mean temperature", unit: "°C", monthly: "mean" },
@@ -98,6 +101,21 @@
     $("#summary-period").textContent = startYear && endYear ? `${startYear}–${endYear}` : "—";
     $("#model-count-badge").textContent = `${models.length} selected`;
     $("#series-estimate").textContent = (stations.length * models.length).toLocaleString();
+    const apiLoad = estimatedApiLoad();
+    $("#api-load-estimate").textContent = Number.isFinite(apiLoad) ? `≈ ${Math.ceil(apiLoad).toLocaleString()}` : "—";
+    $("#api-load-note").textContent = Number.isFinite(apiLoad) && apiLoad > SAFE_REQUEST_API_LIMIT
+      ? "Reduce the station count or date range before running."
+      : `Open-Meteo free limit: ${FREE_HOURLY_API_LIMIT.toLocaleString()} units per hour. Repeated runs on this page reuse downloaded data.`;
+    $("#api-load-note").classList.toggle("warning", Number.isFinite(apiLoad) && apiLoad > SAFE_REQUEST_API_LIMIT);
+  }
+
+  function estimatedApiLoad() {
+    const start = new Date(`${$("#hist-period").value}T00:00:00Z`);
+    const end = new Date(`${$("#future-period").value}T00:00:00Z`);
+    if (!stations.length || Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || end < start) return NaN;
+    const days = Math.floor((end - start) / 86400000) + 1;
+    const outputSeriesFactor = Math.max(0.1, selectedModels().length / 10);
+    return stations.length * Math.max(1, days / 14) * outputSeriesFactor;
   }
 
   function parseCsv(text) {
@@ -157,6 +175,7 @@
     else if (!selectedModels().length) message = "Select at least one model.";
     else if ($("#ensemble-method").value === "weighted_mean" && Object.values(modelWeights()).reduce((sum, weight) => sum + weight, 0) <= 0) message = "Set at least one model weight greater than zero.";
     else if (!start || !end || start < "1950-01-01" || end > "2050-01-01" || start > end) message = "Choose dates from 1950-01-01 through 2050-01-01, with the start before the end.";
+    else if (estimatedApiLoad() > SAFE_REQUEST_API_LIMIT) message = `This request is approximately ${Math.ceil(estimatedApiLoad()).toLocaleString()} API units, above the safe limit of ${SAFE_REQUEST_API_LIMIT.toLocaleString()}. Reduce the station count or date range; one station can request the full period.`;
     $("#validation-message").textContent = message;
     $("#validation-message").classList.toggle("show", Boolean(message));
     return !message;
@@ -280,9 +299,17 @@
         if (!corrected) params.set("disable_bias_correction", "true");
         const url = `${CLIMATE_API}?${params}`;
         requestUrls.push(url);
-        const response = await fetch(url);
-        const payload = await response.json().catch(() => ({}));
-        if (!response.ok || payload.error) throw new Error(payload.reason || `Climate service returned HTTP ${response.status}.`);
+        let payload = climateResponseCache.get(url);
+        if (!payload) {
+          const response = await fetch(url);
+          payload = await response.json().catch(() => ({}));
+          if (!response.ok || payload.error) {
+            const reason = payload.reason || `Climate service returned HTTP ${response.status}.`;
+            if (/hourly api request limit exceeded/i.test(reason)) throw new Error("Open-Meteo's quota for this internet connection is already used. Wait until the next hour, then run a request below the displayed API-load limit. Keep this page open after a successful run so later ensemble changes can reuse the downloaded data.");
+            throw new Error(reason);
+          }
+          climateResponseCache.set(url, payload);
+        }
         const locations = Array.isArray(payload) ? payload : [payload];
         locations.forEach((location, locationIndex) => {
           const station = chunk[locationIndex];
@@ -310,7 +337,7 @@
       }
       const finalRows = $("#frequency").value === "Monthly" ? aggregateMonthly(modelRows, rule.monthly) : modelRows;
       const ensembleRows = calculateEnsemble(finalRows);
-      resultState = { modelRows: finalRows, ensembleRows, metadata: { ...requestObject(), completed_at: new Date().toISOString(), api_requests: requestUrls, model_row_count: finalRows.length, ensemble_row_count: ensembleRows.length } };
+      resultState = { modelRows: finalRows, ensembleRows, metadata: { ...requestObject(), completed_at: new Date().toISOString(), estimated_api_units: Math.ceil(estimatedApiLoad()), api_requests: requestUrls, model_row_count: finalRows.length, ensemble_row_count: ensembleRows.length } };
       $("#result-row-count").textContent = finalRows.length.toLocaleString();
       $("#results-summary").textContent = `${stations.length} station${stations.length === 1 ? "" : "s"}, ${models.length} model${models.length === 1 ? "" : "s"}, ${$("#frequency").value.toLowerCase()} ${rule.label.toLowerCase()} values, and a ${ensembleMethodLabel().toLowerCase()}.`;
       $("#results-panel").classList.add("show");
@@ -500,7 +527,10 @@
     renderModelWeights();
   });
   $("#ensemble-method").addEventListener("change", updateEnsembleMethod);
-  ["#variable", "#frequency", "#hist-period", "#future-period"].forEach(selector => $(selector).addEventListener("change", updateSummary));
+  ["#variable", "#frequency", "#hist-period", "#future-period"].forEach(selector => {
+    $(selector).addEventListener("change", updateSummary);
+    $(selector).addEventListener("input", updateSummary);
+  });
   $("#review-button").addEventListener("click", fetchClimateData);
   $("#save-button").addEventListener("click", () => { if (validateRequest()) downloadFile(JSON.stringify(requestObject(), null, 2), "dmap-cmip6-request.json", "application/json"); });
   $("#download-series").addEventListener("click", () => downloadFile(rowsToCsv(resultState.modelRows), "dmap-cmip6-model-series.csv", "text/csv;charset=utf-8"));
