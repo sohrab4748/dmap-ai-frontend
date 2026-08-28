@@ -315,8 +315,9 @@
       $("#results-summary").textContent = `${stations.length} station${stations.length === 1 ? "" : "s"}, ${models.length} model${models.length === 1 ? "" : "s"}, ${$("#frequency").value.toLowerCase()} ${rule.label.toLowerCase()} values, and a ${ensembleMethodLabel().toLowerCase()}.`;
       $("#results-panel").classList.add("show");
       setRunStatus("CMIP6 data retrieved and ensemble statistics calculated.", "success");
-      prepareResultsView();
+      $("#results-tab").disabled = false;
       switchView("results");
+      prepareResultsView();
     } catch (error) {
       console.error(error);
       setRunStatus(`Request failed: ${error.message}`, "error");
@@ -350,14 +351,15 @@
   }
 
   function switchView(view) {
-    const showResults = view === "results" && resultState.ensembleRows.length > 0;
+    const showResults = view === "results";
     $("#request-view").classList.toggle("active", !showResults);
     $("#result-view").classList.toggle("active", showResults);
     $("#request-tab").classList.toggle("active", !showResults);
     $("#results-tab").classList.toggle("active", showResults);
     $("#request-tab").setAttribute("aria-selected", String(!showResults));
     $("#results-tab").setAttribute("aria-selected", String(showResults));
-    $(".workspace-tabs").scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", showResults ? "#results" : "#request");
+    requestAnimationFrame(() => $(".workspace-tabs").scrollIntoView({ behavior: "smooth", block: "start" }));
   }
 
   function prepareResultsView() {
