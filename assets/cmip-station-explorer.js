@@ -75,6 +75,10 @@
 
   function updatePhase() {
     const phase = selectedValue("phase");
+    if (phase === "CMIP7") {
+      window.location.href = "/cmip7-catalogue.html";
+      return;
+    }
     $("#availability-note").innerHTML = phase === "CMIP7"
       ? "<strong>CMIP7 catalogue mode:</strong> live downloads are not enabled yet because model coverage is still emerging. Choose CMIP6 to run a real station request now."
       : "<strong>CMIP6 live source:</strong> Open-Meteo serves seven CMIP6 HighResMIP models at 10 km from 1950–2050. The pathway is approximately high-emissions and cannot be changed in this source.";

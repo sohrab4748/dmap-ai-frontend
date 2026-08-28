@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CMIP7 Live Catalogue | DMAP-AI</title>
+  <meta name="description" content="Inspect model output currently published in the live CMIP7 ESGF catalogue, including models, experiments, variables, grids, versions and temporal coverage.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+  <style>
+    :root {
+      --ink: #102a2c;
+      --muted: #607477;
+      --line: #d9e5e3;
+      --paper: #fff;
+      --canvas: #f3f8f7;
+      --teal: #0f766e;
+      --teal-dark: #0b5c56;
+      --teal-soft: #e7f6f3;
+      --navy: #173b57;
+      --blue-soft: #edf5ff;
+      --amber: #96520a;
+      --amber-soft: #fff5df;
+      --red: #b42318;
+      --red-soft: #fff0ee;
+      --shadow: 0 18px 48px rgba(23, 59, 87, .1);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 92% 4%, rgba(15,118,110,.11), transparent 27rem),
+        linear-gradient(180deg, #fbfdfc 0, var(--canvas) 31rem, #fff 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    button, select { font: inherit; }
+    a { color: inherit; }
+    .shell { width: min(1220px, calc(100% - 32px)); margin: 0 auto; }
+    .hero { padding: 64px 0 34px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 15px; color: var(--teal); font-size: .76rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); gap: 44px; align-items: end; }
+    h1 { max-width: 800px; margin: 0; font-size: clamp(2.5rem, 5vw, 4.8rem); line-height: .98; letter-spacing: -.055em; }
+    .lead { max-width: 770px; margin: 22px 0 0; color: var(--muted); font-size: 1.08rem; }
+    .source-card { padding: 21px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.82); box-shadow: 0 12px 30px rgba(23,59,87,.06); }
+    .source-card strong { display: block; color: var(--navy); }
+    .source-card p { margin: 7px 0 14px; color: var(--muted); font-size: .88rem; }
+    .source-card a { color: var(--teal-dark); font-size: .82rem; font-weight: 800; }
+    .status-line { display: flex; flex-wrap: wrap; gap: 9px; margin: 0 0 22px; }
+    .badge { display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; padding: 7px 10px; background: var(--teal-soft); color: var(--teal-dark); font-size: .72rem; font-weight: 850; }
+    .badge.blue { background: var(--blue-soft); color: #24598c; }
+    .badge.amber { background: var(--amber-soft); color: var(--amber); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    .notice { margin-bottom: 22px; padding: 15px 17px; border: 1px solid #ead7ab; border-radius: 14px; background: var(--amber-soft); color: #74430c; font-size: .86rem; }
+    .notice strong { color: #5f3608; }
+    .notice.error { border-color: #efc2bc; background: var(--red-soft); color: var(--red); }
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+    .metric { min-height: 112px; padding: 18px; border: 1px solid var(--line); border-radius: 17px; background: var(--paper); box-shadow: 0 9px 28px rgba(23,59,87,.05); }
+    .metric span { color: var(--muted); font-size: .74rem; font-weight: 750; }
+    .metric strong { display: block; margin-top: 7px; color: var(--navy); font-size: 1.75rem; letter-spacing: -.03em; }
+    .panel { margin-bottom: 22px; border: 1px solid var(--line); border-radius: 22px; background: var(--paper); box-shadow: var(--shadow); overflow: hidden; }
+    .panel-head { display: flex; justify-content: space-between; gap: 20px; padding: 23px 25px 17px; }
+    h2 { margin: 0; color: var(--navy); font-size: 1.18rem; letter-spacing: -.02em; }
+    .subtitle { margin: 5px 0 0; color: var(--muted); font-size: .86rem; }
+    .panel-body { padding: 0 25px 25px; }
+    .filters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    label { display: grid; gap: 7px; color: #455f62; font-size: .74rem; font-weight: 800; }
+    select { width: 100%; padding: 11px 12px; border: 1px solid #cbdad8; border-radius: 11px; background: #fff; color: var(--ink); outline: none; }
+    select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,118,110,.11); }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 17px; }
+    .btn { display: inline-flex; min-height: 43px; align-items: center; justify-content: center; border: 1px solid transparent; border-radius: 11px; padding: 10px 15px; font-weight: 800; cursor: pointer; text-decoration: none; }
+    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-primary:hover { background: var(--teal-dark); }
+    .btn-secondary { border-color: var(--line); background: #fff; color: var(--navy); }
+    .btn-secondary:hover { background: var(--canvas); }
+    .btn:disabled { cursor: not-allowed; opacity: .55; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; min-width: 1050px; border-collapse: collapse; font-size: .79rem; }
+    th { padding: 10px 12px; background: #f4f8f7; color: var(--muted); text-align: left; font-size: .67rem; letter-spacing: .05em; text-transform: uppercase; }
+    td { padding: 12px; border-top: 1px solid #e8efee; vertical-align: top; }
+    td strong { color: var(--navy); }
+    .empty { padding: 42px 20px; color: var(--muted); text-align: center; }
+    .small { display: block; margin-top: 3px; color: var(--muted); font-size: .7rem; }
+    .site-foot { margin-top: 54px; padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
+    .site-foot .shell { display: flex; justify-content: space-between; gap: 20px; }
+    @media (max-width: 820px) {
+      .hero-grid, .filters { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { padding-top: 42px; }
+    }
+    @media (max-width: 520px) {
+      .shell { width: min(100% - 20px, 1220px); }
+      h1 { font-size: 2.55rem; }
+      .metrics { grid-template-columns: 1fr; }
+      .panel-head, .panel-body { padding-left: 17px; padding-right: 17px; }
+      .actions .btn { width: 100%; }
+      .site-foot .shell { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <script src="/assets/global-nav.js"></script>
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <span class="eyebrow">Live ESGF publication monitor</span>
+        <div class="hero-grid">
+          <div>
+            <h1>See what CMIP7 data actually exists today.</h1>
+            <p class="lead">Inspect published model output by model, experiment, variable, frequency, grid and release. This catalogue test does not call Open-Meteo and does not consume its hourly or daily quota.</p>
+          </div>
+          <aside class="source-card">
+            <strong>Source: ESGF East index</strong>
+            <p>Published CMIP7 model-output records are read live. Results can change as modelling centres publish or correct datasets.</p>
+            <a href="https://metagrid-ceda.east.esgf.io/search?project=CMIP7" target="_blank" rel="noopener">Open the official MetaGrid search</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell">
+      <div class="status-line">
+        <span class="badge" id="live-badge"><span class="dot"></span>Connecting to ESGF</span>
+        <span class="badge blue">Latest versions</span>
+        <span class="badge amber">Model output only</span>
+      </div>
+
+      <div class="notice" id="catalogue-notice" role="status">
+        <strong>Loading the live catalogue.</strong> Early CMIP7 coverage is expected to be sparse and can change daily.
+      </div>
+
+      <section class="metrics" aria-label="Catalogue summary">
+        <div class="metric"><span>Published datasets</span><strong id="metric-datasets">—</strong></div>
+        <div class="metric"><span>Models</span><strong id="metric-models">—</strong></div>
+        <div class="metric"><span>Experiments</span><strong id="metric-experiments">—</strong></div>
+        <div class="metric"><span>Variables</span><strong id="metric-variables">—</strong></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div><h2>Filter published combinations</h2><p class="subtitle">Each option is derived from records currently returned by ESGF—not from a planned CMIP7 vocabulary list.</p></div>
+        </div>
+        <div class="panel-body">
+          <div class="filters">
+            <label>Model<select id="filter-model"><option value="">All published models</option></select></label>
+            <label>Experiment<select id="filter-experiment"><option value="">All published experiments</option></select></label>
+            <label>Variable<select id="filter-variable"><option value="">All published variables</option></select></label>
+            <label>Frequency<select id="filter-frequency"><option value="">All frequencies</option></select></label>
+            <label>Realm<select id="filter-realm"><option value="">All realms</option></select></label>
+            <label>Grid<select id="filter-grid"><option value="">All grids</option></select></label>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary" id="refresh-catalogue" type="button">Refresh live catalogue</button>
+            <button class="btn btn-secondary" id="reset-filters" type="button">Clear filters</button>
+            <button class="btn btn-secondary" id="download-csv" type="button" disabled>Download visible CSV</button>
+            <button class="btn btn-secondary" id="download-json" type="button" disabled>Download full JSON</button>
+            <a class="btn btn-secondary" href="/cmip-station-explorer.html">Back to CMIP6 station explorer</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div><h2>Available datasets</h2><p class="subtitle" id="result-summary">Waiting for ESGF…</p></div>
+          <span class="badge blue" id="checked-at">Not checked</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Model</th><th>Experiment</th><th>Variable</th><th>Frequency</th><th>Realm</th><th>Grid</th><th>Version</th><th>Coverage</th><th>Files / size</th><th>Node</th></tr></thead>
+            <tbody id="catalogue-rows"><tr><td colspan="10" class="empty">Loading live CMIP7 records…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-foot"><div class="shell"><span>DMAP-AI · CMIP7 publication monitor</span><span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span></div></footer>
+  <script src="/assets/cmip7-catalogue.js?v=20260828-1"></script>
+</body>
+</html>
