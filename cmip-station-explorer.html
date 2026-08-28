@@ -478,7 +478,17 @@
                 <label class="model"><input type="checkbox" value="MPI_ESM1_2_XR" checked><span class="model-copy"><span class="model-name"><strong>MPI-ESM1-2-XR</strong><small>MPI-M · 51 km source</small></span><span class="badge">Live</span></span></label>
                 <label class="model"><input type="checkbox" value="NICAM16_8S" checked><span class="model-copy"><span class="model-name"><strong>NICAM16-8S</strong><small>JAMSTEC · 30 km source</small></span><span class="badge">Live</span></span></label>
               </div>
-              <div class="scientific-note"><span class="icon" aria-hidden="true">ⓘ</span><span>This live source provides one processed series per model rather than individual ESGF versions and members. The full ESGF connector will add release, member, grid and scenario controls later.</span></div>
+              <div class="scientific-note"><span class="icon" aria-hidden="true">ⓘ</span><span>The live browser source provides one processed series per model. For exact ESGF members, grids and releases, prepare a local-worker job below.</span></div>
+              <div class="obs-panel show" id="esgf-local-panel">
+                <div class="obs-head"><strong>ESGF local-worker settings</strong><span class="badge blue">Runs on user computer</span></div>
+                <div class="obs-fields">
+                  <label>Experiment pair<select id="esgf-experiments"><option value="coupled">hist-1950 + highres-future</option><option value="sst">highresSST-present + highresSST-future</option></select></label>
+                  <label>Member<input id="esgf-member" type="text" value="r1i1p1f1" autocomplete="off"></label>
+                  <label>Grid label<input id="esgf-grid" type="text" value="gn" autocomplete="off"></label>
+                  <label>Release version<input id="esgf-version" type="text" inputmode="numeric" placeholder="Latest (leave blank)" autocomplete="off"></label>
+                </div>
+                <p class="subtitle">Availability differs by model. The local worker discovers matching ESGF files, resumes interrupted downloads, verifies checksums, extracts station points, and creates the ensemble locally.</p>
+              </div>
             </div>
           </section>
 
@@ -572,8 +582,12 @@
             </div>
             <p class="api-load-note" id="api-load-note">Open-Meteo free limit: 5,000 units per hour. Repeated runs on this page reuse downloaded data.</p>
             <button class="btn btn-primary btn-block" id="review-button" type="button">Run CMIP6 request</button>
+            <button class="btn btn-secondary btn-block" id="send-local-worker" type="button" style="margin-top:9px">Send to DMAP Local Worker</button>
+            <button class="btn btn-secondary btn-block" id="download-esgf-job" type="button" style="margin-top:9px">Download ESGF local job</button>
+            <p class="privacy-note"><a href="/dmap-local-worker/README.md" target="_blank" rel="noopener">DMAP Local Worker setup guide</a></p>
             <button class="btn btn-secondary btn-block" id="save-button" type="button" style="margin-top:9px">Download request JSON</button>
             <div class="validation" id="run-status" style="margin:12px 0 0"></div>
+            <div class="validation" id="local-worker-status" style="margin:12px 0 0"></div>
             <p class="privacy-note">No account is required in this interface prototype.</p>
           </div>
         </aside>
@@ -811,6 +825,6 @@
     renderStations();
     updateWorkflow();
   </script>
-  <script src="/assets/cmip-station-explorer.js?v=20260828-4"></script>
+  <script src="/assets/cmip-station-explorer.js?v=20260828-8"></script>
 </body>
 </html>

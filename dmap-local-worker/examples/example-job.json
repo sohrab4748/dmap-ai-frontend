@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "job_id": "example-cmcc-pr-1950",
+  "created_at": "2026-08-28T00:00:00Z",
+  "execution": "local_esgf",
+  "source": {
+    "provider": "ESGF",
+    "project": "CMIP6",
+    "index_url": "https://esgf-node.llnl.gov/esg-search/search",
+    "activity_id": "HighResMIP",
+    "experiment_ids": ["hist-1950"],
+    "source_ids": ["CMCC-CM2-VHR4"],
+    "member_id": "r1i1p1f1",
+    "grid_label": "gn",
+    "variable_id": "pr",
+    "table_id": "day",
+    "frequency": "day",
+    "latest": true,
+    "version": null,
+    "replica": false
+  },
+  "subset": {
+    "start_date": "1950-01-01",
+    "end_date": "1950-12-31",
+    "stations": [
+      {
+        "station_id": "station-1",
+        "name": "Ames, Iowa",
+        "latitude": 42.0308,
+        "longitude": -93.6319,
+        "elevation_m": 288
+      }
+    ]
+  },
+  "processing": {
+    "output_frequency": "daily",
+    "workflow": "direct_ensemble",
+    "observations_required": false,
+    "ensemble_method": "equal_mean",
+    "model_weights": null,
+    "reported_spread": "p10_p90"
+  },
+  "output": {
+    "format": "csv",
+    "keep_downloaded_netcdf": true
+  },
+  "attribution": ["CMIP6", "ESGF"],
+  "worker": {
+    "minimum_version": "0.1.0",
+    "setup_path": "/dmap-local-worker/README.md"
+  }
+}

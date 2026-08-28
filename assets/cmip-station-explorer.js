@@ -10,16 +10,27 @@
   const $$ = selector => Array.from(document.querySelectorAll(selector));
   const CLIMATE_API = "https://climate-api.open-meteo.com/v1/climate";
   const CLIMATE_DOCS = "https://open-meteo.com/en/docs/climate-api";
+  const LOCAL_WORKER_API = "http://127.0.0.1:8766";
   const FREE_HOURLY_API_LIMIT = 5000;
   const SAFE_REQUEST_API_LIMIT = 4500;
   const climateResponseCache = new Map();
   const VARIABLE_RULES = {
-    precipitation_sum: { label: "Precipitation", unit: "mm", monthly: "sum" },
-    temperature_2m_mean: { label: "Mean temperature", unit: "°C", monthly: "mean" },
-    temperature_2m_max: { label: "Maximum temperature", unit: "°C", monthly: "max" },
-    temperature_2m_min: { label: "Minimum temperature", unit: "°C", monthly: "min" }
+    precipitation_sum: { label: "Precipitation", unit: "mm", monthly: "sum", esgf: "pr" },
+    temperature_2m_mean: { label: "Mean temperature", unit: "°C", monthly: "mean", esgf: "tas" },
+    temperature_2m_max: { label: "Maximum temperature", unit: "°C", monthly: "max", esgf: "tasmax" },
+    temperature_2m_min: { label: "Minimum temperature", unit: "°C", monthly: "min", esgf: "tasmin" }
+  };
+  const ESGF_MODEL_IDS = {
+    CMCC_CM2_VHR4: "CMCC-CM2-VHR4",
+    FGOALS_f3_H: "FGOALS-f3-H",
+    HiRAM_SIT_HR: "HiRAM-SIT-HR",
+    MRI_AGCM3_2_S: "MRI-AGCM3-2-S",
+    EC_Earth3P_HR: "EC-Earth3P-HR",
+    MPI_ESM1_2_XR: "MPI-ESM1-2-XR",
+    NICAM16_8S: "NICAM16-8S"
   };
   let resultState = { modelRows: [], ensembleRows: [], metadata: null };
+  let localJobPollTimer = null;
 
   function selectedValue(name) {
     return document.querySelector(`input[name="${name}"]:checked`)?.value || "";
@@ -163,6 +174,150 @@
       source_note: "Processed CMIP6 HighResMIP series; individual ESGF versions, members, and scenarios are not exposed by this provider.",
       attribution: "CMIP6 and Open-Meteo"
     };
+  }
+
+  function esgfJobObject() {
+    const variable = $("#variable").value;
+    const version = $("#esgf-version").value.trim();
+    const experimentPair = $("#esgf-experiments").value === "sst"
+      ? ["highresSST-present", "highresSST-future"]
+      : ["hist-1950", "highres-future"];
+    const member = $("#esgf-member").value.trim() || "r1i1p1f1";
+    const grid = $("#esgf-grid").value.trim() || "gn";
+    const jobId = globalThis.crypto?.randomUUID?.() || `dmap-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    return {
+      schema_version: "1.0",
+      job_id: jobId,
+      created_at: new Date().toISOString(),
+      execution: "local_esgf",
+      source: {
+        provider: "ESGF",
+        project: "CMIP6",
+        index_url: "https://esgf-node.llnl.gov/esg-search/search",
+        activity_id: "HighResMIP",
+        experiment_ids: experimentPair,
+        source_ids: selectedModels().map(model => ESGF_MODEL_IDS[model] || model),
+        member_id: member,
+        grid_label: grid,
+        variable_id: VARIABLE_RULES[variable].esgf,
+        table_id: $("#frequency").value === "Daily" ? "day" : "Amon",
+        frequency: $("#frequency").value === "Daily" ? "day" : "mon",
+        latest: !version,
+        version: version || null,
+        replica: false
+      },
+      subset: {
+        start_date: $("#hist-period").value,
+        end_date: $("#future-period").value,
+        stations: stations.map((station, index) => ({
+          station_id: `station-${index + 1}`,
+          name: station.name,
+          latitude: Number(station.lat),
+          longitude: Number(station.lon),
+          elevation_m: station.elev === "" || station.elev == null ? null : Number(station.elev)
+        }))
+      },
+      processing: {
+        output_frequency: $("#frequency").value.toLowerCase(),
+        workflow: selectedValue("workflow") === "Bias-correct, then ensemble" ? "monthly_bias_correction" : "direct_ensemble",
+        observations_required: selectedValue("workflow") === "Bias-correct, then ensemble",
+        ensemble_method: $("#ensemble-method").value,
+        model_weights: $("#ensemble-method").value === "weighted_mean"
+          ? Object.fromEntries(Object.entries(modelWeights()).map(([model, weight]) => [ESGF_MODEL_IDS[model] || model, weight]))
+          : null,
+        reported_spread: $("#statistics").value
+      },
+      output: {
+        format: "csv",
+        keep_downloaded_netcdf: true
+      },
+      attribution: ["CMIP6", "ESGF"],
+      worker: {
+        minimum_version: "0.1.0",
+        setup_path: "/dmap-local-worker/README.md"
+      }
+    };
+  }
+
+  function validateLocalJob() {
+    let message = "";
+    const start = $("#hist-period").value;
+    const end = $("#future-period").value;
+    if (selectedValue("phase") !== "CMIP6") message = "CMIP7 local downloads will be enabled after ESGF publishes stable CMIP7 facets. Choose CMIP6 for now.";
+    else if (!stations.length) message = "Add at least one station.";
+    else if (!selectedModels().length) message = "Select at least one model.";
+    else if (!start || !end || start < "1950-01-01" || end > "2050-01-01" || start > end) message = "Choose dates from 1950-01-01 through 2050-01-01, with the start before the end.";
+    else if (!/^[A-Za-z0-9-]+$/.test($("#esgf-member").value.trim())) message = "Enter a valid ESGF member, such as r1i1p1f1.";
+    else if (!/^[A-Za-z0-9-]+$/.test($("#esgf-grid").value.trim())) message = "Enter a valid ESGF grid label, such as gn.";
+    else if ($("#esgf-version").value.trim() && !/^\d{8}$/.test($("#esgf-version").value.trim())) message = "Enter an eight-digit ESGF version such as 20210308, or leave it blank for the latest version.";
+    $("#validation-message").textContent = message;
+    $("#validation-message").classList.toggle("show", Boolean(message));
+    return !message;
+  }
+
+  function downloadEsgfJob() {
+    if (!validateLocalJob()) return;
+    const job = esgfJobObject();
+    downloadFile(JSON.stringify(job, null, 2), `${job.job_id}.dmap-job.json`, "application/json");
+    setRunStatus("ESGF local job downloaded. Run it with DMAP Local Worker; the browser can now be closed.", "success");
+  }
+
+  function setLocalWorkerStatus(message, kind = "info") {
+    const status = $("#local-worker-status");
+    status.textContent = message;
+    status.classList.toggle("show", Boolean(message));
+    status.style.background = kind === "error" ? "#fff0ee" : kind === "success" ? "#e7f6f3" : "#edf5ff";
+    status.style.color = kind === "error" ? "#b42318" : kind === "success" ? "#0b5c56" : "#24598c";
+  }
+
+  async function pollLocalJob(jobId) {
+    clearTimeout(localJobPollTimer);
+    try {
+      const response = await fetch(`${LOCAL_WORKER_API}/jobs/${encodeURIComponent(jobId)}`);
+      const state = await response.json().catch(() => ({}));
+      if (response.status === 404) {
+        setLocalWorkerStatus("Local job accepted; waiting for discovery to start…");
+        localJobPollTimer = setTimeout(() => pollLocalJob(jobId), 1500);
+        return;
+      }
+      if (!response.ok) throw new Error(state.error || "Cannot read local job status.");
+      if (state.status === "complete") {
+        setLocalWorkerStatus("Local ESGF processing is complete. Results are in the worker's dmap-jobs folder.", "success");
+        return;
+      }
+      if (state.status === "error") {
+        setLocalWorkerStatus(`Local job stopped: ${state.message || "Unknown worker error."}`, "error");
+        return;
+      }
+      const progress = state.total_files ? ` ${state.completed_files || 0} of ${state.total_files} files complete.` : "";
+      setLocalWorkerStatus(`Local job: ${state.status || "starting"}.${progress}`);
+      localJobPollTimer = setTimeout(() => pollLocalJob(jobId), 3000);
+    } catch (error) {
+      setLocalWorkerStatus(`Local worker connection was lost: ${error.message}`, "error");
+    }
+  }
+
+  async function sendToLocalWorker() {
+    if (!validateLocalJob()) return;
+    const button = $("#send-local-worker");
+    button.disabled = true;
+    setLocalWorkerStatus("Connecting to DMAP Local Worker…");
+    try {
+      const job = esgfJobObject();
+      const response = await fetch(`${LOCAL_WORKER_API}/jobs`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(job)
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "The local worker did not accept the job.");
+      setLocalWorkerStatus("Local worker accepted the ESGF job. You may close this browser after processing starts.", "success");
+      pollLocalJob(payload.job_id);
+    } catch (error) {
+      setLocalWorkerStatus(`Cannot start the local job: ${error.message} Start “dmap-worker serve”, or download the job for manual execution.`, "error");
+    } finally {
+      button.disabled = false;
+    }
   }
 
   function validateRequest() {
@@ -533,6 +688,8 @@
   });
   $("#review-button").addEventListener("click", fetchClimateData);
   $("#save-button").addEventListener("click", () => { if (validateRequest()) downloadFile(JSON.stringify(requestObject(), null, 2), "dmap-cmip6-request.json", "application/json"); });
+  $("#download-esgf-job").addEventListener("click", downloadEsgfJob);
+  $("#send-local-worker").addEventListener("click", sendToLocalWorker);
   $("#download-series").addEventListener("click", () => downloadFile(rowsToCsv(resultState.modelRows), "dmap-cmip6-model-series.csv", "text/csv;charset=utf-8"));
   $("#download-ensemble").addEventListener("click", () => downloadFile(rowsToCsv(resultState.ensembleRows), "dmap-cmip6-ensemble-statistics.csv", "text/csv;charset=utf-8"));
   $("#download-metadata").addEventListener("click", () => downloadFile(JSON.stringify(resultState.metadata, null, 2), "dmap-cmip6-metadata.json", "application/json"));
