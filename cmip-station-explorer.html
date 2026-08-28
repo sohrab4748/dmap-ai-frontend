@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CMIP Station Explorer | DMAP-AI</title>
+  <meta name="description" content="Build traceable CMIP6 and CMIP7 station requests, compare climate models, prepare downscaling workflows, and create ensemble-ready outputs.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AgriMetSoft LLC">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/dmap-global-nav.css">
+  <style>
+    :root {
+      --ink: #102a2c;
+      --muted: #607477;
+      --line: #d9e5e3;
+      --paper: #ffffff;
+      --canvas: #f3f8f7;
+      --teal: #0f766e;
+      --teal-dark: #0b5c56;
+      --teal-soft: #e7f6f3;
+      --navy: #173b57;
+      --blue-soft: #edf5ff;
+      --amber: #a75b0b;
+      --amber-soft: #fff5df;
+      --red: #b42318;
+      --shadow: 0 18px 48px rgba(23, 59, 87, .10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 92% 4%, rgba(15,118,110,.10), transparent 26rem),
+        linear-gradient(180deg, #fbfdfc 0, var(--canvas) 33rem, #fff 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+    .hero { padding: 64px 0 36px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      color: var(--teal);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(300px, .7fr); gap: 48px; align-items: end; }
+    h1 { max-width: 760px; margin: 0; font-size: clamp(2.4rem, 5vw, 4.8rem); line-height: .98; letter-spacing: -.055em; }
+    .hero p { max-width: 700px; margin: 22px 0 0; color: var(--muted); font-size: 1.08rem; }
+    .hero-note {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 12px 30px rgba(23,59,87,.06);
+    }
+    .hero-note strong { display: block; margin-bottom: 7px; color: var(--navy); }
+    .hero-note p { margin: 0; font-size: .9rem; }
+
+    .progress {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 28px 0 22px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 8px 30px rgba(23,59,87,.05);
+      position: sticky;
+      top: 84px;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+    }
+    .progress a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      padding: 10px 12px;
+      border-radius: 11px;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 750;
+      text-decoration: none;
+    }
+    .progress a:hover { background: var(--canvas); color: var(--ink); }
+    .step-no {
+      display: grid;
+      flex: 0 0 25px;
+      width: 25px;
+      height: 25px;
+      place-items: center;
+      border-radius: 50%;
+      background: #e7eeed;
+      color: var(--navy);
+      font-size: .72rem;
+    }
+
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 24px; align-items: start; padding-bottom: 80px; }
+    .stack { display: grid; gap: 18px; }
+    .panel {
+      scroll-margin-top: 168px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--paper);
+      box-shadow: 0 10px 34px rgba(23,59,87,.06);
+      overflow: hidden;
+    }
+    .panel-head { display: flex; justify-content: space-between; gap: 20px; padding: 24px 26px 18px; }
+    .title-row { display: flex; align-items: flex-start; gap: 13px; }
+    .title-number {
+      display: grid;
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--teal-soft);
+      color: var(--teal-dark);
+      font-weight: 850;
+    }
+    h2 { margin: 0; font-size: 1.18rem; letter-spacing: -.02em; }
+    .subtitle { margin: 5px 0 0; color: var(--muted); font-size: .88rem; }
+    .panel-body { padding: 0 26px 26px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 6px 9px;
+      background: var(--teal-soft);
+      color: var(--teal-dark);
+      font-size: .7rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .badge.amber { background: var(--amber-soft); color: var(--amber); }
+    .badge.blue { background: var(--blue-soft); color: #24598c; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+    .dropzone {
+      display: grid;
+      place-items: center;
+      min-height: 154px;
+      padding: 24px;
+      border: 1.5px dashed #a8c7c2;
+      border-radius: 17px;
+      background: #f9fcfb;
+      text-align: center;
+      transition: border-color .15s, background .15s;
+    }
+    .dropzone.drag { border-color: var(--teal); background: var(--teal-soft); }
+    .upload-icon { display: grid; width: 42px; height: 42px; margin: 0 auto 10px; place-items: center; border-radius: 13px; background: var(--teal-soft); color: var(--teal); font-size: 1.25rem; }
+    .dropzone strong { display: block; }
+    .dropzone small { display: block; margin-top: 5px; color: var(--muted); }
+    .text-button { padding: 0; border: 0; background: transparent; color: var(--teal); font-weight: 800; }
+    #station-file { position: absolute; opacity: 0; pointer-events: none; }
+    .or { display: flex; align-items: center; gap: 12px; margin: 16px 0; color: #8aa09e; font-size: .74rem; font-weight: 800; text-transform: uppercase; }
+    .or::before, .or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    .fields { display: grid; grid-template-columns: 1.2fr 1fr 1fr .8fr auto; gap: 10px; align-items: end; }
+    label { display: grid; gap: 7px; color: #455f62; font-size: .75rem; font-weight: 800; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid #cbdad8;
+      border-radius: 11px;
+      background: white;
+      color: var(--ink);
+      padding: 11px 12px;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,118,110,.11); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 43px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      padding: 10px 15px;
+      font-weight: 800;
+    }
+    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-primary:hover { background: var(--teal-dark); }
+    .btn-secondary { border-color: var(--line); background: #fff; color: var(--navy); }
+    .btn-secondary:hover { background: var(--canvas); }
+    .btn-block { width: 100%; }
+    .btn:disabled { cursor: not-allowed; opacity: .55; }
+
+    .station-list { margin-top: 18px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    th { padding: 10px 12px; background: #f4f8f7; color: var(--muted); text-align: left; font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; }
+    td { padding: 11px 12px; border-top: 1px solid #e8efee; }
+    .remove { border: 0; background: transparent; color: #8aa09e; font-weight: 900; }
+    .remove:hover { color: var(--red); }
+
+    .choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+    .choice { position: relative; }
+    .choice > input { position: absolute; opacity: 0; }
+    .choice-card {
+      display: block;
+      height: 100%;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color .15s, box-shadow .15s, transform .15s;
+    }
+    .choice-card:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(23,59,87,.07); }
+    .choice input:checked + .choice-card { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,118,110,.10); }
+    .choice-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .choice-card strong { color: var(--navy); }
+    .choice-card p { margin: 8px 0 0; color: var(--muted); font-size: .79rem; font-weight: 500; }
+    .radio-mark { width: 18px; height: 18px; border: 2px solid #b8cac7; border-radius: 50%; box-shadow: inset 0 0 0 4px #fff; }
+    .choice input:checked + .choice-card .radio-mark { border-color: var(--teal); background: var(--teal); }
+
+    .filters { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 13px; margin-top: 18px; }
+    .filter-wide { grid-column: span 2; }
+    .availability { margin-top: 18px; padding: 14px 15px; border-left: 3px solid var(--amber); border-radius: 4px 12px 12px 4px; background: var(--amber-soft); color: #704117; font-size: .8rem; }
+
+    .model-tools { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .model-tools span { color: var(--muted); font-size: .8rem; }
+    .model-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; }
+    .model {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .model:hover { background: #fafcfb; }
+    .model input { width: 17px; height: 17px; accent-color: var(--teal); }
+    .model-copy { display: flex; min-width: 0; flex: 1; justify-content: space-between; gap: 8px; align-items: center; }
+    .model-name { min-width: 0; }
+    .model-name strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--navy); font-size: .81rem; }
+    .model-name small { color: var(--muted); font-size: .68rem; }
+
+    .obs-panel { display: none; margin-top: 16px; padding: 17px; border: 1px solid #cfe1de; border-radius: 14px; background: #f7fbfa; }
+    .obs-panel.show { display: block; }
+    .obs-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .obs-head strong { color: var(--navy); font-size: .86rem; }
+    .obs-fields { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 12px; }
+    .checkline { display: flex; align-items: flex-start; gap: 9px; margin-top: 14px; color: var(--muted); font-size: .76rem; }
+    .checkline input { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--teal); }
+
+    .summary {
+      position: sticky;
+      top: 168px;
+      border: 1px solid #cfe0dd;
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .summary-top { padding: 23px; color: #fff; background: var(--navy); }
+    .summary-top small { display: block; margin-bottom: 6px; color: #bdd5e3; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .summary-top h2 { font-size: 1.25rem; }
+    .summary-body { padding: 19px 22px 22px; }
+    .summary-list { display: grid; gap: 0; margin: 0; }
+    .summary-row { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid #e6eeed; font-size: .78rem; }
+    .summary-row dt { color: var(--muted); }
+    .summary-row dd { margin: 0; color: var(--ink); font-weight: 760; text-align: right; overflow-wrap: anywhere; }
+    .estimate { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin: 17px 0; }
+    .metric { padding: 12px; border-radius: 12px; background: var(--canvas); }
+    .metric small { display: block; color: var(--muted); font-size: .66rem; }
+    .metric strong { display: block; margin-top: 3px; color: var(--navy); font-size: .95rem; }
+    .privacy-note { margin: 12px 0 0; color: var(--muted); font-size: .68rem; text-align: center; }
+    .validation { display: none; margin-bottom: 12px; padding: 10px 11px; border-radius: 10px; background: #fff0ee; color: var(--red); font-size: .74rem; font-weight: 700; }
+    .validation.show { display: block; }
+
+    .scientific-note { display: grid; grid-template-columns: auto 1fr; gap: 12px; margin-top: 18px; padding: 16px; border-radius: 14px; background: var(--blue-soft); color: #244e70; font-size: .79rem; }
+    .scientific-note .icon { font-size: 1.1rem; }
+
+    .site-foot { padding: 25px 0 36px; border-top: 1px solid var(--line); color: var(--muted); font-size: .76rem; }
+    .site-foot .shell { display: flex; justify-content: space-between; gap: 20px; }
+    .site-foot a { color: var(--teal-dark); font-weight: 750; text-decoration: none; }
+
+    @media (max-width: 960px) {
+      .hero-grid, .layout { grid-template-columns: 1fr; }
+      .hero-note { max-width: 620px; }
+      .summary { position: static; }
+      .progress { top: 78px; overflow-x: auto; grid-template-columns: repeat(5, minmax(145px, 1fr)); }
+    }
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 20px, 1180px); }
+      .hero { padding-top: 42px; }
+      h1 { font-size: 2.55rem; }
+      .panel-head, .panel-body { padding-left: 18px; padding-right: 18px; }
+      .choice-grid, .model-grid, .filters, .obs-fields { grid-template-columns: 1fr; }
+      .filter-wide { grid-column: auto; }
+      .fields { grid-template-columns: 1fr 1fr; }
+      .fields label:first-child { grid-column: 1 / -1; }
+      .fields .btn { grid-column: 1 / -1; }
+      .station-list { overflow-x: auto; }
+      table { min-width: 560px; }
+      .site-foot .shell { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <script src="/assets/global-nav.js"></script>
+
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <span class="eyebrow">Climate projection workspace</span>
+        <div class="hero-grid">
+          <div>
+            <h1>From station points to ensemble-ready projections.</h1>
+            <p>Choose your stations, models, releases and scenarios. Prepare a transparent direct ensemble or configure observation-based downscaling before combining models.</p>
+          </div>
+          <aside class="hero-note">
+            <strong>Built CMIP7-first</strong>
+            <p>Use the mature CMIP6 archive today while the same request structure tracks emerging CMIP7 model availability.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell">
+      <nav class="progress" aria-label="Request steps">
+        <a href="#stations"><span class="step-no">1</span><span>Stations</span></a>
+        <a href="#experiment"><span class="step-no">2</span><span>Experiment</span></a>
+        <a href="#models"><span class="step-no">3</span><span>Models</span></a>
+        <a href="#workflow"><span class="step-no">4</span><span>Workflow</span></a>
+        <a href="#outputs"><span class="step-no">5</span><span>Outputs</span></a>
+      </nav>
+
+      <div class="layout">
+        <div class="stack">
+          <section class="panel" id="stations">
+            <div class="panel-head">
+              <div class="title-row">
+                <span class="title-number">1</span>
+                <div><h2>Add station locations</h2><p class="subtitle">Upload a CSV or add points manually. Elevation is optional but recommended.</p></div>
+              </div>
+              <span class="badge blue"><span class="dot"></span><span id="station-count-badge">3 stations</span></span>
+            </div>
+            <div class="panel-body">
+              <div class="dropzone" id="dropzone">
+                <div>
+                  <span class="upload-icon" aria-hidden="true">↑</span>
+                  <strong>Drop your station CSV here</strong>
+                  <small>Required columns: station_id, latitude, longitude. Optional: name, elevation.</small>
+                  <button class="text-button" id="browse-button" type="button">Browse file</button>
+                  <input id="station-file" type="file" accept=".csv,text/csv">
+                </div>
+              </div>
+              <div class="or">or add one station</div>
+              <form class="fields" id="station-form">
+                <label>Station name<input id="station-name" type="text" placeholder="e.g., Ames Research Farm" required></label>
+                <label>Latitude<input id="station-lat" type="number" min="-90" max="90" step="any" placeholder="42.03" required></label>
+                <label>Longitude<input id="station-lon" type="number" min="-180" max="180" step="any" placeholder="-93.63" required></label>
+                <label>Elevation (m)<input id="station-elev" type="number" step="any" placeholder="288"></label>
+                <button class="btn btn-secondary" type="submit">Add point</button>
+              </form>
+              <div class="station-list">
+                <table>
+                  <thead><tr><th>Station</th><th>Latitude</th><th>Longitude</th><th>Elevation</th><th></th></tr></thead>
+                  <tbody id="station-rows"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" id="experiment">
+            <div class="panel-head">
+              <div class="title-row">
+                <span class="title-number">2</span>
+                <div><h2>Define the climate request</h2><p class="subtitle">Pair historical and future simulations using a consistent model lineage.</p></div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="choice-grid">
+                <label class="choice">
+                  <input type="radio" name="phase" value="CMIP7" checked>
+                  <span class="choice-card"><span class="choice-top"><strong>CMIP7</strong><span class="badge amber">Emerging</span></span><p>Track the newest releases as modeling centers publish them.</p></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="phase" value="CMIP6">
+                  <span class="choice-card"><span class="choice-top"><strong>CMIP6</strong><span class="badge">Available</span></span><p>Use the mature archive for complete workflow testing today.</p></span>
+                </label>
+              </div>
+              <div class="filters">
+                <label>Variable<select id="variable"><option value="Precipitation">Precipitation (pr)</option><option value="Near-surface temperature">Near-surface temperature (tas)</option><option value="Maximum temperature">Daily maximum temperature (tasmax)</option><option value="Minimum temperature">Daily minimum temperature (tasmin)</option></select></label>
+                <label>Frequency<select id="frequency"><option>Monthly</option><option>Daily</option></select></label>
+                <label>Future scenario<select id="scenario"><option value="scen7-m">Medium (scen7-m)</option><option value="scen7-h">High (scen7-h)</option><option value="scen7-vl">Very low (scen7-vl)</option></select></label>
+                <label>Historical period<input id="hist-period" type="text" value="1981–2014"></label>
+                <label>Projection period<input id="future-period" type="text" value="2021–2100"></label>
+                <label>Spatial extraction<select id="extraction"><option>Bilinear interpolation</option><option>Nearest land grid cell</option><option>Nearest grid cell</option><option>Local area average</option></select></label>
+              </div>
+              <div class="availability" id="availability-note"><strong>CMIP7 availability:</strong> the catalogue is still growing. Only published combinations will be selectable, and every request will preserve its exact dataset version.</div>
+            </div>
+          </section>
+
+          <section class="panel" id="models">
+            <div class="panel-head">
+              <div class="title-row">
+                <span class="title-number">3</span>
+                <div><h2>Select models and members</h2><p class="subtitle">Each model receives equal weight by default, regardless of member count.</p></div>
+              </div>
+              <span class="badge"><span class="dot"></span><span id="model-count-badge">4 selected</span></span>
+            </div>
+            <div class="panel-body">
+              <div class="model-tools">
+                <span>Preview catalogue entries for interface development</span>
+                <button class="text-button" id="toggle-models" type="button">Select all</button>
+              </div>
+              <div class="model-grid" id="model-grid">
+                <label class="model"><input type="checkbox" value="ACCESS-ESM1-5" checked><span class="model-copy"><span class="model-name"><strong>ACCESS-ESM1-5</strong><small>CSIRO · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
+                <label class="model"><input type="checkbox" value="CanESM5" checked><span class="model-copy"><span class="model-name"><strong>CanESM5</strong><small>CCCma · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
+                <label class="model"><input type="checkbox" value="GFDL-ESM4" checked><span class="model-copy"><span class="model-name"><strong>GFDL-ESM4</strong><small>NOAA-GFDL · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
+                <label class="model"><input type="checkbox" value="MPI-ESM1-2-LR" checked><span class="model-copy"><span class="model-name"><strong>MPI-ESM1-2-LR</strong><small>MPI-M · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
+                <label class="model"><input type="checkbox" value="MIROC6"><span class="model-copy"><span class="model-name"><strong>MIROC6</strong><small>MIROC · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
+                <label class="model"><input type="checkbox" value="MRI-ESM2-0"><span class="model-copy"><span class="model-name"><strong>MRI-ESM2-0</strong><small>MRI · r1i1p1f1</small></span><span class="badge blue">v.latest</span></span></label>
+              </div>
+              <div class="scientific-note"><span class="icon" aria-hidden="true">ⓘ</span><span>At processing time, the catalogue will verify that historical and scenario records share the selected source, member, grid and compatible variable definition. Preview model names are illustrative until the ESGF connection is enabled.</span></div>
+            </div>
+          </section>
+
+          <section class="panel" id="workflow">
+            <div class="panel-head">
+              <div class="title-row">
+                <span class="title-number">4</span>
+                <div><h2>Choose the analysis workflow</h2><p class="subtitle">Keep raw model behavior or calibrate each model against observations first.</p></div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="choice-grid">
+                <label class="choice">
+                  <input type="radio" name="workflow" value="Direct ensemble" checked>
+                  <span class="choice-card"><span class="choice-top"><strong>Direct ensemble</strong><span class="radio-mark"></span></span><p>Extract each series, calculate historical anomalies, then combine equally weighted models.</p></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="workflow" value="Downscale, then ensemble">
+                  <span class="choice-card"><span class="choice-top"><strong>Downscale, then ensemble</strong><span class="radio-mark"></span></span><p>Calibrate each model independently with station observations before combining results.</p></span>
+                </label>
+              </div>
+              <div class="obs-panel" id="obs-panel">
+                <div class="obs-head"><strong>Observation and calibration settings</strong><span class="badge amber">Required</span></div>
+                <div class="obs-fields">
+                  <label>Observation source<select id="obs-source"><option>User-uploaded station data</option><option>Provider integration (coming later)</option></select></label>
+                  <label>Method<select id="downscale-method"><option>Quantile delta mapping</option><option>Linear scaling</option><option>Empirical quantile mapping</option></select></label>
+                  <label>Validation<select id="validation-method"><option>Time-block holdout</option><option>K-fold by year</option></select></label>
+                </div>
+                <label class="checkline"><input id="trend-preserve" type="checkbox" checked><span>Preserve the modeled climate-change signal during bias adjustment.</span></label>
+              </div>
+              <div class="filters">
+                <label>Member treatment<select id="member-treatment"><option>Average members within model</option><option>Use first member only</option><option>Keep every member separate</option></select></label>
+                <label>Model weighting<select id="weighting"><option>Equal weight per model</option><option>Performance weighted</option><option>User-defined weights</option></select></label>
+                <label>Ensemble statistics<select id="statistics"><option>Mean, median & percentiles</option><option>Mean & standard deviation</option><option>All available statistics</option></select></label>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" id="outputs">
+            <div class="panel-head">
+              <div class="title-row">
+                <span class="title-number">5</span>
+                <div><h2>Output package</h2><p class="subtitle">Every result includes provenance, dataset versions and processing decisions.</p></div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="choice-grid">
+                <label class="choice"><input type="checkbox" name="output" value="Station time series" checked><span class="choice-card"><span class="choice-top"><strong>Station time series</strong><span class="badge">CSV</span></span><p>One tidy file per variable with model, member and scenario columns.</p></span></label>
+                <label class="choice"><input type="checkbox" name="output" value="Ensemble statistics" checked><span class="choice-card"><span class="choice-top"><strong>Ensemble statistics</strong><span class="badge">CSV</span></span><p>Mean, median, spread, percentiles and model agreement.</p></span></label>
+                <label class="choice"><input type="checkbox" name="output" value="Analysis archive" checked><span class="choice-card"><span class="choice-top"><strong>Analysis archive</strong><span class="badge blue">NetCDF</span></span><p>Machine-readable series with standardized metadata and units.</p></span></label>
+                <label class="choice"><input type="checkbox" name="output" value="Method report" checked><span class="choice-card"><span class="choice-top"><strong>Method report</strong><span class="badge amber">PDF</span></span><p>Dataset citations, versions, QC warnings and reproducibility details.</p></span></label>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="summary" aria-label="Request summary">
+          <div class="summary-top"><small>Live request summary</small><h2>Projection package</h2></div>
+          <div class="summary-body">
+            <div class="validation" id="validation-message">Add at least one station and select one model.</div>
+            <dl class="summary-list">
+              <div class="summary-row"><dt>Stations</dt><dd id="summary-stations">3 points</dd></div>
+              <div class="summary-row"><dt>Archive</dt><dd id="summary-phase">CMIP7</dd></div>
+              <div class="summary-row"><dt>Variable</dt><dd id="summary-variable">Precipitation</dd></div>
+              <div class="summary-row"><dt>Scenario</dt><dd id="summary-scenario">Medium (scen7-m)</dd></div>
+              <div class="summary-row"><dt>Models</dt><dd id="summary-models">4 models</dd></div>
+              <div class="summary-row"><dt>Workflow</dt><dd id="summary-workflow">Direct ensemble</dd></div>
+              <div class="summary-row"><dt>Projection</dt><dd id="summary-period">2021–2100</dd></div>
+            </dl>
+            <div class="estimate">
+              <div class="metric"><small>Estimated series</small><strong id="series-estimate">12</strong></div>
+              <div class="metric"><small>Output format</small><strong>ZIP package</strong></div>
+            </div>
+            <button class="btn btn-primary btn-block" id="review-button" type="button">Review request</button>
+            <button class="btn btn-secondary btn-block" id="save-button" type="button" style="margin-top:9px">Download request JSON</button>
+            <p class="privacy-note">No account is required in this interface prototype.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-foot"><div class="shell"><span>DMAP-AI · Climate projection workspace prototype</span><span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span></div></footer>
+
+  <script>
+    const stations = [
+      { name: "Ames, Iowa", lat: 42.0308, lon: -93.6319, elev: 288 },
+      { name: "Tucson, Arizona", lat: 32.2226, lon: -110.9747, elev: 728 },
+      { name: "Yuma, Arizona", lat: 32.6927, lon: -114.6277, elev: 43 }
+    ];
+
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => Array.from(document.querySelectorAll(selector));
+
+    function selectedValue(name) {
+      const input = document.querySelector(`input[name="${name}"]:checked`);
+      return input ? input.value : "";
+    }
+
+    function selectedModels() {
+      return $$("#model-grid input:checked").map(input => input.value);
+    }
+
+    function renderStations() {
+      const rows = $("#station-rows");
+      rows.innerHTML = stations.map((station, index) => `
+        <tr>
+          <td><strong>${escapeHtml(station.name)}</strong></td>
+          <td>${Number(station.lat).toFixed(4)}</td>
+          <td>${Number(station.lon).toFixed(4)}</td>
+          <td>${station.elev === "" || station.elev == null ? "—" : `${Number(station.elev).toFixed(0)} m`}</td>
+          <td><button class="remove" type="button" data-remove="${index}" aria-label="Remove ${escapeHtml(station.name)}">×</button></td>
+        </tr>`).join("");
+      $("#station-count-badge").textContent = `${stations.length} station${stations.length === 1 ? "" : "s"}`;
+      updateSummary();
+    }
+
+    function escapeHtml(value) {
+      const div = document.createElement("div");
+      div.textContent = String(value);
+      return div.innerHTML;
+    }
+
+    function updateScenarioOptions() {
+      const phase = selectedValue("phase");
+      const scenario = $("#scenario");
+      const current = scenario.value;
+      const options = phase === "CMIP7"
+        ? [["scen7-m", "Medium (scen7-m)"], ["scen7-h", "High (scen7-h)"], ["scen7-vl", "Very low (scen7-vl)"]]
+        : [["ssp245", "Intermediate (SSP2-4.5)"], ["ssp585", "Very high (SSP5-8.5)"], ["ssp126", "Low (SSP1-2.6)"]];
+      scenario.innerHTML = options.map(([value, label]) => `<option value="${value}">${label}</option>`).join("");
+      if (options.some(([value]) => value === current)) scenario.value = current;
+      $("#availability-note").innerHTML = phase === "CMIP7"
+        ? "<strong>CMIP7 availability:</strong> the catalogue is still growing. Only published combinations will be selectable, and every request will preserve its exact dataset version."
+        : "<strong>CMIP6 production mode:</strong> use the mature archive to test extraction, historical pairing, downscaling and ensemble calculations while CMIP7 coverage grows.";
+      updateSummary();
+    }
+
+    function updateWorkflow() {
+      const downscale = selectedValue("workflow") === "Downscale, then ensemble";
+      $("#obs-panel").classList.toggle("show", downscale);
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const models = selectedModels();
+      const phase = selectedValue("phase") || "CMIP7";
+      const workflow = selectedValue("workflow") || "Direct ensemble";
+      $("#summary-stations").textContent = `${stations.length} point${stations.length === 1 ? "" : "s"}`;
+      $("#summary-phase").textContent = phase;
+      $("#summary-variable").textContent = $("#variable").value;
+      $("#summary-scenario").textContent = $("#scenario").selectedOptions[0]?.textContent || "—";
+      $("#summary-models").textContent = `${models.length} model${models.length === 1 ? "" : "s"}`;
+      $("#summary-workflow").textContent = workflow;
+      $("#summary-period").textContent = $("#future-period").value || "—";
+      $("#model-count-badge").textContent = `${models.length} selected`;
+      $("#series-estimate").textContent = (stations.length * models.length).toLocaleString();
+    }
+
+    function parseCsv(text) {
+      const lines = text.trim().split(/\r?\n/).filter(Boolean);
+      if (lines.length < 2) throw new Error("The CSV needs a header and at least one station.");
+      const headers = lines[0].split(",").map(value => value.trim().toLowerCase());
+      const index = key => headers.indexOf(key);
+      const latIndex = index("latitude");
+      const lonIndex = index("longitude");
+      if (latIndex < 0 || lonIndex < 0) throw new Error("Include latitude and longitude columns.");
+      const nameIndex = index("station_name") >= 0 ? index("station_name") : index("name") >= 0 ? index("name") : index("station_id");
+      const elevIndex = index("elevation") >= 0 ? index("elevation") : index("elevation_m");
+      return lines.slice(1).map((line, row) => {
+        const values = line.split(",").map(value => value.trim().replace(/^"|"$/g, ""));
+        const lat = Number(values[latIndex]);
+        const lon = Number(values[lonIndex]);
+        if (!Number.isFinite(lat) || lat < -90 || lat > 90 || !Number.isFinite(lon) || lon < -180 || lon > 180) throw new Error(`Invalid coordinates on row ${row + 2}.`);
+        return { name: nameIndex >= 0 ? values[nameIndex] || `Station ${row + 1}` : `Station ${row + 1}`, lat, lon, elev: elevIndex >= 0 ? values[elevIndex] : "" };
+      });
+    }
+
+    function requestObject() {
+      return {
+        created_at: new Date().toISOString(),
+        stations,
+        archive: selectedValue("phase"),
+        variable: $("#variable").value,
+        frequency: $("#frequency").value,
+        scenario: $("#scenario").value,
+        historical_period: $("#hist-period").value,
+        projection_period: $("#future-period").value,
+        extraction: $("#extraction").value,
+        models: selectedModels(),
+        workflow: selectedValue("workflow"),
+        observation_source: $("#obs-source").value,
+        downscaling_method: $("#downscale-method").value,
+        validation_method: $("#validation-method").value,
+        preserve_trend: $("#trend-preserve").checked,
+        member_treatment: $("#member-treatment").value,
+        weighting: $("#weighting").value,
+        statistics: $("#statistics").value,
+        outputs: $$('input[name="output"]:checked').map(input => input.value),
+        status: "interface-prototype"
+      };
+    }
+
+    function validateRequest() {
+      const valid = stations.length > 0 && selectedModels().length > 0;
+      $("#validation-message").classList.toggle("show", !valid);
+      return valid;
+    }
+
+    $("#station-form").addEventListener("submit", event => {
+      event.preventDefault();
+      stations.push({ name: $("#station-name").value.trim(), lat: Number($("#station-lat").value), lon: Number($("#station-lon").value), elev: $("#station-elev").value });
+      event.target.reset();
+      renderStations();
+    });
+
+    $("#station-rows").addEventListener("click", event => {
+      const button = event.target.closest("[data-remove]");
+      if (!button) return;
+      stations.splice(Number(button.dataset.remove), 1);
+      renderStations();
+    });
+
+    $("#browse-button").addEventListener("click", () => $("#station-file").click());
+    $("#station-file").addEventListener("change", async event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      try { stations.splice(0, stations.length, ...parseCsv(await file.text())); renderStations(); }
+      catch (error) { alert(error.message); }
+      event.target.value = "";
+    });
+
+    const dropzone = $("#dropzone");
+    ["dragenter", "dragover"].forEach(type => dropzone.addEventListener(type, event => { event.preventDefault(); dropzone.classList.add("drag"); }));
+    ["dragleave", "drop"].forEach(type => dropzone.addEventListener(type, event => { event.preventDefault(); dropzone.classList.remove("drag"); }));
+    dropzone.addEventListener("drop", async event => {
+      const file = event.dataTransfer.files[0];
+      if (!file) return;
+      try { stations.splice(0, stations.length, ...parseCsv(await file.text())); renderStations(); }
+      catch (error) { alert(error.message); }
+    });
+
+    $$('input[name="phase"]').forEach(input => input.addEventListener("change", updateScenarioOptions));
+    $$('input[name="workflow"]').forEach(input => input.addEventListener("change", updateWorkflow));
+    $("#model-grid").addEventListener("change", updateSummary);
+    $("#toggle-models").addEventListener("click", () => {
+      const boxes = $$("#model-grid input");
+      const allChecked = boxes.every(box => box.checked);
+      boxes.forEach(box => box.checked = !allChecked);
+      $("#toggle-models").textContent = allChecked ? "Select all" : "Clear all";
+      updateSummary();
+    });
+    ["#variable", "#frequency", "#scenario", "#future-period"].forEach(selector => $(selector).addEventListener("change", updateSummary));
+    $("#future-period").addEventListener("input", updateSummary);
+
+    $("#review-button").addEventListener("click", () => {
+      if (!validateRequest()) return;
+      alert("Request structure is complete. Data discovery and processing will be connected in the next development phase.");
+    });
+    $("#save-button").addEventListener("click", () => {
+      if (!validateRequest()) return;
+      const blob = new Blob([JSON.stringify(requestObject(), null, 2)], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "dmap-cmip-station-request.json";
+      link.click();
+      URL.revokeObjectURL(link.href);
+    });
+
+    renderStations();
+    updateWorkflow();
+  </script>
+</body>
+</html>
