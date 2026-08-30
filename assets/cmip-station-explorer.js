@@ -61,6 +61,7 @@
   }
 
   function renderStations() {
+    clearValidation();
     $("#station-rows").innerHTML = stations.map((station, index) => `
       <tr>
         <td><strong>${escapeHtml(station.name)}</strong></td>
@@ -73,17 +74,16 @@
     updateSummary();
   }
 
+  function clearValidation() {
+    $("#validation-message").textContent = "";
+    $("#validation-message").classList.remove("show");
+  }
+
   function updatePhase() {
-    const phase = selectedValue("phase");
-    if (phase === "CMIP7") {
-      window.location.href = "/cmip7-catalogue.html";
-      return;
-    }
-    $("#availability-note").innerHTML = phase === "CMIP7"
-      ? "<strong>CMIP7 catalogue mode:</strong> live downloads are not enabled yet because model coverage is still emerging. Choose CMIP6 to run a real station request now."
-      : "<strong>CMIP6 live source:</strong> Open-Meteo serves seven CMIP6 HighResMIP models at 10 km from 1950–2050. The pathway is approximately high-emissions and cannot be changed in this source.";
-    $("#review-button").textContent = phase === "CMIP6" ? "Run CMIP6 request" : "CMIP7 processing coming soon";
-    $("#review-button").disabled = phase !== "CMIP6";
+    clearValidation();
+    $("#availability-note").innerHTML = "<strong>CMIP6 live source:</strong> Open-Meteo serves seven CMIP6 HighResMIP models at 10 km from 1950–2050. The pathway is approximately high-emissions and cannot be changed in this source.";
+    $("#review-button").textContent = "Run CMIP6 request";
+    $("#review-button").disabled = false;
     updateSummary();
   }
 
@@ -173,8 +173,7 @@
     let message = "";
     const start = $("#hist-period").value;
     const end = $("#future-period").value;
-    if (selectedValue("phase") !== "CMIP6") message = "Choose CMIP6 to run live processing.";
-    else if (!stations.length) message = "Add at least one station.";
+    if (!stations.length) message = "Add at least one station.";
     else if (stations.length > 25) message = "This first release supports up to 25 stations per request.";
     else if (!selectedModels().length) message = "Select at least one model.";
     else if ($("#ensemble-method").value === "weighted_mean" && Object.values(modelWeights()).reduce((sum, weight) => sum + weight, 0) <= 0) message = "Set at least one model weight greater than zero.";
@@ -353,8 +352,8 @@
       console.error(error);
       setRunStatus(`Request failed: ${error.message}`, "error");
     } finally {
-      button.disabled = selectedValue("phase") !== "CMIP6";
-      button.textContent = selectedValue("phase") === "CMIP6" ? "Run CMIP6 request" : "CMIP7 processing coming soon";
+      button.disabled = false;
+      button.textContent = "Run CMIP6 request";
     }
   }
 
@@ -521,8 +520,9 @@
   });
   $$("input[name=\"phase\"]").forEach(input => input.addEventListener("change", updatePhase));
   $$("input[name=\"workflow\"]").forEach(input => input.addEventListener("change", updateWorkflow));
-  $("#model-grid").addEventListener("change", () => { updateSummary(); renderModelWeights(); });
+  $("#model-grid").addEventListener("change", () => { clearValidation(); updateSummary(); renderModelWeights(); });
   $("#toggle-models").addEventListener("click", () => {
+    clearValidation();
     const boxes = $$("#model-grid input");
     const allChecked = boxes.every(box => box.checked);
     boxes.forEach(box => box.checked = !allChecked);
@@ -530,10 +530,10 @@
     updateSummary();
     renderModelWeights();
   });
-  $("#ensemble-method").addEventListener("change", updateEnsembleMethod);
+  $("#ensemble-method").addEventListener("change", () => { clearValidation(); updateEnsembleMethod(); });
   ["#variable", "#frequency", "#hist-period", "#future-period"].forEach(selector => {
-    $(selector).addEventListener("change", updateSummary);
-    $(selector).addEventListener("input", updateSummary);
+    $(selector).addEventListener("change", () => { clearValidation(); updateSummary(); });
+    $(selector).addEventListener("input", () => { clearValidation(); updateSummary(); });
   });
   $("#review-button").addEventListener("click", fetchClimateData);
   $("#save-button").addEventListener("click", () => { if (validateRequest()) downloadFile(JSON.stringify(requestObject(), null, 2), "dmap-cmip6-request.json", "application/json"); });
@@ -550,6 +550,11 @@
   $("#result-download-metadata").addEventListener("click", () => downloadFile(JSON.stringify(resultState.metadata, null, 2), "dmap-cmip6-metadata.json", "application/json"));
   let resizeTimer;
   window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(renderResultsChart, 120); });
+  window.addEventListener("pageshow", () => {
+    const cmip6 = document.querySelector('input[name="phase"][value="CMIP6"]');
+    if (cmip6) cmip6.checked = true;
+    updatePhase();
+  });
 
   renderStations();
   updatePhase();

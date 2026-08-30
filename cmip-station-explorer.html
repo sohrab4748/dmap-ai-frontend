@@ -211,7 +211,7 @@
     .remove:hover { color: var(--red); }
 
     .choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
-    .choice { position: relative; }
+    .choice { position: relative; text-decoration: none; }
     .choice > input { position: absolute; opacity: 0; }
     .choice-card {
       display: block;
@@ -224,6 +224,8 @@
       transition: border-color .15s, box-shadow .15s, transform .15s;
     }
     .choice-card:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(23,59,87,.07); }
+    .choice:focus-visible { outline: none; }
+    .choice:focus-visible .choice-card { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,118,110,.14); }
     .choice input:checked + .choice-card { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,118,110,.10); }
     .choice-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
     .choice-card strong { color: var(--navy); }
@@ -434,10 +436,9 @@
             </div>
             <div class="panel-body">
               <div class="choice-grid">
-                <label class="choice">
-                  <input type="radio" name="phase" value="CMIP7">
-                  <span class="choice-card"><span class="choice-top"><strong>CMIP7</strong><span class="badge amber">Live catalogue</span></span><p>Open the live ESGF publication tester for models, experiments, variables, grids and releases.</p></span>
-                </label>
+                <a class="choice" href="/cmip7-catalogue.html">
+                  <span class="choice-card"><span class="choice-top"><strong>CMIP7</strong><span class="badge amber">Open catalogue →</span></span><p>Open the live ESGF publication tester for models, experiments, variables, grids and releases.</p></span>
+                </a>
                 <label class="choice">
                   <input type="radio" name="phase" value="CMIP6" checked>
                   <span class="choice-card"><span class="choice-top"><strong>CMIP6</strong><span class="badge">Live</span></span><p>Retrieve station-scale HighResMIP projections and calculate ensemble statistics now.</p></span>
@@ -810,6 +811,6 @@
     renderStations();
     updateWorkflow();
   </script>
-  <script src="/assets/cmip-station-explorer.js?v=20260828-11"></script>
+  <script src="/assets/cmip-station-explorer.js?v=20260829-1"></script>
 </body>
 </html>
