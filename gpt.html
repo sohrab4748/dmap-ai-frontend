@@ -19,7 +19,7 @@
 <meta content="website" property="og:type"/>
 <meta content="DMAP-AI ChatGPT Research Version" property="og:title"/>
 <meta content="AI-powered drought analysis inside ChatGPT using MCP tools." property="og:description"/>
-<meta content="https://droughtanalysis.com/gpt.html" property="og:url"/>
+<meta content="https://droughtanalysis.com/gpt" property="og:url"/>
 <meta content="https://droughtanalysis.com/assets/dmap-ai-share-preview.jpg" property="og:image"/>
 <!-- Twitter -->
 <meta content="summary_large_image" name="twitter:card"/>
@@ -97,12 +97,27 @@
     line-height:1.7;
     font-size:15px;
 }
+
+    /* Video thumbnail card (added 2026-10-06) */
+    .gpt-video-thumb{position:relative;display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#0f172a;margin-top:12px;max-width:640px;}
+    .gpt-video-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s ease;}
+    .gpt-video-thumb:hover img{transform:scale(1.03);}
+    .gpt-video-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:999px;background:#dc2626;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.35);padding-left:3px;box-sizing:border-box;}
   </style>
 </head>
 <body>
 <div class="container">
 <h1><a href="/DMAP_AI_App">DMAP-AI Research Version</a></h1>
 <span class="tag">ChatGPT Custom GPT</span>
+<div class="card gpt-video-card">
+<h2>Watch the video first</h2>
+<p>New to the DMAP-AI Custom GPT? This video shows how to run SPI, wavelet, and drought-risk analysis inside ChatGPT.</p>
+<a aria-label="Watch the DMAP-AI Custom GPT video tutorial" class="gpt-video-thumb" data-gpt-click="gpt-page-thumbnail" href="/gpt_tutorial">
+<img alt="DMAP-AI Custom GPT video tutorial" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/wx7LpFXhCts/hqdefault.jpg';" src="https://img.youtube.com/vi/wx7LpFXhCts/maxresdefault.jpg"/>
+<span aria-hidden="true" class="gpt-video-play"><svg height="26" viewBox="0 0 24 24" width="26"><path d="M8 5v14l11-7z" fill="currentColor"></path></svg></span>
+</a>
+<a class="btn" data-gpt-click="gpt-page-button" href="/gpt_tutorial">Watch the Custom GPT video</a>
+</div>
 <div class="card">
 <h2>Overview</h2>
 <p>DMAP-AI is an AI-powered drought analysis system inside ChatGPT using SPI-based scientific workflows.</p>
@@ -175,15 +190,6 @@ Use DMAP-AI to generate a scientific drought report for Ames, Iowa (1981–2025)
 </ul>
 </div>
 <div class="card">
-<h2>Launch</h2>
-<a class="btn" href="https://chatgpt.com/apps/dmap-ai/asdk_app_6a08cc516b00819185f774d7e6c9205a">
-Open in ChatGPT
-</a>
-</div>
-</div>
-<script src="/assets/global-nav.js"></script>
-</body>
-</html><div class="card">
 <h2>⚙️ How to Install / Use DMAP-AI in ChatGPT</h2>
 <p>DMAP-AI Research Version runs inside ChatGPT as a Custom GPT connected to MCP tools.</p>
 <ul>
@@ -203,5 +209,20 @@ Open DMAP-AI in ChatGPT
 Note: Availability depends on GPT publishing status and account permissions.
 </p>
 </div>
-
+<div class="card">
+<h2>Launch</h2>
+<a class="btn" href="https://chatgpt.com/apps/dmap-ai/asdk_app_6a08cc516b00819185f774d7e6c9205a">
+Open in ChatGPT
+</a>
+</div>
+</div>
+<script>
+document.querySelectorAll("[data-gpt-click]").forEach(function (el) {
+  el.addEventListener("click", function () {
+    if (typeof window.gtag === "function") window.gtag("event", "gpt_link_click", { link_location: el.getAttribute("data-gpt-click") });
+  });
+});
+</script>
 <script src="/assets/global-nav.js"></script>
+</body>
+</html>

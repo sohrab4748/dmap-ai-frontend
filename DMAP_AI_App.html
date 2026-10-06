@@ -91,6 +91,11 @@
 .dmap-video-banner-close{position:absolute;top:.25rem;right:.5rem;border:0;background:transparent;color:#64748b;font-size:1.1rem;line-height:1;cursor:pointer;padding:.2rem;}
 .dmap-video-banner-close:hover{color:#0f172a;}
 .dmap-video-card,.dmap-video-card *,.dmap-video-banner,.dmap-video-banner *{box-sizing:border-box;}
+.dmap-gpt-card{border:1px solid #a7f3d0;background:linear-gradient(180deg,#ecfdf5 0%,#ffffff 100%);border-radius:1rem;padding:1rem;box-shadow:0 8px 22px rgba(4,120,87,.08);box-sizing:border-box;}
+.dmap-gpt-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:.6rem;}
+.dmap-gpt-btn{border-radius:.6rem;background:#047857;color:#fff;font-weight:600;font-size:.8rem;padding:.4rem .8rem;text-decoration:none;}
+.dmap-gpt-btn:hover{background:#065f46;}
+.dmap-gpt-link,.dmap-video-banner-gpt{color:#1d4ed8;font-weight:600;font-size:.8rem;text-decoration:underline;}
 @media (max-width:640px){.dmap-video-banner{flex-wrap:wrap;padding-top:1.9rem;}.dmap-video-banner-thumb{flex-basis:100%;}.dmap-video-banner-btn{width:100%;text-align:center;}}
 </style>
 </link></link></link></head>
@@ -173,6 +178,14 @@
 </a>
 <p class="mt-2 text-xs text-slate-600 leading-relaxed">See the full workflow: pick a point, run SPI, read the charts, ask the AI, export and save.</p>
 </section>
+<section class="dmap-gpt-card mt-4" id="dmapSidebarGptCard">
+<div class="dmap-video-label">Prefer ChatGPT? Use the DMAP-AI Custom GPT</div>
+<p class="text-xs text-slate-600 leading-relaxed">Run SPI, drought-event, and wavelet analysis by writing a prompt in ChatGPT.</p>
+<div class="dmap-gpt-actions">
+<a class="dmap-gpt-btn" data-video-location="sidebar-gpt-page" href="/gpt" rel="noopener" target="_blank">Open Custom GPT page</a>
+<a class="dmap-gpt-link" data-video-location="sidebar-gpt-video" href="/gpt_tutorial" rel="noopener" target="_blank">Watch GPT video</a>
+</div>
+</section>
 <section class="dashboard-upgrade-card mt-4" id="dashboardUpgradeCard">
 <div class="development-badge">Developing</div>
 <div class="text-sm font-semibold text-slate-900">
@@ -252,7 +265,7 @@
 </a>
 <div class="dmap-video-banner-text">
 <div class="dmap-video-label">New here? Watch the 4-minute SPI video guide</div>
-<p>Learn the complete workflow before you run your first analysis.</p>
+<p>Learn the complete workflow before you run your first analysis. Prefer ChatGPT? <a class="dmap-video-banner-gpt" data-video-location="top-gpt-page" href="/gpt" rel="noopener" target="_blank">Try the DMAP-AI Custom GPT</a>.</p>
 </div>
 <a class="dmap-video-banner-btn" data-video-location="top-button" href="/spi_tutorial" rel="noopener" target="_blank">Watch video</a>
 <button aria-label="Hide video guide" class="dmap-video-banner-close" id="dmapTopVideoClose" type="button">&times;</button>
