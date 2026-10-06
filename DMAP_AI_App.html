@@ -71,6 +71,27 @@
     display: inline-flex;
     align-items: center;
 }
+
+/* ===== Video tutorial: sidebar card + top banner (added 2026-10-06) ===== */
+.dmap-video-card{border:1px solid #bfdbfe;background:linear-gradient(180deg,#eff6ff 0%,#ffffff 100%);border-radius:1rem;padding:1rem;box-shadow:0 8px 22px rgba(37,99,235,.10);}
+.dmap-video-label{font-size:.9rem;font-weight:700;color:#0f172a;margin-bottom:.5rem;}
+.dmap-video-thumb{position:relative;display:block;aspect-ratio:16/9;border-radius:.75rem;overflow:hidden;background:#0f172a;}
+.dmap-video-thumb img,.dmap-video-banner-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s ease;}
+.dmap-video-thumb:hover img,.dmap-video-banner-thumb:hover img{transform:scale(1.04);}
+.dmap-video-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:999px;background:#dc2626;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.35);padding-left:3px;}
+.dmap-video-time{position:absolute;right:.5rem;bottom:.5rem;background:rgba(15,23,42,.85);color:#fff;font-size:.72rem;font-weight:700;padding:.1rem .4rem;border-radius:.35rem;}
+.dmap-video-banner{display:flex;align-items:center;gap:1rem;border:1px solid #bfdbfe;background:linear-gradient(90deg,#eff6ff 0%,#ffffff 100%);border-radius:1rem;padding:.75rem 1rem;box-shadow:0 8px 22px rgba(37,99,235,.08);position:relative;}
+.dmap-video-banner-thumb{position:relative;flex:0 0 168px;aspect-ratio:16/9;border-radius:.6rem;overflow:hidden;background:#0f172a;}
+.dmap-video-banner-thumb .dmap-video-play{width:38px;height:38px;}
+.dmap-video-banner-text{flex:1 1 auto;min-width:0;}
+.dmap-video-banner-text .dmap-video-label{margin-bottom:.15rem;}
+.dmap-video-banner-text p{margin:0;font-size:.8rem;color:#475569;}
+.dmap-video-banner-btn{flex:0 0 auto;border-radius:.75rem;background:#2563eb;color:#fff;font-weight:600;font-size:.85rem;padding:.5rem 1rem;text-decoration:none;}
+.dmap-video-banner-btn:hover{background:#1d4ed8;}
+.dmap-video-banner-close{position:absolute;top:.25rem;right:.5rem;border:0;background:transparent;color:#64748b;font-size:1.1rem;line-height:1;cursor:pointer;padding:.2rem;}
+.dmap-video-banner-close:hover{color:#0f172a;}
+.dmap-video-card,.dmap-video-card *,.dmap-video-banner,.dmap-video-banner *{box-sizing:border-box;}
+@media (max-width:640px){.dmap-video-banner{flex-wrap:wrap;padding-top:1.9rem;}.dmap-video-banner-thumb{flex-basis:100%;}.dmap-video-banner-btn{width:100%;text-align:center;}}
 </style>
 </link></link></link></head>
 <body class="text-slate-800">
@@ -143,6 +164,15 @@
             </button>
 </div>
 </section>
+<section class="dmap-video-card mt-4" id="dmapSidebarVideoCard">
+<div class="dmap-video-label">New here? Watch the 4-minute SPI video guide</div>
+<a class="dmap-video-thumb" data-video-location="sidebar" href="/spi_tutorial" rel="noopener" target="_blank" aria-label="Watch the DMAP-AI SPI video tutorial (4 minutes)">
+<img alt="DMAP-AI SPI video tutorial" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/UzI3KnlZx_Y/hqdefault.jpg';" src="https://img.youtube.com/vi/UzI3KnlZx_Y/maxresdefault.jpg"/>
+<span class="dmap-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+<span class="dmap-video-time">4:08</span>
+</a>
+<p class="mt-2 text-xs text-slate-600 leading-relaxed">See the full workflow: pick a point, run SPI, read the charts, ask the AI, export and save.</p>
+</section>
 <section class="dashboard-upgrade-card mt-4" id="dashboardUpgradeCard">
 <div class="development-badge">Developing</div>
 <div class="text-sm font-semibold text-slate-900">
@@ -160,17 +190,7 @@
 <p class="text-xs text-slate-600 mt-1 leading-relaxed">
             Common questions and short answers to help users run SPI analysis, read the charts, use AI interpretation, copy JSON, and export results.
         </p>
-<div class="mt-3 rounded-2xl border border-blue-200 bg-blue-50 p-3">
-<div class="text-xs font-bold uppercase tracking-wide text-blue-700">
-                Video tutorial
-            </div>
-<p class="mt-1 text-xs text-slate-700 leading-relaxed">
-                Watch the point-based S P I tutorial to see the complete workflow before running your own analysis.
-            </p>
-<a class="mt-2 inline-flex rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-blue-700" href="/spi_tutorial" rel="noopener" target="_blank">
-                Open SPI Tutorial
-            </a>
-</div>
+
 <div class="mt-3">
 <details open="">
 <summary>What can I do in the Research Free Version?</summary>
@@ -225,6 +245,18 @@
 </aside>
 <!-- RIGHT: map + charts -->
 <section class="col-span-12 lg:col-span-8 flex flex-col gap-6 main-right-offset" id="mainPanel">
+<div class="dmap-video-banner" id="dmapTopVideoBanner">
+<a class="dmap-video-banner-thumb" data-video-location="top" href="/spi_tutorial" rel="noopener" target="_blank" aria-label="Watch the DMAP-AI SPI video tutorial">
+<img alt="DMAP-AI SPI video tutorial" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/UzI3KnlZx_Y/hqdefault.jpg';" src="https://img.youtube.com/vi/UzI3KnlZx_Y/maxresdefault.jpg"/>
+<span class="dmap-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+</a>
+<div class="dmap-video-banner-text">
+<div class="dmap-video-label">New here? Watch the 4-minute SPI video guide</div>
+<p>Learn the complete workflow before you run your first analysis.</p>
+</div>
+<a class="dmap-video-banner-btn" data-video-location="top-button" href="/spi_tutorial" rel="noopener" target="_blank">Watch video</a>
+<button aria-label="Hide video guide" class="dmap-video-banner-close" id="dmapTopVideoClose" type="button">&times;</button>
+</div>
 <div class="card p-6 cite-panel">
 <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
 <div class="relative z-[1]">
@@ -1149,5 +1181,28 @@ Click "Compute copula" after running SPI.
     </script>
 <script src="dashboard_db.js?v=1"></script>
 <script src="/assets/global-nav.js"></script>
+<script>
+/* Video tutorial: click tracking (Google Analytics) and hide-banner button. Added 2026-10-06. */
+(function () {
+    var HIDE_KEY = "dmapHideTopVideoBanner";
+    var banner = document.getElementById("dmapTopVideoBanner");
+    try { if (banner && localStorage.getItem(HIDE_KEY) === "1") banner.style.display = "none"; } catch (e) {}
+    var closeBtn = document.getElementById("dmapTopVideoClose");
+    if (closeBtn && banner) {
+        closeBtn.addEventListener("click", function () {
+            banner.style.display = "none";
+            try { localStorage.setItem(HIDE_KEY, "1"); } catch (e) {}
+            if (typeof window.gtag === "function") window.gtag("event", "tutorial_banner_hide");
+        });
+    }
+    document.querySelectorAll("[data-video-location]").forEach(function (el) {
+        el.addEventListener("click", function () {
+            if (typeof window.gtag === "function") {
+                window.gtag("event", "tutorial_video_click", { video_location: el.getAttribute("data-video-location") });
+            }
+        });
+    });
+})();
+</script>
 </body>
 </html>
